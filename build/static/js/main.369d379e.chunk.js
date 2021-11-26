@@ -1,0 +1,2 @@
+(this["webpackJsonpstudy-frontend"]=this["webpackJsonpstudy-frontend"]||[]).push([[0],{9:function(t,e,n){"use strict";n.r(e);var r=n(0),c=n.n(r),d=n(3),s=n.n(d),o=n(1);var i=function(){return Object(o.jsx)("div",{children:"Study \ud648\ud654\uba74 \uccab\ud398\uc774\uc9c0\uc785\ub2c8\ub2e4."})};s.a.render(Object(o.jsx)(c.a.StrictMode,{children:Object(o.jsx)(i,{})}),document.getElementById("root"))}},[[9,1,2]]]);
+//# sourceMappingURL=main.369d379e.chunk.js.map
