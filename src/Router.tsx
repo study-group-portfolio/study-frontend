@@ -4,6 +4,7 @@ import FindStudy from "./pages/FindStudy";
 import FindMembers from "./pages/FindMember";
 import Login from "./pages/Login";
 import SigninReady from "./pages/SigninReady";
+import EmailSignin from "./pages/Signin";
 import FindPassword from "./pages/FindPassword";
 
 function Router() {
@@ -15,6 +16,7 @@ function Router() {
         <Route exact path="/find-member" component={FindMembers}></Route>
         <Route exact path="/login" component={Login}></Route>
         <Route exact path="/signin-ready" component={SigninReady}></Route>
+        <Route exact path="/email-signin" component={EmailSignin}></Route>
         <Route exact path="/find-password" component={FindPassword}></Route>
       </Switch>
     </BrowserRouter>

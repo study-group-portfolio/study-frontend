@@ -52,7 +52,8 @@ const Input = styled.input.attrs({
   width: 400px;
   height: 48px;
   border: 1px solid #e9edef;
-  padding-left: 15px;
+  border-radius: 6px;
+  padding: 0 15px;
   font-size: 16px;
   color: #98a2b3;
 
@@ -66,7 +67,7 @@ const Input = styled.input.attrs({
   }
 `;
 
-const LoginBtn = styled.button`
+const SigninBtn = styled.button`
   width: 400px;
   height: 48px;
   border: 1px solid #c4c4c4;
@@ -83,71 +84,28 @@ const LoginBtn = styled.button`
   }
 `;
 
-const KakaoLoginBtn = styled(LoginBtn)`
-  border: 1px solid #efc046;
-  background-color: transparent;
-  margin-top: 12px;
-  color: #c4c4c4;
-  &:hover {
-    background-color: #efc046;
-    transition: 0.4s ease-in-out;
-    color: #fff;
-  }
-`;
-
-const GoogleLoginBtn = styled(KakaoLoginBtn)`
-  border: 1px solid #de5246;
-  background-color: transparent;
-  margin-top: 12px;
-  color: #c4c4c4;
-  &:hover {
-    background-color: #de5246;
-    color: #fff;
-  }
-`;
-
-const UtilityBox = styled.div`
-  width: 400px;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 15px;
-`;
-
-const UtilityMenu = styled.a`
-  font-size: 14px;
-  color: #c4c4c4;
-`;
-
-function Login() {
+function EmailSignin() {
   return (
     <Container>
       <Wrapper>
-        <Title>로그인</Title>
+        <Title>회원가입</Title>
         <Desc>
-          환영합니다
+          반갑습니다.
           <br />
-          로그인 후 스터딧해보세요!
+          열정적인 멤버들이 기다리고 있어요!
         </Desc>
         <Form>
           <EmailLabel>이메일</EmailLabel>
           <Input placeholder="example@studyit.com"></Input>
           <PasswordLabel>비밀번호</PasswordLabel>
           <Input placeholder="비밀번호를 입력해주세요"></Input>
+          <PasswordLabel>비밀번호 확인</PasswordLabel>
+          <Input placeholder="비밀번호를 한 번 더 입력해주세요"></Input>
         </Form>
-        <LoginBtn>이메일로 로그인하기</LoginBtn>
-        <KakaoLoginBtn>카카오로 로그인하기</KakaoLoginBtn>
-        <GoogleLoginBtn>구글로 로그인하기</GoogleLoginBtn>
-        <UtilityBox>
-          <UtilityMenu>
-            <Link to="/signin-ready">아직 회원이 아니신가요?</Link>
-          </UtilityMenu>
-          <UtilityMenu>
-            <Link to="/find-password">비밀번호 찾기</Link>
-          </UtilityMenu>
-        </UtilityBox>
+        <SigninBtn>회원가입하기</SigninBtn>
       </Wrapper>
     </Container>
   );
 }
 
-export default Login;
+export default EmailSignin;
