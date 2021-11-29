@@ -34,41 +34,29 @@ const Desc = styled.p`
 const EmailSignin = styled.button`
   width: 400px;
   height: 48px;
-  border: 1px solid #c4c4c4;
   border-radius: 6px;
-  background-color: transparent;
-  border-style: none;
-  color: #c4c4c4;
+  color: #fff;
   margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
   cursor: pointer;
-  &:hover {
-    background-color: #c4c4c4;
-    transition: 0.4s ease-in-out;
-    color: #fff;
-  }
+  background-color: #c4c4c4;
 `;
 
 const KakaoSignin = styled(EmailSignin)`
-  border: 1px solid #efc046;
-  background-color: transparent;
+  background-color: #efc046;
+  border: transparent;
   margin-top: 12px;
-  color: #c4c4c4;
-  &:hover {
-    background-color: #efc046;
-    transition: 0.4s ease-in-out;
-    color: #fff;
-  }
+  color: #fff;
 `;
 
 const GoogleSignin = styled(EmailSignin)`
-  border: 1px solid #de5246;
-  background-color: transparent;
+  border: transparent;
+  background-color: #de5246;
   margin-top: 12px;
-  color: #c4c4c4;
-  &:hover {
-    background-color: #de5246;
-    color: #fff;
-  }
+  color: #fff;
 `;
 
 function Login() {
@@ -81,7 +69,7 @@ function Login() {
           <br />
           열정적인 멤버들이 가디라고 있어요!
         </Desc>
-        <EmailSignin as="a" href="/signin-email">
+        <EmailSignin as="a" href="/signin/email">
           이메일로 시작하기
         </EmailSignin>
         <KakaoSignin>카카오로 시작하기</KakaoSignin>

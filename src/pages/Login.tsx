@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { FaEye } from "react-icons/fa";
 
 const Container = styled.div`
   width: 100%;
@@ -52,12 +53,13 @@ const Input = styled.input.attrs({
   width: 400px;
   height: 48px;
   border: 1px solid #e9edef;
+  border-radius: 6px;
   padding-left: 15px;
   font-size: 16px;
-  color: #98a2b3;
+  color: #101828;
 
   &:focus {
-    border: 1px solid #e9edef;
+    outline: 2px solid #e9edef;
   }
 
   &::placeholder {
@@ -69,41 +71,25 @@ const Input = styled.input.attrs({
 const LoginBtn = styled.button`
   width: 400px;
   height: 48px;
-  border: 1px solid #c4c4c4;
   border-radius: 6px;
-  background-color: transparent;
   border-style: none;
-  color: #c4c4c4;
+  background-color: #c4c4c4;
   margin-top: 40px;
+  font-size: 16px;
   cursor: pointer;
-  &:hover {
-    background-color: #c4c4c4;
-    transition: 0.4s ease-in-out;
-    color: #fff;
-  }
+  color: #fff;
 `;
 
 const KakaoLoginBtn = styled(LoginBtn)`
-  border: 1px solid #efc046;
-  background-color: transparent;
+  background-color: #efc046;
   margin-top: 12px;
-  color: #c4c4c4;
-  &:hover {
-    background-color: #efc046;
-    transition: 0.4s ease-in-out;
-    color: #fff;
-  }
+  color: #fff;
 `;
 
 const GoogleLoginBtn = styled(KakaoLoginBtn)`
-  border: 1px solid #de5246;
-  background-color: transparent;
+  background-color: #de5246;
   margin-top: 12px;
-  color: #c4c4c4;
-  &:hover {
-    background-color: #de5246;
-    color: #fff;
-  }
+  color: #fff;
 `;
 
 const UtilityBox = styled.div`
@@ -111,11 +97,6 @@ const UtilityBox = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 15px;
-`;
-
-const UtilityMenu = styled.a`
-  font-size: 14px;
-  color: #c4c4c4;
 `;
 
 function Login() {
@@ -133,17 +114,18 @@ function Login() {
           <Input placeholder="example@studyit.com"></Input>
           <PasswordLabel>비밀번호</PasswordLabel>
           <Input placeholder="비밀번호를 입력해주세요"></Input>
+          <FaEye />
         </Form>
         <LoginBtn>이메일로 로그인하기</LoginBtn>
         <KakaoLoginBtn>카카오로 로그인하기</KakaoLoginBtn>
         <GoogleLoginBtn>구글로 로그인하기</GoogleLoginBtn>
         <UtilityBox>
-          <UtilityMenu>
-            <Link to="/signin-ready">아직 회원이 아니신가요?</Link>
-          </UtilityMenu>
-          <UtilityMenu>
-            <Link to="/find-password">비밀번호 찾기</Link>
-          </UtilityMenu>
+          <Link to="/signin" style={{ color: "#c4c4c4" }}>
+            아직 회원이 아니신가요?
+          </Link>
+          <Link to="/find-password" style={{ color: "#c4c4c4" }}>
+            비밀번호 찾기
+          </Link>
         </UtilityBox>
       </Wrapper>
     </Container>
