@@ -46,19 +46,17 @@ const PasswordLabel = styled(EmailLabel)`
   margin-top: 20px;
 `;
 
-const Input = styled.input.attrs({
-  type: "text",
-})`
+const EmailInput = styled.input`
   width: 400px;
   height: 48px;
   border: 1px solid #e9edef;
   border-radius: 6px;
   padding: 0 15px;
   font-size: 16px;
-  color: #98a2b3;
+  color: #101828;
 
   &:focus {
-    border: 1px solid #e9edef;
+    outline: 2px solid #e9edef;
   }
 
   &::placeholder {
@@ -67,21 +65,19 @@ const Input = styled.input.attrs({
   }
 `;
 
+const PasswordInput = styled(EmailInput)``;
+
 const SigninBtn = styled.button`
   width: 400px;
   height: 48px;
   border: 1px solid #c4c4c4;
   border-radius: 6px;
-  background-color: transparent;
   border-style: none;
-  color: #c4c4c4;
+  color: #fff;
   margin-top: 40px;
+  font-size: 16px;
+  background-color: #c4c4c4;
   cursor: pointer;
-  &:hover {
-    background-color: #c4c4c4;
-    transition: 0.4s ease-in-out;
-    color: #fff;
-  }
 `;
 
 function EmailSignin() {
@@ -96,11 +92,14 @@ function EmailSignin() {
         </Desc>
         <Form>
           <EmailLabel>이메일</EmailLabel>
-          <Input placeholder="example@studyit.com"></Input>
+          <EmailInput placeholder="example@studyit.com"></EmailInput>
           <PasswordLabel>비밀번호</PasswordLabel>
-          <Input placeholder="비밀번호를 입력해주세요"></Input>
+          <PasswordInput
+            placeholder="비밀번호를 입력해주세요"
+            type="password"
+          ></PasswordInput>
           <PasswordLabel>비밀번호 확인</PasswordLabel>
-          <Input placeholder="비밀번호를 한 번 더 입력해주세요"></Input>
+          <PasswordInput placeholder="비밀번호를 한 번 더 입력해주세요"></PasswordInput>
         </Form>
         <SigninBtn>회원가입하기</SigninBtn>
       </Wrapper>
