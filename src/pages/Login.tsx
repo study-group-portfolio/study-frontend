@@ -73,7 +73,7 @@ const LoginBtn = styled.button`
   height: 48px;
   border-radius: 6px;
   border-style: none;
-  background-color: #c4c4c4;
+  background-color: ${(props) => props.theme.primaryColor};
   margin-top: 40px;
   font-size: 16px;
   cursor: pointer;
@@ -87,9 +87,10 @@ const KakaoLoginBtn = styled(LoginBtn)`
 `;
 
 const GoogleLoginBtn = styled(KakaoLoginBtn)`
-  background-color: #de5246;
+  background-color: transparent;
   margin-top: 12px;
-  color: #fff;
+  color: #212729;
+  border: 1px solid #c4c4c4;
 `;
 
 const UtilityBox = styled.div`
