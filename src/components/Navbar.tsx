@@ -4,7 +4,8 @@ import { NavLink } from "react-router-dom";
 const Nav = styled.nav`
   width: 100%;
   height: 60px;
-  background-color: ${(props) => props.theme.bgColor};
+  background-color: transparent;
+  border-bottom: 1px solid #e4e7ec;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -25,34 +26,13 @@ function Navbar() {
     <Nav>
       <NavList>
         <NavItem>
-          <NavLink
-            to="/find-study"
-            style={(isActive) => ({
-              fontWeight: isActive ? "bold" : "normal",
-            })}
-          >
-            스터디 모집
-          </NavLink>
+          <NavLink to="/find-study">스터디 모집</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink
-            to="/find-member"
-            style={(isActive) => ({
-              fontWeight: isActive ? "bold" : "normal",
-            })}
-          >
-            멤버 찾기
-          </NavLink>
+          <NavLink to="/find-member">멤버 찾기</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink
-            to="/login"
-            style={(isActive) => ({
-              fontWeight: isActive ? "bold" : "normal",
-            })}
-          >
-            로그인
-          </NavLink>
+          <NavLink to="/login">로그인</NavLink>
         </NavItem>
       </NavList>
     </Nav>

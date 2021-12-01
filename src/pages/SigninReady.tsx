@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 const Container = styled.div`
   width: 100%;
@@ -53,10 +52,10 @@ const KakaoSignin = styled(EmailSignin)`
 `;
 
 const GoogleSignin = styled(EmailSignin)`
-  border: transparent;
-  background-color: #de5246;
+  border: 1px solid #c4c4c4;
+  background-color: transparent;
   margin-top: 12px;
-  color: #fff;
+  color: #212729;
 `;
 
 function Login() {

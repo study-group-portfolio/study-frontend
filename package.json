@@ -32,7 +32,7 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "http://study-group-portfolio/github.io/study-frontend",
+  "homepage": "https://study-group-portfolio.github.io/study-frontend",
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",

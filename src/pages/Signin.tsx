@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 const Container = styled.div`
   width: 100%;
@@ -46,6 +46,12 @@ const PasswordLabel = styled(EmailLabel)`
   margin-top: 20px;
 `;
 
+const PasswordHelpText = styled.p`
+  color: #667085;
+  font-size: 14px;
+  margin-top: 6px;
+`;
+
 const EmailInput = styled.input`
   width: 400px;
   height: 48px;
@@ -81,6 +87,14 @@ const SigninBtn = styled.button`
 `;
 
 function EmailSignin() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onValid = (data: any) => {
+    console.log(data);
+  };
   return (
     <Container>
       <Wrapper>
@@ -90,18 +104,31 @@ function EmailSignin() {
           <br />
           열정적인 멤버들이 기다리고 있어요!
         </Desc>
-        <Form>
+        <Form onSubmit={handleSubmit(onValid)}>
           <EmailLabel>이메일</EmailLabel>
-          <EmailInput placeholder="example@studyit.com"></EmailInput>
+          <EmailInput
+            {...(register("email"), { required: "이메일을 입력하세요" })}
+            placeholder="example@studyit.com"
+          ></EmailInput>
           <PasswordLabel>비밀번호</PasswordLabel>
           <PasswordInput
+            {...(register("password"),
+            {
+              required: true,
+              minLength: 8,
+            })}
             placeholder="비밀번호를 입력해주세요"
             type="password"
           ></PasswordInput>
+          <PasswordHelpText>영문/숫자/특수문자 조합, 8자~32자</PasswordHelpText>
           <PasswordLabel>비밀번호 확인</PasswordLabel>
-          <PasswordInput placeholder="비밀번호를 한 번 더 입력해주세요"></PasswordInput>
+          <PasswordInput
+            {...(register("confirmPassword"), { required: true, minLength: 8 })}
+            placeholder="비밀번호를 한 번 더 입력해주세요"
+            type="password"
+          ></PasswordInput>
+          <SigninBtn>회원가입하기</SigninBtn>
         </Form>
-        <SigninBtn>회원가입하기</SigninBtn>
       </Wrapper>
     </Container>
   );
