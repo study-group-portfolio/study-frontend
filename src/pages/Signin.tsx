@@ -1,5 +1,7 @@
 import styled from "styled-components";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { baseTheme } from "./../theme";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   width: 100%;
@@ -17,73 +19,82 @@ const Wrapper = styled.div`
   justify-content: center;
 `;
 
-const Title = styled.h1`
-  font-size: 32px;
-  margin-bottom: 15px;
-  align-self: left;
-  color: #212729;
+const BackBtn = styled(Link)`
+  color: ${(props) => props.theme.primaryColor};
+  font-size: 16px;
+  font-weight: bold;
 `;
 
-const Desc = styled.p`
-  font-size: 14px;
-  line-height: 22px;
-  margin-bottom: 40px;
-  color: #667085;
+const PageTitle = styled.div`
+  h1 {
+    font-size: 32px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    align-self: left;
+    color: ${(props) => props.theme.grayColors.gray900};
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 40px;
+    color: ${(props) => props.theme.grayColors.gray500};
+  }
 `;
 
-const Form = styled.form`
+const SigninForm = styled.form`
   display: flex;
   flex-direction: column;
-`;
 
-const EmailLabel = styled.label`
-  font-size: 16px;
-  margin-bottom: 8px;
-  color: #667085;
-`;
-
-const PasswordLabel = styled(EmailLabel)`
-  margin-top: 20px;
-`;
-
-const PasswordHelpText = styled.p`
-  color: #667085;
-  font-size: 14px;
-  margin-top: 6px;
-`;
-
-const EmailInput = styled.input`
-  width: 400px;
-  height: 48px;
-  border: 1px solid #e9edef;
-  border-radius: 6px;
-  padding: 0 15px;
-  font-size: 16px;
-  color: #101828;
-
-  &:focus {
-    outline: 2px solid #e9edef;
+  label {
+    margin-bottom: 8px;
+    color: ${(props) => props.theme.grayColors.gray500};
+    font-size: 16px;
   }
 
-  &::placeholder {
+  input {
+    width: 400px;
+    height: 48px;
+    border: 1px solid #e0edef;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    padding-left: 15px;
     font-size: 16px;
     color: #98a2b3;
+
+    :nth-of-type(2) {
+      margin-bottom: 6px;
+    }
+
+    :nth-of-type(3) {
+      margin-bottom: 40px;
+    }
+
+    :focus {
+      outline: none;
+    }
+
+    ::placeholder {
+      color: #98a2b3;
+      font-size: 16px;
+    }
   }
-`;
 
-const PasswordInput = styled(EmailInput)``;
+  p {
+    color: ${(props) => props.theme.grayColors.gray500};
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
 
-const SigninBtn = styled.button`
-  width: 400px;
-  height: 48px;
-  border: 1px solid #c4c4c4;
-  border-radius: 6px;
-  border-style: none;
-  color: #fff;
-  margin-top: 40px;
-  font-size: 16px;
-  background-color: #c4c4c4;
-  cursor: pointer;
+  button {
+    width: 400px;
+    height: 48px;
+    background-color: ${(props) => props.theme.primaryColor};
+    border-radius: 6px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
 `;
 
 function EmailSignin() {
@@ -92,43 +103,31 @@ function EmailSignin() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onValid = (data: any) => {
-    console.log(data);
-  };
   return (
     <Container>
       <Wrapper>
-        <Title>회원가입</Title>
-        <Desc>
-          반갑습니다.
-          <br />
-          열정적인 멤버들이 기다리고 있어요!
-        </Desc>
-        <Form onSubmit={handleSubmit(onValid)}>
-          <EmailLabel>이메일</EmailLabel>
-          <EmailInput
-            {...(register("email"), { required: "이메일을 입력하세요" })}
-            placeholder="example@studyit.com"
-          ></EmailInput>
-          <PasswordLabel>비밀번호</PasswordLabel>
-          <PasswordInput
-            {...(register("password"),
-            {
-              required: true,
-              minLength: 8,
-            })}
-            placeholder="비밀번호를 입력해주세요"
+        <BackBtn to="/signin">뒤로가기</BackBtn>
+        <PageTitle>
+          <h1>회원가입</h1>
+          <p>
+            반갑습니다.
+            <br />
+            열정적인 멤버들이 기다리고 있어요!
+          </p>
+        </PageTitle>
+        <SigninForm>
+          <label htmlFor="email">이메일</label>
+          <input type="email" placeholder="example@studyit.com"></input>
+          <label htmlFor="password">비밀번호</label>
+          <input type="password" placeholder="비밀번호를 입력해주세요"></input>
+          <p>영문/숫자/특수문자 조합, 8자~32자</p>
+          <label htmlFor="password">비밀번호 확인</label>
+          <input
             type="password"
-          ></PasswordInput>
-          <PasswordHelpText>영문/숫자/특수문자 조합, 8자~32자</PasswordHelpText>
-          <PasswordLabel>비밀번호 확인</PasswordLabel>
-          <PasswordInput
-            {...(register("confirmPassword"), { required: true, minLength: 8 })}
-            placeholder="비밀번호를 한 번 더 입력해주세요"
-            type="password"
-          ></PasswordInput>
-          <SigninBtn>회원가입하기</SigninBtn>
-        </Form>
+            placeholder="비밀번호를 한번 더 입력해주세요"
+          ></input>
+          <button type="submit">회원가입하기</button>
+        </SigninForm>
       </Wrapper>
     </Container>
   );
