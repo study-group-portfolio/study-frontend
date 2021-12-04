@@ -1,6 +1,6 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { baseTheme } from "./../theme";
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
@@ -37,72 +37,92 @@ const PageTitle = styled.div`
   p {
     font-size: 14px;
     line-height: 22px;
-    margin-bottom: 40px;
     color: ${(props) => props.theme.grayColors.gray500};
   }
 `;
 
-const SigninForm = styled.form`
-  display: flex;
-  flex-direction: column;
+const SigninForm = styled.div`
+  margin-top: 40px;
 
-  label {
-    margin-bottom: 8px;
-    color: ${(props) => props.theme.grayColors.gray500};
-    font-size: 16px;
-  }
+  form {
+    display: flex;
+    flex-direction: column;
 
-  input {
-    width: 400px;
-    height: 48px;
-    border: 1px solid #e0edef;
-    border-radius: 6px;
-    margin-bottom: 20px;
-    padding-left: 15px;
-    font-size: 16px;
-    color: #98a2b3;
-
-    :nth-of-type(2) {
-      margin-bottom: 6px;
-    }
-
-    :nth-of-type(3) {
-      margin-bottom: 40px;
-    }
-
-    :focus {
-      outline: none;
-    }
-
-    ::placeholder {
-      color: #98a2b3;
+    label {
+      margin-bottom: 8px;
+      color: ${(props) => props.theme.grayColors.gray500};
       font-size: 16px;
     }
-  }
 
-  p {
-    color: ${(props) => props.theme.grayColors.gray500};
-    font-size: 14px;
-    margin-bottom: 20px;
-  }
+    input {
+      width: 400px;
+      height: 48px;
+      border: 1px solid #e0edef;
+      border-radius: 6px;
+      padding-left: 15px;
+      font-size: 16px;
+      color: #98a2b3;
 
-  button {
-    width: 400px;
-    height: 48px;
-    background-color: ${(props) => props.theme.primaryColor};
-    border-radius: 6px;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
+      :nth-of-type(2) {
+        margin-bottom: 6px;
+      }
+
+      :nth-of-type(3) {
+        margin-bottom: 40px;
+      }
+
+      :focus {
+        outline: none;
+      }
+
+      ::placeholder {
+        color: #98a2b3;
+        font-size: 16px;
+      }
+    }
+
+    p {
+      color: ${(props) => props.theme.grayColors.gray500};
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .error-message {
+      margin-top: 6px;
+      color: ${(props) => props.theme.alertColors.error.text};
+    }
+
+    button {
+      width: 400px;
+      height: 48px;
+      background-color: ${(props) => props.theme.primaryColor};
+      border-radius: 6px;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
   }
 `;
+
+interface SigninFormValues {
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
 
 function EmailSignin() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+    setError,
+  } = useForm<SigninFormValues>();
+  const onSubmit = (data: SigninFormValues) => {
+    if (data.password !== data.confirmPassword) {
+      setError("password", { message: "비밀번호가 다릅니다." });
+    }
+  };
+
   return (
     <Container>
       <Wrapper>
@@ -116,17 +136,35 @@ function EmailSignin() {
           </p>
         </PageTitle>
         <SigninForm>
-          <label htmlFor="email">이메일</label>
-          <input type="email" placeholder="example@studyit.com"></input>
-          <label htmlFor="password">비밀번호</label>
-          <input type="password" placeholder="비밀번호를 입력해주세요"></input>
-          <p>영문/숫자/특수문자 조합, 8자~32자</p>
-          <label htmlFor="password">비밀번호 확인</label>
-          <input
-            type="password"
-            placeholder="비밀번호를 한번 더 입력해주세요"
-          ></input>
-          <button type="submit">회원가입하기</button>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <label htmlFor="email">이메일</label>
+            <input
+              placeholder="example@studyit.com"
+              {...register("email", {
+                required: "올바른 이메일을 입력해주세요.",
+                pattern: {
+                  value: /@/g,
+                  message: "올바른 이메일을 입력해주세요.",
+                },
+              })}
+            />
+            <p className="error-message">{errors?.email?.message}</p>
+            <label>비밀번호</label>
+            <input
+              type="password"
+              placeholder="비밀번호를 입력해주세요"
+              {...register("password")}
+            ></input>
+            <p>영문/숫자/특수문자 조합, 8자~32자</p>
+            <label>비밀번호 확인</label>
+            <input
+              type="password"
+              placeholder="비밀번호를 한번 더 입력해주세요"
+              {...register("confirmPassword")}
+            ></input>
+            {errors?.confirmPassword && <p>올바른 비밀번호를 입력하세요.</p>}
+            <button type="submit">회원가입하기</button>
+          </form>
         </SigninForm>
       </Wrapper>
     </Container>
