@@ -49,7 +49,7 @@ const SigninForm = styled.div`
     flex-direction: column;
 
     label {
-      margin-bottom: 8px;
+      margin-top: 20px;
       color: ${(props) => props.theme.grayColors.gray500};
       font-size: 16px;
     }
@@ -68,7 +68,7 @@ const SigninForm = styled.div`
       }
 
       :nth-of-type(3) {
-        margin-bottom: 40px;
+        margin-bottom: 6px;
       }
 
       :focus {
@@ -81,14 +81,14 @@ const SigninForm = styled.div`
       }
     }
 
-    p {
+    .help-text {
       color: ${(props) => props.theme.grayColors.gray500};
       font-size: 14px;
-      margin-bottom: 20px;
+      margin-bottom: 6px;
     }
 
     .error-message {
-      margin-top: 6px;
+      font-size: 14px;
       color: ${(props) => props.theme.alertColors.error.text};
     }
 
@@ -99,6 +99,7 @@ const SigninForm = styled.div`
       border-radius: 6px;
       color: #fff;
       font-size: 16px;
+      margin-top: 40px;
       cursor: pointer;
     }
   }
@@ -119,7 +120,7 @@ function EmailSignin() {
   } = useForm<SigninFormValues>();
   const onSubmit = (data: SigninFormValues) => {
     if (data.password !== data.confirmPassword) {
-      setError("password", { message: "비밀번호가 다릅니다." });
+      setError("confirmPassword", { message: "비밀번호가 일치하지 않습니다." });
     }
   };
 
@@ -143,7 +144,7 @@ function EmailSignin() {
               {...register("email", {
                 required: "올바른 이메일을 입력해주세요.",
                 pattern: {
-                  value: /@/g,
+                  value: /^[a-z0-9_+.-]+@([a-z0-9-]+\.)+[a-z0-9]{2,4}$/,
                   message: "올바른 이메일을 입력해주세요.",
                 },
               })}
@@ -153,16 +154,24 @@ function EmailSignin() {
             <input
               type="password"
               placeholder="비밀번호를 입력해주세요"
-              {...register("password")}
+              {...register("password", {
+                required: "올바른 비밀번호를 입력해주세요.",
+                pattern: {
+                  value:
+                    /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/,
+                  message: "올바른 비밀번호를 입력해주세요.",
+                },
+              })}
             ></input>
-            <p>영문/숫자/특수문자 조합, 8자~32자</p>
+            <p className="help-text">영문/숫자/특수문자 조합, 8자~32자</p>
+            <p className="error-message">{errors?.password?.message}</p>
             <label>비밀번호 확인</label>
             <input
               type="password"
               placeholder="비밀번호를 한번 더 입력해주세요"
               {...register("confirmPassword")}
             ></input>
-            {errors?.confirmPassword && <p>올바른 비밀번호를 입력하세요.</p>}
+            <p className="error-message">{errors?.confirmPassword?.message}</p>
             <button type="submit">회원가입하기</button>
           </form>
         </SigninForm>
