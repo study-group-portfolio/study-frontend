@@ -1,6 +1,5 @@
-import { useEffect } from "react";
 import styled from "styled-components";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
