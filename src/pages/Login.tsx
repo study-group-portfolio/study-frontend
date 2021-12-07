@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { FaEye } from "react-icons/fa";
+import { useForm } from "react-hook-form";
 
 const Container = styled.div`
   width: 100%;
@@ -43,6 +43,10 @@ const LoginForm = styled.form`
     margin-bottom: 8px;
     color: ${(props) => props.theme.grayColors.gray500};
     font-size: 16px;
+
+    ::nth-of-type(2) {
+      margin-top: 20px;
+    }
   }
 
   input {
@@ -50,8 +54,8 @@ const LoginForm = styled.form`
     height: 48px;
     border: 1px solid #e0edef;
     border-radius: 6px;
-    margin-bottom: 20px;
     padding-left: 15px;
+    margin-bottom: 6px;
     font-size: 16px;
     color: #98a2b3;
 
@@ -63,6 +67,11 @@ const LoginForm = styled.form`
       color: #98a2b3;
       font-size: 16px;
     }
+  }
+
+  .error-message {
+    font-size: 14px;
+    color: ${(props) => props.theme.alertColors.error.text};
   }
 `;
 
@@ -107,7 +116,20 @@ const StyledLink = styled(Link)`
   color: ${(props) => props.theme.grayColors.gray500};
 `;
 
+interface ILoginForm {
+  email: string;
+  password: string;
+}
+
 function Login() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ILoginForm>();
+  const onSubmit = (data: ILoginForm) => {
+    console.log(data);
+  };
   return (
     <Container>
       <Wrapper>
@@ -119,11 +141,33 @@ function Login() {
             로그인 후 스터딧해보세요!
           </p>
         </PageTitle>
-        <LoginForm>
+        <LoginForm onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="email">이메일</label>
-          <input type="email" placeholder="example@studyit.com"></input>
+          <input
+            placeholder="example@studyit.com"
+            {...register("email", {
+              required: "올바른 이메일을 입력해주세요.",
+              pattern: {
+                value: /^[a-z0-9_+.-]+@([a-z0-9-]+\.)+[a-z0-9]{2,4}$/,
+                message: "올바른 이메일을 입력해주세요.",
+              },
+            })}
+          ></input>
+          <p className="error-message">{errors?.email?.message}</p>
           <label htmlFor="password">비밀번호</label>
-          <input type="password" placeholder="비밀번호를 입력해주세요"></input>
+          <input
+            type="password"
+            placeholder="비밀번호를 입력해주세요"
+            {...register("password", {
+              required: "올바른 비밀번호를 입력해주세요.",
+              pattern: {
+                value:
+                  /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/,
+                message: "올바른 비밀번호를 입력해주세요.",
+              },
+            })}
+          ></input>
+          <p className="error-message">{errors?.password?.message}</p>
           <EmailLoginBtn>이메일로 로그인하기</EmailLoginBtn>
         </LoginForm>
         <KakaoLoginBtn>
