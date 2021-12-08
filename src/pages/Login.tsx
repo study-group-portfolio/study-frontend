@@ -44,7 +44,7 @@ const LoginForm = styled.form`
     color: ${(props) => props.theme.grayColors.gray500};
     font-size: 16px;
 
-    ::nth-of-type(2) {
+    &:nth-of-type(2) {
       margin-top: 20px;
     }
   }

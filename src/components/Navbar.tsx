@@ -32,6 +32,9 @@ function Navbar() {
           <NavLink to="/find-member">멤버 찾기</NavLink>
         </NavItem>
         <NavItem>
+          <NavLink to="/alert">알림</NavLink>
+        </NavItem>
+        <NavItem>
           <NavLink to="/login">로그인</NavLink>
         </NavItem>
       </NavList>
