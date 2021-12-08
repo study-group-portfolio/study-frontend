@@ -2,6 +2,17 @@
 
 이 프로젝트는 스터디 모집을 위한 프론트엔드 부분입니다.
 
-## Built With...
+preview: https://study-group-portfolio.github.io/study-frontend/
 
-- React + TypeScript
+<br>
+
+## Built with...
+
+React + TypeScript
+
+<br>
+
+### NPM Packages
+
+- styled-components
+- react-hook-form
