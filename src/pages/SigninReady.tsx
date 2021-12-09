@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { ReactComponent as Kakao } from "../images/kakao.svg";
+import { ReactComponent as Google } from "../images/google.svg";
+import { IoChevronBack } from "react-icons/io5";
 
 const Container = styled.div`
   width: 100%;
@@ -21,6 +24,8 @@ const BackBtn = styled(Link)`
   color: ${(props) => props.theme.primaryColor};
   font-size: 16px;
   font-weight: bold;
+  display: flex;
+  align-items: center;
 `;
 
 const PageTitle = styled.div`
@@ -59,6 +64,18 @@ const KakaoStyledLink = styled(StyledLink)`
   color: ${(props) => props.theme.grayColors.gray900};
 `;
 
+const KakaoLogo = styled(Kakao)`
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+`;
+
+const GoogleLogo = styled(Google)`
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+`;
+
 const GoogleStyledLink = styled(StyledLink)`
   background-color: transparent;
   margin-top: 12px;
@@ -66,17 +83,14 @@ const GoogleStyledLink = styled(StyledLink)`
   color: ${(props) => props.theme.grayColors.gray900};
 `;
 
-const Logo = styled.img`
-  width: 18px;
-  height: 18px;
-  margin-right: 10px;
-`;
-
 function SigninReady() {
   return (
     <Container>
       <Wrapper>
-        <BackBtn to="/login">뒤로가기</BackBtn>
+        <BackBtn to="/login">
+          <IoChevronBack style={{ marginRight: 10 }} />
+          이전으로
+        </BackBtn>
         <PageTitle>
           <h1>회원가입</h1>
           <p>
@@ -87,11 +101,11 @@ function SigninReady() {
         </PageTitle>
         <StyledLink to="signin/email">이메일로 시작하기</StyledLink>
         <KakaoStyledLink to="/">
-          <Logo src="../images/kakao.svg" />
+          <KakaoLogo />
           카카오로 시작하기
         </KakaoStyledLink>
         <GoogleStyledLink to="/">
-          <Logo src="../images/google.svg" />
+          <GoogleLogo />
           구글로 시작하기
         </GoogleStyledLink>
       </Wrapper>

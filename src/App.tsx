@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 import Router from "./Router";
 
 const GlobalStyle = createGlobalStyle`
-  @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+@import url(https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 
   * {
     box-sizing: border-box;
@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+    font-family: 'Spoqa Han Sans Neo', sans-serif;
   }
 
   ul, li {
@@ -29,6 +29,7 @@ function App() {
     <>
       <GlobalStyle />
       <Router />
+      <h1>여기는 홈화면입니다.</h1>
     </>
   );
 }
