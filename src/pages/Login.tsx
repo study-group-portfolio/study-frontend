@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { ReactComponent as Kakao } from "../images/kakao.svg";
+import { ReactComponent as Google } from "../images/google.svg";
 
 const Container = styled.div`
   width: 100%;
@@ -90,18 +92,15 @@ const EmailLoginBtn = styled.button`
 const KakaoLoginBtn = styled(EmailLoginBtn)`
   color: ${(props) => props.theme.grayColors.gray900};
   background-color: ${(props) => props.theme.kakaoColor};
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 12px;
 `;
 
 const GoogleLoginBtn = styled(KakaoLoginBtn)`
   background-color: transparent;
   border: 1px solid ${(props) => props.theme.grayColors.gray200};
-`;
-
-const Logo = styled.img`
-  width: 18px;
-  height: 18px;
-  margin-right: 10px;
 `;
 
 const UtilityBox = styled.div`
@@ -114,6 +113,18 @@ const UtilityBox = styled.div`
 const StyledLink = styled(Link)`
   font-size: 14px;
   color: ${(props) => props.theme.grayColors.gray500};
+`;
+
+const KakaoLogo = styled(Kakao)`
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+`;
+
+const GoogleLogo = styled(Google)`
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
 `;
 
 interface ILoginForm {
@@ -168,14 +179,14 @@ function Login() {
             })}
           ></input>
           <p className="error-message">{errors?.password?.message}</p>
-          <EmailLoginBtn>이메일로 로그인하기</EmailLoginBtn>
+          <EmailLoginBtn type="submit">이메일로 로그인하기</EmailLoginBtn>
         </LoginForm>
         <KakaoLoginBtn>
-          <Logo src="../images/kakao.svg" />
+          <KakaoLogo />
           카카오로 로그인하기
         </KakaoLoginBtn>
         <GoogleLoginBtn>
-          <Logo src="../images/google.svg" />
+          <GoogleLogo />
           구글로 로그인하기
         </GoogleLoginBtn>
         <UtilityBox>

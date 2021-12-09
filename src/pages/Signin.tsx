@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { IoChevronBack } from "react-icons/io5";
 
 const Container = styled.div`
   width: 100%;
@@ -22,6 +23,8 @@ const BackBtn = styled(Link)`
   color: ${(props) => props.theme.primaryColor};
   font-size: 16px;
   font-weight: bold;
+  display: flex;
+  align-items: center;
 `;
 
 const PageTitle = styled.div`
@@ -49,6 +52,7 @@ const SigninForm = styled.div`
 
     label {
       margin-top: 20px;
+      margin-bottom: 8px;
       color: ${(props) => props.theme.grayColors.gray500};
       font-size: 16px;
     }
@@ -83,11 +87,11 @@ const SigninForm = styled.div`
     .help-text {
       color: ${(props) => props.theme.grayColors.gray500};
       font-size: 14px;
-      margin-bottom: 6px;
     }
 
     .error-message {
       font-size: 14px;
+      margin-top: 6px;
       color: ${(props) => props.theme.alertColors.error.text};
     }
 
@@ -95,7 +99,9 @@ const SigninForm = styled.div`
       width: 400px;
       height: 48px;
       background-color: ${(props) => props.theme.primaryColor};
+      opacity: 50%;
       border-radius: 6px;
+      border: none;
       color: #fff;
       font-size: 16px;
       margin-top: 40px;
@@ -126,7 +132,10 @@ function EmailSignin() {
   return (
     <Container>
       <Wrapper>
-        <BackBtn to="/signin">뒤로가기</BackBtn>
+        <BackBtn to="/signin">
+          <IoChevronBack style={{ marginRight: 10 }} />
+          이전으로
+        </BackBtn>
         <PageTitle>
           <h1>회원가입</h1>
           <p>
