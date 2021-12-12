@@ -1,8 +1,10 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { ReactComponent as Kakao } from "../images/kakao.svg";
 import { ReactComponent as Google } from "../images/google.svg";
+import { FaEyeSlash, FaEye } from "react-icons/fa";
 
 const Container = styled.div`
   width: 100%;
@@ -41,37 +43,46 @@ const LoginForm = styled.form`
   display: flex;
   flex-direction: column;
 
-  label {
-    margin-bottom: 8px;
-    color: ${(props) => props.theme.grayColors.gray500};
-    font-size: 16px;
-
-    &:nth-of-type(2) {
-      margin-top: 20px;
-    }
+  .email-input {
+    margin-bottom: 20px;
   }
 
-  input {
-    width: 400px;
-    height: 48px;
-    border: 1px solid #e0edef;
-    border-radius: 6px;
-    padding-left: 15px;
-    margin-bottom: 6px;
-    font-size: 16px;
-    color: #98a2b3;
+  .input-wrapper {
+    position: relative;
 
-    :focus {
-      outline: none;
+    label {
+      display: inline-block;
+      margin-bottom: 8px;
+      color: ${(props) => props.theme.grayColors.gray500};
+      font-size: 16px;
     }
 
-    ::placeholder {
-      color: #98a2b3;
+    input {
+      width: 400px;
+      height: 48px;
+      border: 1px solid ${(props) => props.theme.grayColors.gray200};
+      border-radius: 6px;
+      padding-left: 15px;
       font-size: 16px;
+      color: ${(props) => props.theme.grayColors.gray900};
+
+      :focus {
+        outline: none;
+      }
+
+      ::placeholder {
+        color: #98a2b3;
+        font-size: 16px;
+      }
+
+      button {
+        position: absolute;
+      }
     }
   }
 
   .error-message {
+    margin-top: 6px;
     font-size: 14px;
     color: ${(props) => props.theme.alertColors.error.text};
   }
@@ -137,9 +148,25 @@ function Login() {
     register,
     handleSubmit,
     formState: { errors },
+    control,
   } = useForm<ILoginForm>();
+
   const onSubmit = (data: ILoginForm) => {
     console.log(data);
+  };
+
+  // Password visibility toggle
+  const [passwordType, setPasswordType] = useState({
+    type: "password",
+    visible: false,
+  });
+  const handleVisibility = (event: any) => {
+    setPasswordType(() => {
+      if (!passwordType.visible) {
+        return { type: "text", visible: true };
+      }
+      return { type: "password", visible: false };
+    });
   };
   return (
     <Container>
@@ -153,31 +180,71 @@ function Login() {
           </p>
         </PageTitle>
         <LoginForm onSubmit={handleSubmit(onSubmit)}>
-          <label htmlFor="email">이메일</label>
-          <input
-            placeholder="example@studyit.com"
-            {...register("email", {
-              required: "올바른 이메일을 입력해주세요.",
-              pattern: {
-                value: /^[a-z0-9_+.-]+@([a-z0-9-]+\.)+[a-z0-9]{2,4}$/,
-                message: "올바른 이메일을 입력해주세요.",
-              },
-            })}
-          ></input>
-          <p className="error-message">{errors?.email?.message}</p>
-          <label htmlFor="password">비밀번호</label>
-          <input
-            type="password"
-            placeholder="비밀번호를 입력해주세요"
-            {...register("password", {
-              required: "올바른 비밀번호를 입력해주세요.",
-              pattern: {
-                value:
-                  /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/,
-                message: "올바른 비밀번호를 입력해주세요.",
-              },
-            })}
-          ></input>
+          <div className="input-wrapper email-input">
+            <label htmlFor="email">이메일</label>
+            <Controller
+              render={({ field }) => (
+                <input
+                  placeholder="example@studyit.com"
+                  {...register("email", {
+                    required: "올바른 이메일을 입력해주세요.",
+                    pattern: {
+                      value: /^[a-z0-9_+.-]+@([a-z0-9-]+\.)+[a-z0-9]{2,4}$/,
+                      message: "올바른 이메일을 입력해주세요.",
+                    },
+                  })}
+                ></input>
+              )}
+              name="email"
+              control={control}
+            ></Controller>
+            <p className="error-message">{errors?.email?.message}</p>
+          </div>
+          <div className="input-wrapper">
+            <label htmlFor="password">비밀번호</label>
+            <input
+              type={passwordType.type}
+              placeholder="비밀번호를 입력해주세요"
+              {...register("password", {
+                required: "올바른 비밀번호를 입력해주세요.",
+                pattern: {
+                  value:
+                    /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/,
+                  message: "올바른 비밀번호를 입력해주세요.",
+                },
+              })}
+              style={
+                errors
+                  ? { border: "1px solid red;" }
+                  : { border: "1px solid black;" }
+              }
+            ></input>
+            <span onClick={handleVisibility}>
+              {passwordType.visible ? (
+                <FaEye
+                  style={{
+                    position: "absolute",
+                    right: 12,
+                    bottom: 14,
+                    width: 24,
+                    height: 24,
+                    color: "#98a2b3",
+                  }}
+                />
+              ) : (
+                <FaEyeSlash
+                  style={{
+                    position: "absolute",
+                    right: 12,
+                    bottom: 14,
+                    width: 24,
+                    height: 24,
+                    color: "#98a2b3",
+                  }}
+                />
+              )}
+            </span>
+          </div>
           <p className="error-message">{errors?.password?.message}</p>
           <EmailLoginBtn type="submit">이메일로 로그인하기</EmailLoginBtn>
         </LoginForm>

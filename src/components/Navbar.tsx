@@ -18,7 +18,7 @@ const NavList = styled.ul`
 
 const NavItem = styled.li`
   font-size: 16px;
-  margin: 0 34px;
+  margin: 0 18px;
 `;
 
 function Navbar() {
@@ -26,7 +26,20 @@ function Navbar() {
     <Nav>
       <NavList>
         <NavItem>
-          <NavLink to="/find-study">스터디 모집</NavLink>
+          <NavLink
+            to="/create-study"
+            style={{
+              border: "1px solid #e4e7ec",
+              borderRadius: 18,
+              padding: "12px 8px",
+              color: "#175cd3",
+            }}
+          >
+            스터디 생성하기
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink to="/find-study">스터디 찾기</NavLink>
         </NavItem>
         <NavItem>
           <NavLink to="/find-member">멤버 찾기</NavLink>

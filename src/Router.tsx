@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import SigninReady from "./pages/SigninReady";
 import EmailSignin from "./pages/Signin";
 import FindPassword from "./pages/FindPassword";
+import CreateStudy from "./pages/CreateStudy";
 
 function Router() {
   return (
@@ -18,6 +19,7 @@ function Router() {
         <Route exact path="/signin" component={SigninReady}></Route>
         <Route exact path="/signin/email" component={EmailSignin}></Route>
         <Route exact path="/find-password" component={FindPassword}></Route>
+        <Route exact path="/create-study" component={CreateStudy}></Route>
       </Switch>
     </BrowserRouter>
   );
