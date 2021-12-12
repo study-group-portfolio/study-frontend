@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/study-frontend/static/js/main.4692c5a2.chunk.js",
-    "main.js.map": "/study-frontend/static/js/main.4692c5a2.chunk.js.map",
+    "main.js": "/study-frontend/static/js/main.b473c5fe.chunk.js",
+    "main.js.map": "/study-frontend/static/js/main.b473c5fe.chunk.js.map",
     "runtime-main.js": "/study-frontend/static/js/runtime-main.50a8e7e0.js",
     "runtime-main.js.map": "/study-frontend/static/js/runtime-main.50a8e7e0.js.map",
-    "static/js/2.0a87ce7a.chunk.js": "/study-frontend/static/js/2.0a87ce7a.chunk.js",
-    "static/js/2.0a87ce7a.chunk.js.map": "/study-frontend/static/js/2.0a87ce7a.chunk.js.map",
+    "static/js/2.fb48fc70.chunk.js": "/study-frontend/static/js/2.fb48fc70.chunk.js",
+    "static/js/2.fb48fc70.chunk.js.map": "/study-frontend/static/js/2.fb48fc70.chunk.js.map",
     "index.html": "/study-frontend/index.html",
-    "static/js/2.0a87ce7a.chunk.js.LICENSE.txt": "/study-frontend/static/js/2.0a87ce7a.chunk.js.LICENSE.txt",
+    "static/js/2.fb48fc70.chunk.js.LICENSE.txt": "/study-frontend/static/js/2.fb48fc70.chunk.js.LICENSE.txt",
     "static/media/google.0934591a.svg": "/study-frontend/static/media/google.0934591a.svg",
     "static/media/kakao.0f9631d2.svg": "/study-frontend/static/media/kakao.0f9631d2.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.50a8e7e0.js",
-    "static/js/2.0a87ce7a.chunk.js",
-    "static/js/main.4692c5a2.chunk.js"
+    "static/js/2.fb48fc70.chunk.js",
+    "static/js/main.b473c5fe.chunk.js"
   ]
 }
