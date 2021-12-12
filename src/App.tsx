@@ -22,6 +22,12 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     color: #667085;
   }
+
+  button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
 `;
 
 function App() {
@@ -29,7 +35,6 @@ function App() {
     <>
       <GlobalStyle />
       <Router />
-      <h1>여기는 홈화면입니다.</h1>
     </>
   );
 }
