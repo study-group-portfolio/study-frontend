@@ -1,10 +1,11 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { ReactComponent as Kakao } from "../images/kakao.svg";
 import { ReactComponent as Google } from "../images/google.svg";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
+import PageTitle from "../components/PageTitle";
 
 const Container = styled.div`
   width: 100%;
@@ -20,23 +21,6 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-`;
-
-const PageTitle = styled.div`
-  h1 {
-    font-size: 32px;
-    margin-top: 30px;
-    margin-bottom: 15px;
-    align-self: left;
-    color: ${(props) => props.theme.grayColors.gray900};
-  }
-
-  p {
-    font-size: 14px;
-    line-height: 22px;
-    margin-bottom: 40px;
-    color: ${(props) => props.theme.grayColors.gray500};
-  }
 `;
 
 const LoginForm = styled.form`
@@ -143,12 +127,11 @@ interface ILoginForm {
   password: string;
 }
 
-function Login() {
+const Login: React.FunctionComponent = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    control,
   } = useForm<ILoginForm>();
 
   const onSubmit = (data: ILoginForm) => {
@@ -171,33 +154,30 @@ function Login() {
   return (
     <Container>
       <Wrapper>
-        <PageTitle>
-          <h1>로그인</h1>
-          <p>
-            환영합니다.
-            <br />
-            로그인 후 스터딧해보세요!
-          </p>
-        </PageTitle>
+        <PageTitle
+          title="로그인"
+          expFirst="환영합니다."
+          expSecond="로그인 후 스터딧해보세요!"
+        />
         <LoginForm onSubmit={handleSubmit(onSubmit)}>
           <div className="input-wrapper email-input">
             <label htmlFor="email">이메일</label>
-            <Controller
-              render={({ field }) => (
-                <input
-                  placeholder="example@studyit.com"
-                  {...register("email", {
-                    required: "올바른 이메일을 입력해주세요.",
-                    pattern: {
-                      value: /^[a-z0-9_+.-]+@([a-z0-9-]+\.)+[a-z0-9]{2,4}$/,
-                      message: "올바른 이메일을 입력해주세요.",
-                    },
-                  })}
-                ></input>
-              )}
+            <input
+              placeholder="example@studyit.com"
+              {...register("email", {
+                required: "올바른 이메일을 입력해주세요.",
+                pattern: {
+                  value: /^[a-z0-9_+.-]+@([a-z0-9-]+\.)+[a-z0-9]{2,4}$/,
+                  message: "올바른 이메일을 입력해주세요.",
+                },
+              })}
+              style={
+                errors.email
+                  ? { border: "1px solid #f36355" }
+                  : { border: "1px solid #e4e7ec" }
+              }
               name="email"
-              control={control}
-            ></Controller>
+            ></input>
             <p className="error-message">{errors?.email?.message}</p>
           </div>
           <div className="input-wrapper">
@@ -214,10 +194,11 @@ function Login() {
                 },
               })}
               style={
-                errors
-                  ? { border: "1px solid red;" }
-                  : { border: "1px solid black;" }
+                errors.password
+                  ? { border: "1px solid #f36355" }
+                  : { border: "1px solid #e4e7ec" }
               }
+              name="password"
             ></input>
             <span onClick={handleVisibility}>
               {passwordType.visible ? (
@@ -263,6 +244,6 @@ function Login() {
       </Wrapper>
     </Container>
   );
-}
+};
 
 export default Login;
