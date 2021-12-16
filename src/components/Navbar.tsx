@@ -39,7 +39,7 @@ function Navbar() {
           </NavLink>
         </NavItem>
         <NavItem>
-          <NavLink to="/find-study">스터디 찾기</NavLink>
+          <NavLink to="/">스터디 찾기</NavLink>
         </NavItem>
         <NavItem>
           <NavLink to="/find-member">멤버 찾기</NavLink>

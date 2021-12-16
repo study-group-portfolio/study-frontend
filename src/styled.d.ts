@@ -5,6 +5,7 @@ declare module "styled-components" {
     primaryColor: string;
     secondaryColor: string;
     kakaoColor: string;
+    bannercolor: string;
 
     grayColors: {
       gray900: string;
