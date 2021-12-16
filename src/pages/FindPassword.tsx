@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import PageTitle from "../components/PageTitle";
+import BackBtn from "../components/BackBtn";
 
 const Container = styled.div`
   width: 100%;
@@ -18,37 +19,12 @@ const Wrapper = styled.div`
   justify-content: center;
 `;
 
-const BackBtn = styled(Link)`
-  color: ${(props) => props.theme.primaryColor};
-  font-size: 16px;
-  font-weight: bold;
-`;
-
-const PageTitle = styled.div`
-  h1 {
-    font-size: 32px;
-    margin-top: 30px;
-    margin-bottom: 15px;
-    align-self: left;
-    color: ${(props) => props.theme.grayColors.gray900};
-  }
-
-  p {
-    font-size: 14px;
-    line-height: 22px;
-    color: ${(props) => props.theme.grayColors.gray500};
-  }
-`;
-
 const SigninForm = styled.div`
-  margin-top: 40px;
-
   form {
     display: flex;
     flex-direction: column;
 
     label {
-      margin-top: 20px;
       color: ${(props) => props.theme.grayColors.gray500};
       font-size: 16px;
       margin-bottom: 8px;
@@ -103,10 +79,8 @@ const SigninForm = styled.div`
   }
 `;
 
-interface SigninFormValues {
+interface FindPasswordFormValues {
   email: string;
-  password: string;
-  confirmPassword: string;
 }
 
 function EmailSignin() {
@@ -115,25 +89,20 @@ function EmailSignin() {
     handleSubmit,
     formState: { errors },
     setError,
-  } = useForm<SigninFormValues>();
-  const onSubmit = (data: SigninFormValues) => {
-    if (data.password !== data.confirmPassword) {
-      setError("confirmPassword", { message: "비밀번호가 일치하지 않습니다." });
-    }
+  } = useForm<FindPasswordFormValues>();
+  const onSubmit = (data: FindPasswordFormValues) => {
+    console.log(data);
   };
 
   return (
     <Container>
       <Wrapper>
-        <BackBtn to="/login">뒤로가기</BackBtn>
-        <PageTitle>
-          <h1>비밀번호 찾기</h1>
-          <p>
-            비밀번호를 재설정하기 위한 링크를 이메일로 보내드릴게요.
-            <br />
-            가입 시 사용한 이메일 주소를 정확히 입력해주세요.
-          </p>
-        </PageTitle>
+        <BackBtn to="/login" />
+        <PageTitle
+          title="비밀번호 찾기"
+          expFirst="비밀번호를 재설정하기 위한 링크를 이메일로 보내드릴게요."
+          expSecond="가입 시 사용한 이메일 주소를 정확히 입력해주세요."
+        />
         <SigninForm>
           <form onSubmit={handleSubmit(onSubmit)}>
             <label htmlFor="email">이메일</label>

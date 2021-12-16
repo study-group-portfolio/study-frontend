@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { IoChevronBack } from "react-icons/io5";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import PageTitle from "../components/PageTitle";
+import BackBtn from "../components/BackBtn";
 
 const Container = styled.div`
   width: 100%;
@@ -22,14 +23,6 @@ const Wrapper = styled.div`
   justify-content: center;
 `;
 
-const BackBtn = styled(Link)`
-  color: ${(props) => props.theme.primaryColor};
-  font-size: 16px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-`;
-
 const SigninForm = styled.form`
   display: flex;
   flex-direction: column;
@@ -40,6 +33,7 @@ const SigninForm = styled.form`
 
   .input-wrapper {
     position: relative;
+
     label {
       margin-top: 20px;
       margin-bottom: 8px;
@@ -77,6 +71,7 @@ const SigninForm = styled.form`
     .help-text {
       color: ${(props) => props.theme.grayColors.gray500};
       font-size: 14px;
+      margin-top: 6px;
     }
 
     button {
@@ -134,10 +129,7 @@ const EmailSignin: FunctionComponent = () => {
   return (
     <Container>
       <Wrapper>
-        <BackBtn to="/signin">
-          <IoChevronBack style={{ marginRight: 10 }} />
-          이전으로
-        </BackBtn>
+        <BackBtn to="signin/email/" />
         <PageTitle
           title="회원가입"
           expFirst="반갑습니다."

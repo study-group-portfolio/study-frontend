@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { ReactComponent as Kakao } from "../images/kakao.svg";
-import { ReactComponent as Google } from "../images/google.svg";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import PageTitle from "../components/PageTitle";
+import Button from "../components/Button";
 
 const Container = styled.div`
   width: 100%;
@@ -72,32 +71,6 @@ const LoginForm = styled.form`
   }
 `;
 
-const EmailLoginBtn = styled.button`
-  width: 400px;
-  height: 48px;
-  border-radius: 6px;
-  background-color: ${(props) => props.theme.primaryColor};
-  margin-top: 40px;
-  border: none;
-  font-size: 16px;
-  cursor: pointer;
-  color: #fff;
-`;
-
-const KakaoLoginBtn = styled(EmailLoginBtn)`
-  color: ${(props) => props.theme.grayColors.gray900};
-  background-color: ${(props) => props.theme.kakaoColor};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 12px;
-`;
-
-const GoogleLoginBtn = styled(KakaoLoginBtn)`
-  background-color: transparent;
-  border: 1px solid ${(props) => props.theme.grayColors.gray200};
-`;
-
 const UtilityBox = styled.div`
   width: 400px;
   display: flex;
@@ -108,18 +81,6 @@ const UtilityBox = styled.div`
 const StyledLink = styled(Link)`
   font-size: 14px;
   color: ${(props) => props.theme.grayColors.gray500};
-`;
-
-const KakaoLogo = styled(Kakao)`
-  width: 18px;
-  height: 18px;
-  margin-right: 10px;
-`;
-
-const GoogleLogo = styled(Google)`
-  width: 18px;
-  height: 18px;
-  margin-right: 10px;
 `;
 
 interface ILoginForm {
@@ -227,16 +188,15 @@ const Login: React.FunctionComponent = () => {
             </span>
           </div>
           <p className="error-message">{errors?.password?.message}</p>
-          <EmailLoginBtn type="submit">이메일로 로그인하기</EmailLoginBtn>
+          <Button
+            emailText="이메일로 로그인하기"
+            kakaoText="카카오로 로그인하기"
+            googleText="구글로 로그인하기"
+            emailTo="/signin"
+            kakaoTo="/"
+            googleTo="/"
+          />
         </LoginForm>
-        <KakaoLoginBtn>
-          <KakaoLogo />
-          카카오로 로그인하기
-        </KakaoLoginBtn>
-        <GoogleLoginBtn>
-          <GoogleLogo />
-          구글로 로그인하기
-        </GoogleLoginBtn>
         <UtilityBox>
           <StyledLink to="/signin">아직 회원이 아니신가요?</StyledLink>
           <StyledLink to="/find-password">비밀번호 찾기</StyledLink>

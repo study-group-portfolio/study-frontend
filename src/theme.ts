@@ -4,6 +4,7 @@ export const baseTheme: DefaultTheme = {
   primaryColor: "#175cd3",
   secondaryColor: "#f6f6eb",
   kakaoColor: "#ffe812",
+  bannercolor: "#f9fafb",
 
   grayColors: {
     gray900: "#101828",

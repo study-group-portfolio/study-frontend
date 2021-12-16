@@ -36,7 +36,6 @@ const PageTitle = styled.div`
     align-self: left;
     color: ${(props) => props.theme.grayColors.gray900};
   }
-
   p {
     font-size: 14px;
     line-height: 22px;
