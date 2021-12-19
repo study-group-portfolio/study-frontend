@@ -28,6 +28,10 @@ const GlobalStyle = createGlobalStyle`
     background-color: transparent;
     cursor: pointer;
   }
+
+  span {
+    display: inline-block;
+  }
 `;
 
 function App() {

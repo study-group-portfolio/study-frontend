@@ -4,7 +4,18 @@ export const baseTheme: DefaultTheme = {
   primaryColor: "#175cd3",
   secondaryColor: "#f6f6eb",
   kakaoColor: "#ffe812",
-  bannercolor: "#f9fafb",
+  bannerBgColor: "#f9fafb",
+
+  blueColors: {
+    primaryColor: "#175cd3",
+    tagBgColor: "#e2eefe",
+    tagTextColor: "#4090f7",
+  },
+
+  redColors: {
+    tagBgColor: "#f9e3ef",
+    tagTextColor: "#d84493",
+  },
 
   grayColors: {
     gray900: "#101828",

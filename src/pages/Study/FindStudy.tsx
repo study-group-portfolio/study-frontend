@@ -1,15 +1,19 @@
-import Banner from "../../components/FindStudy/Banner";
-import { ReactComponent as Building } from "../../images/building.svg";
+import React from "react";
+import Banner from "../../components/FindStudy/Utilities/Banner";
+import FindStudyDetail from "../../components/FindStudy/StudyDetail";
+import { ReactComponent as Study } from "../../images/study.svg";
 
-function FindStudy() {
+const FindMain: React.FunctionComponent = () => {
   return (
     <>
       <Banner
-        mainText="스터딧에서\n스터디 IT 해보세요"
-        subText="기획자, 개발자, 디자이너를 위한 IT 스터디 플랫폼"
+        mainText="함께 하실 스터디를\n직접 선택해 보세요"
+        subText="나에게 맞는 스터디를 찾는 데에 지쳤다면\n스터딧에서 해결할 수 있을 거에요."
+        BannerImage={Study}
       />
+      <FindStudyDetail titleText="스터디 찾기"></FindStudyDetail>
     </>
   );
-}
+};
 
-export default FindStudy;
+export default FindMain;
