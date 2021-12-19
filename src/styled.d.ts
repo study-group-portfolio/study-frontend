@@ -5,7 +5,18 @@ declare module "styled-components" {
     primaryColor: string;
     secondaryColor: string;
     kakaoColor: string;
-    bannercolor: string;
+    bannerBgColor: string;
+
+    blueColors: {
+      primaryColor: string;
+      tagBgColor: string;
+      tagTextColor: string;
+    };
+
+    redColors: {
+      tagBgColor: string;
+      tagTextColor: string;
+    };
 
     grayColors: {
       gray900: string;

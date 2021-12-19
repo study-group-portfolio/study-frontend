@@ -4,11 +4,12 @@ import { NavLink } from "react-router-dom";
 const Nav = styled.nav`
   width: 100%;
   height: 60px;
-  background-color: transparent;
+  background-color: #fff;
   border-bottom: 1px solid #e4e7ec;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  position: fixed;
 `;
 
 const NavList = styled.ul`
@@ -17,7 +18,7 @@ const NavList = styled.ul`
 `;
 
 const NavItem = styled.li`
-  font-size: 16px;
+  font-size: 15px;
   margin: 0 18px;
 `;
 
@@ -31,6 +32,7 @@ function Navbar() {
             style={{
               border: "1px solid #e4e7ec",
               borderRadius: 18,
+              fontSize: 14,
               padding: "12px 8px",
               color: "#175cd3",
             }}
