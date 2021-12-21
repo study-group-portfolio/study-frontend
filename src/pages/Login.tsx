@@ -6,89 +6,12 @@ import { FaEyeSlash, FaEye } from "react-icons/fa";
 import PageTitle from "../components/PageTitle";
 import Button from "../components/Button";
 
-const Container = styled.div`
-  width: 100%;
-  height: calc(100vh - 60px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Wrapper = styled.div`
-  max-width: 400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-
-const LoginForm = styled.form`
-  display: flex;
-  flex-direction: column;
-
-  .email-input {
-    margin-bottom: 20px;
-  }
-
-  .input-wrapper {
-    position: relative;
-
-    label {
-      display: inline-block;
-      margin-bottom: 8px;
-      color: ${(props) => props.theme.grayColors.gray500};
-      font-size: 16px;
-    }
-
-    input {
-      width: 400px;
-      height: 48px;
-      border: 1px solid ${(props) => props.theme.grayColors.gray200};
-      border-radius: 6px;
-      padding-left: 15px;
-      font-size: 16px;
-      color: ${(props) => props.theme.grayColors.gray900};
-
-      :focus {
-        outline: none;
-      }
-
-      ::placeholder {
-        color: #98a2b3;
-        font-size: 16px;
-      }
-
-      button {
-        position: absolute;
-      }
-    }
-  }
-
-  .error-message {
-    margin-top: 6px;
-    font-size: 14px;
-    color: ${(props) => props.theme.alertColors.error.text};
-  }
-`;
-
-const UtilityBox = styled.div`
-  width: 400px;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 15px;
-`;
-
-const StyledLink = styled(Link)`
-  font-size: 14px;
-  color: ${(props) => props.theme.grayColors.gray500};
-`;
-
 interface ILoginForm {
   email: string;
   password: string;
 }
 
-const Login: React.FunctionComponent = () => {
+function Login({ email, password }: ILoginForm) {
   const {
     register,
     handleSubmit,
@@ -121,7 +44,7 @@ const Login: React.FunctionComponent = () => {
           expSecond="로그인 후 스터딧해보세요!"
         />
         <LoginForm onSubmit={handleSubmit(onSubmit)}>
-          <div className="input-wrapper email-input">
+          <div className="input-wrapper">
             <label htmlFor="email">이메일</label>
             <input
               placeholder="example@studyit.com"
@@ -160,31 +83,9 @@ const Login: React.FunctionComponent = () => {
                   : { border: "1px solid #e4e7ec" }
               }
               name="password"
-            ></input>
+            />
             <span onClick={handleVisibility}>
-              {passwordType.visible ? (
-                <FaEye
-                  style={{
-                    position: "absolute",
-                    right: 12,
-                    bottom: 14,
-                    width: 24,
-                    height: 24,
-                    color: "#98a2b3",
-                  }}
-                />
-              ) : (
-                <FaEyeSlash
-                  style={{
-                    position: "absolute",
-                    right: 12,
-                    bottom: 14,
-                    width: 24,
-                    height: 24,
-                    color: "#98a2b3",
-                  }}
-                />
-              )}
+              {passwordType.visible ? <EyeOpen /> : <EyeClose />}
             </span>
           </div>
           <p className="error-message">{errors?.password?.message}</p>
@@ -204,6 +105,98 @@ const Login: React.FunctionComponent = () => {
       </Wrapper>
     </Container>
   );
-};
+}
 
 export default Login;
+
+const Container = styled.div`
+  width: 100%;
+  height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Wrapper = styled.div`
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const LoginForm = styled.form`
+  display: flex;
+  flex-direction: column;
+
+  .input-wrapper {
+    position: relative;
+    width: 400px;
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: ${(props) => props.theme.grayColors.gray500};
+      font-size: 16px;
+    }
+
+    input {
+      width: 400px;
+      height: 48px;
+      border: 1px solid ${(props) => props.theme.grayColors.gray200};
+      border-radius: 6px;
+      padding-left: 15px;
+      font-size: 16px;
+      color: ${(props) => props.theme.grayColors.gray900};
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        color: #98a2b3;
+        font-size: 16px;
+      }
+    }
+
+    &:first-of-type {
+      margin-bottom: 20px;
+    }
+  }
+
+  .error-message {
+    margin-top: 6px;
+    font-size: 14px;
+    color: ${(props) => props.theme.alertColors.error.text};
+  }
+`;
+
+const EyeOpen = styled(FaEye)`
+  width: 24px;
+  height: 24px;
+  color: ${(props) => props.theme.grayColors.gray400};
+  position: absolute;
+  bottom: 14px;
+  right: 12px;
+`;
+
+const EyeClose = styled(FaEyeSlash)`
+  width: 24px;
+  height: 24px;
+  color: ${(props) => props.theme.grayColors.gray400};
+  position: absolute;
+  bottom: 14px;
+  right: 12px;
+`;
+
+const UtilityBox = styled.div`
+  width: 400px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+`;
+
+const StyledLink = styled(Link)`
+  font-size: 14px;
+  color: ${(props) => props.theme.grayColors.gray500};
+`;

@@ -19,7 +19,7 @@ function Router() {
         <Route exact path="/find-study" component={FindStudy}></Route>
         <Route exact path="/login" component={Login}></Route>
         <Route exact path="/signin" component={SigninReady}></Route>
-        <Route exact path="/signin/email" component={EmailSignin}></Route>
+        <Route exact path="/signin-email" component={EmailSignin}></Route>
         <Route exact path="/find-password" component={FindPassword}></Route>
         <Route exact path="/create-study" component={CreateStudy}></Route>
       </Switch>
