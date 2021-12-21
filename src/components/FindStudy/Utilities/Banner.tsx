@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 // Components
@@ -8,15 +7,11 @@ interface IBannerTextProps {
   BannerImage: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
 }
 
-const Banner: React.FunctionComponent<IBannerTextProps> = ({
-  mainText,
-  subText,
-  BannerImage,
-}) => {
+function Banner({ mainText, subText, BannerImage }: IBannerTextProps) {
   return (
     <BannerSection>
-      <div className="wrapper">
-        <div className="banner-text">
+      <Wrapper>
+        <div>
           {mainText.split("\\n").map((line) => {
             return (
               <h1>
@@ -34,13 +29,13 @@ const Banner: React.FunctionComponent<IBannerTextProps> = ({
             );
           })}
         </div>
-        <div className="banner-image">
+        <div>
           <BannerImage />
         </div>
-      </div>
+      </Wrapper>
     </BannerSection>
   );
-};
+}
 
 export default Banner;
 
@@ -53,28 +48,23 @@ const BannerSection = styled.section`
   justify-content: center;
   align-items: center;
 
-  .wrapper {
-    width: 1160px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .banner-text {
-      h1 {
-        white-space: pre-wrap;
-        font-size: 40px;
-        color: ${(props) => props.theme.grayColors.gray900};
-      }
-
-      h2 {
-        white-space: pre-wrap;
-        margin-top: 10px;
-        font-size: 16px;
-        color: ${(props) => props.theme.grayColors.gray600};
-      }
-    }
-
-    .banner-image {
-    }
+  h1 {
+    white-space: pre-wrap;
+    font-size: 40px;
+    color: ${(props) => props.theme.grayColors.gray900};
   }
+
+  h2 {
+    white-space: pre-wrap;
+    margin-top: 10px;
+    font-size: 16px;
+    color: ${(props) => props.theme.grayColors.gray600};
+  }
+`;
+
+const Wrapper = styled.div`
+  width: 1160px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;

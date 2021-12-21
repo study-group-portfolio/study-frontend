@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import BackBtn from "../components/BackBtn";
 import { Link } from "react-router-dom";
 import { ReactComponent as Kakao } from "../images/kakao.svg";
 import { ReactComponent as Google } from "../images/google.svg";
@@ -18,14 +19,6 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-`;
-
-const BackBtn = styled(Link)`
-  color: ${(props) => props.theme.primaryColor};
-  font-size: 16px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
 `;
 
 const PageTitle = styled.div`
@@ -98,7 +91,7 @@ function SigninReady() {
             열정적인 멤버들이 가디라고 있어요!
           </p>
         </PageTitle>
-        <StyledLink to="signin/email">이메일로 시작하기</StyledLink>
+        <StyledLink to="/signin-email">이메일로 시작하기</StyledLink>
         <KakaoStyledLink to="/">
           <KakaoLogo />
           카카오로 시작하기
