@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
-import PageTitle from "../components/PageTitle";
-import BackBtn from "../components/BackBtn";
+import PageTitle from "../../components/Users/PageTitle";
+import BackBtn from "../../components/Users/BackBtn";
 
 const Container = styled.div`
   width: 100%;
