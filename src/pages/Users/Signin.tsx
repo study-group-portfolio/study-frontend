@@ -1,32 +1,36 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
-import PageTitle from "../components/PageTitle";
-import Button from "../components/Button";
+import PageTitle from "../../components/Users/PageTitle";
+import BackBtn from "../../components/Users/BackBtn";
+import { Button } from "../../components/Users/Button";
 
-interface ILoginForm {
+interface ISigninFormValues {
   email: string;
   password: string;
+  confirmPassword: string;
 }
 
-function Login({ email, password }: ILoginForm) {
+function EmailSignin({ email, password, confirmPassword }: ISigninFormValues) {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ILoginForm>();
+    setError,
+  } = useForm<ISigninFormValues>();
 
-  const onSubmit = (data: ILoginForm) => {
-    console.log(data);
+  const onSubmit = (data: ISigninFormValues) => {
+    if (data.password !== data.confirmPassword) {
+      setError("confirmPassword", { message: "비밀번호가 일치하지 않습니다." });
+    }
   };
 
-  // Password visibility toggle
   const [passwordType, setPasswordType] = useState({
     type: "password",
     visible: false,
   });
+
   const handleVisibility = (event: any) => {
     setPasswordType(() => {
       if (!passwordType.visible) {
@@ -35,16 +39,18 @@ function Login({ email, password }: ILoginForm) {
       return { type: "password", visible: false };
     });
   };
+
   return (
     <Container>
       <Wrapper>
+        <BackBtn to="/signin" />
         <PageTitle
-          title="로그인"
-          expFirst="환영합니다."
-          expSecond="로그인 후 스터딧해보세요!"
+          title="회원가입"
+          expFirst="반갑습니다."
+          expSecond="열정적인 멤버들이 기다리고 있어요!"
         />
-        <LoginForm onSubmit={handleSubmit(onSubmit)}>
-          <div className="input-wrapper">
+        <SigninForm onSubmit={handleSubmit(onSubmit)}>
+          <div className="input-wrapper email-input">
             <label htmlFor="email">이메일</label>
             <input
               placeholder="example@studyit.com"
@@ -60,8 +66,7 @@ function Login({ email, password }: ILoginForm) {
                   ? { border: "1px solid #f36355" }
                   : { border: "1px solid #e4e7ec" }
               }
-              name="email"
-            ></input>
+            />
             <p className="error-message">{errors?.email?.message}</p>
           </div>
           <div className="input-wrapper">
@@ -88,26 +93,38 @@ function Login({ email, password }: ILoginForm) {
               {passwordType.visible ? <EyeOpen /> : <EyeClose />}
             </span>
           </div>
+          <p className="help-text">영문/숫자/특수문자 조합, 8자~32자</p>
           <p className="error-message">{errors?.password?.message}</p>
-          <Button
-            emailText="이메일로 로그인하기"
-            kakaoText="카카오로 로그인하기"
-            googleText="구글로 로그인하기"
-            emailTo="/signin"
-            kakaoTo="/"
-            googleTo="/"
-          />
-        </LoginForm>
-        <UtilityBox>
-          <StyledLink to="/signin">아직 회원이 아니신가요?</StyledLink>
-          <StyledLink to="/find-password">비밀번호 찾기</StyledLink>
-        </UtilityBox>
+          <div className="input-wrapper">
+            <label htmlFor="confirmPassword">비밀번호 확인</label>
+            <input
+              type={passwordType.type}
+              placeholder="비밀번호를 한번 더 입력해주세요"
+              {...register("confirmPassword")}
+              style={
+                errors.confirmPassword
+                  ? { border: "1px solid #f36355" }
+                  : { border: "1px solid #e4e7ec" }
+              }
+              name="confirmPassword"
+            />
+            <span onClick={handleVisibility}>
+              {passwordType.visible ? <EyeOpen /> : <EyeClose />}
+            </span>
+          </div>
+          <p className="error-message">{errors?.confirmPassword?.message}</p>
+          {errors.email || errors.confirmPassword || errors.password ? (
+            <button>회원가입하기</button>
+          ) : (
+            <button style={{ opacity: 1 }}>회원가입하기</button>
+          )}
+        </SigninForm>
       </Wrapper>
     </Container>
   );
 }
 
-export default Login;
+export default EmailSignin;
 
 const Container = styled.div`
   width: 100%;
@@ -125,9 +142,16 @@ const Wrapper = styled.div`
   justify-content: center;
 `;
 
-const LoginForm = styled.form`
+const SigninForm = styled.form`
   display: flex;
   flex-direction: column;
+
+  .help-text {
+    display: inline-block;
+    color: ${(props) => props.theme.grayColors.gray500};
+    font-size: 14px;
+    margin-top: 6px;
+  }
 
   .input-wrapper {
     position: relative;
@@ -143,17 +167,17 @@ const LoginForm = styled.form`
     input {
       width: 400px;
       height: 48px;
-      border: 1px solid ${(props) => props.theme.grayColors.gray200};
+      border: 1px solid #e0edef;
       border-radius: 6px;
       padding-left: 15px;
       font-size: 16px;
       color: ${(props) => props.theme.grayColors.gray900};
 
-      &:focus {
+      :focus {
         outline: none;
       }
 
-      &::placeholder {
+      ::placeholder {
         color: #98a2b3;
         font-size: 16px;
       }
@@ -162,12 +186,30 @@ const LoginForm = styled.form`
     &:first-of-type {
       margin-bottom: 20px;
     }
+
+    &:last-of-type {
+      margin-top: 20px;
+    }
   }
 
   .error-message {
-    margin-top: 6px;
     font-size: 14px;
+    margin-top: 6px;
     color: ${(props) => props.theme.alertColors.error.text};
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 48px;
+    background-color: ${(props) => props.theme.primaryColor};
+    opacity: 0.5;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 16px;
+    margin-top: 40px;
   }
 `;
 
@@ -187,16 +229,4 @@ const EyeClose = styled(FaEyeSlash)`
   position: absolute;
   bottom: 14px;
   right: 12px;
-`;
-
-const UtilityBox = styled.div`
-  width: 400px;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 15px;
-`;
-
-const StyledLink = styled(Link)`
-  font-size: 14px;
-  color: ${(props) => props.theme.grayColors.gray500};
 `;

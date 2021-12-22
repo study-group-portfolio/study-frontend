@@ -1,12 +1,12 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Main from "./pages/Study/FindMain";
-import FindMember from "./pages/Study/FindMember";
-import FindStudy from "./pages/Study/FindStudy";
-import Login from "./pages/Login";
-import SigninReady from "./pages/SigninReady";
-import EmailSignin from "./pages/Signin";
-import FindPassword from "./pages/FindPassword";
+import Main from "./pages/FindStudy/FindMain";
+import FindMember from "./pages/FindStudy/FindMember";
+import FindStudy from "./pages/FindStudy/FindStudy";
+import Login from "./pages/Users/Login";
+import SigninReady from "./pages/Users/SigninReady";
+import EmailSignin from "./pages/Users/Signin";
+import FindPassword from "./pages/Users/FindPassword";
 import CreateStudy from "./pages/CreateStudy";
 
 function Router() {
