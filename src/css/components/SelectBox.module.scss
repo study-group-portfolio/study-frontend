@@ -1,0 +1,81 @@
+.container {
+    display: inline-block;
+
+    .select {
+        /** 요소 크기 설정 **/
+        height: 48px;
+        box-sizing: border-box;
+
+        /** 경계선 설정 **/
+        border: 1px solid #E4E7EC;
+        // border: 1px solid black;
+        border-radius: 6px;
+
+        /** 내부 여백 설정 **/
+        padding-top: 14px;
+        padding-left: 15px;
+
+        /** 내부 글자 설정 **/
+        font-family: Spoqa Han Sans Neo;
+        font-size: 16px;
+        line-height: 20px;
+        color: #98A2B3;
+
+        /** 배경 이미지 설정(화살표) **/
+        background-repeat: no-repeat;
+        background-position: 98% 50%;
+
+        /** 마우스 커서 모양 설정 **/
+        cursor: pointer;
+
+        /** 요소 블록 설정 **/
+        display: inline-block;
+    }
+
+    .options {
+        /** 요소 위치 설정 **/
+        position: absolute;
+        z-index: 100;
+
+        /** 외부 여백 설정 **/
+        margin-top: 8px;
+
+        /** 내부 여백 설정 **/
+        padding: 5px 0;
+        
+        /** 크기 설정 **/
+        width: 790px;
+
+        /** 경계선 설정 **/
+        border: 1px solid #E4E7EC;
+        box-sizing: border-box;
+        border-radius: 6px;
+
+        /** 배경색 설정 **/
+        background-color: #FFFFFF;
+
+        .option {
+            /** 외부 여백 설정 **/
+            margin-top: 10px;
+            margin-bottom: 10px;
+            margin-left: 15px;
+
+            /** 폰트 설정 **/
+            font-family: Spoqa Han Sans Neo;
+            font-size: 16px;
+            line-height: 20px;
+            color: #101828;
+
+            /** 마우스 커서 모양 설정 **/
+            cursor: pointer;
+        }
+    }
+
+    .on {
+        display: block;
+    }
+
+    .off {
+        display: none;
+    }
+}
