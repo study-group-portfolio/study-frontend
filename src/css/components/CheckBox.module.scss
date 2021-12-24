@@ -1,0 +1,111 @@
+.container {
+    .title {
+        /** 요소 크기 설정 **/
+        width: 790px;
+        height: 48px;
+
+        /** 폰트 설정 **/
+        font-family: Spoqa Han Sans Neo;
+        font-size: 16px;
+        line-height: 20px;
+        color: #98A2B3;
+
+        /** 테두리 설정 **/
+        border: 1px solid #E4E7EC;
+        box-sizing: border-box;
+        border-radius: 6px;
+
+        /** 배경색깔 설정 **/
+        background-color: #FFFFFF;
+
+        /** 내부 여백 설정 **/
+        padding: 14px 0 14px 15px;
+
+        /** 배경이미지 설정 **/
+        background-image: url(../../images/expand_more_black_24dp.svg);
+        background-repeat: no-repeat;
+        background-position: 98% 50%;
+
+        /** 마우스 커서 설정 **/
+        cursor: pointer;
+    }
+
+    .content {
+        /** 요소 블록 설정 **/
+        display: inline-block;
+
+        /** 요소크기 설정 **/
+        width: 790px;
+
+        /** 외부 여백 설정 **/
+        margin-top: 8px;
+
+        /** 테두리 설정 **/
+        border: 1px solid #E4E7EC;
+        border-radius: 6px;
+
+        /** 배경색깔 설정 **/
+        background-color: #FFFFFF;
+
+        .list {
+            /** 내부 여백 설정 **/
+            padding: 8px;
+            ul {
+                li {
+                    /** 요소 블록 설정 **/
+                    display: inline-block;
+    
+                    /** 요소 크기 설정 **/
+                    width: 243px;
+                    height: 24px;
+                    
+                    /** 외부 여백 설정 **/
+                    margin: 7px;
+    
+                    /** 폰트 설정 **/
+                    font-family: Spoqa Han Sans Neo;
+                    font-size: 16px;
+                    line-height: 20px;
+                    letter-spacing: -0.02em;
+                    color: #98A2B3;
+    
+                    .checkBtn {
+                        /** 요소 크기 설정 **/
+                        width: 18px;
+                        height: 18px;
+    
+                        /** 배경색깔 설정 **/
+                        background-color: #FFFFFF;
+    
+                        /** 테두리 설정 **/
+                        box-sizing: border-box;
+                        border-radius: 6px;
+    
+                        /** 외부 여백 설정 **/
+                        margin-right: 10px;
+                        
+                        /** 배경이미지 설정 **/
+                        background-repeat: no-repeat;
+                        background-position: center;
+                    }
+
+                    .noSelected {
+                        /** 배경이미지 설정 **/
+                        background-image: url(../../images/check-noselect.svg);
+
+                        /** 테두리 설정 **/
+                        border: 1px solid #E4E7EC;
+                    }
+
+                    .selected {
+                        /** 테두리 설정 **/
+                        border-color: #333;
+
+                        /** 배경이미지 설정 **/
+                        background-image: url(../../images/check-select.svg);
+                    }
+                }
+            }
+        }
+    }
+}

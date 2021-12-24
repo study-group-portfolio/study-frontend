@@ -1,0 +1,42 @@
+.cell {
+    /** 외부 여백 설정 **/
+    margin: 0;
+
+    /** 내부 여백 설정 **/
+    padding-top: 12px;
+
+    /** 요소 블록 설정 **/
+    display: inline-block;
+
+    /** 요소 크기 설정 **/
+    width: 48px;
+    height: 48px;
+    
+    /** 텍스트 정렬 **/
+    text-align: center;
+
+    /** 폰트 설정 **/
+    font-family: Spoqa Han Sans Neo;
+    font-size: 16px;
+    line-height: 20px;
+    color: #101828;
+
+    /** 마우스 커서 모양 설정 **/
+    cursor: pointer;
+}
+
+.boundary {
+    /** 배경색 설정 **/
+    background-color: #175CD3;
+
+    /** 글자색 설정 **/
+    color: #FFFFFF;
+}
+
+.interval {
+    /** 배경색 설정 **/
+    background-color: #EBF0FA;
+
+    /** 글자색 설정 **/
+    color: #101828;
+}

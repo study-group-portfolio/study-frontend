@@ -1,0 +1,154 @@
+@mixin cursor-pointer {
+    cursor: pointer;
+}
+
+.container {
+    /** 외부 여백 설정 **/
+    margin: 20px 0;
+    
+    /** 내부 여백 설정 **/
+    padding-bottom: 20px;
+
+    /** 요소 크기 설정 **/
+    width: 790px;
+
+    /** 테두리 설정 **/
+    border-bottom: 1px dashed #E4E7EC;
+
+    .details {
+        /** 요소 위치 설정(overflow) **/
+        overflow: auto;
+
+        .position {
+            /** 요소 블록 설정 **/
+            display: inline-block;
+
+            /** 폰트 설정 **/
+            font-family: Spoqa Han Sans Neo;
+            font-size: 16px;
+            line-height: 20px;
+            color: #000000;
+        }
+
+        .numberBox {
+            /** 요소 위치 설정 **/
+            float: right;
+            position: relative;
+            top: 20px;
+
+            .btn {
+                /** 요소 크기 설정 **/
+                width: 40px;
+                height: 40px;
+                box-sizing: border-box;
+
+                /** 배경색 설정 **/
+                background-color: #FFFFFF;
+
+                /** 테두리 설정 **/
+                border: 1px solid #E4E7EC;
+
+                /** 마우스 커서 모양 설정 **/
+                @include cursor-pointer;
+            }
+
+            .left {
+                border-radius: 6px 0px 0px 6px;
+            }
+
+            .right {
+                border-radius: 0px 6px 6px 0px;
+            }
+
+            .num {
+                /** 내부 여백 설정 **/
+                padding: 9px 0px;
+
+                /** 폰트 설정 **/
+                font-family: Spoqa Han Sans Neo;
+                font-size: 16px;
+                line-height: 20px;
+                color: #000000;
+
+                /** 테두리 설정 **/
+                border: 1px solid #E4E7EC;
+
+                /** 텍스트 설정 **/
+                text-align: center;
+
+                /** 요소 크기 설정 **/
+                width: 56px;
+            }
+
+            .removeBtn {
+                /** 외부 여백 설정 **/
+                margin-left: 60px;
+    
+                /** 내부 여백 설정 **/
+                padding: 4px;
+    
+                /** 요소 크기 설정 **/
+                width: 24px;
+                height: 24px;
+                box-sizing: border-box;
+    
+                /** 테두리 설정 **/
+                border: 1px solid #E4E7EC;
+                border-radius: 4px;
+    
+                /** 배경색 설정 **/
+                background-color: #FFFFFF;
+
+                /** 마우스 커서 모양 설정 **/
+                @include cursor-pointer;
+            }
+        }
+    }
+
+    .skill {
+        /** 외부 여백 설정 **/
+        margin-top: 20px;
+
+        .badge {
+            /** 요소 블록 설정 **/
+            display: inline-block;
+
+            /** 외부 여백 설정 **/
+            margin-right: 15px;
+            margin-bottom: 15px; 
+
+            /** 내부 여백 설정 **/
+            padding: 8px 28px 9px 12px;
+
+            /** 테두리 설정 **/
+            border: 1px solid #E4E7EC;
+            border-radius: 21px;
+
+            /** 폰트 설정 **/
+            font-family: Spoqa Han Sans Neo;
+            font-size: 14px;
+            line-height: 18px;
+            color: #101828;
+
+            .removeSkillBtn {
+                /** 요소 위치 설정 **/
+                position: relative;
+                top: 3px;
+                left: 17px;
+
+                /** 요소 크기 설정 **/
+                width: 10px;
+                height: 15px;
+
+                /** 테두리 설정 **/
+                border: none;
+
+                /** 배경색 설정 **/
+                background-color: #FFFFFF;
+
+                /** 마우스 커서 모양 설정 **/
+                @include cursor-pointer;
+            }
+        }
+    }
+}
