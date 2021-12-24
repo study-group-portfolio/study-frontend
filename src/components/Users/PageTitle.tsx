@@ -13,7 +13,7 @@ const TitleSection = styled.div`
   p {
     font-size: 14px;
     line-height: 22px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     color: ${(props) => props.theme.grayColors.gray500};
   }
 `;

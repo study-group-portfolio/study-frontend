@@ -1,4 +1,6 @@
+import { isAbsolute } from "path";
 import React from "react";
+import { BiLock } from "react-icons/bi";
 import styled from "styled-components";
 
 // Component
@@ -6,29 +8,37 @@ interface IToolTipBoxProps {
   text: string;
 }
 
-const ToolTipBox: React.FunctionComponent<IToolTipBoxProps> = ({ text }) => {
+export const StudyToolTipBox: React.FunctionComponent<IToolTipBoxProps> = ({
+  text,
+}) => {
   return (
-    <Container>
+    <StudyContainer>
       <p>{text}</p>
-    </Container>
+    </StudyContainer>
   );
 };
 
-export default ToolTipBox;
+export const MemberToolTipBox: React.FunctionComponent<IToolTipBoxProps> = ({
+  text,
+}) => {
+  return (
+    <MemberContainer>
+      <p>{text}</p>
+    </MemberContainer>
+  );
+};
 
 // Styled Components
-const Container = styled.div`
+const MemberContainer = styled.div`
   width: fit-content;
-  height: 42.14px;
+  height: fit-content;
   background-color: ${(props) => props.theme.grayColors.gray600};
   border-radius: 6px;
   padding: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: block;
   position: absolute;
-  top: -50px;
-  left: 33px;
+  top: -45px;
+  left: 0;
 
   &::before {
     content: "";
@@ -36,7 +46,7 @@ const Container = styled.div`
     width: 10px;
     height: 10px;
     background-color: ${(props) => props.theme.grayColors.gray600};
-    top: 88%;
+    top: 83%;
     left: 45%;
     transform: rotate(45deg);
   }
@@ -45,4 +55,8 @@ const Container = styled.div`
     font-size: 12px;
     color: #fff;
   }
+`;
+
+const StudyContainer = styled(MemberContainer)`
+  left: 33px;
 `;
