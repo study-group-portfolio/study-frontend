@@ -8,7 +8,6 @@
 
         /** 경계선 설정 **/
         border: 1px solid #E4E7EC;
-        // border: 1px solid black;
         border-radius: 6px;
 
         /** 내부 여백 설정 **/
@@ -41,7 +40,7 @@
         margin-top: 8px;
 
         /** 내부 여백 설정 **/
-        padding: 5px 0;
+        //padding: 5px 0;
         
         /** 크기 설정 **/
         width: 790px;
@@ -55,10 +54,8 @@
         background-color: #FFFFFF;
 
         .option {
-            /** 외부 여백 설정 **/
-            margin-top: 10px;
-            margin-bottom: 10px;
-            margin-left: 15px;
+            /** 내부 여백 설정 **/
+            padding: 10px 0 10px 15px;
 
             /** 폰트 설정 **/
             font-family: Spoqa Han Sans Neo;
@@ -66,8 +63,69 @@
             line-height: 20px;
             color: #101828;
 
+            /** 테두리 설정 **/
+            border-top: 1px solid #E4E7EC;
+
             /** 마우스 커서 모양 설정 **/
             cursor: pointer;
+        }
+
+        .option:nth-child(1) {
+            /** 내부 여백 설정 **/
+            padding-top: 15px;
+
+            /** 테두리 설정 **/
+            border-top: none;
+        }
+
+        .option:nth-last-child(1) {
+            /** 내부 여백 설정 **/
+            padding-bottom: 15px;
+        }
+
+        .group {
+            .groupName {
+                /** 배경색 설정 **/
+                background-color: #F2F4F7;
+
+                /** 폰트 설정 **/
+                font-family: Spoqa Han Sans Neo;
+                font-size: 14px;
+                line-height: 18px;
+                color: #667085;
+
+                /** 내부 여백 설정 **/
+                padding: 14px 0 14px 14px;
+            }
+
+            .groupOption {
+                /** 배경색 설정 **/
+                background-color: #FFFFFF;
+
+                /** 내부 여백 설정 **/
+                padding: 10px 0 10px 15px;
+
+                /** 폰트 설정 **/
+                font-family: Spoqa Han Sans Neo;
+                font-size: 16px;
+                line-height: 20px;
+                color: #101828;
+
+                /** 테두리 설정 **/
+                border-top: 1px solid #E4E7EC;
+
+                /** 마우스 커서 모양 설정 **/
+                cursor: pointer;
+            }
+
+            .groupName + .groupOption {
+                border-top: none;
+            }
+        }
+
+        .group:nth-last-child(1) {
+            /** 내부 여백 설정 **/
+            padding-bottom: 8px;
         }
     }
 

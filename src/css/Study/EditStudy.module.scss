@@ -263,7 +263,54 @@
         }
 
         .content {
-            @include SubSection;
+            /** 외부 여백 설정 **/
+            margin-top: 20px;
+
+            .noContent {
+                /** 내부 여백 설정 **/
+                padding: 11px 0;
+
+                /** 요소 크기 설정 **/
+                width: 790px;
+
+                /** 테두리 설정 **/
+                border-top: 1px solid #E4E7EC;
+                border-bottom: 1px solid #E4E7EC;
+
+                /** 폰트 설정 **/
+                font-family: Spoqa Han Sans Neo;
+                font-size: 14px;
+                line-height: 18px;
+                color: #98A2B3;
+                text-align: center;
+
+                /** 배경색 설정 **/
+                background-color: #F9FAFB;
+            }
+        }
+
+        .enroll {
+            .completeBtn {
+                /** 요소 크기 설정 **/
+                width: 790px;
+
+                /** 테두리 설정 **/
+                border: 1px solid #E4E7EC;
+                box-sizing: border-box;
+                border-radius: 6px;
+
+                /** 폰트 설정 **/
+                font-family: Spoqa Han Sans Neo;
+                font-size: 16px;
+                line-height: 20px;
+                color: #175CD3;
+
+                /** 외부 여백 설정 **/
+                margin-top: 20px;
+
+                /** 내부 여백 설정 **/
+                padding: 14px 0;
+            }
         }
     }
 

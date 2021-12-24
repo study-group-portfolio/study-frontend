@@ -46,7 +46,10 @@
 
     .selected {
         /** 테두리 설정 **/
-        border-color: #333;
+        border: 1px solid #1A5DD1;
+
+        /** 배경색 설정 **/
+        background-color: #1A5DD1;
 
         /** 배경이미지 설정 **/
         background-image: url(../../images/check-select.svg);

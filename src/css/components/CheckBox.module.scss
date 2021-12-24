@@ -107,29 +107,5 @@
                 }
             }
         }
-
-        .completeBtn {
-            /** 요소 시작 위치 설정 **/
-            float: right;
-
-            /** 외부 여백 설정 **/
-            margin: 0 15px 15px 0;
-
-            /** 테두리 설정 **/
-            border: 1px solid #E4E7EC;
-            border-radius: 6px;
-
-            /** 배경색깔 설정 **/
-            background-color: #FFFFFF;
-
-            /** 내부 여백 설정 **/
-            padding: 10px 20px;
-
-            /** 폰트 설정 **/
-            font-family: Spoqa Han Sans Neo;
-            font-size: 16px;
-            line-height: 20px;
-            color: #175CD3;
-        }
     }
 }

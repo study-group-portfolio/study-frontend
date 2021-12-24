@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import moment from 'moment';
 
-import ToggleButton from '../../components/ToggleButton';
-import SelectBox from '../../components/SelectBox';
-import PositionBox from '../../components/PositionBox';
-import SelectCalendar from '../../components/SelectCalendar';
-import CheckBox from '../../components/CheckBox';
+import ToggleButton from '../../components/EditStudy/ToggleButton';
+import SelectBox from '../../components/EditStudy/SelectBox';
+import PositionBox from '../../components/EditStudy/PositionBox';
+import SelectCalendar from '../../components/EditStudy/SelectCalendar';
+import CheckBox from '../../components/EditStudy/CheckBox';
 
 import styles from '../../css/Study/EditStudy.module.scss';
 import cn from 'classnames';
@@ -16,6 +16,7 @@ function EditStudy() {
     const [process, setProcess] = useState('online')
     const [interval, setInterval]: [string[], Function] = useState([]);
     const [collaborationToolSelectedList, setCollaborationToolSelectedList] = useState(Array<string>());
+    const [skillSelectedList, setSkillSelectedList] = useState(Array<string>());
 
     const introuductionPlaceholder = `예시)
 - 스터디 목적: 포트폴리오용 프로젝트
@@ -25,14 +26,70 @@ function EditStudy() {
 - 기타: 현업 실무자, 취준생 누구든 환영합니다!
     `;
 
-    const locationList = ['서울', '부산', '대구', '인천', '광주', '대전', '울산', '세종', '경기', '강원', '충북', '충남', '전북', '전남', '경북', '경남', '제주'];
+    const locationList = [
+        '서울', 
+        '부산', 
+        '대구', 
+        '인천', 
+        '광주', 
+        '대전', 
+        '울산', 
+        '세종', 
+        '경기', 
+        '강원', 
+        '충북', 
+        '충남', 
+        '전북', 
+        '전남', 
+        '경북', 
+        '경남', 
+        '제주'
+    ];
     const periodList = ['일주일', '한 달', '두 달', '세 달', '네 달', '다섯 달 이상'];
     const dayList = ['주말', '주중', '주말과 주중', '협의한 요일'];
-    const collaborationToolList = ['미지정', 'Asana', 'JANDI', 'Google Meet', 'Trello', 'Notion', 'Zoom', 'Slack', 'collabee', 'GitHub', 'Microsoft Teams', 'Dropbox Paper', 'Jira', 'NAVER WORKS', 'Quip'];
+    const collaborationToolList = [
+        '미지정', 'Asana', 'JANDI', 
+        'Google Meet', 'Trello', 'Notion', 
+        'Zoom', 'Slack', 'collabee', 
+        'GitHub', 'Microsoft Teams', 'Dropbox Paper', 
+        'Jira', 'NAVER WORKS', 'Quip'
+    ];
+    const postionGroupList = [
+        {
+            name: '기획',
+            list: ['서비스 기획자', '게임 기획자', 'PM·PO', '데이터 분석가']
+        },
+        {
+            name: '디자인',
+            list: ['UX/UI 디자이너', 'UX디자이너', 'UI,GUI디자이너', '그래픽 디자이너', '3D 디자이너'],
+        },
+        {
+            name: '개발',
+            list: ['프론트엔드 개발자', '웹 개발자', '서버 개발자', '자바 개발자', '웹 퍼블리셔']
+        }
+    ];
+    const skillList = [
+        'Google Analytics', 'Spring', 'Amplitude',
+        'React.js', 'Adobe Photoshop', 'Amazon AWS',
+        'Adobe illustrator', 'MySQL', 'Adobe XD',
+        'JavaScript', 'Figma', 'jQuery',
+        'Framer', 'C++', 'Sketch',
+        'C#', 'zeplin', 'Java',
+        'iOS', 'PHP', 'Android',
+        'Python', 'html/css', 'Pycharm'
+    ]
 
     const onChangeIntroduction = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         if (event.target.value.length <= INTRODUCTION_MAX_SIZE) {
             setIntroduction(event.target.value);
+        }
+    }
+
+    const onClickCheckButtonSkill = (item: string, selected: boolean) => {
+        if (selected) {
+            setCollaborationToolSelectedList([...collaborationToolSelectedList, item]);
+        } else {
+            setCollaborationToolSelectedList(collaborationToolSelectedList.filter(elmt => elmt !== item));
         }
     }
 
@@ -50,11 +107,11 @@ function EditStudy() {
         }
     }
 
-    const onClickCheckButton = (item: string, selected: boolean) => {
+    const onClickCheckButtonCollaborationTool = (item: string, selected: boolean) => {
         if (selected) {
-            setCollaborationToolSelectedList([...collaborationToolSelectedList, item]);
+            setSkillSelectedList([...skillSelectedList, item]);
         } else {
-            setCollaborationToolSelectedList(collaborationToolSelectedList.filter(elmt => elmt !== item));
+            setSkillSelectedList(skillSelectedList.filter(elmt => elmt !== item));
         }
     }
 
@@ -176,19 +233,20 @@ function EditStudy() {
                         width="790px"
                         marginTop="8px"
                         placeholder="포지션을 선택해 주세요"
-                        items={locationList}
+                        items={postionGroupList}
                         type="G"
                     ></SelectBox>
-                    <SelectBox 
-                        width="790px"
-                        marginTop="10px"
+                    <CheckBox
                         placeholder="스킬을 선택해 주세요"
-                        items={locationList}
-                        type="O"
-                    ></SelectBox>
+                        items={skillList}
+                        marginTop="10px"
+                        onClickCheckButton={(item: string, selected: boolean) => onClickCheckButtonSkill(item, selected)}
+                    />
+                    <button className={cn(styles.completeBtn)}>선택완료</button>
                 </div>
                 <div className={cn(styles.content)}>
-                    <PositionBox
+                    <div className={cn(styles.noContent)}>선택 완료를 눌러 추가해 주세요</div>
+                    {/* <PositionBox
                         name="백엔드 개발자"
                         num={1}
                         skills={['Spring', 'React.js', 'JavaScript', 'jQuery', 'C++', 'C#', 'Java', 'PHP', 'Python', 'Pycharm']}
@@ -202,7 +260,7 @@ function EditStudy() {
                         name="UX/UI 디자이너"
                         num={2}
                         skills={[]}
-                    ></PositionBox>
+                    ></PositionBox> */}
                 </div>
             </div>
             <div className={cn(styles.period)}>
@@ -224,7 +282,7 @@ function EditStudy() {
                 <CheckBox 
                     placeholder="선호하는 협업 툴을 선택해주세요"
                     items={collaborationToolList}
-                    onClickCheckButton={(item: string, selected: boolean) => onClickCheckButton(item, selected)}
+                    onClickCheckButton={(item: string, selected: boolean) => onClickCheckButtonCollaborationTool(item, selected)}
                 />
             </div>
         </div>

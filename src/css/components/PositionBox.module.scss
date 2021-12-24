@@ -4,7 +4,7 @@
 
 .container {
     /** 외부 여백 설정 **/
-    margin-bottom: 20px;
+    margin: 20px 0;
     
     /** 내부 여백 설정 **/
     padding-bottom: 20px;
@@ -33,6 +33,8 @@
         .numberBox {
             /** 요소 위치 설정 **/
             float: right;
+            position: relative;
+            top: 20px;
 
             .btn {
                 /** 요소 크기 설정 **/
