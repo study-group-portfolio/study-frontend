@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { BiInfoCircle } from "react-icons/bi";
 import MemberCard from "./Utilities/MemberCard";
+import { MemberToolTipBox } from "./Utilities/ToolTipBox";
 
 // Components
 interface IFindStudySection {
@@ -14,13 +15,28 @@ const FindMemberDetail: React.FunctionComponent<IFindStudySection> = ({
   titleText,
   to,
 }) => {
+  const [showToolTip, setShowToolTip] = useState(false);
+  const handleMouseEnter = (event: React.MouseEvent<HTMLSpanElement>): void => {
+    setShowToolTip(true);
+  };
+  const handleMouseLeave = (event: React.MouseEvent<HTMLSpanElement>): void => {
+    setShowToolTip(false);
+  };
   return (
     <MainSection>
       <article>
         <div className="label">
           <div className="title">
             <h1>{titleText}</h1>
-            <InfoCircle />
+            <span
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              <InfoCircle />
+              {showToolTip ? (
+                <MemberToolTipBox text="최근 업데이트 순으로 노출됩니다." />
+              ) : null}
+            </span>
           </div>
         </div>
         <div className="wrapper">
@@ -89,7 +105,7 @@ const ViewAllBtn = styled(Link)`
 `;
 
 const InfoCircle = styled(BiInfoCircle)`
-  display: block;
+  display: inline-block;
   width: 20px;
   height: 20px;
   color: ${(props) => props.theme.grayColors.gray400};
