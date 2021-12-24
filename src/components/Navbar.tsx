@@ -10,6 +10,7 @@ const Nav = styled.nav`
   justify-content: flex-end;
   align-items: center;
   position: fixed;
+  z-index: 100;
 `;
 
 const NavList = styled.ul`
