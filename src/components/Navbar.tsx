@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
 const Nav = styled.nav`
+  margin-top: 0px;
   width: 100%;
   height: 60px;
   background-color: #fff;
@@ -10,6 +11,7 @@ const Nav = styled.nav`
   justify-content: flex-end;
   align-items: center;
   position: fixed;
+  top: 0;
   z-index: 100;
 `;
 
