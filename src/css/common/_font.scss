@@ -1,0 +1,22 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
+$gray-900: #101828;
+
+* {
+    font-family: Spoqa Han Sans Neo;
+}
+
+.subTitle {
+    /** 폰트 설정 **/
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 23px;
+    color: #101828;
+}
+
+.body {
+    /** 폰트 설정 **/
+    font-size: 16px;
+    line-height: 26px;
+    color: #101828;
+}
