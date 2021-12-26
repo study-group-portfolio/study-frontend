@@ -7,7 +7,8 @@ import Login from "./pages/Users/Login";
 import SigninReady from "./pages/Users/SigninReady";
 import EmailSignin from "./pages/Users/Signin";
 import FindPassword from "./pages/Users/FindPassword";
-import EditStudy from "./pages/study/EditStudy";
+import ProjectCreation from "./pages/study/Creation";
+import ProjectDetail from "pages/study/Detail";
 import CreateStudy from "./pages/CreateStudy";
 
 
@@ -23,7 +24,8 @@ function Router() {
         <Route exact path="/signin" component={SigninReady}></Route>
         <Route exact path="/signin-email" component={EmailSignin}></Route>
         <Route exact path="/find-password" component={FindPassword}></Route>
-        <Route exact path="/editStudy" component={EditStudy}></Route>
+        <Route exact path="/study/creation" component={ProjectCreation}></Route>
+        <Route exact path="/study/detail" component={ProjectDetail}></Route>
         <Route exact path="/create-study" component={CreateStudy}></Route>
       </Switch>
     </BrowserRouter>

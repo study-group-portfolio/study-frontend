@@ -1,0 +1,330 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
+@mixin Font($color: black, $lineHeight: 20px) {
+    font-family: Spoqa Han Sans Neo;
+    font-size: 16px;
+    line-height: $lineHeight;
+    color: $color;
+}
+
+@mixin SubSection {
+    margin-top: 40px;
+}
+
+.container {
+    margin: 70px auto;
+    margin-top: 130px;
+    width: 1160px;
+
+    .titleSection {
+        /** 내부 여백 설정 **/
+        padding-bottom: 40px;
+
+        /** 요소 크기 설정 **/
+        width: 790px;
+
+        /** 테두리 설정 **/
+        border-bottom: 1px solid #E4E7EC;
+
+        .titleInput {
+            /** 요소 크기 설정 **/
+            width: 790px;
+
+            /** 테두리 설정 **/
+            border: none;
+
+            /** 폰트 설정 **/
+            font-family: Spoqa Han Sans Neo;
+            font-weight: bold;
+            font-size: 32px;
+            line-height: 40px;
+            color: #98A2B3;
+
+
+        }
+
+        .titleInput::placeholder {
+            /** 글자색 설정 **/
+            color: #98A2B3;
+        }
+    }
+
+    .buttonBox {
+        /** 요소 위치 설정 **/
+        position: fixed;
+        top: 130px;
+        left: calc(50% + 240px);
+
+        /** 요소 크기 설정 **/
+        width: 340px;
+        height: 146px;
+        box-sizing: border-box;
+
+        /** 테두리 설정 **/
+        border-radius: 6px;
+
+        /** 그림자 설정 **/
+        box-shadow: 0px 8px 30px rgba(16, 24, 40, 0.02), 
+        0px 8px 24px rgba(16, 24, 40, 0.02), 
+        0px 4px 12px rgba(16, 24, 40, 0.02), 
+        0px 2px 6px rgba(16, 24, 40, 0.02);
+
+        .btn {
+            /** 외부 여백 설정 **/
+            margin: 20px 20px 5px 20px;
+
+            /** 요소 크기 설정 **/
+            width: 300px;
+            height: 48px;
+            box-sizing: border-box;
+
+            /** 테두리 설정 **/
+            border-radius: 6px;
+
+            /** 폰트 설정 **/
+            font-family: Spoqa Han Sans Neo;
+            font-size: 16px;
+            line-height: 20px;
+        }
+
+        .temp {
+            /** 외부 여백 설정 **/
+            margin: 20px 20px 5px 20px;
+
+            /** 테두리 설정 **/
+            border: 1px solid #E4E7EC;
+
+            /** 배경색 설정 **/
+            background-color: #FFFFFF;
+
+            /** 글자 색깔 설정 **/
+            color: #175CD3;
+        }
+
+        .save {
+            /** 외부 여백 설정 **/
+            margin: 5px 20px 20px 20px;
+
+            /** 테두리 설정 **/
+            border: 0px solid #E4E7EC;
+
+            /** 배경색 설정 **/
+            background-color: #175CD3;
+
+            /** 글자 색깔 설정 **/
+            color: #FFFFFF;
+        }
+    }
+
+    .profile {
+        margin-top: 60px;
+
+        .title {
+            @include Font(#667085);
+        }
+
+        div {
+            margin-top: 20px;
+
+            .text {
+                @include Font(#98A2B3);
+                margin-left: 20px;
+            }
+        }
+    }
+
+    .subSection {
+        margin-top: 40px;
+    }
+
+    .introduction {
+        @include SubSection;
+
+        .title {
+            @include Font(#667085);
+            display: block;
+        }
+
+        .content {
+            @include Font;
+            margin-top: 8px;
+            padding: 14px 15px;
+            display: block;
+            width: 790px;
+            height: 190px;
+            border: 1px solid #E4E7EC;
+            border-radius: 6px;
+            box-sizing: border-box;
+            resize: none;
+
+        }
+
+        .content::placeholder {
+            @include Font(#98A2B3, 26px);
+        }
+
+        .content::-webkit-scrollbar-thumb {
+            background: #000000;
+            height: 10px;
+        }
+
+        .content::-webkit-scrollbar-button { display: none; }
+
+        .textSize {
+            @include Font(#667085);
+            margin-top: 6px;
+            display: block;
+        }
+    }
+
+    .process {
+        @include SubSection;
+
+        .title {
+            @include Font(#667085);
+        }
+
+        .buttonGroup {
+            margin-top: 8px;
+
+            .button {
+                width: 264px;
+                height: 48px;
+                cursor: pointer;
+                border: 1px solid #CAD8F0;
+                box-sizing: border-box;
+            }
+        
+            .left {
+                border-radius: 6px 0px 0px 6px;
+            }
+        
+            .right {
+                border-radius: 0px 6px 6px 0px;
+            }
+        
+            .on {
+                background-color: #EBF0FA;
+                color: #175CD3
+            }
+        
+            .off {
+                background-color: #FFFFFF;
+                color: #98A2B3;
+            }
+        }
+    }
+
+    .location {
+        @include SubSection;
+
+        .title {
+            @include Font(#667085);
+            display: block;
+        }
+    }
+
+    .expectPeriod {
+        @include SubSection;
+
+        .title {
+            @include Font(#667085);
+            display: block;
+        }
+
+        .content {
+            /** 외부 여백 설정 **/
+            margin-top: 8px;
+
+            .txt {
+                /** 폰트 설정 **/
+                font-family: Spoqa Han Sans Neo;
+                font-size: 16px;
+                line-height: 20px;
+                color: #000000;
+
+                /** 내부 여백 설정 **/
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+        }
+    }
+
+    .role {
+        @include SubSection;
+
+        .title {
+            @include Font(#667085);
+            display: block;
+        }
+
+        .content {
+            /** 외부 여백 설정 **/
+            margin-top: 20px;
+
+            .noContent {
+                /** 내부 여백 설정 **/
+                padding: 11px 0;
+
+                /** 요소 크기 설정 **/
+                width: 790px;
+
+                /** 테두리 설정 **/
+                border-top: 1px solid #E4E7EC;
+                border-bottom: 1px solid #E4E7EC;
+
+                /** 폰트 설정 **/
+                font-family: Spoqa Han Sans Neo;
+                font-size: 14px;
+                line-height: 18px;
+                color: #98A2B3;
+                text-align: center;
+
+                /** 배경색 설정 **/
+                background-color: #F9FAFB;
+            }
+        }
+
+        .enroll {
+            .completeBtn {
+                /** 요소 크기 설정 **/
+                width: 790px;
+
+                /** 테두리 설정 **/
+                border: 1px solid #E4E7EC;
+                box-sizing: border-box;
+                border-radius: 6px;
+
+                /** 폰트 설정 **/
+                font-family: Spoqa Han Sans Neo;
+                font-size: 16px;
+                line-height: 20px;
+                color: #175CD3;
+
+                /** 외부 여백 설정 **/
+                margin-top: 20px;
+
+                /** 내부 여백 설정 **/
+                padding: 14px 0;
+            }
+        }
+    }
+
+    .period {
+        @include SubSection;
+
+        .title {
+            @include Font(#667085);
+            display: block;
+        }
+    }
+
+    .tool {
+        @include SubSection;
+
+        .title {
+            @include Font(#667085);
+            display: block;
+        }
+    }
+}
