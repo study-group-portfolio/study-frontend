@@ -1,0 +1,130 @@
+{
+  "members": [
+    {
+      "id": "1",
+      "name": "홍길동",
+      "position": ["UI/UX Designer"],
+      "interested": ["Adobe Photoshop", "Adobe Illustrator", "Figma"]
+    },
+    {
+      "id": "2",
+      "name": "이몽룡",
+      "position": ["서비스 기획자", "백엔드 개발자"],
+      "interested": ["Spring", "Django", "Java"]
+    },
+    {
+      "id": "3",
+      "name": "성춘향",
+      "position": ["게임 기획자", "프론트엔드 개발자", "자바 개발자"],
+      "interested": ["Spring", "React.js", "JavaScript", "TypeScript"]
+    },
+    {
+      "id": "4",
+      "name": "변사또",
+      "position": ["서비스 기획자"],
+      "interested": ["Trello"]
+    },
+    {
+      "id": "5",
+      "name": "유관순",
+      "position": ["서비스 기획자"],
+      "interested": ["Trello, Confluence"]
+    },
+    {
+      "id": "6",
+      "name": "이순신",
+      "position": ["프론트엔드 개발자"],
+      "interested": ["Svelte, React, Vue.js"]
+    },
+    {
+      "id": "7",
+      "name": "이순신",
+      "position": ["프론트엔드 개발자"],
+      "interested": ["Svelte, React, Vue.js"]
+    },
+    {
+      "id": "6",
+      "name": "이순신",
+      "position": ["프론트엔드 개발자"],
+      "interested": ["Svelte, React, Vue.js"]
+    },
+    {
+      "id": "6",
+      "name": "이순신",
+      "position": ["프론트엔드 개발자"],
+      "interested": ["Svelte, React, Vue.js"]
+    },
+    {
+      "id": "6",
+      "name": "이순신",
+      "position": ["프론트엔드 개발자"],
+      "interested": ["Svelte, React, Vue.js"]
+    },
+    {
+      "id": "6",
+      "name": "이순신",
+      "position": ["프론트엔드 개발자"],
+      "interested": ["Svelte, React, Vue.js"]
+    },
+    {
+      "id": "6",
+      "name": "이순신",
+      "position": ["프론트엔드 개발자"],
+      "interested": ["Svelte, React, Vue.js"]
+    },
+    {
+      "id": "6",
+      "name": "이순신",
+      "position": ["프론트엔드 개발자"],
+      "interested": ["Svelte, React, Vue.js"]
+    },
+    {
+      "id": "6",
+      "name": "이순신",
+      "position": ["프론트엔드 개발자"],
+      "interested": ["Svelte, React, Vue.js"]
+    },
+    {
+      "id": "6",
+      "name": "이순신",
+      "position": ["프론트엔드 개발자"],
+      "interested": ["Svelte, React, Vue.js"]
+    },
+    {
+      "id": "6",
+      "name": "이순신",
+      "position": ["프론트엔드 개발자"],
+      "interested": ["Svelte, React, Vue.js"]
+    },
+    {
+      "id": "6",
+      "name": "이순신",
+      "position": ["프론트엔드 개발자"],
+      "interested": ["Svelte, React, Vue.js"]
+    },
+    {
+      "id": "6",
+      "name": "이순신",
+      "position": ["프론트엔드 개발자"],
+      "interested": ["Svelte, React, Vue.js"]
+    },
+    {
+      "id": "6",
+      "name": "이순신",
+      "position": ["프론트엔드 개발자"],
+      "interested": ["Svelte, React, Vue.js"]
+    },
+    {
+      "id": "6",
+      "name": "이순신",
+      "position": ["프론트엔드 개발자"],
+      "interested": ["Svelte, React, Vue.js"]
+    },
+    {
+      "id": "6",
+      "name": "이순신",
+      "position": ["프론트엔드 개발자"],
+      "interested": ["Svelte, React, Vue.js"]
+    }
+  ]
+}

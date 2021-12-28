@@ -51,6 +51,7 @@ const MainSection = styled.section`
     flex-direction: column;
     position: relative;
     margin-top: 70px;
+    margin-bottom: 70px;
 
     .label {
       width: 100%;

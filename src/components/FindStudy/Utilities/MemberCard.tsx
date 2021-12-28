@@ -1,10 +1,18 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 import { ReactComponent as Profile } from "../../../images/profile.svg";
+import rawData from "../../../rawData.json";
 
-const MemberCard: React.FunctionComponent = () => {
+interface IMemberCard {
+  id?: string | number;
+  name: string;
+  position: string[];
+  interested: string[];
+}
+
+function MemberCard({ id, name, position, interested }: IMemberCard) {
   // Bookmark Toggle
   const [bookMark, setBookMark] = useState(false);
   const onBookmarkClick = () => {
@@ -15,29 +23,18 @@ const MemberCard: React.FunctionComponent = () => {
     }
   };
 
-  // Position Status Toggle
-  const [arrow, setArrow] = useState({ open: false });
-  const onArrowClick = () => {
-    setArrow(() => {
-      if (!arrow.open) {
-        return { open: true };
-      }
-      return { open: false };
-    });
-  };
-
   return (
     <CardContainer>
       <ProfilePicture />
       <div onClick={onBookmarkClick}>
         {bookMark ? <BookMarkFill /> : <BookMark />}
       </div>
-      <MemberName to="/">홍길동</MemberName>
-      <Position>UI/UX Designer</Position>
-      <TechSpec>UI/UX Designer</TechSpec>
+      <MemberName to="/">{name}</MemberName>
+      <Position>{position}</Position>
+      <TechSpec>#{interested}</TechSpec>
     </CardContainer>
   );
-};
+}
 
 export default MemberCard;
 

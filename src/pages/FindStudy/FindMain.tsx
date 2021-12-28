@@ -1,6 +1,6 @@
 import React from "react";
 import Banner from "../../components/FindStudy/Utilities/Banner";
-import StudyMain from "../../components/FindStudy/StudyMain";
+import StudyMainSection from "../../components/FindStudy/StudyMain";
 import MemberMainSection from "../../components/FindStudy/MemberMain";
 import { ReactComponent as Building } from "../../images/building.svg";
 
@@ -12,7 +12,10 @@ const FindMain: React.FunctionComponent = () => {
         subText="기획자, 개발자, 디자이너를 위한\nIT 스터디 플랫폼"
         BannerImage={Building}
       />
-      <StudyMain titleText="스터디 찾기" to="/find-study"></StudyMain>
+      <StudyMainSection
+        titleText="스터디 찾기"
+        to="/find-study"
+      ></StudyMainSection>
       <MemberMainSection
         titleText="멤버 찾기"
         to="/find-member"

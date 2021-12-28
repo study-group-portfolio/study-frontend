@@ -8,6 +8,9 @@ import SigninReady from "./pages/Users/SigninReady";
 import EmailSignin from "./pages/Users/Signin";
 import FindPassword from "./pages/Users/FindPassword";
 import CreateStudy from "./pages/CreateStudy";
+import EmailAuth from "./pages/Users/EmailAuth";
+import SignupCongratulation from "./pages/Users/SignupCongrat";
+import ResetPassword from "./pages/Users/ResetPassword";
 
 function Router() {
   return (
@@ -20,7 +23,14 @@ function Router() {
         <Route exact path="/login" component={Login}></Route>
         <Route exact path="/signin" component={SigninReady}></Route>
         <Route exact path="/signin-email" component={EmailSignin}></Route>
+        <Route
+          exact
+          path="/signup-success"
+          component={SignupCongratulation}
+        ></Route>
+        <Route exact path="/email-auth" component={EmailAuth}></Route>
         <Route exact path="/find-password" component={FindPassword}></Route>
+        <Route exact path="/reset-password" component={ResetPassword}></Route>
         <Route exact path="/create-study" component={CreateStudy}></Route>
       </Switch>
     </BrowserRouter>

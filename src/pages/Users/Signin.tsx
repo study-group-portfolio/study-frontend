@@ -1,19 +1,10 @@
 import { useState } from "react";
-import styled from "styled-components";
-import { useForm } from "react-hook-form";
+import styled, { css } from "styled-components";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import PageTitle from "../../components/Users/PageTitle";
 import BackBtn from "../../components/Users/BackBtn";
-
-// raw data
-
-const registeredUsers: {} = [
-  {
-    email: "abc@example.com",
-    nickname: "hello",
-  },
-];
 
 interface ISigninFormValues {
   email: string;
@@ -35,7 +26,9 @@ function EmailSignin({
     setError,
   } = useForm<ISigninFormValues>();
 
-  const onSubmit = (data: ISigninFormValues) => {
+  const onSubmit: SubmitHandler<ISigninFormValues> = (
+    data: ISigninFormValues
+  ) => {
     if (data.password !== data.confirmPassword) {
       setError("confirmPassword", { message: "비밀번호가 일치하지 않습니다." });
     }
@@ -46,9 +39,23 @@ function EmailSignin({
     visible: false,
   });
 
+  const [confirmPasswordType, setConfirmPasswordType] = useState({
+    type: "password",
+    visible: false,
+  });
+
   const handleVisibility = (event: any) => {
     setPasswordType(() => {
       if (!passwordType.visible) {
+        return { type: "text", visible: true };
+      }
+      return { type: "password", visible: false };
+    });
+  };
+
+  const handleConfirmPasswordVisibility = (event: any) => {
+    setConfirmPasswordType(() => {
+      if (!confirmPasswordType.visible) {
         return { type: "text", visible: true };
       }
       return { type: "password", visible: false };
@@ -126,7 +133,7 @@ function EmailSignin({
           <div className="input-wrapper">
             <label htmlFor="confirmPassword">비밀번호 확인</label>
             <input
-              type={passwordType.type}
+              type={confirmPasswordType.type}
               placeholder="비밀번호를 한번 더 입력해주세요"
               {...register("confirmPassword")}
               style={
@@ -136,8 +143,8 @@ function EmailSignin({
               }
               name="confirmPassword"
             />
-            <span onClick={handleVisibility}>
-              {passwordType.visible ? <EyeOpen /> : <EyeClose />}
+            <span onClick={handleConfirmPasswordVisibility}>
+              {confirmPasswordType.visible ? <EyeOpen /> : <EyeClose />}
             </span>
           </div>
           <ErrorMessage
@@ -150,7 +157,6 @@ function EmailSignin({
           <div className="input-wrapper">
             <label htmlFor="nickname">닉네임</label>
             <input
-              className="nickname-input"
               placeholder="닉네임을 입력해 주세요"
               {...register("nickname", {
                 required: "올바른 닉네임을 입력해 주세요.",
@@ -163,16 +169,6 @@ function EmailSignin({
               maxLength={10}
               name="nickname"
             />
-            <button
-              className="double-validation"
-              style={
-                errors.nickname
-                  ? { border: "1px solid #f36355" }
-                  : { border: "1px solid #e4e7ec" }
-              }
-            >
-              중복 검사
-            </button>
           </div>
           <p className="help-text">한글/영어/숫자 혼용 가능, 최대 10자</p>
           <ErrorMessage
@@ -181,10 +177,10 @@ function EmailSignin({
             name="nickname"
             as="p"
           />
-          {!errors.email &&
-          !errors.confirmPassword &&
-          !errors.password &&
-          !errors.nickname ? (
+          {errors.email ||
+          errors.confirmPassword ||
+          errors.password ||
+          errors.nickname ? (
             <button>회원가입하기</button>
           ) : (
             <button style={{ opacity: 1 }}>회원가입하기</button>
@@ -254,23 +250,6 @@ const SigninForm = styled.form`
         font-size: 16px;
       }
     }
-
-    .nickname-input {
-      width: 307px;
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-      border-right: none;
-    }
-
-    .double-validation {
-      display: inline-block;
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-      width: calc(400px - 307px);
-      background-color: #fff;
-      border: 1px solid ${(props) => props.theme.grayColors.gray200};
-      color: ${(props) => props.theme.primaryColor};
-    }
   }
 
   .error-message {
@@ -294,28 +273,30 @@ const SigninForm = styled.form`
   }
 `;
 
-const EyeOpen = styled(FaEye)`
+const StyledEyeIcon = css`
   width: 24px;
   height: 24px;
   color: ${(props) => props.theme.grayColors.gray400};
   position: absolute;
-  bottom: 14px;
   right: 12px;
+`;
+
+const EyeOpen = styled(FaEye)`
+  ${StyledEyeIcon};
+  bottom: 14px;
 `;
 
 const EyeClose = styled(FaEyeSlash)`
-  width: 24px;
-  height: 24px;
-  color: ${(props) => props.theme.grayColors.gray400};
-  position: absolute;
+  ${StyledEyeIcon};
   bottom: 14px;
-  right: 12px;
 `;
 
-const HelpEyeOpen = styled(EyeOpen)`
+const HelpEyeOpen = styled(FaEye)`
+  ${StyledEyeIcon};
   bottom: 10px;
 `;
 
-const HelpEyeClose = styled(EyeClose)`
+const HelpEyeClose = styled(FaEyeSlash)`
+  ${StyledEyeIcon};
   bottom: 10px;
 `;

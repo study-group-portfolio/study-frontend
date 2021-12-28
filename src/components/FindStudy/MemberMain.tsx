@@ -27,9 +27,9 @@ const MemberMainSection: React.FunctionComponent<IFindMainSection> = ({
           <ViewAllBtn to={to}>전체보기</ViewAllBtn>
         </div>
         <div className="wrapper">
+          {/* <MemberCard />
           <MemberCard />
-          <MemberCard />
-          <MemberCard />
+          <MemberCard /> */}
         </div>
         <RightArrow />
       </article>
@@ -51,6 +51,7 @@ const MainSection = styled.section`
     flex-direction: column;
     position: relative;
     margin-top: 70px;
+    margin-bottom: 70px;
 
     .label {
       width: 100%;
