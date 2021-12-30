@@ -11,6 +11,10 @@ import StudyCreation from "./pages/study/Creation";
 import StudyDetail from "pages/study/Detail";
 import MemberDetail from "pages/member/Detail";
 import CreateStudy from "./pages/CreateStudy";
+import ProfileDetail from 'pages/mypage/profile/Detail';
+import ProfileElementRevision from 'pages/mypage/profile/ElementRevision';
+import ProfilePasswordResetting from "pages/mypage/profile/PasswordResetting";
+import ProfileRevision from "pages/mypage/profile/Revision";
 
 
 function Router() {
@@ -29,6 +33,10 @@ function Router() {
         <Route exact path="/study/detail" component={StudyDetail}></Route>
         <Route exact path="/create-study" component={CreateStudy}></Route>
         <Route exact path="/member/detail" component={MemberDetail}></Route>
+        <Route exact path="/mypage/profile/detail" component={ProfileDetail}></Route>
+        <Route exact path="/mypage/profile/elementRevision" component={ProfileElementRevision}></Route>
+        <Route exact path="/mypage/profile/passwordResetting" component={ProfilePasswordResetting}></Route>
+        <Route exact path="/mypage/profile/revision" component={ProfileRevision}></Route>
       </Switch>
     </BrowserRouter>
   );
