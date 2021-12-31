@@ -1,0 +1,205 @@
+@import '../../../common/font';
+@import '../../../common/element';
+
+.container {
+    /** 요소 크기 설정 **/
+    width: 1366px;
+
+    /** 외부 여백 설정 **/
+    margin: 0 auto;
+
+    /** 내부 여백 설정 **/
+    padding: 130px 103px 90px 103px;
+
+    /** 그리드 설정 **/
+    display: grid;
+    grid-template-columns: 250px auto;
+    column-gap: 30px;
+    row-gap: 26px;
+
+    .title {
+        /** 그리드 항목 설정 **/
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    .sub {
+        /** 배경색 설정 **/
+        background-color: #FFFFFF;
+
+        /** 테두리 설정 **/
+        border: 1px solid #E4E7EC;
+        border-radius: 6px;
+
+        /** 내부 여백 설정 **/
+        // padding: 20px;
+
+        .top {
+            /** 외부 여백 설정 **/
+            padding: 20px;
+
+            /** 테두리 설정 **/
+            border-bottom: 1px solid #E4E7EC;
+
+            .circle {
+                /** 요소 크기 설정 **/
+                width: 80px;
+                height: 80px;
+                box-sizing: border-box;
+
+                /** 배경색 설정 **/
+                background-color: #F2F4F7;
+
+                /** 테두리 설정 **/
+                border: 1px solid #E4E7EC;
+                border-radius: 40px;
+
+                /** 텍스트 중앙 정렬 **/
+                text-align: center;
+                padding: 31px 0;
+            }
+
+            .editImg {
+                /** 요소 시작 위치 설정 **/
+                float: right;
+
+                /** 배경이미지 설정 **/
+                background-image: url(../../../../images/edit_black_24dp.svg);
+                background-repeat: no-repeat;
+                background-position: center;
+
+                /** 요소 크기 설정 **/
+                width: 20px;
+                height: 20px;
+            }
+
+            .box {
+                /** 외부 여백 설정 **/
+                margin-top: 20px;
+
+                /** 그리드 설정 **/
+                display: grid;
+                grid-template-rows: auto auto;
+                row-gap: 8px;
+            }
+        }
+
+        .middle {
+            /** 내부 여백 설정 **/
+            padding: 34px 20px;
+
+            /** 테두리 설정 **/
+            border-bottom: 1px solid #E4E7EC;
+
+            /** 그리드 설정 **/
+            display: grid;
+            grid-template-rows: auto auto auto;
+            row-gap: 28px;
+        }
+
+        .bottom {
+            /** 내부 여백 설정 **/
+            padding: 15px 20px;
+        }
+    }
+
+    .content {
+        /** 그리드 설정 **/
+        display: grid;
+        row-gap: 30px;
+
+        .common {
+            /** 테두리 설정 **/
+            border: 1px solid #E4E7EC;
+            border-radius: 6px;
+            
+            /** 배경색 설정 **/
+            background-color: #FFFFFF;
+        }
+
+        .right {
+            float: right;
+        }
+
+        .public {
+            /** 외부 여백 설정 **/
+            padding: 20px 30px;
+
+            .toggleBox {
+                /** 그리드 설정 **/
+                display: grid;
+                grid-template-columns: auto auto;
+                column-gap: 40px;
+
+                > span {
+                    /** 수직 중앙 정렬 **/
+                    margin: auto 0;
+                }
+            }
+        }
+
+        .introduction {
+            /** 외부 여백 설정 **/
+            padding: 30px;
+
+            /** 그리드 설정 **/
+            display: grid;
+            row-gap: 20px;
+
+            /** 테두리 설정 **/
+            border-bottom: 1px solid #E4E7EC;
+        }
+
+        .likeSection {
+            /** 외부 여백 설정 **/
+            padding: 30px;
+
+            /** 그리드 설정 **/
+            display: grid;
+            grid-template-columns: auto auto;
+
+            > .subSection {
+                /** 그리드 설정 **/
+                display: grid;
+                row-gap: 20px;
+            } 
+        }
+
+        .positionSection {
+            /** 그리드 설정 **/
+            display: grid;
+            row-gap: 20px;
+
+            .positionList {
+                /** 그리드 설정 **/
+                display: grid;
+                row-gap: 25px;
+
+                .position {
+                    /** 그리드 설정 **/
+                    display: grid;
+                    row-gap: 14px;
+                }
+            }
+        }
+
+        .portfolioSection {
+            /** 그리드 설정 **/
+            display: grid;
+            row-gap: 20px;
+
+            .portfolio {
+                /** 요소 크기 설정 **/
+                width: 40px;
+                height: 40px;
+
+                /** 외부 여백 설정 **/
+                margin-right: 12px;
+            }
+        }
+
+        .item {
+            padding: 30px;
+        }
+    }
+}
