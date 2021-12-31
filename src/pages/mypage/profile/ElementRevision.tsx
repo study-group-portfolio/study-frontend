@@ -17,11 +17,11 @@ export default function ProfileElementRevision() {
                     </div>
                     <div className={cn(styles.middle)}>
                         <span className={cn(styles.heading2)}>내 프로필</span>
-                        <a href="#" className={styles.body3}>북마크 목록</a>
-                        <a href="#" className={styles.body3}>스터디 활동</a>
+                        <a href="#!" className={styles.body3}>북마크 목록</a>
+                        <a href="#!" className={styles.body3}>스터디 활동</a>
                     </div>
                     <div className={cn(styles.bottom)}>
-                        <a href="#" className={cn(styles.body2)}>로그아웃</a>
+                        <a href="#!" className={cn(styles.body2)}>로그아웃</a>
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@ export default function ProfileElementRevision() {
                     </div>
                     <div className={cn(styles.subSection)}>
                         <h3 className={cn(styles.body7)}>비밀번호</h3>
-                        <a href="#" className={cn(styles.body4)}>비밀번호 변경하기</a>
+                        <a href="#!" className={cn(styles.body4)}>비밀번호 변경하기</a>
                     </div>
                 </div>
                 <div className={cn(styles.btnBox)}>

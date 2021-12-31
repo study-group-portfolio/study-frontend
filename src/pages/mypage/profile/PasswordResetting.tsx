@@ -17,11 +17,11 @@ export default function ProfilePasswordResetting() {
                     </div>
                     <div className={cn(styles.middle)}>
                         <span className={cn(styles.heading2)}>내 프로필</span>
-                        <a href="#" className={styles.body3}>북마크 목록</a>
-                        <a href="#" className={styles.body3}>스터디 활동</a>
+                        <a href="#!" className={styles.body3}>북마크 목록</a>
+                        <a href="#!" className={styles.body3}>스터디 활동</a>
                     </div>
                     <div className={cn(styles.bottom)}>
-                        <a href="#" className={cn(styles.body2)}>로그아웃</a>
+                        <a href="#!" className={cn(styles.body2)}>로그아웃</a>
                     </div>
                 </div>
             </div>

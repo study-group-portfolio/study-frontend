@@ -21,12 +21,12 @@ export default function ProfileBookMark() {
                         </div>
                     </div>
                     <div className={cn(styles.middle)}>
-                        <a href="#" className={styles.body3}>내 프로필</a>
+                        <a href="#!" className={styles.body3}>내 프로필</a>
                         <span className={cn(styles.heading2)}>북마크 목록</span>
-                        <a href="#" className={styles.body3}>스터디 활동</a>
+                        <a href="#!" className={styles.body3}>스터디 활동</a>
                     </div>
                     <div className={cn(styles.bottom)}>
-                        <a href="#" className={cn(styles.body2)}>로그아웃</a>
+                        <a href="#!" className={cn(styles.body2)}>로그아웃</a>
                     </div>
                 </div>
             </div>
