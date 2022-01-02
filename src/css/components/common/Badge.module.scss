@@ -1,0 +1,37 @@
+.badge {
+    /** 내부 여백 설정 **/
+    padding: 4px 8px;
+
+    /** 텍스트 설정 **/
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 18px;
+
+    /** 테두리 설정 **/
+    border-radius: 6px;
+}
+
+.recruiting {
+    /** 배경색상 설정 **/
+    background-color: #E2EEFE;
+
+    /** 텍스트 색상 설정 **/
+    color: #4090F7;
+}
+
+.recruited {
+    /** 배경색상 설정 **/
+    background-color: #F9E3EF;
+
+    /** 텍스트 색상 설정 **/
+    color: #D84493;
+}
+
+.etc {
+    /** 배경색상 설정 **/
+    background-color: #F2F4F7;
+
+    /** 텍스트 색상 설정 **/
+    color: #1D2939;
+}

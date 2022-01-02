@@ -17,6 +17,7 @@ import ProfilePasswordResetting from "pages/mypage/profile/PasswordResetting";
 import ProfileRevision from "pages/mypage/profile/Revision";
 import BookMark from "pages/mypage/BookMark";
 import StudyActivity from "pages/mypage/StudyActivitiy";
+import Test from "pages/Test";
 
 function Router() {
   return (
@@ -31,6 +32,7 @@ function Router() {
         <Route exact path="/signin-email" component={EmailSignin}></Route>
         <Route exact path="/find-password" component={FindPassword}></Route>
         <Route exact path="/study/creation" component={StudyCreation}></Route>
+        <Route exact path="/study/revision" component={StudyCreation}></Route>
         <Route exact path="/study/detail" component={StudyDetail}></Route>
         <Route exact path="/create-study" component={CreateStudy}></Route>
         <Route exact path="/member/detail" component={MemberDetail}></Route>
@@ -40,6 +42,7 @@ function Router() {
         <Route exact path="/mypage/profile/revision" component={ProfileRevision}></Route>
         <Route exact path="/mypage/bookMark" component={BookMark}></Route>
         <Route exact path="/mypage/studyActivity" component={StudyActivity}></Route>
+        <Route exact path="/test" component={Test}></Route>
       </Switch>
     </BrowserRouter>
   );

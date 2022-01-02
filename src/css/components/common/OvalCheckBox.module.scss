@@ -1,0 +1,6 @@
+.container {
+    /** 그리드 설정 **/
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 20px;
+}
