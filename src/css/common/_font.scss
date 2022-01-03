@@ -21,7 +21,15 @@ $secondary: #F6F6EB;
     border-radius: $radius;
 
     background-color: $gray-100;
-} 
+}
+
+@mixin font($fontSize, $lineHeight, $color, $fontStyle: normal, $fontWeight: normal) {
+    font-style: $fontStyle;
+    font-weight: $fontWeight;
+    font-size: $fontSize;
+    line-height: $lineHeight;
+    color: $color;
+}
 
 
 * {

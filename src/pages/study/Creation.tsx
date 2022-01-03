@@ -249,21 +249,6 @@ function StudyCreation() {
                 </div>
                 <div className={cn(styles.content)}>
                     <div className={cn(styles.noContent)}>선택 완료를 눌러 추가해 주세요</div>
-                    {/* <PositionBox
-                        name="백엔드 개발자"
-                        num={1}
-                        skills={['Spring', 'React.js', 'JavaScript', 'jQuery', 'C++', 'C#', 'Java', 'PHP', 'Python', 'Pycharm']}
-                    ></PositionBox>
-                    <PositionBox
-                        name="프론트엔드 개발자"
-                        num={2}
-                        skills={['Spring']}
-                    ></PositionBox>
-                    <PositionBox
-                        name="UX/UI 디자이너"
-                        num={2}
-                        skills={[]}
-                    ></PositionBox> */}
                 </div>
             </div>}
             {query.get('kind') === 'knowledge' &&<div className={cn(styles.role)}>

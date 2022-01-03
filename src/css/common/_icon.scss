@@ -1,0 +1,41 @@
+@mixin ic_check_on_18dp {
+    /** 배경이미지 설정 **/
+    background-image: url(../../images/icon/ic_check_on_18dp.svg);
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
+@mixin ic_check_off_18dp {
+    /** 배경이미지 설정 **/
+    background-image: url(../../images/icon/ic_check_off_18dp.svg);
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
+@mixin ic_bookmark_on_24dp {
+    /** 배경이미지 설정 **/
+    background-image: url(../../images/icon/ic_bookmark_on_24dp.svg);
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
+@mixin ic_bookmark_off_24dp {
+    /** 배경이미지 설정 **/
+    background-image: url(../../images/icon/ic_bookmark_off_24dp.svg);
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
+@mixin ic_edit_20dp {
+    /** 배경이미지 설정 **/
+    background-image: url(../../images/icon/ic_edit_20dp.svg);
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
+@mixin ic_edit_24dp {
+    /** 배경이미지 설정 **/
+    background-image: url(../../images/icon/ic_edit_24dp.svg);
+    background-repeat: no-repeat;
+    background-position: center; 
+}
