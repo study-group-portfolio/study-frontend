@@ -1,0 +1,27 @@
+.container {
+    /** 요소 크기 설정 **/
+    width: 1366px;
+
+    /** 외부 여백 설정 **/
+    margin: 0 auto;
+    margin-top: 130px;
+
+    /** 내부 여백 설정 **/
+    padding: 0 103px;
+
+    /** 그리드 설정 **/
+    display: grid;
+    row-gap: 10px;
+
+    h2 {
+        font-size: 32px;
+        line-height: 40px;
+        color: #101828;
+    }
+
+    .buttonSection {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        grid-gap: 10px;
+    }
+}

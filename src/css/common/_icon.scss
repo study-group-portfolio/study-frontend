@@ -39,3 +39,17 @@
     background-repeat: no-repeat;
     background-position: center; 
 }
+
+@mixin img_social_google {
+    /** 배경이미지 설정 **/
+    background-image: url(../../images/img/img_social_google.svg);
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
+@mixin img_social_kakao {
+    /** 배경이미지 설정 **/
+    background-image: url(../../images/img/img_social_kakao.svg);
+    background-repeat: no-repeat;
+    background-position: center; 
+}

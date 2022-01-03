@@ -19,9 +19,11 @@ export enum TextInputStatus {
     오류 = "E"
 }
 
-export enum ButtonStatus {
+export enum ButtonType {
     기본 = "P",
-    서브 = "S"
+    서브 = "S",
+    카카오 = "K",
+    구글 = "G"
 }
 
 /** 뱃지 종류 */
