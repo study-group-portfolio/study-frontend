@@ -17,7 +17,7 @@ import ProfilePasswordResetting from "pages/mypage/profile/PasswordResetting";
 import ProfileRevision from "pages/mypage/profile/Revision";
 import BookMark from "pages/mypage/BookMark";
 import StudyActivity from "pages/mypage/StudyActivitiy";
-import Test from "pages/Test";
+import Component from "pages/Component";
 
 function Router() {
   return (
@@ -42,7 +42,7 @@ function Router() {
         <Route exact path="/mypage/profile/revision" component={ProfileRevision}></Route>
         <Route exact path="/mypage/bookMark" component={BookMark}></Route>
         <Route exact path="/mypage/studyActivity" component={StudyActivity}></Route>
-        <Route exact path="/test" component={Test}></Route>
+        <Route exact path="/component" component={Component}></Route>
       </Switch>
     </BrowserRouter>
   );
