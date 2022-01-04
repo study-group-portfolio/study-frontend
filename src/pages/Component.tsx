@@ -1,7 +1,9 @@
-import { ProcessType, RecruitType, StudyType, ButtonType } from 'utils/enum';
+import { ProcessType, RecruitType, StudyType, ButtonType, TextInputState, TextInputType, InputType } from 'utils/enum';
 import Button from 'components/common/Button';
+import TextInput from 'components/common/TextInput';
 import styles from 'css/pages/Component.module.scss';
 import cn from 'classnames';
+import ic_search_24dp from 'images/icon/ic_search_24dp.svg';
 
 export default function Test() {
     return (
@@ -44,6 +46,26 @@ export default function Test() {
                     img={undefined} 
                     buttonType={ButtonType.구글} 
                     onClick={() => {}} />
+            </div>
+            <h2>텍스트 입력창</h2>
+            <div className={cn(styles.textInputSection)}>
+                <TextInput 
+                    placeholder={'안녕'}
+                    type={InputType.텍스트형}
+                    textInputState={TextInputState.기본값} 
+                    textInputType={TextInputType.일반형} />
+                <TextInput 
+                    placeholder={'안녕'} 
+                    type={InputType.텍스트형}
+                    buttonText={'버튼'} 
+                    textInputState={TextInputState.기본값} 
+                    textInputType={TextInputType.버튼형} />
+                <TextInput 
+                    placeholder={'안녕'} 
+                    type={InputType.텍스트형}
+                    buttonImg={ic_search_24dp} 
+                    textInputState={TextInputState.기본값} 
+                    textInputType={TextInputType.아이콘형} />
             </div>
         </div>
     )
