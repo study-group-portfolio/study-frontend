@@ -13,7 +13,7 @@ export enum StudyActivityTabMenu {
     생성한_스터디 = "CS"
 }
 
-export enum TextInputStatus {
+export enum TextInputState {
     기본값 = "D",
     성공 = "S",
     오류 = "E"
@@ -54,4 +54,17 @@ export enum ProcessType {
     오프라인 = "OFF",
     온라인 = "ON",
     온오프라인 = "ON/OFF"
+}
+
+/** 텍스트 입력창 타입 */
+export enum TextInputType {
+    일반형 = "N",
+    버튼형 = "B",
+    아이콘형 = "I"
+}
+
+/** 입력창 타입 */
+export enum InputType {
+    패스워드형 = "password",
+    텍스트형 = "text"
 }
