@@ -67,6 +67,7 @@ export default function Test() {
                     textInputState={TextInputState.기본값} 
                     textInputType={TextInputType.아이콘형} />
             </div>
+            <h2></h2>
         </div>
     )
 }
