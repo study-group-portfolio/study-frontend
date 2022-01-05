@@ -5,13 +5,14 @@
     /** 외부 여백 설정 **/
     margin: 0 auto;
     margin-top: 130px;
+    margin-bottom: 90px;
 
     /** 내부 여백 설정 **/
     padding: 0 103px;
 
     /** 그리드 설정 **/
     display: grid;
-    row-gap: 10px;
+    row-gap: 30px;
 
     h2 {
         font-size: 32px;
@@ -29,5 +30,25 @@
         display: grid;
         grid-template-columns: auto auto auto;
         grid-gap: 10px;
+    }
+
+    .badgeSection {
+        display: grid;
+        grid-auto-flow: column;
+        justify-content: flex-start;
+        column-gap: 12px;
+    }
+
+    .alarmBadgeSection {
+        display: grid;
+        grid-auto-flow: column;
+        justify-content: flex-start;
+        column-gap: 12px;
+    }
+
+    .menberCardSection {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        column-gap: 20px;
     }
 }
