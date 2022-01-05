@@ -1,0 +1,109 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
+$page-title-color: #101828;
+$exp-color: #667085;
+$border-color: #e4e7ec;
+$placeholder-color: #98a2b3;
+$primary-color: #175cd3;
+$kakao-color: #ffe812;
+
+@mixin button-style {
+  width: 400px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.container {
+  margin: 70px auto;
+  margin-top: 130px;
+  width: 1160px;
+  display: flex;
+  justify-content: center;
+
+  .wrapper {
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    .pageTitleSection {
+      margin-bottom: 40px;
+
+      .pageTitle {
+        font-size: 32px;
+        line-height: 40px;
+        margin-bottom: 10px;
+      }
+
+      .pageExp {
+        color: $exp-color;
+        line-height: 22px;
+      }
+    }
+
+    .loginForm {
+      display: flex;
+      flex-direction: column;
+
+      .inputWrapper {
+        display: flex;
+        flex-direction: column;
+
+        &:first-of-type {
+          margin-bottom: 20px;
+        }
+
+        label {
+          margin-bottom: 8px;
+          font-size: 16px;
+          color: $exp-color;
+        }
+
+        input {
+          height: 48px;
+          border: 1px solid $border-color;
+          border-radius: 6px;
+          padding-left: 15px;
+          font-size: 16px;
+          box-sizing: border-box;
+
+          &:focus {
+            outline: none;
+          }
+
+          &::placeholder {
+            color: $placeholder-color;
+            font-size: 16px;
+          }
+        }
+      }
+
+      .btnList {
+        margin-top: 40px;
+
+        .emailLoginBtn {
+          @include button-style;
+          background-color: $primary-color;
+          color: #fff;
+        }
+
+        .kakaoLoginBtn {
+          @include button-style;
+          background-color: $kakao-color;
+          margin-top: 12px;
+        }
+
+        .googleLoginBtn {
+          @include button-style;
+          background-color: transparent;
+          border: 1px solid $border-color;
+          margin-top: 12px;
+        }
+      }
+    }
+  }
+}
