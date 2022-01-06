@@ -30,7 +30,7 @@
         /** 그리드 설정 **/
         display: grid;
         grid-template-columns: 79.11px auto;
-        column-gap: 626.88px;
+        column-gap: 586px;
 
         .logoSection {
             /** 요소 크기 설정 **/
@@ -52,7 +52,8 @@
 
             /** 그리드 설정 **/
             display: grid;
-            grid-template-columns: auto auto auto auto auto;
+            grid-auto-flow: column;
+            justify-content: flex-end;
             column-gap: 36px;
 
             .studyCreation {    
@@ -60,7 +61,7 @@
                 margin: 13px 0;
 
                 /** 요소 크기 설정 **/
-                
+                height: 34px;
     
                 /** 테두리 설정 **/
                 border: 1px solid #E4E7EC;
@@ -104,6 +105,17 @@
 
                 /** 외부 여백 설정 **/
                 margin: 14px 0;
+
+                /** 텍스트 설정 **/
+                font-style: normal;
+                font-weight: normal;
+                font-size: 8px;
+                line-height: 10px;
+                color: #101828;
+
+                /** 텍스트 중앙 정렬 **/
+                text-align: center;
+                padding: 10px 0;
             }
         }
     }

@@ -41,7 +41,7 @@ function Navbar() {
           <NavLink to="/study/creation" className={cn(styles.link)}>맴버 찾기</NavLink>
           <NavLink to="/study/creation" className={cn(styles.link)}>맴버 찾기</NavLink>
           <NavLink to="/study/creation">
-            <span className={cn(styles.circle_32)}></span>
+            <span className={cn(styles.circle_32)}>김</span>
           </NavLink>
         </div>
       </div>
