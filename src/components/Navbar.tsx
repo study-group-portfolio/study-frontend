@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import cn from 'classnames';
+import styles from 'css/components/common/Navbar.module.scss';
+import logo_studyit_logotype from 'images/logo/logo_studyit_logotype.svg';
 import { NavLink } from "react-router-dom";
 
 const Nav = styled.nav`
@@ -27,36 +30,52 @@ const NavItem = styled.li`
 
 function Navbar() {
   return (
-    <Nav>
-      <NavList>
-        <NavItem>
-          <NavLink
-            to="/create-study"
-            style={{
-              border: "1px solid #e4e7ec",
-              borderRadius: 18,
-              fontSize: 14,
-              padding: "12px 8px",
-              color: "#175cd3",
-            }}
-          >
-            스터디 생성하기
+    <div className={cn(styles.container)}>
+      <div className={cn(styles.navContainer)}> 
+        <NavLink to="/" className={cn(styles.logoSection)}>
+          <img className={cn(styles.logo)} src={logo_studyit_logotype} />
+        </NavLink>
+        <div className={cn(styles.detailSection)}>
+          <NavLink to="/study/creation" className={cn(styles.studyCreation)}>스터디 생성하기</NavLink>
+          <NavLink to="/study/creation" className={cn(styles.link)}>스터디 찾기</NavLink>
+          <NavLink to="/study/creation" className={cn(styles.link)}>맴버 찾기</NavLink>
+          <NavLink to="/study/creation" className={cn(styles.link)}>맴버 찾기</NavLink>
+          <NavLink to="/study/creation">
+            <span className={cn(styles.circle_32)}>김</span>
           </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink to="/">스터디 찾기</NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink to="/find-member">멤버 찾기</NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink to="/alert">알림</NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink to="/login">로그인</NavLink>
-        </NavItem>
-      </NavList>
-    </Nav>
+        </div>
+      </div>
+    </div>
+    // <Nav>
+    //   <NavList>
+    //     <NavItem>
+    //       <NavLink
+    //         to="/create-study"
+    //         style={{
+    //           border: "1px solid #e4e7ec",
+    //           borderRadius: 18,
+    //           fontSize: 14,
+    //           padding: "12px 8px",
+    //           color: "#175cd3",
+    //         }}
+    //       >
+    //         스터디 생성하기
+    //       </NavLink>
+    //     </NavItem>
+    //     <NavItem>
+    //       <NavLink to="/">스터디 찾기</NavLink>
+    //     </NavItem>
+    //     <NavItem>
+    //       <NavLink to="/find-member">멤버 찾기</NavLink>
+    //     </NavItem>
+    //     <NavItem>
+    //       <NavLink to="/alert">알림</NavLink>
+    //     </NavItem>
+    //     <NavItem>
+    //       <NavLink to="/login">로그인</NavLink>
+    //     </NavItem>
+    //   </NavList>
+    // </Nav>
   );
 }
 
