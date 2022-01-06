@@ -1,72 +1,46 @@
-import styled from "styled-components";
-import BackBtn from "../../components/Users/BackBtn";
+import cn from "classnames";
 import { Link } from "react-router-dom";
-import { GoogleButton, KakaoButton } from "../../components/Users/Button";
+import styles from "../../css/pages/users/Users.module.scss";
+import { ReactComponent as Kakao } from "../../images/img/img_social_kakao.svg";
+import { ReactComponent as Google } from "../../images/img/img_social_google.svg";
+import BackBtn from "../../images/arrow_back_btn_blue.svg";
 
 function SigninReady() {
   return (
-    <Container>
-      <Wrapper>
-        <BackBtn to="/login" />
-        <PageTitle>
-          <h1>회원가입</h1>
-          <p>
-            반갑습니다.
+    <section className={cn(styles.container)}>
+      <div className={cn(styles.wrapper)}>
+        <div className={cn(styles.backBtn)}>
+          <Link to="/login">
+            <img src={BackBtn} alt="backBtn" className={cn(styles.arrow)} />
+            이전으로
+          </Link>
+        </div>
+        <div className={cn(styles.pageTitleSection)}>
+          <h1 className={cn(styles.pageTitle)}>비밀번호 찾기</h1>
+          <p className={cn(styles.pageExp)}>
+            비밀번호를 재설정하기 위한 링크를 이메일로 보내드릴게요.
             <br />
-            열정적인 멤버들이 가디라고 있어요!
+            가입 시 사용한 이메일 주소를 정확히 입력해주세요.
           </p>
-        </PageTitle>
-        <StyledLink to="/signin-email">이메일로 시작하기</StyledLink>
-        <KakaoButton text="카카오로 시작하기" />
-        <GoogleButton text="구글로 시작하기" />
-      </Wrapper>
-    </Container>
+        </div>
+        <form action="POST" className={cn(styles.loginForm)}>
+          <div className={cn(styles.btnList)}>
+            <Link to="/signin-email" className={cn(styles.emailLoginBtn)}>
+              이메일로 시작하기
+            </Link>
+            <button className={cn(styles.kakaoLoginBtn)}>
+              <Kakao />
+              카카오로 시작하기
+            </button>
+            <button className={cn(styles.googleLoginBtn)}>
+              <Google />
+              구글로 시작하기
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
   );
 }
 
 export default SigninReady;
-
-const Container = styled.div`
-  width: 100%;
-  height: calc(100vh - 60px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Wrapper = styled.div`
-  max-width: 400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-
-const PageTitle = styled.div`
-  h1 {
-    font-size: 32px;
-    margin-top: 30px;
-    margin-bottom: 15px;
-    align-self: left;
-    color: ${(props) => props.theme.grayColors.gray900};
-  }
-  p {
-    font-size: 14px;
-    line-height: 22px;
-    margin-bottom: 40px;
-    color: ${(props) => props.theme.grayColors.gray500};
-  }
-`;
-
-const StyledLink = styled(Link)`
-  width: 400px;
-  height: 48px;
-  border-radius: 6px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 16px;
-  cursor: pointer;
-  background-color: ${(props) => props.theme.primaryColor};
-  color: #fff;
-`;
