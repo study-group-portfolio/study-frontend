@@ -21,14 +21,30 @@ $kakao-color: #ffe812;
   margin: 70px auto;
   margin-top: 130px;
   width: 1160px;
+  height: fit-content;
   display: flex;
   justify-content: center;
+  align-items: center;
 
   .wrapper {
     width: 400px;
     display: flex;
     justify-content: center;
     flex-direction: column;
+
+    .backBtn {
+      margin-bottom: 40px;
+
+      .arrow {
+        width: 7.41px;
+        height: 12px;
+        padding-right: 11px;
+      }
+
+      a {
+        color: $primary-color;
+      }
+    }
 
     .pageTitleSection {
       margin-bottom: 40px;
@@ -52,9 +68,11 @@ $kakao-color: #ffe812;
       .inputWrapper {
         display: flex;
         flex-direction: column;
+        position: relative;
+        margin-bottom: 20px;
 
-        &:first-of-type {
-          margin-bottom: 20px;
+        &:last-of-type {
+          margin-bottom: 0;
         }
 
         label {
@@ -80,6 +98,13 @@ $kakao-color: #ffe812;
             font-size: 16px;
           }
         }
+
+        .icon {
+          width: 22px;
+          position: absolute;
+          top: 57%;
+          right: 5%;
+        }
       }
 
       .btnList {
@@ -103,6 +128,13 @@ $kakao-color: #ffe812;
           border: 1px solid $border-color;
           margin-top: 12px;
         }
+      }
+
+      .utilityMenus {
+        margin-top: 15px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
       }
     }
   }

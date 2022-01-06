@@ -1,7 +1,11 @@
 import { useState } from "react";
 import cn from "classnames";
-import styles from "../../css/pages/users/Users.module.scss";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import styles from "../../css/pages/users/Users.module.scss";
+import { ReactComponent as Kakao } from "../../images/img/img_social_kakao.svg";
+import { ReactComponent as Google } from "../../images/img/img_social_google.svg";
+import EyeSlash from "../../images/eye_slash.svg";
 
 interface ILoginForm {
   email: string;
@@ -51,17 +55,24 @@ function Login({ email, password }: ILoginForm) {
           <div className={cn(styles.inputWrapper)}>
             <label htmlFor="password">비밀번호</label>
             <input type="password" placeholder="비밀번호를 입력해주세요." />
+            <img src={EyeSlash} className={cn(styles.icon)} alt="eye-slash" />
           </div>
           <div className={cn(styles.btnList)}>
             <button className={cn(styles.emailLoginBtn)}>
               이메일로 로그인하기
             </button>
             <button className={cn(styles.kakaoLoginBtn)}>
+              <Kakao />
               카카오로 로그인하기
             </button>
             <button className={cn(styles.googleLoginBtn)}>
+              <Google />
               구글로 로그인하기
             </button>
+          </div>
+          <div className={cn(styles.utilityMenus)}>
+            <Link to="/signin">아직 회원이 아니신가요?</Link>
+            <Link to="/find-password">비밀번호 찾기</Link>
           </div>
         </form>
       </div>

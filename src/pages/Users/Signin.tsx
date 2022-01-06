@@ -1,51 +1,33 @@
 import { useState } from "react";
-import styled from "styled-components";
+import cn from "classnames";
 import { useForm } from "react-hook-form";
-import { ErrorMessage } from "@hookform/error-message";
-import { FaEyeSlash, FaEye } from "react-icons/fa";
-import PageTitle from "../../components/Users/PageTitle";
-import BackBtn from "../../components/Users/BackBtn";
+import { Link } from "react-router-dom";
+import styles from "../../css/pages/users/Users.module.scss";
+import EyeSlash from "../../images/eye_slash.svg";
+import BackBtn from "../../images/arrow_back_btn_blue.svg";
 
-// raw data
-
-const registeredUsers: {} = [
-  {
-    email: "abc@example.com",
-    nickname: "hello",
-  },
-];
-
-interface ISigninFormValues {
+interface ISigninForm {
   email: string;
   password: string;
   confirmPassword: string;
-  nickname: string;
 }
 
-function EmailSignin({
-  email,
-  password,
-  confirmPassword,
-  nickname,
-}: ISigninFormValues) {
+export default function Login() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    setError,
-  } = useForm<ISigninFormValues>();
+  } = useForm<ISigninForm>();
 
-  const onSubmit = (data: ISigninFormValues) => {
-    if (data.password !== data.confirmPassword) {
-      setError("confirmPassword", { message: "비밀번호가 일치하지 않습니다." });
-    }
+  const onSubmit = (data: ISigninForm) => {
+    console.log(data);
   };
 
+  // Password visibility toggle
   const [passwordType, setPasswordType] = useState({
     type: "password",
     visible: false,
   });
-
   const handleVisibility = (event: any) => {
     setPasswordType(() => {
       if (!passwordType.visible) {
@@ -54,268 +36,50 @@ function EmailSignin({
       return { type: "password", visible: false };
     });
   };
-
   return (
-    <Container>
-      <Wrapper>
-        <BackBtn to="/signin" />
-        <PageTitle
-          title="회원가입"
-          expFirst="반갑습니다."
-          expSecond="열정적인 멤버들이 기다리고 있어요!"
-        />
-        <SigninForm onSubmit={handleSubmit(onSubmit)}>
-          <div className="input-wrapper">
+    <section className={cn(styles.container)}>
+      <div className={cn(styles.wrapper)}>
+        <div className={cn(styles.backBtn)}>
+          <Link to="/signin">
+            <img src={BackBtn} alt="backBtn" className={cn(styles.arrow)} />
+            이전으로
+          </Link>
+        </div>
+        <div className={cn(styles.pageTitleSection)}>
+          <h1 className={cn(styles.pageTitle)}>회원가입</h1>
+          <p className={cn(styles.pageExp)}>
+            반갑습니다.
+            <br />
+            열정적인 멤버들이 기다리고 있어요!
+          </p>
+        </div>
+        <form action="POST" className={cn(styles.loginForm)}>
+          <div className={cn(styles.inputWrapper)}>
             <label htmlFor="email">이메일</label>
-            <input
-              placeholder="example@studyit.com"
-              {...register("email", {
-                required: "올바른 이메일을 입력해주세요.",
-                pattern: {
-                  value: /^[a-z0-9_+.-]+@([a-z0-9-]+\.)+[a-z0-9]{2,4}$/,
-                  message: "올바른 이메일을 입력해주세요.",
-                },
-              })}
-              style={
-                errors.email
-                  ? { border: "1px solid #f36355" }
-                  : { border: "1px solid #e4e7ec" }
-              }
-            />
+            <input type="text" placeholder="example@studyit.com" />
           </div>
-          <ErrorMessage
-            className="error-message"
-            errors={errors}
-            name="email"
-            as="p"
-          />
-          {/* <p className="error-message">{errors?.email?.message}</p> */}
-
-          <div className="input-wrapper password-input">
+          <div className={cn(styles.inputWrapper)}>
             <label htmlFor="password">비밀번호</label>
-            <input
-              type={passwordType.type}
-              placeholder="비밀번호를 입력해주세요"
-              {...register("password", {
-                required: "올바른 비밀번호를 입력해주세요.",
-                pattern: {
-                  value:
-                    /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/,
-                  message: "올바른 비밀번호를 입력해주세요.",
-                },
-              })}
-              style={
-                errors.password
-                  ? { border: "1px solid #f36355" }
-                  : { border: "1px solid #e4e7ec" }
-              }
-              name="password"
-            />
-            <span onClick={handleVisibility}>
-              {passwordType.visible ? <HelpEyeOpen /> : <HelpEyeClose />}
-            </span>
+            <input type="password" placeholder="비밀번호를 입력해주세요." />
+            <img src={EyeSlash} className={cn(styles.icon)} alt="eye-slash" />
           </div>
-          <p className="help-text">영문/숫자/특수문자 조합, 8자~32자</p>
-          <ErrorMessage
-            className="error-message"
-            errors={errors}
-            name="password"
-            as="p"
-          />
-
-          <div className="input-wrapper">
-            <label htmlFor="confirmPassword">비밀번호 확인</label>
+          <div className={cn(styles.inputWrapper)}>
+            <label htmlFor="password">비밀번호 확인</label>
             <input
-              type={passwordType.type}
-              placeholder="비밀번호를 한번 더 입력해주세요"
-              {...register("confirmPassword")}
-              style={
-                errors.confirmPassword
-                  ? { border: "1px solid #f36355" }
-                  : { border: "1px solid #e4e7ec" }
-              }
-              name="confirmPassword"
+              type="password"
+              placeholder="비밀번호를 한 번 더 입력해주세요."
             />
-            <span onClick={handleVisibility}>
-              {passwordType.visible ? <EyeOpen /> : <EyeClose />}
-            </span>
+            <img src={EyeSlash} className={cn(styles.icon)} alt="eye-slash" />
           </div>
-          <ErrorMessage
-            className="error-message"
-            errors={errors}
-            name="confirmPassword"
-            as="p"
-          />
-
-          <div className="input-wrapper">
+          <div className={cn(styles.inputWrapper)}>
             <label htmlFor="nickname">닉네임</label>
-            <input
-              className="nickname-input"
-              placeholder="닉네임을 입력해 주세요"
-              {...register("nickname", {
-                required: "올바른 닉네임을 입력해 주세요.",
-              })}
-              style={
-                errors.nickname
-                  ? { border: "1px solid #f36355" }
-                  : { border: "1px solid #e4e7ec" }
-              }
-              maxLength={10}
-              name="nickname"
-            />
-            <button
-              className="double-validation"
-              style={
-                errors.nickname
-                  ? { border: "1px solid #f36355" }
-                  : { border: "1px solid #e4e7ec" }
-              }
-            >
-              중복 검사
-            </button>
+            <input type="text" placeholder="닉네임을 입력해 주세요" />
           </div>
-          <p className="help-text">한글/영어/숫자 혼용 가능, 최대 10자</p>
-          <ErrorMessage
-            className="error-message"
-            errors={errors}
-            name="nickname"
-            as="p"
-          />
-          {!errors.email &&
-          !errors.confirmPassword &&
-          !errors.password &&
-          !errors.nickname ? (
-            <button>회원가입하기</button>
-          ) : (
-            <button style={{ opacity: 1 }}>회원가입하기</button>
-          )}
-        </SigninForm>
-      </Wrapper>
-    </Container>
+          <div className={cn(styles.btnList)}>
+            <button className={cn(styles.emailLoginBtn)}>회원가입하기</button>
+          </div>
+        </form>
+      </div>
+    </section>
   );
 }
-
-export default EmailSignin;
-
-const Container = styled.div`
-  width: 100%;
-  height: calc(100vh - 60px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Wrapper = styled.div`
-  max-width: 400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-
-const SigninForm = styled.form`
-  display: flex;
-  flex-direction: column;
-
-  .help-text {
-    display: inline-block;
-    color: ${(props) => props.theme.grayColors.gray500};
-    font-size: 14px;
-    margin-top: 6px;
-  }
-
-  .input-wrapper {
-    position: relative;
-    width: 400px;
-
-    label {
-      display: block;
-      margin-bottom: 8px;
-      margin-top: 20px;
-      color: ${(props) => props.theme.grayColors.gray500};
-      font-size: 16px;
-    }
-
-    input {
-      width: 400px;
-      height: 48px;
-      border: 1px solid ${(props) => props.theme.grayColors.gray200};
-      border-radius: 6px;
-      padding-left: 15px;
-      font-size: 16px;
-      color: ${(props) => props.theme.grayColors.gray900};
-
-      :focus {
-        outline: none;
-      }
-
-      ::placeholder {
-        color: #98a2b3;
-        font-size: 16px;
-      }
-    }
-
-    .nickname-input {
-      width: 307px;
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-      border-right: none;
-    }
-
-    .double-validation {
-      display: inline-block;
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-      width: calc(400px - 307px);
-      background-color: #fff;
-      border: 1px solid ${(props) => props.theme.grayColors.gray200};
-      color: ${(props) => props.theme.primaryColor};
-    }
-  }
-
-  .error-message {
-    font-size: 14px;
-    margin-top: 6px;
-    color: ${(props) => props.theme.alertColors.error.text};
-  }
-
-  button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 400px;
-    height: 48px;
-    background-color: ${(props) => props.theme.primaryColor};
-    opacity: 0.5;
-    border-radius: 6px;
-    color: #fff;
-    font-size: 16px;
-    margin-top: 20px;
-  }
-`;
-
-const EyeOpen = styled(FaEye)`
-  width: 24px;
-  height: 24px;
-  color: ${(props) => props.theme.grayColors.gray400};
-  position: absolute;
-  bottom: 14px;
-  right: 12px;
-`;
-
-const EyeClose = styled(FaEyeSlash)`
-  width: 24px;
-  height: 24px;
-  color: ${(props) => props.theme.grayColors.gray400};
-  position: absolute;
-  bottom: 14px;
-  right: 12px;
-`;
-
-const HelpEyeOpen = styled(EyeOpen)`
-  bottom: 10px;
-`;
-
-const HelpEyeClose = styled(EyeClose)`
-  bottom: 10px;
-`;
