@@ -22,13 +22,13 @@
 
     .buttonSection {
         display: grid;
-        grid-template-columns: auto auto auto auto;
+        grid-template-columns: 25% 25% 25% 25%;
         grid-gap: 10px;
     }
 
     .textInputSection {
         display: grid;
-        grid-template-columns: auto auto auto;
+        grid-template-columns: 33.333% 33.333% 33.334%;
         grid-gap: 10px;
     }
 
@@ -46,9 +46,15 @@
         column-gap: 12px;
     }
 
+    .studyCardSection {
+        display: grid;
+        grid-template-columns: 33.333% 33.333% 33.334%;
+        grid-gap: 20px;
+    }
+
     .menberCardSection {
         display: grid;
-        grid-template-columns: auto auto auto;
+        grid-template-columns: 33.333% 33.333% 33.334%;
         column-gap: 20px;
     }
 }

@@ -1,121 +1,192 @@
 @import '../../common/icon';
-
-.container {
-    /** 내부 여백 설정 **/
-    padding: 20px;
-
-    /** 배경색상 설정 **/
-    background-color: #FFFFFF;
-
-    /** 그림자 설정 **/
-    box-shadow: 0px 8px 30px rgba(16, 24, 40, 0.02), 
-    0px 8px 24px rgba(16, 24, 40, 0.02), 
-    0px 4px 12px rgba(16, 24, 40, 0.02), 
-    0px 2px 6px rgba(16, 24, 40, 0.02);
-
-    /** 테두리 설정 **/
-    border: none;
-    border-radius: 6px;
-
-    /** 그리드 설정 **/
-    display: grid;
-
-    .content {
+.body {
+    position: relative;
+    > .container {
         /** 내부 여백 설정 **/
-        padding-bottom: 16px;
+        padding: 20px;
+
+        /** 배경색상 설정 **/
+        background-color: #FFFFFF;
+
+        /** 그림자 설정 **/
+        box-shadow: 0px 8px 30px rgba(16, 24, 40, 0.02), 
+        0px 8px 24px rgba(16, 24, 40, 0.02), 
+        0px 4px 12px rgba(16, 24, 40, 0.02), 
+        0px 2px 6px rgba(16, 24, 40, 0.02);
 
         /** 테두리 설정 **/
-        border-bottom: 1px dashed #E4E7EC;
+        border: none;
+        border-radius: 6px;
 
         /** 그리드 설정 **/
         display: grid;
-        grid-template-columns: auto 24px;
-        column-gap: 16px;
 
-        .section {
+        .content {
+            /** 내부 여백 설정 **/
+            padding-bottom: 16px;
+
+            /** 테두리 설정 **/
+            border-bottom: 1px dashed #E4E7EC;
+
             /** 그리드 설정 **/
             display: grid;
-            row-gap: 30px;
+            grid-template-columns: auto 24px;
+            column-gap: 16px;
 
-            .titleSection {
+            .section {
                 /** 그리드 설정 **/
                 display: grid;
-                row-gap: 6px;
+                row-gap: 30px;
 
-                .title {
-                    /** 텍스트 설정 **/
-                    font-style: normal;
-                    font-weight: bold;
-                    font-size: 16px;
-                    line-height: 28px;
-                    color: #101828;
+                .titleSection {
+                    /** 그리드 설정 **/
+                    display: grid;
+                    row-gap: 6px;
+
+                    .title {
+                        /** 텍스트 설정 **/
+                        font-style: normal;
+                        font-weight: bold;
+                        font-size: 16px;
+                        line-height: 28px;
+                        color: #101828;
+
+                        /** 말줄임 설정 **/
+                        display: block;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+
+                    .skillTagSection {
+                        /** 텍트스 설정 **/
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 16px;
+                        line-height: 20px;
+                        color: #98A2B3;
+
+                        /** 말줄임 설정 **/
+                        display: block;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
                 }
 
-                .skillTagSection {
-                    /** 텍트스 설정 **/
-                    font-style: normal;
-                    font-weight: normal;
-                    font-size: 16px;
-                    line-height: 20px;
-                    color: #98A2B3;
+                .badgeSection {
+                    /** 그리드 설정 **/
+                    display: grid;
+                    grid-auto-flow: column;
+                    justify-content: flex-start;
+                    column-gap: 12px;
                 }
             }
 
-            .badgeSection {
-                /** 그리드 설정 **/
-                display: grid;
-                grid-auto-flow: column;
-                justify-content: flex-start;
-                column-gap: 12px;
+            .buttonSection {
+                button {
+                    /** 요소 크기 설정 **/
+                    width: 24px;
+                    height: 24px;
+
+                    /** 내부 여백 설정 **/
+                    padding: 0;
+                }
+
+                Link {
+                    /** 요소 크기 설정 **/
+                    width: 24px;
+                    height: 24px;
+                }
             }
         }
 
-        .buttonSection {
-            button {
-                /** 요소 크기 설정 **/
-                width: 24px;
-                height: 24px;
+        .bottom {
+            /** 그리드 설정 **/
+            display: grid;
+            grid-template-columns: 55px auto auto;
+            column-gap: 8px;
+
+            /** 내부 여백 설정 **/
+            padding-top: 14px;
+
+            span {
+                /** 텍스트 설정 **/
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 18px;
+                color: #667085;
             }
 
-            .bookMarkOn {
-                /** 배경이미지 설정 **/
-                @include ic_bookmark_on_24dp;
-            }
+            .state {
+                /** 내부 여백 설정 **/
+                padding: 0;
+                margin: 0;
 
-            .bookMarkOff {
-                /** 배경이미지 설정 **/
-                @include ic_bookmark_off_24dp
-            }
+                /** 그리드 설정 **/
+                display: grid;
+                grid-template-columns: auto auto;
+                column-gap: 8px;
+                justify-content: flex-end;
 
-            Link {
-                /** 요소 크기 설정 **/
-                width: 24px;
-                height: 24px;
-            }
-
-            .editBtn {
-                /** 배경이미지 설정 **/
-                @include ic_edit_24dp;
+                img {
+                    /** 외부 여백 설정 **/
+                    margin: 5px 0;
+                }
             }
         }
     }
 
-    .bottom {
-        /** 그리드 설정 **/
-        display: grid;
-        grid-template-columns: 55px auto 88px;
-        column-gap: 8px;
+    > .stateDropdown {
+        /** 요소 크기 설정 **/
+        width: 145px;
+
+        /** 배경색상 설정 **/
+        background-color: #FFFFFF;
+
+        /** 그림자 설정 **/
+        box-shadow: 0px 8px 30px rgba(16, 24, 40, 0.02), 
+        0px 8px 24px rgba(16, 24, 40, 0.02), 
+        0px 4px 12px rgba(16, 24, 40, 0.02), 
+        0px 2px 6px rgba(16, 24, 40, 0.02);
+
+        /** 테두리 설정 **/
+        border-radius: 6px;
+
+        /** 외부 여백 설정 **/
+        margin-top: 8px;
+        margin-left: calc(100% - 145px);
 
         /** 내부 여백 설정 **/
-        padding-top: 14px;
+        padding: 10px;
 
-        span {
-            /** 텍스트 설정 **/
-            font-style: normal;
-            font-weight: normal;
-            font-size: 14px;
-            line-height: 18px;
-            color: #667085;
+        /** 요소 블록 설정 **/
+        display: inline-block;
+
+        /** 요소 위치 설정 **/
+        position: absolute;
+
+        z-index: 50;
+        ul {
+            /** 그리드 설정 **/
+            display: grid;
+            row-gap: 10px;
+
+            li {
+                /** 텍스트 설정 **/
+                font-style: normal;
+                font-weight: normal;
+                font-size: 12px;
+                line-height: 15px;
+                color: #101828;
+
+                /** 그리드 설정 **/
+                display: grid;
+                grid-template-columns: auto 19px;
+                column-gap: 14px;
+                justify-content: space-between;
+            }
         }
     }
 }

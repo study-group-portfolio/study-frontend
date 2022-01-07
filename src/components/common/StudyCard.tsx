@@ -1,13 +1,26 @@
 import cn from 'classnames';
 import styles from 'css/components/common/StudyCard.module.scss';
-import { BadgeType, ProcessType, RecruitType, StudyType } from 'utils/enum';
+import { 
+    BadgeType, 
+    ProcessType, 
+    RecruitType, 
+    StudyType,
+    StudyCardType, 
+} from 'utils/enum';
 import Badge from './Badge';
 import { Link, useHistory } from 'react-router-dom';
-
+import ic_expand_more_24dp from 'images/icon/ic_expand_more_24dp.svg';
+import ic_expand_less_24dp from 'images/icon/ic_expand_less_24dp.svg';
+import ic_bookmark_off_24dp from 'images/icon/ic_bookmark_off_24dp.svg';
+import ic_bookmark_on_24dp from 'images/icon/ic_bookmark_on_24dp.svg';
+import ic_edit_24dp from 'images/icon/ic_edit_24dp.svg';
+import { useState } from 'react';
+import { PositionState } from 'utils/interface';
 interface StudyCardProps {
     studySeq: number;
     title: string;
     skillTags: string;
+    studyCardType: StudyCardType;
     recruitType: RecruitType;
     studyType: StudyType;
     processType: ProcessType;
@@ -15,63 +28,83 @@ interface StudyCardProps {
     onClickBookMark: Function;
     currentNum: number; // 현재 모집인원
     totalNum: number; // 총 모집인원
+    positionStateList: PositionState[];
 }
 
 export default function StudyCard(props: StudyCardProps) {
     const { 
         studySeq,
         title, 
-        skillTags, 
+        skillTags,
+        studyCardType,
         recruitType, 
         studyType, 
         processType,
         bookMark,
         currentNum, 
-        totalNum 
+        totalNum,
+        positionStateList
     } = props;
+    const [state, setState] = useState(false);
 
     const history = useHistory();
 
     return (
-        <div className={cn(styles.container)}>
-            <div className={cn(styles.content)}>
-                <div className={cn(styles.section)}>
-                    <div className={cn(styles.titleSection)}>
-                        <Link to={getDetailPath(studySeq, studyType)} className={cn(styles.title)}>{title}</Link>
-                        <div className={cn(styles.skillTagSection)}>{skillTags}</div>
+        <div className={cn(styles.body)}>
+            <div className={cn(styles.container)}>
+                <div className={cn(styles.content)}>
+                    <div className={cn(styles.section)}>
+                        <div className={cn(styles.titleSection)}>
+                            <Link to={getDetailPath(studySeq, studyType)} className={cn(styles.title)}>{title}</Link>
+                            <div className={cn(styles.skillTagSection)}>{skillTags}</div>
+                        </div>
+                        <div className={cn(styles.badgeSection)}>
+                            <Badge badgeType={getRecruitBadge(recruitType)} />{/* 모집상태 */}
+                            <Badge badgeType={getStudyBadge(studyType)} />{/* 스터디 종류 */}
+                            <Badge badgeType={getProcessBadge(processType)} />{/* 스터디 진행방식 */}
+                        </div>
                     </div>
-                    <div className={cn(styles.badgeSection)}>
-                        <Badge badgeType={getRecruitBadge(recruitType)} />{/* 모집상태 */}
-                        <Badge badgeType={getStudyBadge(studyType)} />{/* 스터디 종류 */}
-                        <Badge badgeType={getProcessBadge(processType)} />{/* 스터디 진행방식 */}
+                    <div className={styles.buttonSection}>
+                        {/* 북마크 버튼 */}
+                        {studyCardType === StudyCardType.북마크형 && 
+                        <button 
+                            onClick={() => {props.onClickBookMark(); console.log(bookMark)}}
+                        >
+                            {!bookMark && <img src={ic_bookmark_off_24dp} />}
+                            {bookMark && <img src={ic_bookmark_on_24dp} />}
+                        </button>}
+                        {/* 편집 버튼 */}
+                        {studyCardType === StudyCardType.편집형 && 
+                        <button 
+                            onClick={() => history.push(getRevisionPath(studySeq, studyType))}
+                        >
+                            <img src={ic_edit_24dp} />
+                        </button>}
                     </div>
                 </div>
-                <div className={styles.buttonSection}>
-                    {/* 북마크 버튼 */}
-                    {<button 
-                        className={
-                            cn(
-                                {
-                                    [styles.bookMarkOn]: bookMark,
-                                    [styles.bookMarkOff]: !bookMark,
-                                }
-                            )
-                        }
-                        onClick={() => props.onClickBookMark()}
-                    ></button>}
-                    {/* 편집 버튼 */}
+                <div className={cn(styles.bottom)}>
+                    <span>모집인원</span>
+                    <span>{currentNum}/{totalNum}</span>
                     <button 
-                        className={cn(styles.editBtn)}
-                        onClick={() => history.push(getRevisionPath(studySeq, studyType))}
+                        className={cn(styles.state)}
+                        onClick={() => setState(!state)}
                     >
+                        <span>포지션 현황</span>
+                        {state && <img src={ic_expand_more_24dp} />}
+                        {!state && <img src={ic_expand_less_24dp} />}
                     </button>
                 </div>
             </div>
-            <div className={cn(styles.bottom)}>
-                <span>모집인원</span>
-                <span>{currentNum}/{totalNum}</span>
-                <span className={cn(styles.status)}>포지션 현황</span>
-            </div>
+            {state && <div className={cn(styles.stateDropdown)}>
+                <ul>
+                    {positionStateList.map(positionState => (
+                        <li>
+                            <span>{positionState.name}</span>
+                            <span>{positionState.currentNum}/{positionState.totalNum}</span>
+                        </li>
+                    ))}
+                </ul>
+            </div>}
         </div>
     )
 }
