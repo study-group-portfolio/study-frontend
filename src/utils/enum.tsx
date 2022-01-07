@@ -68,3 +68,9 @@ export enum InputType {
     패스워드형 = "password",
     텍스트형 = "text"
 }
+
+/** 스터디 카드 유형 */
+export enum StudyCardType {
+    북마크형 = "B",
+    편집형 = "E"
+}
