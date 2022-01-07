@@ -8,115 +8,151 @@
     background-color: #FFFFFF;
 
     /** 테두리 설정 **/
-    border: 1px solid #E4E7EC;
+    border-bottom: 1px solid #E4E7EC;
 
     /** 상단바 고정 설정 **/
     position: fixed;
     top: 0;
     z-index: 1000;
 
-    .navContainer {
-        /** 요소 크기 설정 **/
-        width: 1366px;
-        height: 60px;
-        box-sizing: border-box;
+    /** 그리드 설정 **/
+    display: grid;
+    grid-template-columns: auto auto;
 
-        /** 요소 중앙 정렬 **/
-        margin: 0 auto;
+    padding: 0 calc(50% - 580px);
 
-        /** 내부 여백 설정 **/
-        padding: 0 103px;
-
-        /** 그리드 설정 **/
-        display: grid;
-        grid-template-columns: 79.11px auto;
-        column-gap: 586px;
-
-        .logoSection {
-            /** 요소 크기 설정 **/
-            height: 60px;
-
-            .logo {
-                /** 요소 크기 설정 **/
-                width: 79.12px;
-                height: 22px;
+    .logoSection {
+        // position: absolute;
+        // left: calc(50% - 580px);
         
-                /** 외부 여백 설정 **/
-                margin: 19px 0;
+        /** 요소 크기 설정 **/
+        height: 60px;
+
+        .logo {
+            /** 요소 크기 설정 **/
+            width: 79.12px;
+            height: 22px;
+    
+            /** 외부 여백 설정 **/
+            margin: 19px 0;
+        }
+    }
+
+    .linkBox {
+        display: grid;
+        grid-auto-flow: column;
+        justify-content: flex-end;
+        column-gap: 36px;
+
+        // float: right;
+        // margin-right: calc(50% - 580px);
+
+        .studyCreation {
+            display: inline-block;
+
+            /** 외부 여백 설정 **/
+            margin: 13px 0;
+
+            /** 배경색상 설정 **/
+            background: #FFFFFF;
+    
+            /** 테두리 설정 **/
+            border: 1px solid #E4E7EC;
+            border-radius: 18px;
+    
+            /** 텍스트 설정 **/
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 18px;
+            color: #175CD3;
+    
+            /** 내부 여백 설정 **/
+            padding: 7px 11px;
+        }
+
+        .link {
+            /** 요소 블록 설정 **/
+            display: inline-block;
+
+            /** 텍스트 설정 **/
+            font-style: normal;
+            font-weight: normal;
+            font-size: 15px;
+            line-height: 19px;
+            color: #101828;
+
+            /** 외부 여백 설정 **/
+            margin: 20px 0;
+
+            .alarmSection {
+                display: inline;
+                position: relative;
+                top: -10px;
+                left: -4px;
             }
         }
 
-        .detailSection {
+        .circle_32 {
             /** 요소 크기 설정 **/
-            height: 60px;
+            width: 32px;
+            height: 32px;
+            box-sizing: border-box;
 
-            /** 그리드 설정 **/
-            display: grid;
-            grid-auto-flow: column;
-            justify-content: flex-end;
-            column-gap: 36px;
+            /** 테두리 설정 **/
+            border: 1px solid #E4E7EC;
+            border-radius: 16px;
 
-            .studyCreation {    
-                /** 외부 여백을 통한 요소의 위치 설정 **/
-                margin: 13px 0;
+            /** 텍스트 설정 **/
+            font-style: normal;
+            font-weight: normal;
+            font-size: 8px;
+            line-height: 10px;
+            color: #101828;
 
-                /** 요소 크기 설정 **/
-                height: 34px;
-    
-                /** 테두리 설정 **/
-                border: 1px solid #E4E7EC;
-                border-radius: 18px;
-    
-                /** 배경색상 설정 **/
-                background-color: #FFFFFF;
-    
-                /** 텍스트 설정 **/
-                font-style: normal;
-                font-weight: normal;
-                font-size: 14px;
-                line-height: 18px;
-                color: #175CD3;
-    
-                /** 내부 여백 설정 **/
-                padding: 7px 12px;
-            }
+            /** 텍스트 중앙 정렬 **/
+            text-align: center;
+            padding: 10px 0;
 
-            .link {
-                /** 텍스트 설정 **/
-                font-style: normal;
-                font-weight: normal;
-                font-size: 15px;
-                line-height: 19px;
-                color: #101828;
+            /** 외부 여백 설정 **/
+            margin: 14px 0;
+        }
+    }
+}
 
-                /** 외부 여백 설정 **/
-                margin: 20px 0;
-            }
+.alarmDropBox {
+    margin: 0;
+    position: fixed;
+    display: inline-block;
+    top: 60px;
+    left: calc(50% + 438px);
+    z-index: 100;
 
-            .circle_32 {
-                /** 요소 크기 설정 **/
-                width: 32px;
-                height: 32px;
-                box-sizing: border-box;
+    /** 배경색상 설정 **/
+    background-color: #FFFFFF;
 
-                /** 테두리 설정 **/
-                border: 1px solid #E4E7EC;
-                border-radius: 16px;
+    /** 그림자 설정 **/
+    box-shadow: 0px 8px 24px rgba(16, 24, 40, 0.02), 
+    0px 4px 12px rgba(16, 24, 40, 0.02), 
+    0px 2px 6px rgba(16, 24, 40, 0.02);
 
-                /** 외부 여백 설정 **/
-                margin: 14px 0;
+    /** 테두리 설정 **/
+    border-radius: 6px;
 
-                /** 텍스트 설정 **/
-                font-style: normal;
-                font-weight: normal;
-                font-size: 8px;
-                line-height: 10px;
-                color: #101828;
+    /** 내부 여백 설정 **/
+    padding: 10px 0;
 
-                /** 텍스트 중앙 정렬 **/
-                text-align: center;
-                padding: 10px 0;
-            }
+    ul {
+        li {
+            /** 내부 여백 설정 **/
+            padding: 10px 60px 10px 15px;
+
+            /** 텍스트 설정 **/
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 18px;
+            color: #101828;
         }
     }
 }
