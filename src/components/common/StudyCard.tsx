@@ -85,17 +85,19 @@ export default function StudyCard(props: StudyCardProps) {
                 <div className={cn(styles.bottom)}>
                     <span>모집인원</span>
                     <span>{currentNum}/{totalNum}</span>
-                    <button 
+                    <span 
                         className={cn(styles.state)}
-                        onClick={() => setState(!state)}
+                        onMouseOver={() => setState(true)}
+                        onMouseOut={() => setState(false)}
                     >
                         <span>포지션 현황</span>
                         {state && <img src={ic_expand_more_24dp} />}
                         {!state && <img src={ic_expand_less_24dp} />}
-                    </button>
+                    </span>
                 </div>
             </div>
-            {state && <div className={cn(styles.stateDropdown)}>
+            {state && 
+            <div className={cn(styles.stateDropdown)}>
                 <ul>
                     {positionStateList.map(positionState => (
                         <li>
