@@ -33,7 +33,7 @@ export default function Slider(props: SliderProps) {
         </div>
         <div className={cn(styles.content)}>
             <ul style={getTransitionStyle(index)}>
-                {children.map((child: any) => (<li>{child}</li>))}
+                {children.map((child: any, index: number) => (<li key={index}>{child}</li>))}
             </ul>
         </div>
         <div className={cn(styles.side)}>

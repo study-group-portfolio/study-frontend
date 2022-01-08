@@ -16,12 +16,15 @@ import AlarmBadge from 'components/common/AlarmBadge';
 import StudyCard from 'components/common/StudyCard';
 import MemberCard from 'components/common/MemberCard';
 import Slider from 'components/common/Slider';
+import Select from 'components/common/Select';
+import GroupOptions from 'components/common/GroupOptions';
+import Options from 'components/common/Options';
 import styles from 'css/pages/Component.module.scss';
 import cn from 'classnames';
 import ic_search_24dp from 'images/icon/ic_search_24dp.svg';
 import img_testuser_01 from 'images/img/img_testuser_01.svg';
 import img_testuser_02 from 'images/img/img_testuser_02.svg';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { PositionState } from 'utils/interface';
 
 export default function Test() {
@@ -33,10 +36,29 @@ export default function Test() {
     const [bookMark5, setBookMark5] = useState(false);
     const [bookMark6, setBookMark6] = useState(false);
 
+    const [selectedValue1, setSelectedValue1] = useState('');
+    const [selectedValue2, setSelectedValue2] = useState('');
+
     const positionStateList: PositionState[] = [
         { name: '백엔드 개발자', currentNum: 1, totalNum: 1},
         { name: '프론트엔드 개발자', currentNum: 1, totalNum: 1},
         { name: 'UX/UI 디자이너', currentNum: 0, totalNum: 2},
+    ]
+
+    const locations = ['서울', '부산', '인천', '경기', '강원', '충청', '전라', '경상', '제주'];
+    const positions = [
+        {
+            title: '기획',
+            items: ['서비스 기획자', '게임 기획자', 'PM·PO', '데이터 분석가']
+        },
+        {
+            title: '디자인',
+            items: ['UX/UI 디자이너', 'UX디자이너', 'GUI 디자이너', '그래픽 디자이너', '3D 디자이너']
+        },
+        {
+            title: '개발',
+            items: ['프론트엔드 개발자', '웹 개발자', '서버 개발자', '자바 개발자', '웹 퍼블리셔']
+        }
     ]
 
     return (
@@ -223,6 +245,27 @@ export default function Test() {
                         bookMark={bookMark3}
                         onClickBookMark={() => setBookMark3(!bookMark3)}
                     />
+                </div>
+                <h2>Select</h2>
+                <div className={cn(styles.selectSection)}>
+                    <Select 
+                        placeholder='지역을 선택해 주세요'
+                        value={selectedValue1}
+                        onChange={(item: string) => setSelectedValue1(item)}
+                    >
+                        <Options
+                            options={locations}
+                        />
+                    </Select>
+                    <Select 
+                        placeholder="포지션을 선택해 주세요"
+                        value={selectedValue2}
+                        onChange={(item: string) => setSelectedValue2(item)}
+                    >
+                        <GroupOptions
+                            options={positions}
+                        />
+                    </Select>
                 </div>
             </div>
             <div>
