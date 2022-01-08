@@ -17,6 +17,7 @@ export default function PrimaryButton(props: PrimaryButtonProps) {
         <button
             className={
                 cn(
+                    styles.btn,
                     {
                         [styles.primary]: buttonType === ButtonType.기본,
                         [styles.secondary]: buttonType === ButtonType.서브,

@@ -19,6 +19,7 @@ import Slider from 'components/common/Slider';
 import Select from 'components/common/Select';
 import GroupOptions from 'components/common/GroupOptions';
 import Options from 'components/common/Options';
+import CheckBox from 'components/common/CheckBox';
 import styles from 'css/pages/Component.module.scss';
 import cn from 'classnames';
 import ic_search_24dp from 'images/icon/ic_search_24dp.svg';
@@ -266,6 +267,10 @@ export default function Test() {
                             options={positions}
                         />
                     </Select>
+                </div>
+                <h2>CheckBox</h2>
+                <div>
+                    <CheckBox content='Google Analytics' onClick={(content: string) => console.log(content)}/>
                 </div>
             </div>
             <div>

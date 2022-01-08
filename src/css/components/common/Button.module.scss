@@ -1,4 +1,4 @@
-button {
+.btn {
     /** 텍스트 설정 **/
     font-style: normal;
     font-weight: normal;
@@ -18,7 +18,7 @@ button {
     column-gap: 6px;
 }
 
-button:disabled {
+.btn:disabled {
     /** 마우스 커서 모양 설정 **/
     cursor: not-allowed;
 }
