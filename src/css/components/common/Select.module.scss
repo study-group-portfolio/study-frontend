@@ -34,6 +34,12 @@
         span {
             /** 내부 여백 설정 **/
             padding: 2px 0;
+
+            /** 말줄임 설정 **/
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
     }
 

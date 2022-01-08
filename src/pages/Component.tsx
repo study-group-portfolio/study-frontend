@@ -20,13 +20,14 @@ import Select from 'components/common/Select';
 import GroupOptions from 'components/common/GroupOptions';
 import Options from 'components/common/Options';
 import CheckBox from 'components/common/CheckBox';
+import CheckBoxOptions from 'components/common/CheckBoxOptions';
 import styles from 'css/pages/Component.module.scss';
 import cn from 'classnames';
 import ic_search_24dp from 'images/icon/ic_search_24dp.svg';
 import img_testuser_01 from 'images/img/img_testuser_01.svg';
 import img_testuser_02 from 'images/img/img_testuser_02.svg';
 import { useState, useEffect } from 'react';
-import { PositionState } from 'utils/interface';
+import { PositionState, CustomChangeEvent } from 'utils/interface';
 
 export default function Test() {
     /** 북마크 설정 관련 변수 */
@@ -39,6 +40,9 @@ export default function Test() {
 
     const [selectedValue1, setSelectedValue1] = useState('');
     const [selectedValue2, setSelectedValue2] = useState('');
+    const [selectedValue3, setSelectedValue3] = useState(Array<string>());
+
+    const [seleted, setSelected] = useState(false);
 
     const positionStateList: PositionState[] = [
         { name: '백엔드 개발자', currentNum: 1, totalNum: 1},
@@ -60,6 +64,16 @@ export default function Test() {
             title: '개발',
             items: ['프론트엔드 개발자', '웹 개발자', '서버 개발자', '자바 개발자', '웹 퍼블리셔']
         }
+    ];
+    const skills = [
+        'zeplin', 'jQuery', 'Google Analytics', 
+        'iOS', 'C++', 'Amplitude', 
+        'Android', 'C#', 'Adobe Photoshop', 
+        'html/css', 'Java','Adobe illustrator', 
+        'Spring', 'Python','Adobe XD', 
+        'React.js', 'Python','Figma', 
+        'Amazon AWS', 'Pycharm','Framer', 
+        'MySQL', 'Sketch','JavaScript'
     ]
 
     return (
@@ -252,7 +266,11 @@ export default function Test() {
                     <Select 
                         placeholder='지역을 선택해 주세요'
                         value={selectedValue1}
-                        onChange={(item: string) => setSelectedValue1(item)}
+                        onChange={(customChangeEvent: CustomChangeEvent) => {
+                            if (customChangeEvent.value && typeof customChangeEvent.value === 'string') {
+                                setSelectedValue1(customChangeEvent.value);
+                            }
+                        }}
                     >
                         <Options
                             options={locations}
@@ -261,16 +279,36 @@ export default function Test() {
                     <Select 
                         placeholder="포지션을 선택해 주세요"
                         value={selectedValue2}
-                        onChange={(item: string) => setSelectedValue2(item)}
+                        onChange={(customChangeEvent: CustomChangeEvent) => {
+                            if (customChangeEvent.value && typeof customChangeEvent.value === 'string') {
+                                setSelectedValue2(customChangeEvent.value);
+                            }
+                        }}
                     >
                         <GroupOptions
                             options={positions}
                         />
                     </Select>
+                    <Select
+                        placeholder='스킬을 선택해 주세요'
+                        value={selectedValue3}
+                        onChange={(customChangeEvent: CustomChangeEvent) => {
+                            if (customChangeEvent.value && typeof customChangeEvent.value !== 'string') {
+                                setSelectedValue3(customChangeEvent.value);
+                            }
+                        }}
+                    >
+                        <CheckBoxOptions 
+                            options={skills}
+                        />
+                    </Select>
                 </div>
                 <h2>CheckBox</h2>
                 <div>
-                    <CheckBox content='Google Analytics' onClick={(content: string) => console.log(content)}/>
+                    <CheckBox 
+                        content='Google Analytics'
+                        selected={false}
+                        onClick={(content: string, selected: boolean) => setSelected(selected)}/>
                 </div>
             </div>
             <div>

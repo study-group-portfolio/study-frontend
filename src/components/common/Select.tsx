@@ -3,11 +3,13 @@ import styles from 'css/components/common/Select.module.scss';
 import ic_expand_less_24dp from 'images/icon/ic_expand_less_24dp.svg';
 import ic_expand_more_24dp from 'images/icon/ic_expand_more_24dp.svg';
 import { useState, useEffect, useRef, cloneElement } from 'react';
+import { CustomChangeEvent } from 'utils/interface';
+import { SelectEventType } from 'utils/enum';
 
 interface SelectProps {
     placeholder?: string;
-    value?: string;
-    onChange?: Function;
+    value?: string | string[];
+    onChange?: (customChangeEvent: CustomChangeEvent) => (void);
     children?: any;
 }
 
@@ -32,7 +34,7 @@ export default function Select(props: SelectProps) {
 
     return (
         <div
-            style={getTextColorStyle(value ? BLACK : GRAY)} 
+            style={getTextColorStyle(!value || value.length === 0 ? GRAY : BLACK)} 
             className={cn(styles.container)}
             ref={selectRef}
         >
@@ -40,7 +42,7 @@ export default function Select(props: SelectProps) {
                 className={cn(styles.select)}
                 onClick={() => setOpen(!open)}
             >
-                <span>{value || placeholder}</span>
+                <span>{getDisplayText(placeholder, value)}</span>
                 {!open && <img src={ic_expand_more_24dp} />}
                 {open && <img src={ic_expand_less_24dp} />}
             </div>
@@ -48,12 +50,14 @@ export default function Select(props: SelectProps) {
                 {open && 
                 cloneElement(children, {
                     options: children.props.options,
-                    onChange(item: string) {
+                    onChange(customChangeEvent: CustomChangeEvent) {
                         if (props.onChange) {
-                            props.onChange(item);
-                            setOpen(false);
+                            props.onChange(customChangeEvent);
+                            console.log(customChangeEvent.selectEventType !== SelectEventType.체크선택박스)
+                            if (customChangeEvent.selectEventType !== SelectEventType.체크선택박스) setOpen(false);
                         }
-                    }
+                    },
+                    selectedList: value
                 })}
             </div>
         </div>
@@ -65,4 +69,14 @@ const GRAY = "#98A2B3";
 
 function getTextColorStyle(color: string) {
     return  {color};
+}
+
+function getDisplayText(placeholder?: string, value?: string | string[]): string {
+    if (!value || value.length === 0) {
+        return placeholder || '';
+    } else if (typeof value === 'string') {
+        return value;
+    }
+
+    return value.join('/');
 }

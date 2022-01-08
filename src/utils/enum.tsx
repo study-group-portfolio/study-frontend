@@ -74,3 +74,9 @@ export enum StudyCardType {
     북마크형 = "B",
     편집형 = "E"
 }
+
+export enum SelectEventType {
+    일반선택박스 = "NSB",
+    그룹선택박스 = "GSB",
+    체크선택박스 = "CSB"
+}
