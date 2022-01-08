@@ -1,0 +1,87 @@
+.container {
+    /** 그리드 설정 **/
+    display: grid;
+    row-gap: 8px;
+
+    /** 요소 위치 설정 **/
+    position: relative;
+
+    .select {
+        /** 배경색상 설정 **/
+        background-color: #FFFFFF;
+
+        /** 테두리 설정 **/
+        border: 1px solid #E4E7EC;
+        border-radius: 6px;
+
+        /** 내부 여백 설정 **/
+        padding: 12px 15px;
+
+        /** 텍스트 설정 **/
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 20px;
+
+        /** 그리드 설정 **/
+        display: grid;
+        grid-template-columns: calc(100% - 24px) 24px;
+        justify-content: space-evenly;
+
+        /** 마우스 커서 모양 설정 **/
+        cursor: pointer;
+
+        span {
+            /** 내부 여백 설정 **/
+            padding: 2px 0;
+        }
+    }
+
+    .options {
+        /** 요소 크기 설정 **/
+        width: 100%;
+
+        /** 요소 위치 설정 **/
+        position: absolute;
+        top: 50px;
+
+        /** 배경색상 설정 **/
+        background-color: #FFFFFF;
+
+        /** 테두리 설정 **/
+        border: 1px solid #E4E7EC;
+        border-radius: 6px;
+
+        /** 외부 여백 설정 **/
+        margin-top: 8px;
+
+        /** 내부 여백 설정 **/
+        padding: 5px 0;
+
+        /** 요소 높이 설정 **/
+        z-index: 60;
+
+        .option {
+            /** 내부 여백 설정 **/
+            padding: 10px 15px;
+
+            /** 테두리 설정 **/
+            border-bottom: 1px solid #E4E7EC;
+
+            /** 텍스트 설정 **/
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 20px;
+            color: #101828;
+
+            /** 마우스 커서 모양 설정 **/
+            cursor: pointer;
+        }
+
+        .option:last-child {
+            /** 테두리 설정 **/
+            border: none;
+        }
+    }
+}

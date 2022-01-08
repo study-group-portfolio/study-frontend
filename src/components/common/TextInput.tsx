@@ -40,8 +40,6 @@ export default function TextInput(props: TextInputProps) {
         }
     }
 
-    console.log(styles.default);
-
     return (
         <div className={cn(styles.container)}>
             <div

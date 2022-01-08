@@ -9,8 +9,8 @@ import {
 } from 'utils/enum';
 import Badge from './Badge';
 import { Link, useHistory } from 'react-router-dom';
-import ic_expand_more_24dp from 'images/icon/ic_expand_more_24dp.svg';
-import ic_expand_less_24dp from 'images/icon/ic_expand_less_24dp.svg';
+import ic_expand_more from 'images/icon/ic_expand_more.svg';
+import ic_expand_less from 'images/icon/ic_expand_less.svg';
 import ic_bookmark_off_24dp from 'images/icon/ic_bookmark_off_24dp.svg';
 import ic_bookmark_on_24dp from 'images/icon/ic_bookmark_on_24dp.svg';
 import ic_edit_24dp from 'images/icon/ic_edit_24dp.svg';
@@ -91,8 +91,8 @@ export default function StudyCard(props: StudyCardProps) {
                         onMouseOut={() => setState(false)}
                     >
                         <span>포지션 현황</span>
-                        {state && <img src={ic_expand_more_24dp} />}
-                        {!state && <img src={ic_expand_less_24dp} />}
+                        {state && <img src={ic_expand_more} />}
+                        {!state && <img src={ic_expand_less} />}
                     </span>
                 </div>
             </div>
