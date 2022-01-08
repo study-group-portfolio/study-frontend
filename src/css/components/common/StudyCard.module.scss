@@ -104,7 +104,7 @@
         .bottom {
             /** 그리드 설정 **/
             display: grid;
-            grid-template-columns: 55px auto auto;
+            grid-template-columns: 55px auto 88px;
             column-gap: 8px;
 
             /** 내부 여백 설정 **/
@@ -120,9 +120,8 @@
             }
 
             .state {
-                /** 내부 여백 설정 **/
-                padding: 0;
-                margin: 0;
+                /** 마우스 커서 설정 **/
+                cursor: default;
 
                 /** 그리드 설정 **/
                 display: grid;
