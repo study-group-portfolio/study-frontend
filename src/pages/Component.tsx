@@ -15,6 +15,7 @@ import Badge from 'components/common/Badge';
 import AlarmBadge from 'components/common/AlarmBadge';
 import StudyCard from 'components/common/StudyCard';
 import MemberCard from 'components/common/MemberCard';
+import Slider from 'components/common/Slider';
 import styles from 'css/pages/Component.module.scss';
 import cn from 'classnames';
 import ic_search_24dp from 'images/icon/ic_search_24dp.svg';
@@ -39,188 +40,350 @@ export default function Test() {
     ]
 
     return (
-        <div className={cn(styles.container)}>
-            <h2>버튼</h2>
-            <div className={cn(styles.buttonSection)}>
-                <Button 
-                    buttonName={'버튼'} 
-                    disabled={false} 
-                    img={undefined} 
-                    buttonType={ButtonType.기본} 
-                    onClick={() => {}} />
-                <Button 
-                    buttonName={'버튼'} 
-                    disabled={true} 
-                    img={undefined} 
-                    buttonType={ButtonType.기본} 
-                    onClick={() => {}} />
-                <Button 
-                    buttonName={'버튼'} 
-                    disabled={false} 
-                    img={undefined} 
-                    buttonType={ButtonType.서브} 
-                    onClick={() => {}} />
-                <Button 
-                    buttonName={'버튼'} 
-                    disabled={true} 
-                    img={undefined} 
-                    buttonType={ButtonType.서브} 
-                    onClick={() => {}} />
-                <Button 
-                    buttonName={'카카오'} 
-                    disabled={false} 
-                    img={undefined} 
-                    buttonType={ButtonType.카카오} 
-                    onClick={() => {}} />
-                <Button 
-                    buttonName={'구글'} 
-                    disabled={false} 
-                    img={undefined} 
-                    buttonType={ButtonType.구글} 
-                    onClick={() => {}} />
+        <div>
+            <div className={cn(styles.container)}>
+                <h2>버튼</h2>
+                <div className={cn(styles.buttonSection)}>
+                    <Button 
+                        buttonName={'버튼'} 
+                        disabled={false} 
+                        img={undefined} 
+                        buttonType={ButtonType.기본} 
+                        onClick={() => {}} />
+                    <Button 
+                        buttonName={'버튼'} 
+                        disabled={true} 
+                        img={undefined} 
+                        buttonType={ButtonType.기본} 
+                        onClick={() => {}} />
+                    <Button 
+                        buttonName={'버튼'} 
+                        disabled={false} 
+                        img={undefined} 
+                        buttonType={ButtonType.서브} 
+                        onClick={() => {}} />
+                    <Button 
+                        buttonName={'버튼'} 
+                        disabled={true} 
+                        img={undefined} 
+                        buttonType={ButtonType.서브} 
+                        onClick={() => {}} />
+                    <Button 
+                        buttonName={'카카오'} 
+                        disabled={false} 
+                        img={undefined} 
+                        buttonType={ButtonType.카카오} 
+                        onClick={() => {}} />
+                    <Button 
+                        buttonName={'구글'} 
+                        disabled={false} 
+                        img={undefined} 
+                        buttonType={ButtonType.구글} 
+                        onClick={() => {}} />
+                </div>
+                <h2>텍스트 입력창</h2>
+                <div className={cn(styles.textInputSection)}>
+                    <TextInput 
+                        placeholder={'안녕'}
+                        type={InputType.텍스트형}
+                        textInputState={TextInputState.기본값} 
+                        textInputType={TextInputType.일반형} />
+                    <TextInput 
+                        placeholder={'안녕'} 
+                        type={InputType.텍스트형}
+                        buttonText={'버튼'} 
+                        textInputState={TextInputState.기본값} 
+                        textInputType={TextInputType.버튼형} />
+                    <TextInput 
+                        placeholder={'안녕'} 
+                        type={InputType.텍스트형}
+                        buttonImg={ic_search_24dp} 
+                        textInputState={TextInputState.기본값} 
+                        textInputType={TextInputType.아이콘형} />
+                </div>
+                <h2>Badge</h2>
+                <div className={cn(styles.badgeSection)}>
+                    <Badge badgeType={BadgeType.모집완료} />
+                    <Badge badgeType={BadgeType.모집중} />
+                    <Badge badgeType={BadgeType.사이드프로젝트} />
+                    <Badge badgeType={BadgeType.지식공뮤및탐구} />
+                    <Badge badgeType={BadgeType.오프라인} />
+                    <Badge badgeType={BadgeType.온라인} />
+                    <Badge badgeType={BadgeType.온오프라인} />
+                </div>
+                <h2>AlarmBadge</h2>
+                <div className={cn(styles.alarmBadgeSection)}>
+                    <AlarmBadge text="8" />
+                    <AlarmBadge text="50" />
+                    <AlarmBadge text="99+" />
+                </div>
+                <h2>StudyCard</h2>
+                <div className={cn(styles.studyCardSection)}>
+                    <StudyCard 
+                        studySeq={0} 
+                        title='포트폴리오용' 
+                        skillTags='#Spring #React.js #JavaScript #jQuer…'
+                        studyCardType={StudyCardType.북마크형}
+                        recruitType={RecruitType.모집중} 
+                        studyType={StudyType.사이드프로젝트} 
+                        processType={ProcessType.온오프라인} 
+                        bookMark={bookMark4} 
+                        onClickBookMark={() => setBookMark4(!bookMark4)} 
+                        currentNum={5} 
+                        totalNum={10}
+                        positionStateList={positionStateList} />
+                    <StudyCard 
+                        studySeq={0} 
+                        title='알고리즘 스터디 구합니다.' 
+                        skillTags='#Spring #React.js '
+                        studyCardType={StudyCardType.북마크형}
+                        recruitType={RecruitType.모집중} 
+                        studyType={StudyType.지식공유및탐구} 
+                        processType={ProcessType.온라인} 
+                        bookMark={bookMark5} 
+                        onClickBookMark={() => setBookMark5(!bookMark5)} 
+                        currentNum={2} 
+                        totalNum={5}
+                        positionStateList={positionStateList} />
+                    <StudyCard 
+                        studySeq={0} 
+                        title='프론트엔드 스터디' 
+                        skillTags='#Spring #React.js #JavaScript' 
+                        studyCardType={StudyCardType.북마크형}
+                        recruitType={RecruitType.모집완료} 
+                        studyType={StudyType.지식공유및탐구} 
+                        processType={ProcessType.오프라인} 
+                        bookMark={bookMark6} 
+                        onClickBookMark={() => setBookMark6(!bookMark6)} 
+                        currentNum={10} 
+                        totalNum={10}
+                        positionStateList={positionStateList} />
+                    <StudyCard 
+                        studySeq={0} 
+                        title='포트폴리오용' 
+                        skillTags='#Spring #React.js #JavaScript #jQuer…'
+                        studyCardType={StudyCardType.편집형}
+                        recruitType={RecruitType.모집중} 
+                        studyType={StudyType.사이드프로젝트} 
+                        processType={ProcessType.온오프라인} 
+                        bookMark={bookMark4} 
+                        onClickBookMark={() => setBookMark4(!bookMark4)} 
+                        currentNum={5} 
+                        totalNum={10}
+                        positionStateList={positionStateList} />
+                    <StudyCard 
+                        studySeq={0} 
+                        title='알고리즘 스터디 구합니다.' 
+                        skillTags='#Spring #React.js '
+                        studyCardType={StudyCardType.편집형}
+                        recruitType={RecruitType.모집중} 
+                        studyType={StudyType.지식공유및탐구} 
+                        processType={ProcessType.온라인} 
+                        bookMark={bookMark5} 
+                        onClickBookMark={() => setBookMark5(!bookMark5)} 
+                        currentNum={2} 
+                        totalNum={5}
+                        positionStateList={positionStateList} />
+                    <StudyCard 
+                        studySeq={0} 
+                        title='프론트엔드 스터디' 
+                        skillTags='#Spring #React.js #JavaScript' 
+                        studyCardType={StudyCardType.편집형}
+                        recruitType={RecruitType.모집완료} 
+                        studyType={StudyType.지식공유및탐구} 
+                        processType={ProcessType.오프라인} 
+                        bookMark={bookMark6} 
+                        onClickBookMark={() => setBookMark6(!bookMark6)} 
+                        currentNum={10} 
+                        totalNum={10}
+                        positionStateList={positionStateList} />
+                </div>
+                <h2>MemberCard</h2>
+                <div className={cn(styles.menberCardSection)}>
+                    <MemberCard
+                        name='김은성'
+                        profileImg={img_testuser_01}
+                        position="서비스 기획자 ∙ 백엔드 개발자"
+                        skillTags="#Spring #React.js #JavaScript #jQuery #C+…"
+                        bookMark={bookMark1}
+                        onClickBookMark={() => setBookMark1(!bookMark1)}
+                    />
+                    <MemberCard
+                        name='이서윤'
+                        profileImg={img_testuser_02}
+                        position="UX/UI 디자이너"
+                        skillTags="#Adobe Photoshop #Adobe Illustrator #Fra…"
+                        bookMark={bookMark2}
+                        onClickBookMark={() => setBookMark2(!bookMark2)}
+                    />
+                    <MemberCard
+                        name='박우진'
+                        position="게임 기획자 ∙ 프론트엔드 개발자 ∙ 자바 개발자"
+                        skillTags="#Spring #React.js #JavaScript #jQuery #C+…"
+                        bookMark={bookMark3}
+                        onClickBookMark={() => setBookMark3(!bookMark3)}
+                    />
+                </div>
             </div>
-            <h2>텍스트 입력창</h2>
-            <div className={cn(styles.textInputSection)}>
-                <TextInput 
-                    placeholder={'안녕'}
-                    type={InputType.텍스트형}
-                    textInputState={TextInputState.기본값} 
-                    textInputType={TextInputType.일반형} />
-                <TextInput 
-                    placeholder={'안녕'} 
-                    type={InputType.텍스트형}
-                    buttonText={'버튼'} 
-                    textInputState={TextInputState.기본값} 
-                    textInputType={TextInputType.버튼형} />
-                <TextInput 
-                    placeholder={'안녕'} 
-                    type={InputType.텍스트형}
-                    buttonImg={ic_search_24dp} 
-                    textInputState={TextInputState.기본값} 
-                    textInputType={TextInputType.아이콘형} />
-            </div>
-            <h2>Badge</h2>
-            <div className={cn(styles.badgeSection)}>
-                <Badge badgeType={BadgeType.모집완료} />
-                <Badge badgeType={BadgeType.모집중} />
-                <Badge badgeType={BadgeType.사이드프로젝트} />
-                <Badge badgeType={BadgeType.지식공뮤및탐구} />
-                <Badge badgeType={BadgeType.오프라인} />
-                <Badge badgeType={BadgeType.온라인} />
-                <Badge badgeType={BadgeType.온오프라인} />
-            </div>
-            <h2>AlarmBadge</h2>
-            <div className={cn(styles.alarmBadgeSection)}>
-                <AlarmBadge text="8" />
-                <AlarmBadge text="50" />
-                <AlarmBadge text="99+" />
-            </div>
-            <h2>StudyCard</h2>
-            <div className={cn(styles.studyCardSection)}>
-                <StudyCard 
-                    studySeq={0} 
-                    title='포트폴리오용' 
-                    skillTags='#Spring #React.js #JavaScript #jQuer…'
-                    studyCardType={StudyCardType.북마크형}
-                    recruitType={RecruitType.모집중} 
-                    studyType={StudyType.사이드프로젝트} 
-                    processType={ProcessType.온오프라인} 
-                    bookMark={bookMark4} 
-                    onClickBookMark={() => setBookMark4(!bookMark4)} 
-                    currentNum={5} 
-                    totalNum={10}
-                    positionStateList={positionStateList} />
-                <StudyCard 
-                    studySeq={0} 
-                    title='알고리즘 스터디 구합니다.' 
-                    skillTags='#Spring #React.js '
-                    studyCardType={StudyCardType.북마크형}
-                    recruitType={RecruitType.모집중} 
-                    studyType={StudyType.지식공유및탐구} 
-                    processType={ProcessType.온라인} 
-                    bookMark={bookMark5} 
-                    onClickBookMark={() => setBookMark5(!bookMark5)} 
-                    currentNum={2} 
-                    totalNum={5}
-                    positionStateList={positionStateList} />
-                <StudyCard 
-                    studySeq={0} 
-                    title='프론트엔드 스터디' 
-                    skillTags='#Spring #React.js #JavaScript' 
-                    studyCardType={StudyCardType.북마크형}
-                    recruitType={RecruitType.모집완료} 
-                    studyType={StudyType.지식공유및탐구} 
-                    processType={ProcessType.오프라인} 
-                    bookMark={bookMark6} 
-                    onClickBookMark={() => setBookMark6(!bookMark6)} 
-                    currentNum={10} 
-                    totalNum={10}
-                    positionStateList={positionStateList} />
-                <StudyCard 
-                    studySeq={0} 
-                    title='포트폴리오용' 
-                    skillTags='#Spring #React.js #JavaScript #jQuer…'
-                    studyCardType={StudyCardType.편집형}
-                    recruitType={RecruitType.모집중} 
-                    studyType={StudyType.사이드프로젝트} 
-                    processType={ProcessType.온오프라인} 
-                    bookMark={bookMark4} 
-                    onClickBookMark={() => setBookMark4(!bookMark4)} 
-                    currentNum={5} 
-                    totalNum={10}
-                    positionStateList={positionStateList} />
-                <StudyCard 
-                    studySeq={0} 
-                    title='알고리즘 스터디 구합니다.' 
-                    skillTags='#Spring #React.js '
-                    studyCardType={StudyCardType.편집형}
-                    recruitType={RecruitType.모집중} 
-                    studyType={StudyType.지식공유및탐구} 
-                    processType={ProcessType.온라인} 
-                    bookMark={bookMark5} 
-                    onClickBookMark={() => setBookMark5(!bookMark5)} 
-                    currentNum={2} 
-                    totalNum={5}
-                    positionStateList={positionStateList} />
-                <StudyCard 
-                    studySeq={0} 
-                    title='프론트엔드 스터디' 
-                    skillTags='#Spring #React.js #JavaScript' 
-                    studyCardType={StudyCardType.편집형}
-                    recruitType={RecruitType.모집완료} 
-                    studyType={StudyType.지식공유및탐구} 
-                    processType={ProcessType.오프라인} 
-                    bookMark={bookMark6} 
-                    onClickBookMark={() => setBookMark6(!bookMark6)} 
-                    currentNum={10} 
-                    totalNum={10}
-                    positionStateList={positionStateList} />
-            </div>
-            <h2>MemberCard</h2>
-            <div className={cn(styles.menberCardSection)}>
-                <MemberCard
-                    name='김은성'
-                    profileImg={img_testuser_01}
-                    position="서비스 기획자 ∙ 백엔드 개발자"
-                    skillTags="#Spring #React.js #JavaScript #jQuery #C+…"
-                    bookMark={bookMark1}
-                    onClickBookMark={() => setBookMark1(!bookMark1)}
-                />
-                <MemberCard
-                    name='이서윤'
-                    profileImg={img_testuser_02}
-                    position="UX/UI 디자이너"
-                    skillTags="#Adobe Photoshop #Adobe Illustrator #Fra…"
-                    bookMark={bookMark2}
-                    onClickBookMark={() => setBookMark2(!bookMark2)}
-                />
-                <MemberCard
-                    name='박우진'
-                    position="게임 기획자 ∙ 프론트엔드 개발자 ∙ 자바 개발자"
-                    skillTags="#Spring #React.js #JavaScript #jQuery #C+…"
-                    bookMark={bookMark3}
-                    onClickBookMark={() => setBookMark3(!bookMark3)}
-                />
+            <div>
+                <Slider>
+                    <StudyCard 
+                        studySeq={0} 
+                        title='프론트엔드 스터디' 
+                        skillTags='#Spring #React.js #JavaScript' 
+                        studyCardType={StudyCardType.편집형}
+                        recruitType={RecruitType.모집완료} 
+                        studyType={StudyType.지식공유및탐구} 
+                        processType={ProcessType.오프라인} 
+                        bookMark={bookMark6} 
+                        onClickBookMark={() => setBookMark6(!bookMark6)} 
+                        currentNum={10} 
+                        totalNum={10}
+                        positionStateList={positionStateList} />
+                    <StudyCard 
+                        studySeq={0} 
+                        title='프론트엔드 스터디' 
+                        skillTags='#Spring #React.js #JavaScript' 
+                        studyCardType={StudyCardType.편집형}
+                        recruitType={RecruitType.모집완료} 
+                        studyType={StudyType.지식공유및탐구} 
+                        processType={ProcessType.오프라인} 
+                        bookMark={bookMark6} 
+                        onClickBookMark={() => setBookMark6(!bookMark6)} 
+                        currentNum={10} 
+                        totalNum={10}
+                        positionStateList={positionStateList} />
+                    <StudyCard 
+                        studySeq={0} 
+                        title='프론트엔드 스터디' 
+                        skillTags='#Spring #React.js #JavaScript' 
+                        studyCardType={StudyCardType.편집형}
+                        recruitType={RecruitType.모집완료} 
+                        studyType={StudyType.지식공유및탐구} 
+                        processType={ProcessType.오프라인} 
+                        bookMark={bookMark6} 
+                        onClickBookMark={() => setBookMark6(!bookMark6)} 
+                        currentNum={10} 
+                        totalNum={10}
+                        positionStateList={positionStateList} />
+                    <StudyCard 
+                        studySeq={0} 
+                        title='알고리즘 스터디 구합니다.' 
+                        skillTags='#Spring #React.js '
+                        studyCardType={StudyCardType.편집형}
+                        recruitType={RecruitType.모집중} 
+                        studyType={StudyType.지식공유및탐구} 
+                        processType={ProcessType.온라인} 
+                        bookMark={bookMark5} 
+                        onClickBookMark={() => setBookMark5(!bookMark5)} 
+                        currentNum={2} 
+                        totalNum={5}
+                        positionStateList={positionStateList} />
+                    <StudyCard 
+                        studySeq={0} 
+                        title='프론트엔드 스터디' 
+                        skillTags='#Spring #React.js #JavaScript' 
+                        studyCardType={StudyCardType.편집형}
+                        recruitType={RecruitType.모집완료} 
+                        studyType={StudyType.지식공유및탐구} 
+                        processType={ProcessType.오프라인} 
+                        bookMark={bookMark6} 
+                        onClickBookMark={() => setBookMark6(!bookMark6)} 
+                        currentNum={10} 
+                        totalNum={10}
+                        positionStateList={positionStateList} />
+                    <StudyCard 
+                        studySeq={0} 
+                        title='알고리즘 스터디 구합니다.' 
+                        skillTags='#Spring #React.js '
+                        studyCardType={StudyCardType.편집형}
+                        recruitType={RecruitType.모집중} 
+                        studyType={StudyType.지식공유및탐구} 
+                        processType={ProcessType.온라인} 
+                        bookMark={bookMark5} 
+                        onClickBookMark={() => setBookMark5(!bookMark5)} 
+                        currentNum={2} 
+                        totalNum={5}
+                        positionStateList={positionStateList} />
+                    <StudyCard 
+                        studySeq={0} 
+                        title='프론트엔드 스터디' 
+                        skillTags='#Spring #React.js #JavaScript' 
+                        studyCardType={StudyCardType.편집형}
+                        recruitType={RecruitType.모집완료} 
+                        studyType={StudyType.지식공유및탐구} 
+                        processType={ProcessType.오프라인} 
+                        bookMark={bookMark6} 
+                        onClickBookMark={() => setBookMark6(!bookMark6)} 
+                        currentNum={10} 
+                        totalNum={10}
+                        positionStateList={positionStateList} />
+                    <StudyCard 
+                        studySeq={0} 
+                        title='프론트엔드 스터디' 
+                        skillTags='#Spring #React.js #JavaScript' 
+                        studyCardType={StudyCardType.편집형}
+                        recruitType={RecruitType.모집완료} 
+                        studyType={StudyType.지식공유및탐구} 
+                        processType={ProcessType.오프라인} 
+                        bookMark={bookMark6} 
+                        onClickBookMark={() => setBookMark6(!bookMark6)} 
+                        currentNum={10} 
+                        totalNum={10}
+                        positionStateList={positionStateList} />
+                    <StudyCard 
+                        studySeq={0} 
+                        title='프론트엔드 스터디' 
+                        skillTags='#Spring #React.js #JavaScript' 
+                        studyCardType={StudyCardType.편집형}
+                        recruitType={RecruitType.모집완료} 
+                        studyType={StudyType.지식공유및탐구} 
+                        processType={ProcessType.오프라인} 
+                        bookMark={bookMark6} 
+                        onClickBookMark={() => setBookMark6(!bookMark6)} 
+                        currentNum={10} 
+                        totalNum={10}
+                        positionStateList={positionStateList} />
+                    <StudyCard 
+                        studySeq={0} 
+                        title='알고리즘 스터디 구합니다.' 
+                        skillTags='#Spring #React.js '
+                        studyCardType={StudyCardType.편집형}
+                        recruitType={RecruitType.모집중} 
+                        studyType={StudyType.지식공유및탐구} 
+                        processType={ProcessType.온라인} 
+                        bookMark={bookMark5} 
+                        onClickBookMark={() => setBookMark5(!bookMark5)} 
+                        currentNum={2} 
+                        totalNum={5}
+                        positionStateList={positionStateList} />
+                    <StudyCard 
+                        studySeq={0} 
+                        title='프론트엔드 스터디' 
+                        skillTags='#Spring #React.js #JavaScript' 
+                        studyCardType={StudyCardType.편집형}
+                        recruitType={RecruitType.모집완료} 
+                        studyType={StudyType.지식공유및탐구} 
+                        processType={ProcessType.오프라인} 
+                        bookMark={bookMark6} 
+                        onClickBookMark={() => setBookMark6(!bookMark6)} 
+                        currentNum={10} 
+                        totalNum={10}
+                        positionStateList={positionStateList} />
+                    <StudyCard 
+                        studySeq={0} 
+                        title='알고리즘 스터디 구합니다.' 
+                        skillTags='#Spring #React.js '
+                        studyCardType={StudyCardType.편집형}
+                        recruitType={RecruitType.모집중} 
+                        studyType={StudyType.지식공유및탐구} 
+                        processType={ProcessType.온라인} 
+                        bookMark={bookMark5} 
+                        onClickBookMark={() => setBookMark5(!bookMark5)} 
+                        currentNum={2} 
+                        totalNum={5}
+                        positionStateList={positionStateList} />
+                </Slider>
             </div>
         </div>
     )
