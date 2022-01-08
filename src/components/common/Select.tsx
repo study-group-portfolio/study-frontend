@@ -44,7 +44,8 @@ export default function Select(props: SelectProps) {
                 {!open && <img src={ic_expand_more_24dp} />}
                 {open && <img src={ic_expand_less_24dp} />}
             </div>
-            <div>{open && 
+            <div>
+                {open && 
                 cloneElement(children, {
                     options: children.props.options,
                     onChange(item: string) {
@@ -53,8 +54,8 @@ export default function Select(props: SelectProps) {
                             setOpen(false);
                         }
                     }
-                })
-            }</div>
+                })}
+            </div>
         </div>
     )
 }
