@@ -21,6 +21,11 @@
     }
 
     .button_off {
+        /** 배경이미지 설정 **/
+        background-image: url(../../../images/icon/ic_check_off_18dp.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+
         /** 배경색상 설정 **/
         background-color: #FFFFFF;
 
@@ -29,6 +34,11 @@
     }
 
     .button_on {
+        /** 배경이미지 설정 **/
+        background-image: url(../../../images/icon/ic_check_on_18dp.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+
         /** 배경색상 설정 **/
         background-color: #1A5DD1;
 

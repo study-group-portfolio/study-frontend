@@ -1,5 +1,7 @@
 import cn from 'classnames';
 import styles from 'css/components/common/GroupOptions.module.scss';
+import { CustomChangeEvent } from 'utils/interface';
+import { SelectEventType } from 'utils/enum';
 
 interface GroupOption {
     title?: string;
@@ -8,7 +10,7 @@ interface GroupOption {
 
 interface GroupOptionsProps {
     options?: GroupOption[];
-    onChange?: Function;
+    onChange?: (customChangeEvent: CustomChangeEvent) => (void);
 }
 
 export default function GroupOptions(props: GroupOptionsProps) {
@@ -16,7 +18,12 @@ export default function GroupOptions(props: GroupOptionsProps) {
 
     const onClick = (item: string) => {
         if (props.onChange) {
-            props.onChange(item);
+            const customChangeEvent: CustomChangeEvent = {
+                value: item,
+                selectEventType: SelectEventType.그룹선택박스
+            }
+
+            props.onChange(customChangeEvent);
         }
     }
 

@@ -4,21 +4,20 @@ import { useState } from 'react';
 import ic_check_off_18dp from 'images/icon/ic_check_off_18dp.svg';
 import ic_check_on_18dp from 'images/icon/ic_check_on_18dp.svg';
 
-interface CheckItemProps {
-    content: string;
-    onClick: Function;
+interface CheckBoxProps {
+    content?: string;
+    selected: boolean;
+    onClick?: Function;
 }
 
-export default function CheckItem(props: CheckItemProps) {
-    const { content } = props;
+export default function CheckItem(props: CheckBoxProps) {
+    const { content, selected } = props;
     const [select, setSelect] = useState(false);
 
-    const onClick = (content: string) => {
-        setSelect(prev => {
-            props.onClick(content, !prev);
-            return !prev;
-        });
-        
+    const onClick = (content?: string, selected?: boolean) => {
+        if (props.onClick) {
+            props.onClick(content, selected);
+        }
     }
 
     return (
@@ -28,16 +27,13 @@ export default function CheckItem(props: CheckItemProps) {
                     cn(
                         styles.btn,
                         {
-                            [styles.button_on]: select,
-                            [styles.button_off]: !select,
+                            [styles.button_on]: selected,
+                            [styles.button_off]: !selected,
                         }
                     )
                 } 
-                onClick={() => onClick(content)}
-            >
-                {!select && <img src={ic_check_off_18dp} />}
-                {select && <img src={ic_check_on_18dp} />}
-            </button>
+                onClick={() => onClick(content, !selected)}
+            ></button>
             <span 
                 className={
                     cn(
