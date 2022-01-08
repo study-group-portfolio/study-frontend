@@ -1,4 +1,13 @@
 .container {
+    /** 요소 위치 설정 **/
+    position: absolute;
+
+    /** 요소 높이 설정 **/
+    z-index: 60;
+
+    /** 요소 크기 설정 **/
+    width: 100%;
+    
     /** 배경색상 설정 **/
     background-color: #FFFFFF;
 

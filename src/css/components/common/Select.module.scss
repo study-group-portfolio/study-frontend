@@ -38,50 +38,10 @@
     }
 
     .options {
-        /** 요소 크기 설정 **/
-        width: 100%;
-
         /** 요소 위치 설정 **/
-        position: absolute;
-        top: 50px;
-
-        /** 배경색상 설정 **/
-        background-color: #FFFFFF;
-
-        /** 테두리 설정 **/
-        border: 1px solid #E4E7EC;
-        border-radius: 6px;
-
-        /** 외부 여백 설정 **/
-        margin-top: 8px;
-
-        /** 내부 여백 설정 **/
-        padding: 5px 0;
+        position: relative;
 
         /** 요소 높이 설정 **/
         z-index: 60;
-
-        .option {
-            /** 내부 여백 설정 **/
-            padding: 10px 15px;
-
-            /** 테두리 설정 **/
-            border-bottom: 1px solid #E4E7EC;
-
-            /** 텍스트 설정 **/
-            font-style: normal;
-            font-weight: normal;
-            font-size: 16px;
-            line-height: 20px;
-            color: #101828;
-
-            /** 마우스 커서 모양 설정 **/
-            cursor: pointer;
-        }
-
-        .option:last-child {
-            /** 테두리 설정 **/
-            border: none;
-        }
     }
 }
