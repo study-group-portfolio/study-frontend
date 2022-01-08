@@ -1,6 +1,8 @@
 import cn from 'classnames';
-import styles from 'css/components/common/CheckItem.module.scss';
+import styles from 'css/components/common/CheckBox.module.scss';
 import { useState } from 'react';
+import ic_check_off_18dp from 'images/icon/ic_check_off_18dp.svg';
+import ic_check_on_18dp from 'images/icon/ic_check_on_18dp.svg';
 
 interface CheckItemProps {
     content: string;
@@ -24,6 +26,7 @@ export default function CheckItem(props: CheckItemProps) {
             <button 
                 className={
                     cn(
+                        styles.btn,
                         {
                             [styles.button_on]: select,
                             [styles.button_off]: !select,
@@ -32,7 +35,8 @@ export default function CheckItem(props: CheckItemProps) {
                 } 
                 onClick={() => onClick(content)}
             >
-                &nbsp;
+                {!select && <img src={ic_check_off_18dp} />}
+                {select && <img src={ic_check_on_18dp} />}
             </button>
             <span 
                 className={
