@@ -11,8 +11,6 @@ function Navbar() {
 
   useEffect(() => {
     function clickHandleOutside(event: MouseEvent) {
-      console.log(event.target, profileButtonRef.current);
-      console.log(!profileButtonRef.current.contains(event.target));
       if (profileButtonRef.current && !profileButtonRef.current.contains(event.target)) {
         setProfileDropdown(false);
       }
