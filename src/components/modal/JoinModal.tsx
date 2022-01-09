@@ -3,11 +3,7 @@ import styles from 'css/components/modal/JoinModal.module.scss';
 import img_join from 'images/img/img_join.svg';
 import Button from 'components/common/Button';
 import { ButtonType } from 'utils/enum';
-
-interface ModalProps {
-    onClose?: () => (void);
-}
-
+import { ModalProps } from 'utils/interface';
 interface JoinModalProps extends ModalProps {
 
 }

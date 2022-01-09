@@ -9,3 +9,7 @@ export interface CustomChangeEvent {
     value?: string | string[];
     selectEventType: SelectEventType
 }
+
+export interface ModalProps {
+    onClose: () => (void);
+}
