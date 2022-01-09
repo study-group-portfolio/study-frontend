@@ -19,6 +19,7 @@ export default function Modal() {
     const [openResultModal3, setOpenResultModal3] = useState(false);
     const [openResultModal4, setOpenResultModal4] = useState(false);
     const [openRequestModal, setOpenRequestModal] = useState(false);
+    const [openApplyModal, setOpenApplyModal] = useState(false);
     
     const [studyTypeValue, setStudyTypeValue] = useState(StudyType.지식공유및탐구);
 
@@ -71,6 +72,11 @@ export default function Modal() {
                     buttonName="RequestModal"
                     buttonType={ButtonType.기본} 
                     onClick={() => setOpenRequestModal(true)} 
+                />
+                <Button
+                    buttonName="ApplytModal"
+                    buttonType={ButtonType.기본} 
+                    onClick={() => setOpenApplyModal(true)} 
                 />
             </div>
             <div>
@@ -127,7 +133,11 @@ export default function Modal() {
                         onReject={() => {}} 
                         onClose={() => setOpenRequestModal(false)} />
                 }
-                {false && <ApplyModal />}
+                {openApplyModal && 
+                    <ApplyModal 
+                        onClose={() => setOpenApplyModal(false)}
+                    />
+                }
             </div>
         </div>
     )

@@ -1,16 +1,22 @@
 import cn from 'classnames';
 import styles from 'css/components/common/Textarea.module.scss';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 interface TextareaProps {
+    placeholder?: string;
     maxCharNum?: number;
+    height?: string;
     onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => (void);
 }
 
 export default function Textarea(props: TextareaProps) {
     const maxCharNum = props.maxCharNum ? props.maxCharNum : MAX_CHAR_NUM;
+    const { height, placeholder } = props;
+
     const [value, setValue] = useState('');
     const [charNum, setCharNum] = useState(0);
+
+    const getHeightStyle = useCallback((height: string) => {return {height}}, [height]);
 
     const onChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         const length = event.target.value.length;
@@ -27,9 +33,11 @@ export default function Textarea(props: TextareaProps) {
 
     return (
         <div className={cn(styles.container)}>
-            <textarea 
+            <textarea
+                style={getHeightStyle(height || '190px')}
                 className={cn(styles.textarea)}
                 value={value}
+                placeholder={placeholder}
                 onChange={(event) => onChange(event)}
             ></textarea>
             <span>({charNum}/{maxCharNum})</span>
