@@ -19,7 +19,8 @@ import ProfilePasswordResetting from "pages/mypage/profile/PasswordResetting";
 import ProfileRevision from "pages/mypage/profile/Revision";
 import BookMark from "pages/mypage/BookMark";
 import StudyActivity from "pages/mypage/StudyActivitiy";
-import Component from "pages/Component";
+import Component from "pages/test/Component";
+import Modal from "pages/test/modal";
 
 function Router() {
   return (
@@ -67,6 +68,7 @@ function Router() {
           component={StudyActivity}
         ></Route>
         <Route exact path="/component" component={Component}></Route>
+        <Route exact path="/test/modal" component={Modal}></Route>
       </Switch>
     </BrowserRouter>
   );
