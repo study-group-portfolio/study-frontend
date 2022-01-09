@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import styles from 'css/components/modal/ResultModal.module.scss';
+import styles from 'css/components/modal/ResultAlarmModal.module.scss';
 import ic_close_24dp from 'images/icon/ic_close_24dp.svg';
 import img_modal_sad from 'images/img/img_modal_sad.svg';
 import img_modal_smile from 'images/img/img_modal_smile.svg';
@@ -11,7 +11,7 @@ interface StudyInfo {
     position: string;
 }
 
-interface MemberInfo {
+interface ProfileInfo {
     name: string;
     profileImg?: string;
     position: string;
@@ -21,11 +21,11 @@ interface ResultModalProps extends ModalProps {
     resultModalType: ResultModalType;
     resultType: ResultType;
     studyInfo?: StudyInfo;
-    memberInfo?: MemberInfo;
+    profileInfo?: ProfileInfo;
 }
 
 export default function ResultModal(props: ResultModalProps) {
-    const { resultModalType, resultType, studyInfo, memberInfo } = props;
+    const { resultModalType, resultType, studyInfo, profileInfo } = props;
 
     return (
         <div className={cn(styles.overlays)}>
@@ -58,11 +58,11 @@ export default function ResultModal(props: ResultModalProps) {
                     <p>{studyInfo?.position}</p>
                 </div>}
                 {resultModalType === ResultModalType.맴버연락 && 
-                <div className={cn(styles.memberInfo)}>
-                    <span className={cn(styles.circle_50)}>{memberInfo?.profileImg || memberInfo?.name?.charAt(0)}</span>
+                <div className={cn(styles.profileInfo)}>
+                    <span className={cn(styles.circle_50)}>{profileInfo?.profileImg || profileInfo?.name?.charAt(0)}</span>
                     <span className={cn(styles.txt)}>
-                        <p>{memberInfo?.name}</p>
-                        <p>{memberInfo?.position}</p>
+                        <p>{profileInfo?.name}</p>
+                        <p>{profileInfo?.position}</p>
                     </span>
                 </div>}
             </div>

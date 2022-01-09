@@ -13,3 +13,14 @@ export interface CustomChangeEvent {
 export interface ModalProps {
     onClose: () => (void);
 }
+
+export interface StudyInfo {
+    title: string;
+    position: string;
+}
+
+export interface ProfileInfo {
+    name: string;
+    profileImg?: string;
+    position: string;
+}
