@@ -1,11 +1,13 @@
 import JoinModal from "components/modal/JoinModal";
 import StudyKindModal from "components/modal/StudyKindModal";
-import ResultModal from "components/modal/ResultModal";
+import ResultModal from "components/modal/ResultAlarmModal";
+import RequestModal from "components/modal/RequestAlarmModal";
 import Button from 'components/common/Button';
 import { ButtonType, StudyType, ResultModalType, ResultType } from 'utils/enum';
 import { useState } from 'react';
 import cn from 'classnames';
 import styles from 'css/pages/test/ModalComponent.module.scss';
+import { StudyInfo, ProfileInfo } from "utils/interface";
 
 
 export default function Modal() {
@@ -15,18 +17,21 @@ export default function Modal() {
     const [openResultModal2, setOpenResultModal2] = useState(false);
     const [openResultModal3, setOpenResultModal3] = useState(false);
     const [openResultModal4, setOpenResultModal4] = useState(false);
+    const [openRequestModal, setOpenRequestModal] = useState(false);
     
     const [studyTypeValue, setStudyTypeValue] = useState(StudyType.지식공유및탐구);
 
-    const stduyInfo = {
+    const stduyInfo: StudyInfo = {
         title: '포트폴리오용 프로젝트 팀원 구합니다.',
         position: '백엔드 개발자'
     }
 
-    const memberInfo = {
+    const memberInfo: ProfileInfo = {
         name: '조수연',
         position: '서비스 기획자'
     }
+
+    const introduction = "안녕하세요. 스터디 모집 글을 보고 지원했습니다.안녕하세요. 스터디 모집 글을 보고 지원했습니다. 안녕하세요. 스터디 모집 글을 보고 지원했습니다. **당신이 만든 스터디에 참여하고 싶어요!!!**"
 
     return (
         <div>
@@ -61,6 +66,11 @@ export default function Modal() {
                     buttonType={ButtonType.기본} 
                     onClick={() => setOpenResultModal4(true)} 
                 />
+                <Button
+                    buttonName="RequestModal"
+                    buttonType={ButtonType.기본} 
+                    onClick={() => setOpenRequestModal(true)} 
+                />
             </div>
             <div>
                 {openJoinModal && 
@@ -79,7 +89,7 @@ export default function Modal() {
                     <ResultModal 
                         resultModalType={ResultModalType.맴버연락} 
                         resultType={ResultType.승낙}
-                        memberInfo={memberInfo}
+                        profileInfo={memberInfo}
                         onClose={() => setOpenResultModal1(false)}
                     />
                 }
@@ -87,7 +97,7 @@ export default function Modal() {
                     <ResultModal 
                         resultModalType={ResultModalType.맴버연락} 
                         resultType={ResultType.거절}
-                        memberInfo={memberInfo}
+                        profileInfo={memberInfo}
                         onClose={() => setOpenResultModal2(false)}
                     />
                 }
@@ -106,6 +116,15 @@ export default function Modal() {
                         studyInfo={stduyInfo}
                         onClose={() => setOpenResultModal4(false)}
                     />
+                }
+                {openRequestModal &&
+                    <RequestModal 
+                        studyInfo={stduyInfo}
+                        profileInfo={memberInfo}
+                        introduction={introduction}
+                        onPermit={() => {}} 
+                        onReject={() => {}} 
+                        onClose={() => setOpenRequestModal(false)} />
                 }
             </div>
         </div>
