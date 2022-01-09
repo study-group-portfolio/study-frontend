@@ -80,3 +80,13 @@ export enum SelectEventType {
     그룹선택박스 = "GSB",
     체크선택박스 = "CSB"
 }
+
+export enum ResultModalType {
+    맴버연락 = "M",
+    스터디지원 = "S"
+}
+
+export enum ResultType {
+    승낙 = "P",
+    거절 = "R"
+}
