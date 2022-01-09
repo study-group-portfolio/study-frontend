@@ -3,6 +3,7 @@ import StudyKindModal from "components/modal/StudyKindModal";
 import ResultModal from "components/modal/ResultAlarmModal";
 import RequestModal from "components/modal/RequestAlarmModal";
 import ApplyModal from "components/modal/ApplyModal";
+import ApplyCompleteModal from "components/modal/ApplyCompleteModal";
 import Button from 'components/common/Button';
 import { ButtonType, StudyType, ResultModalType, ResultType } from 'utils/enum';
 import { useState } from 'react';
@@ -20,6 +21,7 @@ export default function Modal() {
     const [openResultModal4, setOpenResultModal4] = useState(false);
     const [openRequestModal, setOpenRequestModal] = useState(false);
     const [openApplyModal, setOpenApplyModal] = useState(false);
+    const [openApplyCompleteModal, setOpenApplyCompleteModal] = useState(false);
     
     const [studyTypeValue, setStudyTypeValue] = useState(StudyType.지식공유및탐구);
 
@@ -74,9 +76,14 @@ export default function Modal() {
                     onClick={() => setOpenRequestModal(true)} 
                 />
                 <Button
-                    buttonName="ApplytModal"
+                    buttonName="ApplyModal"
                     buttonType={ButtonType.기본} 
                     onClick={() => setOpenApplyModal(true)} 
+                />
+                <Button
+                    buttonName="ApplyCompleteModal"
+                    buttonType={ButtonType.기본} 
+                    onClick={() => setOpenApplyCompleteModal(true)} 
                 />
             </div>
             <div>
@@ -136,6 +143,11 @@ export default function Modal() {
                 {openApplyModal && 
                     <ApplyModal 
                         onClose={() => setOpenApplyModal(false)}
+                    />
+                }
+                {openApplyCompleteModal && 
+                    <ApplyCompleteModal 
+                        onClose={() => setOpenApplyCompleteModal(false)}
                     />
                 }
             </div>
