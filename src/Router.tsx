@@ -20,7 +20,7 @@ import ProfileRevision from "pages/mypage/profile/Revision";
 import BookMark from "pages/mypage/BookMark";
 import StudyActivity from "pages/mypage/StudyActivitiy";
 import Component from "pages/test/Component";
-import Modal from "pages/test/modal";
+import Modal from "pages/test/ModalComponent";
 
 function Router() {
   return (
@@ -67,7 +67,7 @@ function Router() {
           path="/mypage/studyActivity"
           component={StudyActivity}
         ></Route>
-        <Route exact path="/component" component={Component}></Route>
+        <Route exact path="/test/component" component={Component}></Route>
         <Route exact path="/test/modal" component={Modal}></Route>
       </Switch>
     </BrowserRouter>

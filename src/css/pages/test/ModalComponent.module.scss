@@ -1,0 +1,18 @@
+.container {
+    /** 요소 크기 설정 **/
+    width: 1366px;
+
+    /** 외부 여백 설정 **/
+    margin: 0 auto;
+    margin-top: 130px;
+    margin-bottom: 90px;
+
+    /** 내부 여백 설정 **/
+    padding: 0 103px;
+
+    /** 그리드 설정 **/
+    display: grid;
+    grid-template-columns: 275px 275px 275px 275px;
+    grid-gap: 20px;
+    justify-content: flex-start;
+}

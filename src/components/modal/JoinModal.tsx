@@ -4,7 +4,22 @@ import img_join from 'images/img/img_join.svg';
 import Button from 'components/common/Button';
 import { ButtonType } from 'utils/enum';
 
-export default function AlarmModal() {
+interface ModalProps {
+    onClose?: () => (void);
+}
+
+interface JoinModalProps extends ModalProps {
+
+}
+
+export default function JoinModal(props: JoinModalProps) {
+    const onClose = () => {
+        console.log("동작");
+        if (props.onClose) {
+            props.onClose();
+        }
+    }
+
     return (
         <div className={cn(styles.overlays)}>
             <div className={cn(styles.modal)}>
@@ -13,16 +28,13 @@ export default function AlarmModal() {
                 <p>프로필을 완성하고 스터디 매칭율을 높여보세요.</p>
                 <div className={cn(styles.btnSection)}>
                     <Button 
-                        buttonName='나중에 하기' 
-                        disabled={false} 
-                        img={undefined} 
+                        buttonName='나중에 하기'
+                        disabled={false}
                         buttonType={ButtonType.서브} 
-                        onClick={() => {}} 
+                        onClick={() => onClose()} 
                     />
                     <Button 
                         buttonName='프로필 완성하기'
-                        disabled={false} 
-                        img={undefined} 
                         buttonType={ButtonType.기본} 
                         onClick={() => {}} 
                     />
