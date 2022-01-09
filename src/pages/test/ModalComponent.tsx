@@ -2,6 +2,7 @@ import JoinModal from "components/modal/JoinModal";
 import StudyKindModal from "components/modal/StudyKindModal";
 import ResultModal from "components/modal/ResultAlarmModal";
 import RequestModal from "components/modal/RequestAlarmModal";
+import ApplyModal from "components/modal/ApplyModal";
 import Button from 'components/common/Button';
 import { ButtonType, StudyType, ResultModalType, ResultType } from 'utils/enum';
 import { useState } from 'react';
@@ -126,6 +127,7 @@ export default function Modal() {
                         onReject={() => {}} 
                         onClose={() => setOpenRequestModal(false)} />
                 }
+                {false && <ApplyModal />}
             </div>
         </div>
     )

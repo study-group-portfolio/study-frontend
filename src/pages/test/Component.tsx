@@ -21,6 +21,7 @@ import GroupOptions from 'components/common/GroupOptions';
 import Options from 'components/common/Options';
 import CheckBox from 'components/common/CheckBox';
 import CheckBoxOptions from 'components/common/CheckBoxOptions';
+import Textarea from 'components/common/Textarea';
 import styles from 'css/pages/Component.module.scss';
 import cn from 'classnames';
 import ic_search_24dp from 'images/icon/ic_search_24dp.svg';
@@ -309,6 +310,12 @@ export default function Test() {
                         content='Google Analytics'
                         selected={false}
                         onClick={(content: string, selected: boolean) => setSelected(selected)}/>
+                </div>
+                <h2>Textarea</h2>
+                <div>
+                    <Textarea 
+                        onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => console.log(event.target.value)}
+                    />
                 </div>
             </div>
             <div>
