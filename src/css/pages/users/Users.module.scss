@@ -52,12 +52,26 @@ $kakao-color: #ffe812;
       .pageTitle {
         font-size: 32px;
         line-height: 40px;
-        margin-bottom: 10px;
+        margin-bottom: 40px;
       }
 
       .pageExp {
-        color: $exp-color;
+        color: $page-title-color;
         line-height: 22px;
+      }
+    }
+
+    .errorExpSection {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+
+      .errorExp {
+        color: $exp-color;
+      }
+
+      .emailResendBtn {
+        color: $primary-color;
       }
     }
 
