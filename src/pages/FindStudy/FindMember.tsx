@@ -43,6 +43,13 @@ export default function FindMember() {
             bookMark={false}
             onClickBookMark={() => null}
           />
+          <MemberCard
+            name="r"
+            position="r"
+            skillTags="r"
+            bookMark={false}
+            onClickBookMark={() => null}
+          />
         </div>
       </section>
     </section>
