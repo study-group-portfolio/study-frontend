@@ -5,6 +5,7 @@ import { SelectEventType } from 'utils/enum';
 
 interface OptionsProps {
     options?: string[];
+    
     onChange?: (changeEvent: CustomChangeEvent) => (void);
 }
 export default function Options(props: OptionsProps) {
@@ -24,7 +25,7 @@ export default function Options(props: OptionsProps) {
     return (
         <div className={cn(styles.container)}>
             <ul>
-            {options && options.map((item: string, index: number) => (
+            {options && options.length > 0 && options.map((item: string, index: number) => (
                 <li 
                     className={cn(styles.option)}
                     key={index}
@@ -33,6 +34,7 @@ export default function Options(props: OptionsProps) {
                     {item}
                 </li>
             ))}
+            {!options || options.length === 0 && <li></li>}
             </ul>
         </div>
     )

@@ -90,3 +90,22 @@ export enum ResultType {
     승낙 = "P",
     거절 = "R"
 }
+
+export enum Path {
+    메인 = '/',
+    
+    로그인 = '/users/login',
+    비밀번호_재설정 = '/users/resetPassword',
+    이메일_인증 = '/users/emailAuth',
+    회원가입 = '/users/signin',
+    회원가입_이메일_인증 = '/users/signinEmail',
+    비밀번호_찾기 = '/users/findPassword',
+
+    스터디_목록 = '/study/findStudy',
+    스터디_생성 = '/study/creation',
+    스터디_수정 = '/study/revision',
+    스터디_상세 = '/study/detail',
+    
+    맴버_목록 = '/member/findMember',
+    맴버_상세 = '/member/detail'
+}
