@@ -5,15 +5,15 @@ import { useState } from 'react';
 
 interface TextInputProps {
     placeholder?: string;
-    type: InputType;
+    type?: InputType;
     value?: string;
     disabled?: boolean;
     buttonText?: string;
     buttonImg?: string;
     helpText?: string;
     errorText?: string;
-    textInputState: TextInputState;
-    textInputType: TextInputType;
+    textInputState?: TextInputState;
+    textInputType?: TextInputType;
     onChange?: Function;
     onClick?: Function;
 }
@@ -48,7 +48,7 @@ export default function TextInput(props: TextInputProps) {
                     cn(
                         styles.textInputContainer,
                         {
-                            [styles.default]: textInputState === TextInputState.기본값,
+                            [styles.default]: !textInputState || textInputState === TextInputState.기본값,
                             [styles.success]: textInputState === TextInputState.성공,
                             [styles.error]: textInputState === TextInputState.오류
                         }
@@ -56,13 +56,13 @@ export default function TextInput(props: TextInputProps) {
                 }
             >
                 <input 
-                    type={type}
+                    type={type ? type : InputType.텍스트형}
                     placeholder={placeholder} 
                     value={value ? value : text} 
                     disabled={disabled}
                     onChange={(event) => onChange(event)}
                 />
-                {textInputType !== TextInputType.일반형 && 
+                {(!textInputType || textInputType !== TextInputType.일반형) && 
                 <button 
                     className={
                         cn(
@@ -77,19 +77,19 @@ export default function TextInput(props: TextInputProps) {
                     {textInputType === TextInputType.아이콘형 && <img src={buttonImg} />}
                 </button>}
             </div>
-            {helpText && <p className={cn(styles.helpText)}>Help Text</p>}
-            {textInputState === TextInputState.오류 && errorText && <p className={cn(styles.errorText)}>Error Text</p>}
+            {helpText && <p className={cn(styles.helpText)}>{helpText}</p>}
+            {textInputState === TextInputState.오류 && errorText && <p className={cn(styles.errorText)}>{errorText}</p>}
         </div>
     )
 }
 
-function getTextInputGridStyle(textInputType: TextInputType, buttonText: string | undefined) {
+function getTextInputGridStyle(textInputType?: TextInputType, buttonText?: string) {
     const gridStyle = {
         display: 'grid',
         gridTemplateColumns: ''
     }
 
-    if (textInputType === TextInputType.일반형) {
+    if (!textInputType || textInputType === TextInputType.일반형) {
         gridStyle.gridTemplateColumns = '100%';
     } else if (textInputType === TextInputType.버튼형) {
         const fontSize = (buttonText ? buttonText.length * 15 : 0) + 31;

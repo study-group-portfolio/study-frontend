@@ -22,14 +22,14 @@
 
     .buttonSection {
         display: grid;
-        grid-template-columns: calc(1120px / 4) calc(1120px / 4) calc(1120px / 4) calc(1120px / 4);
+        grid-template-columns: calc(1100px / 4) calc(1100px / 4) calc(1100px / 4) calc(1100px / 4);
         grid-gap: 10px;
     }
 
     .textInputSection {
         display: grid;
-        grid-template-columns: calc(1120px / 3) calc(1120px / 3) calc(1120px / 3);
-        grid-gap: 10px;
+        justify-content: flex-start;
+        row-gap: 30px;
     }
 
     .badgeSection {

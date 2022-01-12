@@ -4,6 +4,7 @@ import ResultModal from "components/modal/ResultAlarmModal";
 import RequestModal from "components/modal/RequestAlarmModal";
 import ApplyModal from "components/modal/ApplyModal";
 import ApplyCompleteModal from "components/modal/ApplyCompleteModal";
+import ConnectModal from "components/modal/ConnectModal";
 import Button from 'components/common/Button';
 import { ButtonType, StudyType, ResultModalType, ResultType } from 'utils/enum';
 import { useState } from 'react';
@@ -22,6 +23,7 @@ export default function Modal() {
     const [openRequestModal, setOpenRequestModal] = useState(false);
     const [openApplyModal, setOpenApplyModal] = useState(false);
     const [openApplyCompleteModal, setOpenApplyCompleteModal] = useState(false);
+    const [openConnectModal, setOpenConnectModal] = useState(false);
     
     const [studyTypeValue, setStudyTypeValue] = useState(StudyType.지식공유및탐구);
 
@@ -84,6 +86,11 @@ export default function Modal() {
                     buttonName="ApplyCompleteModal"
                     buttonType={ButtonType.기본} 
                     onClick={() => setOpenApplyCompleteModal(true)} 
+                />
+                <Button
+                    buttonName="ConnectModal"
+                    buttonType={ButtonType.기본} 
+                    onClick={() => setOpenConnectModal(true)} 
                 />
             </div>
             <div>
@@ -150,6 +157,7 @@ export default function Modal() {
                         onClose={() => setOpenApplyCompleteModal(false)}
                     />
                 }
+                {openConnectModal && <ConnectModal />}
             </div>
         </div>
     )
