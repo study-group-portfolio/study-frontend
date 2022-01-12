@@ -1,8 +1,8 @@
 import cn from "classnames";
 import { Link } from "react-router-dom";
 import styles from "../../css/pages/users/Users.module.scss";
-import { ReactComponent as Kakao } from "../../images/img/img_social_kakao.svg";
-import { ReactComponent as Google } from "../../images/img/img_social_google.svg";
+import { ButtonType } from "utils/enum";
+import Button from "../../components/common/Button";
 import BackBtn from "../../images/arrow_back_btn_blue.svg";
 
 function SigninReady() {
@@ -25,17 +25,18 @@ function SigninReady() {
         </div>
         <form action="POST" className={cn(styles.loginForm)}>
           <div className={cn(styles.btnList)}>
-            <Link to="/signin-email" className={cn(styles.emailLoginBtn)}>
-              이메일로 시작하기
-            </Link>
-            <button className={cn(styles.kakaoLoginBtn)}>
-              <Kakao />
-              카카오로 시작하기
-            </button>
-            <button className={cn(styles.googleLoginBtn)}>
-              <Google />
-              구글로 시작하기
-            </button>
+            <Button
+              buttonName={"이메일로 시작하기"}
+              buttonType={ButtonType.기본}
+            />
+            <Button
+              buttonName={"카카오로 시작하기"}
+              buttonType={ButtonType.카카오}
+            />
+            <Button
+              buttonName={"구글로 시작하기"}
+              buttonType={ButtonType.구글}
+            />
           </div>
         </form>
       </div>

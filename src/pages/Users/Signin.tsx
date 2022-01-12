@@ -3,7 +3,6 @@ import cn from "classnames";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import styles from "../../css/pages/users/Users.module.scss";
-import EyeSlash from "../../images/eye_slash.svg";
 import BackBtn from "../../images/arrow_back_btn_blue.svg";
 
 interface ISigninForm {
@@ -54,7 +53,7 @@ export default function Login() {
           </p>
         </div>
         <form action="POST" className={cn(styles.loginForm)}>
-          <div className={cn(styles.inputWrapper)}>
+          {/* <div className={cn(styles.inputWrapper)}>
             <label htmlFor="email">이메일</label>
             <input type="text" placeholder="example@studyit.com" />
           </div>
@@ -69,7 +68,6 @@ export default function Login() {
               type="password"
               placeholder="비밀번호를 한 번 더 입력해주세요."
             />
-            <img src={EyeSlash} className={cn(styles.icon)} alt="eye-slash" />
           </div>
           <div className={cn(styles.inputWrapper)}>
             <label htmlFor="nickname">닉네임</label>
@@ -77,7 +75,7 @@ export default function Login() {
           </div>
           <div className={cn(styles.btnList)}>
             <button className={cn(styles.emailLoginBtn)}>회원가입하기</button>
-          </div>
+          </div> */}
         </form>
       </div>
     </section>

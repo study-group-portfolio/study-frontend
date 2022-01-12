@@ -1,41 +1,20 @@
-import { useState } from "react";
 import cn from "classnames";
-import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+// Styles
 import styles from "../../css/pages/users/Users.module.scss";
-import { ReactComponent as Kakao } from "../../images/img/img_social_kakao.svg";
-import { ReactComponent as Google } from "../../images/img/img_social_google.svg";
-import EyeSlash from "../../images/eye_slash.svg";
+// Components
+import {
+  TextInputState,
+  TextInputType,
+  InputType,
+  ButtonType,
+} from "utils/enum";
+import TextInput from "components/common/TextInput";
+import Button from "components/common/Button";
+// icons
+import EyeSlash from "../../images/icon/ic_eye_slash.svg";
 
-interface ILoginForm {
-  email: string;
-  password: string;
-}
-
-function Login({ email, password }: ILoginForm) {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<ILoginForm>();
-
-  const onSubmit = (data: ILoginForm) => {
-    console.log(data);
-  };
-
-  // Password visibility toggle
-  const [passwordType, setPasswordType] = useState({
-    type: "password",
-    visible: false,
-  });
-  const handleVisibility = (event: any) => {
-    setPasswordType(() => {
-      if (!passwordType.visible) {
-        return { type: "text", visible: true };
-      }
-      return { type: "password", visible: false };
-    });
-  };
+export default function Login() {
   return (
     <section className={cn(styles.container)}>
       <div className={cn(styles.wrapper)}>
@@ -49,35 +28,44 @@ function Login({ email, password }: ILoginForm) {
         </div>
         <form action="POST" className={cn(styles.loginForm)}>
           <div className={cn(styles.inputWrapper)}>
-            <label htmlFor="email">이메일</label>
-            <input type="text" placeholder="example@studyit.com" />
+            <label>이메일</label>
+            <TextInput
+              placeholder={"example@studyit.com"}
+              type={InputType.텍스트형}
+              textInputState={TextInputState.기본값}
+              textInputType={TextInputType.일반형}
+            />
           </div>
           <div className={cn(styles.inputWrapper)}>
-            <label htmlFor="password">비밀번호</label>
-            <input type="password" placeholder="비밀번호를 입력해주세요." />
-            <img src={EyeSlash} className={cn(styles.icon)} alt="eye-slash" />
+            <label>비밀번호</label>
+            <TextInput
+              placeholder={"비밀번호를 입력해주세요."}
+              type={InputType.패스워드형}
+              buttonImg={EyeSlash}
+              textInputState={TextInputState.기본값}
+              textInputType={TextInputType.아이콘형}
+            />
           </div>
           <div className={cn(styles.btnList)}>
-            <button className={cn(styles.emailLoginBtn)}>
-              이메일로 로그인하기
-            </button>
-            <button className={cn(styles.kakaoLoginBtn)}>
-              <Kakao />
-              카카오로 로그인하기
-            </button>
-            <button className={cn(styles.googleLoginBtn)}>
-              <Google />
-              구글로 로그인하기
-            </button>
-          </div>
-          <div className={cn(styles.utilityMenus)}>
-            <Link to="/signin">아직 회원이 아니신가요?</Link>
-            <Link to="/find-password">비밀번호 찾기</Link>
+            <Button
+              buttonName={"이메일로 로그인하기"}
+              buttonType={ButtonType.기본}
+            />
+            <Button
+              buttonName={"카카오로 로그인하기"}
+              buttonType={ButtonType.카카오}
+            />
+            <Button
+              buttonName={"구글로 로그인하기"}
+              buttonType={ButtonType.구글}
+            />
           </div>
         </form>
+        <div className={cn(styles.utilityMenus)}>
+          <Link to="/users/signin">아직 회원이 아니신가요?</Link>
+          <Link to="/find-password">비밀번호 찾기</Link>
+        </div>
       </div>
     </section>
   );
 }
-
-export default Login;
