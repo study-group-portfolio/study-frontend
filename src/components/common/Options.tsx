@@ -5,11 +5,11 @@ import { SelectEventType } from 'utils/enum';
 
 interface OptionsProps {
     options?: string[];
-    
+    placeholder?: string;
     onChange?: (changeEvent: CustomChangeEvent) => (void);
 }
 export default function Options(props: OptionsProps) {
-    const { options } = props;
+    const { options, placeholder } = props;
 
     const onClick = (item: string) => {
         if (props.onChange) {
@@ -34,7 +34,13 @@ export default function Options(props: OptionsProps) {
                     {item}
                 </li>
             ))}
-            {!options || options.length === 0 && <li></li>}
+            {!options || options.length === 0 && 
+                <li
+                    className={cn(styles.placeholder)}
+                >
+                    {placeholder}
+                </li>
+            }
             </ul>
         </div>
     )

@@ -25,12 +25,16 @@ import Textarea from 'components/common/Textarea';
 import styles from 'css/pages/Component.module.scss';
 import cn from 'classnames';
 import ic_search_24dp from 'images/icon/ic_search_24dp.svg';
+import ic_visibility_on_24dp from 'images/icon/ic_visibility_on_24dp.svg';
+import ic_visibility_off_24dp from 'images/icon/ic_visibility_off_24dp.svg';
 import img_testuser_01 from 'images/img/img_testuser_01.svg';
 import img_testuser_02 from 'images/img/img_testuser_02.svg';
 import { useState, useEffect } from 'react';
 import { PositionState, CustomChangeEvent } from 'utils/interface';
 
 export default function Test() {
+    const [visible, setVisible] = useState(false);
+
     /** 북마크 설정 관련 변수 */
     const [bookMark1, setBookMark1] = useState(false);
     const [bookMark2, setBookMark2] = useState(false);
@@ -119,25 +123,107 @@ export default function Test() {
                         buttonType={ButtonType.구글} 
                         onClick={() => {}} />
                 </div>
-                <h2>텍스트 입력창</h2>
+                <h2>TextInput(Status)</h2>
                 <div className={cn(styles.textInputSection)}>
-                    <TextInput 
-                        placeholder={'안녕'}
-                        type={InputType.텍스트형}
-                        textInputState={TextInputState.기본값} 
-                        textInputType={TextInputType.일반형} />
-                    <TextInput 
-                        placeholder={'안녕'} 
-                        type={InputType.텍스트형}
-                        buttonText={'버튼'} 
-                        textInputState={TextInputState.기본값} 
-                        textInputType={TextInputType.버튼형} />
-                    <TextInput 
-                        placeholder={'안녕'} 
-                        type={InputType.텍스트형}
-                        buttonImg={ic_search_24dp} 
-                        textInputState={TextInputState.기본값} 
-                        textInputType={TextInputType.아이콘형} />
+                    <div>
+                        <TextInput 
+                            placeholder='닉네임을 입력해주세요'
+                        />
+                    </div>
+                    <div>
+                        <TextInput 
+                            value='스터딧'
+                        />
+                    </div>
+                    <div>
+                        <TextInput 
+                            value='스터딧'
+                            disabled={true}
+                        />
+                    </div>
+                    <div>
+                        <TextInput 
+                            value='스터딧'
+                            textInputState={TextInputState.오류}
+                            errorText='이미 존재하는 닉네임입니다.'
+                        />
+                    </div>
+                    <div>
+                        <TextInput 
+                            value='스터딧'
+                            textInputState={TextInputState.성공}
+                        />
+                    </div>
+                </div>
+                <h2>TextInput(Combination)</h2>
+                <div className={cn(styles.textInputSection)}>
+                    <div 
+                        style={{
+                            display: 'grid',
+                            rowGap: '8px'
+                        }}
+                    >
+                        <h3
+                            style={{
+                                fontStyle: 'normal',
+                                fontWeight: 'normal',
+                                fontSize: '16px',
+                                lineHeight: '20px',
+                                color: '#667085'
+                            }}
+                        >
+                            닉네임
+                        </h3>
+                        <TextInput 
+                            placeholder='닉네임을 입력해주세요'
+                            helpText='한 글자 이상 입력해 주세요'
+                        />
+                    </div>
+                    <div>
+                        <TextInput 
+                            value='1234'
+                            textInputState={TextInputState.오류}
+                            helpText='영문/숫자/특수문자 조합, 8자~32자'
+                            errorText='올바른 비밀번호를 입력해주세요.'
+
+                        />
+                    </div>
+                    <div>
+                        <TextInput 
+                            placeholder='검색어를 입력해 주세요'
+                            textInputType={TextInputType.아이콘형}
+                            buttonImg={ic_search_24dp}
+                        />
+                    </div>
+                    <div
+                        style={{
+                            display: 'grid',
+                            rowGap: '10px'
+                        }}
+                    >
+                        <TextInput 
+                            placeholder='검색어를 입력해 주세요'
+                        />
+                        <TextInput 
+                            placeholder='검색어를 입력해 주세요'
+                        />
+                    </div>
+                    <div>
+                        <TextInput 
+                            placeholder='검색어를 입력해 주세요'
+                            textInputType={TextInputType.버튼형}
+                            buttonText='버튼'
+                        />
+                    </div>
+                    <div>
+                        <TextInput 
+                            type={visible ? InputType.텍스트형 : InputType.패스워드형}
+                            placeholder='검색어를 입력해 주세요'
+                            textInputType={TextInputType.아이콘형}
+                            onClick={() => setVisible(!visible)}
+                            buttonImg={visible ? ic_visibility_on_24dp : ic_visibility_off_24dp}
+                        />
+                    </div>
                 </div>
                 <h2>Badge</h2>
                 <div className={cn(styles.badgeSection)}>
