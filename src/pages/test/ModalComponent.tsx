@@ -157,7 +157,11 @@ export default function Modal() {
                         onClose={() => setOpenApplyCompleteModal(false)}
                     />
                 }
-                {openConnectModal && <ConnectModal />}
+                {openConnectModal && 
+                    <ConnectModal 
+                        onClose={() => setOpenConnectModal(false)}
+                    />
+                }
             </div>
         </div>
     )
