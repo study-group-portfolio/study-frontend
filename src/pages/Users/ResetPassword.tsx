@@ -3,7 +3,6 @@ import cn from "classnames";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import styles from "../../css/pages/users/Users.module.scss";
-import EyeSlash from "../../images/eye_slash.svg";
 import BackBtn from "../../images/arrow_back_btn_blue.svg";
 
 interface ISigninForm {
@@ -49,7 +48,7 @@ export default function ResetPassword() {
           <p className={cn(styles.pageExp)}>새로운 비밀번호를 설정해주세요.</p>
         </div>
         <form action="POST" className={cn(styles.loginForm)}>
-          <div className={cn(styles.inputWrapper)}>
+          {/* <div className={cn(styles.inputWrapper)}>
             <label htmlFor="password">비밀번호</label>
             <input type="password" placeholder="비밀번호를 입력해주세요." />
             <img src={EyeSlash} className={cn(styles.icon)} alt="eye-slash" />
@@ -64,7 +63,7 @@ export default function ResetPassword() {
           </div>
           <div className={cn(styles.btnList)}>
             <button className={cn(styles.emailLoginBtn)}>재설정하기</button>
-          </div>
+          </div> */}
         </form>
       </div>
     </section>

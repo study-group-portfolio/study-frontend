@@ -56,7 +56,7 @@ $kakao-color: #ffe812;
       }
 
       .pageExp {
-        color: $page-title-color;
+        color: $exp-color;
         line-height: 22px;
       }
     }
@@ -95,23 +95,14 @@ $kakao-color: #ffe812;
           color: $exp-color;
         }
 
-        input {
-          height: 48px;
-          border: 1px solid $border-color;
-          border-radius: 6px;
-          padding-left: 15px;
-          font-size: 16px;
-          box-sizing: border-box;
-
-          &:focus {
-            outline: none;
-          }
-
-          &::placeholder {
-            color: $placeholder-color;
-            font-size: 16px;
-          }
-        }
+        // input {
+        //   height: 48px;
+        //   border: 1px solid $border-color;
+        //   border-radius: 6px;
+        //   padding-left: 15px;
+        //   font-size: 16px;
+        //   box-sizing: border-box;
+        // }
 
         .icon {
           width: 22px;
@@ -124,32 +115,22 @@ $kakao-color: #ffe812;
       .btnList {
         margin-top: 40px;
 
-        .emailLoginBtn {
-          @include button-style;
-          background-color: $primary-color;
-          color: #fff;
-        }
+        button {
+          width: 400px;
+          margin-bottom: 12px;
 
-        .kakaoLoginBtn {
-          @include button-style;
-          background-color: $kakao-color;
-          margin-top: 12px;
-        }
-
-        .googleLoginBtn {
-          @include button-style;
-          background-color: transparent;
-          border: 1px solid $border-color;
-          margin-top: 12px;
+          &:last-of-type {
+            margin-bottom: 0;
+          }
         }
       }
+    }
 
-      .utilityMenus {
-        margin-top: 15px;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-      }
+    .utilityMenus {
+      margin-top: 15px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
     }
   }
 }
