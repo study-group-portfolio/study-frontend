@@ -48,6 +48,7 @@ $kakao-color: #ffe812;
 
     .pageTitleSection {
       margin-bottom: 40px;
+      margin-top: 40px;
 
       .pageTitle {
         font-size: 32px;
@@ -111,17 +112,18 @@ $kakao-color: #ffe812;
           right: 5%;
         }
       }
+    }
 
-      .btnList {
-        margin-top: 40px;
+    .btnList {
+      margin-top: 40px;
+      width: 400px;
 
-        button {
-          width: 400px;
-          margin-bottom: 12px;
+      button {
+        width: 400px;
+        margin-bottom: 12px;
 
-          &:last-of-type {
-            margin-bottom: 0;
-          }
+        &:last-of-type {
+          margin-bottom: 0;
         }
       }
     }

@@ -1,49 +1,28 @@
 import { useState } from "react";
 import cn from "classnames";
-import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
 import styles from "../../css/pages/users/Users.module.scss";
-import BackBtn from "../../images/arrow_back_btn_blue.svg";
+import {
+  ButtonType,
+  Path,
+  InputType,
+  TextInputState,
+  TextInputType,
+} from "utils/enum";
+// Icons
+import ic_visibility_on_24dp from "images/icon/ic_visibility_on_24dp.svg";
+import ic_visibility_off_24dp from "images/icon/ic_visibility_off_24dp.svg";
+// Components
+import TextInput from "components/common/TextInput";
+import Button from "../../components/common/Button";
+import BackBtn from "components/common/BackBtn";
 
-interface ISigninForm {
-  email: string;
-  password: string;
-  confirmPassword: string;
-}
+export default function Signin() {
+  const [visible, setVisible] = useState(false);
 
-export default function Login() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<ISigninForm>();
-
-  const onSubmit = (data: ISigninForm) => {
-    console.log(data);
-  };
-
-  // Password visibility toggle
-  const [passwordType, setPasswordType] = useState({
-    type: "password",
-    visible: false,
-  });
-  const handleVisibility = (event: any) => {
-    setPasswordType(() => {
-      if (!passwordType.visible) {
-        return { type: "text", visible: true };
-      }
-      return { type: "password", visible: false };
-    });
-  };
   return (
     <section className={cn(styles.container)}>
       <div className={cn(styles.wrapper)}>
-        <div className={cn(styles.backBtn)}>
-          <Link to="/signin">
-            <img src={BackBtn} alt="backBtn" className={cn(styles.arrow)} />
-            이전으로
-          </Link>
-        </div>
+        <BackBtn to={Path.회원가입} />
         <div className={cn(styles.pageTitleSection)}>
           <h1 className={cn(styles.pageTitle)}>회원가입</h1>
           <p className={cn(styles.pageExp)}>
@@ -53,29 +32,52 @@ export default function Login() {
           </p>
         </div>
         <form action="POST" className={cn(styles.loginForm)}>
-          {/* <div className={cn(styles.inputWrapper)}>
-            <label htmlFor="email">이메일</label>
-            <input type="text" placeholder="example@studyit.com" />
-          </div>
           <div className={cn(styles.inputWrapper)}>
-            <label htmlFor="password">비밀번호</label>
-            <input type="password" placeholder="비밀번호를 입력해주세요." />
-            <img src={EyeSlash} className={cn(styles.icon)} alt="eye-slash" />
-          </div>
-          <div className={cn(styles.inputWrapper)}>
-            <label htmlFor="password">비밀번호 확인</label>
-            <input
-              type="password"
-              placeholder="비밀번호를 한 번 더 입력해주세요."
+            <label>이메일</label>
+            <TextInput
+              placeholder={"example@studyit.com"}
+              type={InputType.텍스트형}
+              textInputState={TextInputState.기본값}
+              textInputType={TextInputType.일반형}
             />
           </div>
           <div className={cn(styles.inputWrapper)}>
-            <label htmlFor="nickname">닉네임</label>
-            <input type="text" placeholder="닉네임을 입력해 주세요" />
+            <label>비밀번호</label>
+            <TextInput
+              type={visible ? InputType.텍스트형 : InputType.패스워드형}
+              placeholder="비밀번호를 입력해주세요"
+              helpText="영문/숫자/특수문자 조합, 8자~32자"
+              textInputType={TextInputType.아이콘형}
+              onClick={() => setVisible(!visible)}
+              buttonImg={
+                visible ? ic_visibility_on_24dp : ic_visibility_off_24dp
+              }
+            />
+          </div>
+          <div className={cn(styles.inputWrapper)}>
+            <label>비밀번호 확인</label>
+            <TextInput
+              type={visible ? InputType.텍스트형 : InputType.패스워드형}
+              placeholder="비밀번호를 한 번 더 입력해주세요"
+              textInputType={TextInputType.아이콘형}
+              onClick={() => setVisible(!visible)}
+              buttonImg={
+                visible ? ic_visibility_on_24dp : ic_visibility_off_24dp
+              }
+            />
+          </div>
+          <div className={cn(styles.inputWrapper)}>
+            <label>닉네임</label>
+            <TextInput
+              value="1234"
+              textInputState={TextInputState.오류}
+              helpText="한글/영어/숫자 혼용 가능, 최대 10자"
+              errorText="올바른 비밀번호를 입력해주세요."
+            />
           </div>
           <div className={cn(styles.btnList)}>
-            <button className={cn(styles.emailLoginBtn)}>회원가입하기</button>
-          </div> */}
+            <Button buttonName={"회원가입하기"} buttonType={ButtonType.기본} />
+          </div>
         </form>
       </div>
     </section>

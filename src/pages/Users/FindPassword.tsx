@@ -1,18 +1,23 @@
 import cn from "classnames";
-import { Link } from "react-router-dom";
 import styles from "../../css/pages/users/Users.module.scss";
-import BackBtn from "../../images/arrow_back_btn_blue.svg";
+// Enum
+import {
+  ButtonType,
+  Path,
+  InputType,
+  TextInputState,
+  TextInputType,
+} from "utils/enum";
+// Components
+import TextInput from "components/common/TextInput";
+import Button from "../../components/common/Button";
+import BackBtn from "../../components/common/BackBtn";
 
 export default function FindPassword() {
   return (
     <section className={cn(styles.container)}>
       <div className={cn(styles.wrapper)}>
-        <div className={cn(styles.backBtn)}>
-          <Link to="/login">
-            <img src={BackBtn} alt="backBtn" className={cn(styles.arrow)} />
-            이전으로
-          </Link>
-        </div>
+        <BackBtn to={Path.로그인} />
         <div className={cn(styles.pageTitleSection)}>
           <h1 className={cn(styles.pageTitle)}>비밀번호 찾기</h1>
           <p className={cn(styles.pageExp)}>
@@ -23,13 +28,19 @@ export default function FindPassword() {
         </div>
         <form action="POST" className={cn(styles.loginForm)}>
           <div className={cn(styles.inputWrapper)}>
-            <label htmlFor="email">이메일</label>
-            <input type="text" placeholder="example@studyit.com" />
+            <label>이메일</label>
+            <TextInput
+              placeholder={"example@studyit.com"}
+              type={InputType.텍스트형}
+              textInputState={TextInputState.기본값}
+              textInputType={TextInputType.일반형}
+            />
           </div>
           <div className={cn(styles.btnList)}>
-            <button className={cn(styles.emailLoginBtn)}>
-              이메일로 링크 받기
-            </button>
+            <Button
+              buttonName={"이메일로 링크 받기"}
+              buttonType={ButtonType.기본}
+            />
           </div>
         </form>
       </div>
