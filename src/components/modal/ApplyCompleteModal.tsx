@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import styles from 'css/components/modal/ApplyCompleteModal.module.scss';
-import img_apply_complete from 'images/img/img_apply_complete.svg';
+import img_modal_hand from 'images/img/img_modal_hand.svg';
 import Button from 'components/common/Button';
 import { ButtonType } from 'utils/enum';
 import { ModalProps } from 'utils/interface';
@@ -28,7 +28,7 @@ export default function ApplyCompleteModal(props: ApplyCompleteModalProps) {
     return (
         <div className={cn(styles.overlays)}>
             <div className={cn(styles.modal)}>
-                <img src={img_apply_complete} />
+                <img src={img_modal_hand} />
                 <h3>지원이 완료되었습니다.</h3>
                 <p>
                     결과는 방장 확인 후 알림으로 알려드려요.
