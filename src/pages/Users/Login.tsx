@@ -1,3 +1,4 @@
+import { useState } from "react";
 import cn from "classnames";
 import { Link } from "react-router-dom";
 // Styles
@@ -8,13 +9,18 @@ import {
   TextInputType,
   InputType,
   ButtonType,
+  Path,
 } from "utils/enum";
+// Components
 import TextInput from "components/common/TextInput";
 import Button from "components/common/Button";
-// icons
-import EyeSlash from "../../images/icon/ic_eye_slash.svg";
+// Icons
+import ic_visibility_on_24dp from "images/icon/ic_visibility_on_24dp.svg";
+import ic_visibility_off_24dp from "images/icon/ic_visibility_off_24dp.svg";
 
 export default function Login() {
+  const [visible, setVisible] = useState(false);
+
   return (
     <section className={cn(styles.container)}>
       <div className={cn(styles.wrapper)}>
@@ -37,13 +43,15 @@ export default function Login() {
             />
           </div>
           <div className={cn(styles.inputWrapper)}>
-            <label>비밀번호</label>
+            <label>비밀번호 확인</label>
             <TextInput
-              placeholder={"비밀번호를 입력해주세요."}
-              type={InputType.패스워드형}
-              buttonImg={EyeSlash}
-              textInputState={TextInputState.기본값}
+              type={visible ? InputType.텍스트형 : InputType.패스워드형}
+              placeholder="비밀번호를 입력해주세요"
               textInputType={TextInputType.아이콘형}
+              onClick={() => setVisible(!visible)}
+              buttonImg={
+                visible ? ic_visibility_on_24dp : ic_visibility_off_24dp
+              }
             />
           </div>
           <div className={cn(styles.btnList)}>
@@ -62,8 +70,8 @@ export default function Login() {
           </div>
         </form>
         <div className={cn(styles.utilityMenus)}>
-          <Link to="/users/signin">아직 회원이 아니신가요?</Link>
-          <Link to="/find-password">비밀번호 찾기</Link>
+          <Link to={Path.회원가입}>아직 회원이 아니신가요?</Link>
+          <Link to={Path.비밀번호_찾기}>비밀번호 찾기</Link>
         </div>
       </div>
     </section>

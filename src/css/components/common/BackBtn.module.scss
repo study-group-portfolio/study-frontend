@@ -1,0 +1,14 @@
+$primary-color: #175cd3;
+
+.backBtn {
+  width: 85px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+
+  .backBtnText {
+    margin-left: 10.59px;
+    font-size: 16px;
+    color: $primary-color;
+  }
+}
