@@ -64,6 +64,7 @@ export default function TextInput(props: TextInputProps) {
                 />
                 {(!textInputType || textInputType !== TextInputType.일반형) && 
                 <button 
+                    type='button'
                     className={
                         cn(
                             {

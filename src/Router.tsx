@@ -20,6 +20,7 @@ import BookMark from "pages/mypage/BookMark";
 import StudyActivity from "pages/mypage/StudyActivitiy";
 import Component from "pages/test/Component";
 import Modal from "pages/test/ModalComponent";
+import Functional from "pages/test/Functional";
 
 import { Path } from 'utils/enum';
 
@@ -69,6 +70,7 @@ function Router() {
         ></Route>
         <Route exact path="/test/component" component={Component}></Route>
         <Route exact path="/test/modal" component={Modal}></Route>
+        <Route exact path="/test/functional" component={Functional}></Route>
       </Switch>
     </BrowserRouter>
   );
