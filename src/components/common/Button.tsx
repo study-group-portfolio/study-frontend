@@ -23,6 +23,7 @@ export default function PrimaryButton(props: PrimaryButtonProps) {
 
     return (
         <button
+            type='button'
             className={
                 cn(
                     styles.btn,

@@ -49,6 +49,11 @@
             line-height: 20px;
             color: #98A2B3;
         }
+
+        button {
+            /** 윤곽선 설정 **/
+            outline: none;
+        }
         
         .textInputButton {
             /** 배경색상 설정 **/

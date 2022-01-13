@@ -1,0 +1,41 @@
+.container {
+    /** 요소 크기 설정 **/
+    width: 1366px;
+
+    /** 외부 여백 설정 **/
+    margin: 0 auto;
+    margin-top: 130px;
+    margin-bottom: 90px;
+
+    /** 내부 여백 설정 **/
+    padding: 0 103px;
+
+    h2 {
+        /** 텍스트 설정 **/
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 20px;
+        color: #101828;
+
+        /** 외부 여백 설정 **/
+        margin-bottom: 15px;
+    }
+
+    .section {
+        /** 그리드 설정 **/
+        display: grid;
+        grid-template-columns: auto;
+        justify-content: flex-start;
+        row-gap: 10px;
+
+        p {
+            /** 텍스트 설정 **/
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 22px;
+            color: #667085;
+        }
+    }
+}
