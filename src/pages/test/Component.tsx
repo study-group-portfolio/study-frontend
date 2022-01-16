@@ -22,7 +22,8 @@ import Options from 'components/common/Options';
 import CheckBox from 'components/common/CheckBox';
 import CheckBoxOptions from 'components/common/CheckBoxOptions';
 import Textarea from 'components/common/Textarea';
-import styles from 'css/pages/Component.module.scss';
+import PositionCard from 'components/common/PositionCard';
+import styles from 'css/pages/test/Component.module.scss';
 import cn from 'classnames';
 import ic_search_24dp from 'images/icon/ic_search_24dp.svg';
 import ic_visibility_on_24dp from 'images/icon/ic_visibility_on_24dp.svg';
@@ -81,8 +82,41 @@ export default function Test() {
         'MySQL', 'Sketch','JavaScript'
     ]
 
+    const skillTagList = [
+        {
+            name: 'Spring',
+        },
+        {
+            name: 'React.js',
+        },
+        {
+            name: 'JavaScript'
+        },
+        {
+            name: 'jQuery',
+        },
+        {
+            name: 'C++',
+        },
+        {
+            name: 'C#',
+        },
+        {
+            name: 'Java',
+        },
+        {
+            name: 'PHP',
+        },
+        {
+            name: 'Python',
+        },
+        {
+            name: 'Pycharm'
+        }
+    ]
+
     return (
-        <div>
+        <div style={{marginBottom: '90px'}}>
             <div className={cn(styles.container)}>
                 <h2>버튼</h2>
                 <div className={cn(styles.buttonSection)}>
@@ -401,6 +435,30 @@ export default function Test() {
                 <div>
                     <Textarea 
                         onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => console.log(event.target.value)}
+                    />
+                </div>
+                <h2>PositionCard</h2>
+                <div className={cn(styles.positionCardSection)}>
+                    <PositionCard 
+                        name={'백엔드 개발자'} 
+                        skillTagList={skillTagList} 
+                        recruitmentCount={2} 
+                        currentCount={1} 
+                        apply={true}
+                    />
+                    <PositionCard 
+                        name={'백엔드 개발자'} 
+                        skillTagList={skillTagList} 
+                        recruitmentCount={3} 
+                        currentCount={1} 
+                        apply={false}
+                    />
+                    <PositionCard 
+                        name={'백엔드 개발자'} 
+                        skillTagList={skillTagList} 
+                        recruitmentCount={1} 
+                        currentCount={1} 
+                        apply={false}
                     />
                 </div>
             </div>
