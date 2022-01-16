@@ -1,0 +1,74 @@
+.container {
+    /** 요소 크기 설정 **/
+    width: 1366px;
+
+    /** 외부 여백 설정 **/
+    margin: 0 auto;
+    margin-top: 130px;
+    margin-bottom: 30px;
+
+    /** 내부 여백 설정 **/
+    padding: 0 103px;
+
+    /** 그리드 설정 **/
+    display: grid;
+    row-gap: 30px;
+
+    h2 {
+        font-size: 32px;
+        line-height: 40px;
+        color: #101828;
+    }
+
+    .buttonSection {
+        display: grid;
+        grid-template-columns: calc(1100px / 4) calc(1100px / 4) calc(1100px / 4) calc(1100px / 4);
+        grid-gap: 10px;
+    }
+
+    .textInputSection {
+        display: grid;
+        justify-content: flex-start;
+        row-gap: 30px;
+    }
+
+    .badgeSection {
+        display: grid;
+        grid-auto-flow: column;
+        justify-content: flex-start;
+        column-gap: 12px;
+    }
+
+    .alarmBadgeSection {
+        display: grid;
+        grid-auto-flow: column;
+        justify-content: flex-start;
+        column-gap: 12px;
+    }
+
+    .studyCardSection {
+        display: grid;
+        grid-template-columns: calc(1120px / 3) calc(1120px / 3) calc(1120px / 3);
+        grid-gap: 20px;
+    }
+
+    .menberCardSection {
+        display: grid;
+        grid-template-columns: calc(1120px / 3) calc(1120px / 3) calc(1120px / 3);
+        column-gap: 20px;
+    }
+
+    .selectSection {
+        display: grid;
+        row-gap: 20px;
+    }
+
+    .positionCardSection {
+        /** 요소 크기 설정 **/
+        width: 790px;
+
+        /** 그리드 설정 **/
+        display: grid;
+        row-gap: 15px;
+    }
+}

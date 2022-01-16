@@ -8,12 +8,13 @@ interface PrimaryButtonProps {
     disabled?: boolean;
     img?: string | undefined;
     buttonType: ButtonType,
+    style?: Object;
     onClick?: Function;
     children?: any;
 }
 
 export default function PrimaryButton(props: PrimaryButtonProps) {
-    const { buttonName, img, disabled, buttonType, children } = props;
+    const { buttonName, img, disabled, buttonType, children, style } = props;
 
     const onClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         if (props.onClick) {
@@ -24,6 +25,7 @@ export default function PrimaryButton(props: PrimaryButtonProps) {
     return (
         <button
             type='button'
+            style={style}
             className={
                 cn(
                     styles.btn,
