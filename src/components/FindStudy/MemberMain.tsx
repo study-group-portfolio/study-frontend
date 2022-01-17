@@ -18,7 +18,6 @@ const MemberMainSection: React.FunctionComponent<IFindMainSection> = ({
   return (
     <MainSection>
       <article>
-        <LeftArrow />
         <div className="label">
           <div className="title">
             <h1>{titleText}</h1>
@@ -26,12 +25,6 @@ const MemberMainSection: React.FunctionComponent<IFindMainSection> = ({
           </div>
           <ViewAllBtn to={to}>전체보기</ViewAllBtn>
         </div>
-        <div className="wrapper">
-          <MemberCard />
-          <MemberCard />
-          <MemberCard />
-        </div>
-        <RightArrow />
       </article>
     </MainSection>
   );

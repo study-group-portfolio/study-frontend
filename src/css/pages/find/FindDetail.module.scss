@@ -1,0 +1,67 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
+$title-text: #101828;
+$paragraph-text: #475467;
+$banner-background: #f9fafb;
+
+.bannerSection {
+  width: 100%;
+  height: 460px;
+  background-color: $banner-background;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .bannerWrapper {
+    width: 1160px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    .bannerExp {
+      width: fit-content;
+
+      .bannerTitle {
+        font-size: 40px;
+        line-height: 55px;
+        color: $title-text;
+        margin-bottom: 10px;
+      }
+
+      .bannerParagraph {
+        color: $paragraph-text;
+        font-size: 16px;
+        line-height: 26px;
+      }
+    }
+
+    .bannerImage {
+      width: 250px;
+      height: 333px;
+    }
+  }
+}
+
+.container {
+  margin: 70px auto;
+  width: 1160px;
+  height: fit-content;
+
+  .title {
+    width: 100%;
+    margin-bottom: 24px;
+    display: flex;
+
+    .titleText {
+      font-size: 20px;
+      line-height: 25px;
+      margin-right: 7.67px;
+    }
+  }
+
+  .CardGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
