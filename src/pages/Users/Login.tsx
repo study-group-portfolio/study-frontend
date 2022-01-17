@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import cn from "classnames";
 import { Link } from "react-router-dom";
 // Styles
@@ -18,8 +18,39 @@ import Button from "components/common/Button";
 import ic_visibility_on_24dp from "images/icon/ic_visibility_on_24dp.svg";
 import ic_visibility_off_24dp from "images/icon/ic_visibility_off_24dp.svg";
 
+interface ILoginInputs {
+  email: string;
+  password: string;
+}
+
 export default function Login() {
   const [visible, setVisible] = useState(false);
+  const [validationError, setValidationError] = useState(false);
+  const [loginInput, setLoginInput] = useState({ email: "", password: "" });
+
+  // Validation
+  const validateEmail = (email: string) => {
+    const re =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  };
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = event.currentTarget;
+    setLoginInput((prevState) => ({ ...prevState, [id]: value }));
+  };
+
+  const handleSubmitClick = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (!validateEmail(loginInput.email)) {
+      setValidationError(true);
+    }
+
+    if (loginInput.email.length === 0 || loginInput.password.length < 8) {
+      setValidationError(true);
+    }
+  };
 
   return (
     <section className={cn(styles.container)}>
@@ -32,18 +63,24 @@ export default function Login() {
             로그인 후 스터딧해보세요!
           </p>
         </div>
-        <form action="POST" className={cn(styles.loginForm)}>
+        <form
+          action="POST"
+          className={cn(styles.loginForm)}
+          onSubmit={handleSubmitClick}
+        >
           <div className={cn(styles.inputWrapper)}>
             <label>이메일</label>
+            {}
             <TextInput
               placeholder={"example@studyit.com"}
               type={InputType.텍스트형}
               textInputState={TextInputState.기본값}
               textInputType={TextInputType.일반형}
+              onChange={handleChange}
             />
           </div>
           <div className={cn(styles.inputWrapper)}>
-            <label>비밀번호 확인</label>
+            <label>비밀번호</label>
             <TextInput
               type={visible ? InputType.텍스트형 : InputType.패스워드형}
               placeholder="비밀번호를 입력해주세요"
