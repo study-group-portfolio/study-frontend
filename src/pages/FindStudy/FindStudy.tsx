@@ -1,7 +1,7 @@
 import { useState } from "react";
 import cn from "classnames";
 import StudyCard from "components/common/StudyCard";
-import CheckBox from "components/EditStudy/CheckBox";
+import CheckBox from "components/common/CheckBox";
 import styles from "../../css/pages/find/FindDetail.module.scss";
 import InfoCircle from "../../images/info_circle.svg";
 import SearchMan from "../../images/search_man.svg";
@@ -50,13 +50,13 @@ export default function FindMember() {
             alt="info-circle"
             className={cn(styles.infoCircle)}
           />
-          {/* <CheckBox
+          <CheckBox
             content="d"
             selected={false}
             onClick={(content: string, selected: boolean) =>
               setSelected(selected)
             }
-          /> */}
+          />
         </div>
         <div className={cn(styles.CardGrid)}>
           <StudyCard
