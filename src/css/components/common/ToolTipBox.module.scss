@@ -1,0 +1,55 @@
+$tooltipbox-bgcolor: #475467;
+
+.MemberToolTipBoxContainer {
+  width: fit-content;
+  height: fit-content;
+  background-color: $tooltipbox-bgcolor;
+  border-radius: 6px;
+  padding: 10px;
+  position: absolute;
+  left: 2px;
+  top: -45px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 85px;
+    background-color: $tooltipbox-bgcolor;
+    width: 10px;
+    height: 10px;
+    transform: rotate(45deg);
+  }
+
+  p {
+    color: #fff;
+    font-size: 12px;
+  }
+}
+
+.StudyToolTipBoxContainer {
+  width: fit-content;
+  height: fit-content;
+  background-color: $tooltipbox-bgcolor;
+  border-radius: 6px;
+  padding: 10px;
+  position: absolute;
+  left: 31px;
+  top: -45px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 75px;
+    background-color: $tooltipbox-bgcolor;
+    width: 10px;
+    height: 10px;
+    transform: rotate(45deg);
+  }
+
+  p {
+    color: #fff;
+    font-size: 12px;
+  }
+}
