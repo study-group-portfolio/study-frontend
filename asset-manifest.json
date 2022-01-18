@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/study-frontend/static/css/main.a9ebb8a6.chunk.css",
-    "main.js": "/study-frontend/static/js/main.483e06d2.chunk.js",
-    "main.js.map": "/study-frontend/static/js/main.483e06d2.chunk.js.map",
+    "main.css": "/study-frontend/static/css/main.51778c44.chunk.css",
+    "main.js": "/study-frontend/static/js/main.5acd2855.chunk.js",
+    "main.js.map": "/study-frontend/static/js/main.5acd2855.chunk.js.map",
     "runtime-main.js": "/study-frontend/static/js/runtime-main.346d2fd0.js",
     "runtime-main.js.map": "/study-frontend/static/js/runtime-main.346d2fd0.js.map",
-    "static/js/2.e0079c6e.chunk.js": "/study-frontend/static/js/2.e0079c6e.chunk.js",
-    "static/js/2.e0079c6e.chunk.js.map": "/study-frontend/static/js/2.e0079c6e.chunk.js.map",
+    "static/js/2.a9821a11.chunk.js": "/study-frontend/static/js/2.a9821a11.chunk.js",
+    "static/js/2.a9821a11.chunk.js.map": "/study-frontend/static/js/2.a9821a11.chunk.js.map",
     "index.html": "/study-frontend/index.html",
-    "static/css/main.a9ebb8a6.chunk.css.map": "/study-frontend/static/css/main.a9ebb8a6.chunk.css.map",
-    "static/js/2.e0079c6e.chunk.js.LICENSE.txt": "/study-frontend/static/js/2.e0079c6e.chunk.js.LICENSE.txt",
+    "static/css/main.51778c44.chunk.css.map": "/study-frontend/static/css/main.51778c44.chunk.css.map",
+    "static/js/2.a9821a11.chunk.js.LICENSE.txt": "/study-frontend/static/js/2.a9821a11.chunk.js.LICENSE.txt",
     "static/media/arrow_back_btn.f9a96f33.svg": "/study-frontend/static/media/arrow_back_btn.f9a96f33.svg",
     "static/media/arrow_forward_btn.cfa913ee.svg": "/study-frontend/static/media/arrow_forward_btn.cfa913ee.svg",
     "static/media/StudyActivity.module.scss": "/study-frontend/static/media/bottom_arrow_btn.527aa265.svg",
@@ -36,9 +36,9 @@
     "static/media/ic_search_24dp.871e9336.svg": "/study-frontend/static/media/ic_search_24dp.871e9336.svg",
     "static/media/ic_visibility_off_24dp.8d8e6caf.svg": "/study-frontend/static/media/ic_visibility_off_24dp.8d8e6caf.svg",
     "static/media/ic_visibility_on_24dp.ea957e9a.svg": "/study-frontend/static/media/ic_visibility_on_24dp.ea957e9a.svg",
-    "static/media/img_apply_complete.0c13dddd.svg": "/study-frontend/static/media/img_apply_complete.0c13dddd.svg",
     "static/media/img_back_arrow.b721a521.svg": "/study-frontend/static/media/img_back_arrow.b721a521.svg",
     "static/media/img_join.71b51f7c.svg": "/study-frontend/static/media/img_join.71b51f7c.svg",
+    "static/media/img_modal_hand.0c13dddd.svg": "/study-frontend/static/media/img_modal_hand.0c13dddd.svg",
     "static/media/img_modal_sad.906b6095.svg": "/study-frontend/static/media/img_modal_sad.906b6095.svg",
     "static/media/img_modal_smile.4081a1df.svg": "/study-frontend/static/media/img_modal_smile.4081a1df.svg",
     "static/media/img_social_google.ffd258e0.svg": "/study-frontend/static/media/img_social_google.ffd258e0.svg",
@@ -49,13 +49,12 @@
     "static/media/logo_studyit_logotype.5e714266.svg": "/study-frontend/static/media/logo_studyit_logotype.5e714266.svg",
     "static/media/notion.b2c59eaf.svg": "/study-frontend/static/media/notion.b2c59eaf.svg",
     "static/media/ElementRevision.module.scss": "/study-frontend/static/media/photo_camera_black_24dp.f393580b.svg",
-    "static/media/profile.183dd61a.svg": "/study-frontend/static/media/profile.183dd61a.svg",
     "static/media/search_man.97a5c5d4.svg": "/study-frontend/static/media/search_man.97a5c5d4.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.346d2fd0.js",
-    "static/js/2.e0079c6e.chunk.js",
-    "static/css/main.a9ebb8a6.chunk.css",
-    "static/js/main.483e06d2.chunk.js"
+    "static/js/2.a9821a11.chunk.js",
+    "static/css/main.51778c44.chunk.css",
+    "static/js/main.5acd2855.chunk.js"
   ]
 }
