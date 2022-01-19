@@ -36,8 +36,6 @@ export default function CheckBoxOptions(props: CheckBoxProps) {
         }
     }
 
-    console.log(selectedList);
-
     return (
         <div className={cn(styles.container)}>
             <ul>

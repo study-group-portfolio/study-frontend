@@ -13,9 +13,16 @@ interface PositionCardProps {
     recruitmentCount: number;
     currentCount: number;
     apply?: boolean;
+    onClick?: Function;
 }
 export default function PositionCard(props: PositionCardProps) {
     const { name, skillTagList, recruitmentCount, currentCount, apply } = props;
+
+    const onClick = () => {
+        if (props.onClick) {
+            props.onClick();
+        }
+    }
 
     return (
         <div className={cn(styles.container)}>
@@ -29,6 +36,7 @@ export default function PositionCard(props: PositionCardProps) {
                     buttonName={apply || currentCount === recruitmentCount ? '모집마감' : '지원하기'}
                     disabled={apply || currentCount === recruitmentCount}
                     buttonType={ButtonType.서브}
+                    onClick={() => onClick()}
                 />
             </div>
             <div className={cn(styles.skillTags)}>

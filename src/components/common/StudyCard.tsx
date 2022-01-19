@@ -99,8 +99,8 @@ export default function StudyCard(props: StudyCardProps) {
             {state && 
             <div className={cn(styles.stateDropdown)}>
                 <ul>
-                    {positionStateList.map(positionState => (
-                        <li>
+                    {positionStateList.map((positionState, index) => (
+                        <li key={index}>
                             <span>{positionState.name}</span>
                             <span>{positionState.currentNum}/{positionState.totalNum}</span>
                         </li>

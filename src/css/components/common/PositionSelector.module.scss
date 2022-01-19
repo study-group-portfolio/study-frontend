@@ -1,0 +1,103 @@
+.container {
+    /** 그리드 설정 **/
+    display: grid;
+    row-gap: 20px;
+
+    .selectSection {
+        /** 그리드 설정 **/
+        display: grid;
+        row-gap: 10px;
+    }
+
+    .positionSection {
+        /** 배경색상 설정 **/
+        background: #F9FAFB;
+
+        .txt {
+            /** 요소 블록 설정 **/
+            display: block;
+
+            /** 텍스트 설정 **/
+            background: #F9FAFB;
+
+            /** 내부 여백 설정 **/
+            padding: 10px 0;
+
+            /** 테두리 설정 **/
+            border-top: 1px solid #E4E7EC;
+            border-bottom: 1px solid #E4E7EC;
+
+            /** 텍스트 설정 **/
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 18px;
+            color: #98A2B3;
+
+            /** 텍스트 중앙 설정 **/
+            text-align: center
+        }
+
+        .position {
+            /** 그리드 설정 **/
+            display: grid;
+            grid-template-columns: auto 26px;
+            column-gap: 20px;
+
+            /** 내부 여백 설정 **/
+            padding: 20px 15px;
+
+            /** 테두리 설정 **/
+            border-top: 1px dashed #E4E7EC;
+
+            .content {
+                /** 그리드 설정 **/
+                display: grid;
+                grid-template-columns: auto auto;
+                justify-content: space-between;
+                column-gap: 40px;
+
+                > div {
+                    /** 그리드 설정 **/
+                    display: grid;
+                    row-gap: 10px;
+                    h3 {
+                        /** 텍스트 설정 **/
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 16px;
+                        line-height: 20px;
+                        color: #101828;
+                    }
+
+                    .skillTags {
+                        /** 텍스트 설정 **/
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 16px;
+                        line-height: 20px;
+                        color: #98A2B3;
+                    }
+                }
+            }
+
+            .closeBtn {
+                /** 요소 크기 설정 **/
+                width: 26px;
+                height: 26px;
+
+                /** 배경색상 설정 **/
+                background-color: #FFFFFF;
+
+                /** 테두리 설정 **/
+                border: 1px solid #E4E7EC;
+                border-radius: 4px;
+            }
+        }
+
+        .position:first-child {
+            /** 테두리 설정 **/
+            border: none;
+        }
+    }
+}
