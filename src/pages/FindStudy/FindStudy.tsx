@@ -1,18 +1,20 @@
 import { useState } from "react";
 import cn from "classnames";
 import StudyCard from "components/common/StudyCard";
-import CheckBox from "components/EditStudy/CheckBox";
+import CheckBox from "components/common/CheckBox";
 import styles from "../../css/pages/find/FindDetail.module.scss";
 import InfoCircle from "../../images/info_circle.svg";
 import SearchMan from "../../images/search_man.svg";
 import { StudyCardType, RecruitType, StudyType, ProcessType } from "utils/enum";
 import { PositionState } from "utils/interface";
+import { StudyToolTipBox } from "components/common/ToolTipBox";
 
 export default function FindMember() {
   const [bookMark4, setBookMark4] = useState(false);
   const [bookMark5, setBookMark5] = useState(false);
   const [bookMark6, setBookMark6] = useState(false);
   const [seleted, setSelected] = useState(false);
+  const [studyTooltipShow, setStudyTooltipShow] = useState<boolean>(false);
 
   const positionStateList: PositionState[] = [
     { name: "백엔드 개발자", currentNum: 1, totalNum: 1 },
@@ -43,20 +45,27 @@ export default function FindMember() {
         </div>
       </div>
       <section className={cn(styles.container)}>
-        <div className={cn(styles.title)}>
-          <h1 className={cn(styles.titleText)}>스터디 찾기</h1>
-          <img
-            src={InfoCircle}
-            alt="info-circle"
-            className={cn(styles.infoCircle)}
-          />
-          {/* <CheckBox
-            content="d"
+        <div className={cn(styles.titleSection)}>
+          {!studyTooltipShow ? null : (
+            <StudyToolTipBox text="최근 등록 순으로 노출됩니다." />
+          )}
+          <div className={cn(styles.title)}>
+            <h1 className={cn(styles.titleText)}>스터디 찾기</h1>
+            <img
+              src={InfoCircle}
+              alt="info-circle"
+              className={cn(styles.infoCircle)}
+              onMouseEnter={() => setStudyTooltipShow(true)}
+              onMouseLeave={() => setStudyTooltipShow(false)}
+            />
+          </div>
+          <CheckBox
+            content="모집 중인 스터디만 보기"
             selected={false}
             onClick={(content: string, selected: boolean) =>
               setSelected(selected)
             }
-          /> */}
+          />
         </div>
         <div className={cn(styles.CardGrid)}>
           <StudyCard

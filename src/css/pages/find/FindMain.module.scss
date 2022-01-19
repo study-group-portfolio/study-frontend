@@ -44,33 +44,41 @@ $banner-background: #f9fafb;
 
 .container {
   margin: 70px auto;
-  width: 1160px;
+  width: fit-content;
   height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-  .titleSection {
-    width: 100%;
-    display: flex;
+  .wrapper {
+    width: fit-content;
 
-    .title {
-      width: 100%;
-      margin-bottom: 24px;
+    &:nth-of-type(2) {
+      margin-top: 60px;
+    }
+
+    .titleSection {
       display: flex;
+      margin: 0 70px;
+      justify-content: space-between;
+      position: relative;
 
-      .titleText {
-        font-size: 20px;
-        line-height: 25px;
-        margin-right: 7.67px;
+      .title {
+        display: flex;
+
+        .titleText {
+          font-size: 20px;
+          margin-right: 6px;
+        }
+
+        img {
+          cursor: pointer;
+        }
       }
 
-      img {
-        cursor: pointer;
+      a {
+        font-size: 14px;
       }
     }
-  }
-
-  .CardGrid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
   }
 }

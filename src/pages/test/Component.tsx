@@ -36,86 +36,124 @@ import { useState, useEffect } from 'react';
 import { PositionState, CustomChangeEvent } from 'utils/interface';
 
 export default function Test() {
-    const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(false);
 
-    /** 북마크 설정 관련 변수 */
-    const [bookMark1, setBookMark1] = useState(false);
-    const [bookMark2, setBookMark2] = useState(false);
-    const [bookMark3, setBookMark3] = useState(false);
-    const [bookMark4, setBookMark4] = useState(false);
-    const [bookMark5, setBookMark5] = useState(false);
-    const [bookMark6, setBookMark6] = useState(false);
+  /** 북마크 설정 관련 변수 */
+  const [bookMark1, setBookMark1] = useState(false);
+  const [bookMark2, setBookMark2] = useState(false);
+  const [bookMark3, setBookMark3] = useState(false);
+  const [bookMark4, setBookMark4] = useState(false);
+  const [bookMark5, setBookMark5] = useState(false);
+  const [bookMark6, setBookMark6] = useState(false);
 
-    const [selectedValue1, setSelectedValue1] = useState('');
-    const [selectedValue2, setSelectedValue2] = useState('');
-    const [selectedValue3, setSelectedValue3] = useState(Array<string>());
+  const [selectedValue1, setSelectedValue1] = useState("");
+  const [selectedValue2, setSelectedValue2] = useState("");
+  const [selectedValue3, setSelectedValue3] = useState(Array<string>());
 
-    const [selected, setSelected] = useState(false);
+  const [selected, setSelected] = useState(false);
 
-    const positionStateList: PositionState[] = [
-        { name: '백엔드 개발자', currentNum: 1, totalNum: 1},
-        { name: '프론트엔드 개발자', currentNum: 1, totalNum: 1},
-        { name: 'UX/UI 디자이너', currentNum: 0, totalNum: 2},
-    ]
+  const positionStateList: PositionState[] = [
+    { name: "백엔드 개발자", currentNum: 1, totalNum: 1 },
+    { name: "프론트엔드 개발자", currentNum: 1, totalNum: 1 },
+    { name: "UX/UI 디자이너", currentNum: 0, totalNum: 2 },
+  ];
 
-    const locations = ['서울', '부산', '인천', '경기', '강원', '충청', '전라', '경상', '제주'];
-    const positions = [
-        {
-            title: '기획',
-            items: ['서비스 기획자', '게임 기획자', 'PM·PO', '데이터 분석가']
-        },
-        {
-            title: '디자인',
-            items: ['UX/UI 디자이너', 'UX디자이너', 'GUI 디자이너', '그래픽 디자이너', '3D 디자이너']
-        },
-        {
-            title: '개발',
-            items: ['프론트엔드 개발자', '웹 개발자', '서버 개발자', '자바 개발자', '웹 퍼블리셔']
-        }
-    ];
-    const skills = [
-        'zeplin', 'jQuery', 'Google Analytics', 
-        'iOS', 'C++', 'Amplitude', 
-        'Android', 'C#', 'Adobe Photoshop', 
-        'html/css', 'Java','Adobe illustrator', 
-        'Spring', 'Python','Adobe XD', 
-        'React.js', 'Python','Figma', 
-        'Amazon AWS', 'Pycharm','Framer', 
-        'MySQL', 'Sketch','JavaScript'
-    ]
+  const locations = [
+    "서울",
+    "부산",
+    "인천",
+    "경기",
+    "강원",
+    "충청",
+    "전라",
+    "경상",
+    "제주",
+  ];
+  const positions = [
+    {
+      title: "기획",
+      items: ["서비스 기획자", "게임 기획자", "PM·PO", "데이터 분석가"],
+    },
+    {
+      title: "디자인",
+      items: [
+        "UX/UI 디자이너",
+        "UX디자이너",
+        "GUI 디자이너",
+        "그래픽 디자이너",
+        "3D 디자이너",
+      ],
+    },
+    {
+      title: "개발",
+      items: [
+        "프론트엔드 개발자",
+        "웹 개발자",
+        "서버 개발자",
+        "자바 개발자",
+        "웹 퍼블리셔",
+      ],
+    },
+  ];
+  const skills = [
+    "zeplin",
+    "jQuery",
+    "Google Analytics",
+    "iOS",
+    "C++",
+    "Amplitude",
+    "Android",
+    "C#",
+    "Adobe Photoshop",
+    "html/css",
+    "Java",
+    "Adobe illustrator",
+    "Spring",
+    "Python",
+    "Adobe XD",
+    "React.js",
+    "Python",
+    "Figma",
+    "Amazon AWS",
+    "Pycharm",
+    "Framer",
+    "MySQL",
+    "Sketch",
+    "JavaScript",
+  ];
 
-    const skillTagList = [
-        {
-            name: 'Spring',
-        },
-        {
-            name: 'React.js',
-        },
-        {
-            name: 'JavaScript'
-        },
-        {
-            name: 'jQuery',
-        },
-        {
-            name: 'C++',
-        },
-        {
-            name: 'C#',
-        },
-        {
-            name: 'Java',
-        },
-        {
-            name: 'PHP',
-        },
-        {
-            name: 'Python',
-        },
-        {
-            name: 'Pycharm'
-        }
-    ]
+  const skillTagList = [
+    {
+      name: "Spring",
+    },
+    {
+      name: "React.js",
+    },
+    {
+      name: "JavaScript",
+    },
+    {
+      name: "jQuery",
+    },
+    {
+      name: "C++",
+    },
+    {
+      name: "C#",
+    },
+    {
+      name: "Java",
+    },
+    {
+      name: "PHP",
+    },
+    {
+      name: "Python",
+    },
+    {
+      name: "Pycharm",
+    },
+  ];
 
     return (
         <div style={{marginBottom: '90px'}}>
@@ -635,5 +673,179 @@ export default function Test() {
                 </Slider>
             </div>
         </div>
-    )
+      </div>
+      <div>
+        <Slider>
+          <StudyCard
+            studySeq={0}
+            title="프론트엔드 스터디"
+            skillTags="#Spring #React.js #JavaScript"
+            studyCardType={StudyCardType.편집형}
+            recruitType={RecruitType.모집완료}
+            studyType={StudyType.지식공유및탐구}
+            processType={ProcessType.오프라인}
+            bookMark={bookMark6}
+            onClickBookMark={() => setBookMark6(!bookMark6)}
+            currentNum={10}
+            totalNum={10}
+            positionStateList={positionStateList}
+          />
+          <StudyCard
+            studySeq={0}
+            title="프론트엔드 스터디"
+            skillTags="#Spring #React.js #JavaScript"
+            studyCardType={StudyCardType.편집형}
+            recruitType={RecruitType.모집완료}
+            studyType={StudyType.지식공유및탐구}
+            processType={ProcessType.오프라인}
+            bookMark={bookMark6}
+            onClickBookMark={() => setBookMark6(!bookMark6)}
+            currentNum={10}
+            totalNum={10}
+            positionStateList={positionStateList}
+          />
+          <StudyCard
+            studySeq={0}
+            title="프론트엔드 스터디"
+            skillTags="#Spring #React.js #JavaScript"
+            studyCardType={StudyCardType.편집형}
+            recruitType={RecruitType.모집완료}
+            studyType={StudyType.지식공유및탐구}
+            processType={ProcessType.오프라인}
+            bookMark={bookMark6}
+            onClickBookMark={() => setBookMark6(!bookMark6)}
+            currentNum={10}
+            totalNum={10}
+            positionStateList={positionStateList}
+          />
+          <StudyCard
+            studySeq={0}
+            title="알고리즘 스터디 구합니다."
+            skillTags="#Spring #React.js "
+            studyCardType={StudyCardType.편집형}
+            recruitType={RecruitType.모집중}
+            studyType={StudyType.지식공유및탐구}
+            processType={ProcessType.온라인}
+            bookMark={bookMark5}
+            onClickBookMark={() => setBookMark5(!bookMark5)}
+            currentNum={2}
+            totalNum={5}
+            positionStateList={positionStateList}
+          />
+          <StudyCard
+            studySeq={0}
+            title="프론트엔드 스터디"
+            skillTags="#Spring #React.js #JavaScript"
+            studyCardType={StudyCardType.편집형}
+            recruitType={RecruitType.모집완료}
+            studyType={StudyType.지식공유및탐구}
+            processType={ProcessType.오프라인}
+            bookMark={bookMark6}
+            onClickBookMark={() => setBookMark6(!bookMark6)}
+            currentNum={10}
+            totalNum={10}
+            positionStateList={positionStateList}
+          />
+          <StudyCard
+            studySeq={0}
+            title="알고리즘 스터디 구합니다."
+            skillTags="#Spring #React.js "
+            studyCardType={StudyCardType.편집형}
+            recruitType={RecruitType.모집중}
+            studyType={StudyType.지식공유및탐구}
+            processType={ProcessType.온라인}
+            bookMark={bookMark5}
+            onClickBookMark={() => setBookMark5(!bookMark5)}
+            currentNum={2}
+            totalNum={5}
+            positionStateList={positionStateList}
+          />
+          <StudyCard
+            studySeq={0}
+            title="프론트엔드 스터디"
+            skillTags="#Spring #React.js #JavaScript"
+            studyCardType={StudyCardType.편집형}
+            recruitType={RecruitType.모집완료}
+            studyType={StudyType.지식공유및탐구}
+            processType={ProcessType.오프라인}
+            bookMark={bookMark6}
+            onClickBookMark={() => setBookMark6(!bookMark6)}
+            currentNum={10}
+            totalNum={10}
+            positionStateList={positionStateList}
+          />
+          <StudyCard
+            studySeq={0}
+            title="프론트엔드 스터디"
+            skillTags="#Spring #React.js #JavaScript"
+            studyCardType={StudyCardType.편집형}
+            recruitType={RecruitType.모집완료}
+            studyType={StudyType.지식공유및탐구}
+            processType={ProcessType.오프라인}
+            bookMark={bookMark6}
+            onClickBookMark={() => setBookMark6(!bookMark6)}
+            currentNum={10}
+            totalNum={10}
+            positionStateList={positionStateList}
+          />
+          <StudyCard
+            studySeq={0}
+            title="프론트엔드 스터디"
+            skillTags="#Spring #React.js #JavaScript"
+            studyCardType={StudyCardType.편집형}
+            recruitType={RecruitType.모집완료}
+            studyType={StudyType.지식공유및탐구}
+            processType={ProcessType.오프라인}
+            bookMark={bookMark6}
+            onClickBookMark={() => setBookMark6(!bookMark6)}
+            currentNum={10}
+            totalNum={10}
+            positionStateList={positionStateList}
+          />
+          <StudyCard
+            studySeq={0}
+            title="알고리즘 스터디 구합니다."
+            skillTags="#Spring #React.js "
+            studyCardType={StudyCardType.편집형}
+            recruitType={RecruitType.모집중}
+            studyType={StudyType.지식공유및탐구}
+            processType={ProcessType.온라인}
+            bookMark={bookMark5}
+            onClickBookMark={() => setBookMark5(!bookMark5)}
+            currentNum={2}
+            totalNum={5}
+            positionStateList={positionStateList}
+          />
+          <StudyCard
+            studySeq={0}
+            title="프론트엔드 스터디"
+            skillTags="#Spring #React.js #JavaScript"
+            studyCardType={StudyCardType.편집형}
+            recruitType={RecruitType.모집완료}
+            studyType={StudyType.지식공유및탐구}
+            processType={ProcessType.오프라인}
+            bookMark={bookMark6}
+            onClickBookMark={() => setBookMark6(!bookMark6)}
+            currentNum={10}
+            totalNum={10}
+            positionStateList={positionStateList}
+          />
+          <StudyCard
+            studySeq={0}
+            title="알고리즘 스터디 구합니다."
+            skillTags="#Spring #React.js "
+            studyCardType={StudyCardType.편집형}
+            recruitType={RecruitType.모집중}
+            studyType={StudyType.지식공유및탐구}
+            processType={ProcessType.온라인}
+            bookMark={bookMark5}
+            onClickBookMark={() => setBookMark5(!bookMark5)}
+            currentNum={2}
+            totalNum={5}
+            positionStateList={positionStateList}
+          />
+        </Slider>
+      </div>
+    </div>
+  );
 }
