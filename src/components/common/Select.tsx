@@ -53,7 +53,6 @@ export default function Select(props: SelectProps) {
                     onChange(customChangeEvent: CustomChangeEvent) {
                         if (props.onChange) {
                             props.onChange(customChangeEvent);
-                            console.log(customChangeEvent.selectEventType !== SelectEventType.체크선택박스)
                             if (customChangeEvent.selectEventType !== SelectEventType.체크선택박스) setOpen(false);
                         }
                     },

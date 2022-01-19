@@ -23,6 +23,8 @@ import CheckBox from 'components/common/CheckBox';
 import CheckBoxOptions from 'components/common/CheckBoxOptions';
 import Textarea from 'components/common/Textarea';
 import PositionCard from 'components/common/PositionCard';
+import PositionSelector from 'components/common/PositionSelector';
+import CountButton from 'components/common/CountButton';
 import styles from 'css/pages/test/Component.module.scss';
 import cn from 'classnames';
 import ic_search_24dp from 'images/icon/ic_search_24dp.svg';
@@ -48,7 +50,7 @@ export default function Test() {
     const [selectedValue2, setSelectedValue2] = useState('');
     const [selectedValue3, setSelectedValue3] = useState(Array<string>());
 
-    const [seleted, setSelected] = useState(false);
+    const [selected, setSelected] = useState(false);
 
     const positionStateList: PositionState[] = [
         { name: '백엔드 개발자', currentNum: 1, totalNum: 1},
@@ -428,7 +430,7 @@ export default function Test() {
                 <div>
                     <CheckBox 
                         content='Google Analytics'
-                        selected={false}
+                        selected={selected}
                         onClick={(content: string, selected: boolean) => setSelected(selected)}/>
                 </div>
                 <h2>Textarea</h2>
@@ -459,6 +461,16 @@ export default function Test() {
                         recruitmentCount={1} 
                         currentCount={1} 
                         apply={false}
+                    />
+                </div>
+                <h2>CountButton</h2>
+                <div>
+                    <CountButton onChangeCount={(value: number) => console.log(value)}/>
+                </div>
+                <h2>PositionSelector</h2>
+                <div className={cn(styles.positionSelectorSection)}>
+                    <PositionSelector 
+                        onSelect={(position) => console.log(position)}
                     />
                 </div>
             </div>

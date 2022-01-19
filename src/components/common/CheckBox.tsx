@@ -12,7 +12,6 @@ interface CheckBoxProps {
 
 export default function CheckItem(props: CheckBoxProps) {
     const { content, selected } = props;
-    const [select, setSelect] = useState(false);
 
     const onClick = (content?: string, selected?: boolean) => {
         if (props.onClick) {
@@ -38,8 +37,8 @@ export default function CheckItem(props: CheckBoxProps) {
                 className={
                     cn(
                         {
-                            [styles.span_on]: select,
-                            [styles.span_off]: !select,
+                            [styles.span_on]: selected,
+                            [styles.span_off]: !selected,
                         }
                     )
                 }

@@ -24,3 +24,9 @@ export interface ProfileInfo {
     profileImg?: string;
     position: string;
 }
+
+export interface Position {
+    name: string;
+    skillList: string[];
+    recruitmentCount: number;
+}
