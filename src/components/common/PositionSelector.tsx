@@ -43,6 +43,10 @@ export default function PositionSelector(props: PositionSelectorProps) {
         const position = positionList[index];
         position.recruitmentCount = value;
         setPositionList(positionList);
+
+        if (props.onSelect) {
+            
+        }
     }
 
     const onClickRemove = (index: number, positionList: Position[]) => {
