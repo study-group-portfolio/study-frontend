@@ -3,14 +3,16 @@ import cn from "classnames";
 import MemberCard from "components/common/MemberCard";
 import styles from "../../css/pages/find/FindDetail.module.scss";
 import InfoCircle from "../../images/info_circle.svg";
-import SearchMan from "../../images/search_man.svg";
+import SearchMan from "../../images/img/img_search_man.svg";
 import img_testuser_01 from "images/img/img_testuser_01.svg";
 import img_testuser_02 from "images/img/img_testuser_02.svg";
+import { MemberToolTipBox } from "components/common/ToolTipBox";
 
 export default function FindMember() {
   const [bookMark1, setBookMark1] = useState(false);
   const [bookMark2, setBookMark2] = useState(false);
   const [bookMark3, setBookMark3] = useState(false);
+  const [memberTooltipShow, setMemberTooltipShow] = useState(false);
   return (
     <>
       <div className={cn(styles.bannerSection)}>
@@ -35,13 +37,20 @@ export default function FindMember() {
         </div>
       </div>
       <section className={cn(styles.container)}>
-        <div className={cn(styles.title)}>
-          <h1 className={cn(styles.titleText)}>멤버 찾기</h1>
-          <img
-            src={InfoCircle}
-            alt="info-circle"
-            className={cn(styles.infoCircle)}
-          />
+        <div className={cn(styles.titleSection)}>
+          {!memberTooltipShow ? null : (
+            <MemberToolTipBox text="최근 업데이트 순으로 노출됩니다." />
+          )}
+          <div className={cn(styles.title)}>
+            <h1 className={cn(styles.titleText)}>멤버 찾기</h1>
+            <img
+              src={InfoCircle}
+              alt="info-circle"
+              className={cn(styles.infoCircle)}
+              onMouseEnter={() => setMemberTooltipShow(true)}
+              onMouseLeave={() => setMemberTooltipShow(false)}
+            />
+          </div>
         </div>
         <div className={cn(styles.CardGrid)}>
           <MemberCard
