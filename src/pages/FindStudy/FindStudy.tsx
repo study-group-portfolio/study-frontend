@@ -4,17 +4,18 @@ import StudyCard from "components/common/StudyCard";
 import CheckBox from "components/common/CheckBox";
 import styles from "../../css/pages/find/FindDetail.module.scss";
 import InfoCircle from "../../images/info_circle.svg";
-import SearchMan from "../../images/search_man.svg";
+import StudySearching from "../../images/img/img_search_study.svg";
 import { StudyCardType, RecruitType, StudyType, ProcessType } from "utils/enum";
 import { PositionState } from "utils/interface";
 import { StudyToolTipBox } from "components/common/ToolTipBox";
 
-export default function FindMember() {
+export default function FindStudy() {
   const [bookMark4, setBookMark4] = useState(false);
   const [bookMark5, setBookMark5] = useState(false);
   const [bookMark6, setBookMark6] = useState(false);
   const [seleted, setSelected] = useState(false);
-  const [studyTooltipShow, setStudyTooltipShow] = useState<boolean>(false);
+  const [studyDetailTooltipShow, setStudyDetailTooltipShow] =
+    useState<boolean>(false);
 
   const positionStateList: PositionState[] = [
     { name: "백엔드 개발자", currentNum: 1, totalNum: 1 },
@@ -27,18 +28,18 @@ export default function FindMember() {
         <div className={cn(styles.bannerWrapper)}>
           <div className={cn(styles.bannerExp)}>
             <h1 className={cn(styles.bannerTitle)}>
-              함께 달릴 멤버를
+              이 중에 마음에 들 스터디
               <br />
-              직접 선택해 보세요.
+              하나쯤은 있을 거에요.
             </h1>
             <p className={cn(styles.bannerParagraph)}>
-              함께 성장할 멤버들을 직접 골라보는 건 어때요?
+              나에게 맞는 스터디를 찾는 데에 지쳤다면
               <br />
-              준비된 멤버들이 기다리고 있어요.
+              스터딧에서 해결할 수 있을 거에요.
             </p>
           </div>
           <img
-            src={SearchMan}
+            src={StudySearching}
             alt="search-man"
             className={cn(styles.bannerImage)}
           />
@@ -46,7 +47,7 @@ export default function FindMember() {
       </div>
       <section className={cn(styles.container)}>
         <div className={cn(styles.titleSection)}>
-          {!studyTooltipShow ? null : (
+          {!studyDetailTooltipShow ? null : (
             <StudyToolTipBox text="최근 등록 순으로 노출됩니다." />
           )}
           <div className={cn(styles.title)}>
@@ -55,8 +56,8 @@ export default function FindMember() {
               src={InfoCircle}
               alt="info-circle"
               className={cn(styles.infoCircle)}
-              onMouseEnter={() => setStudyTooltipShow(true)}
-              onMouseLeave={() => setStudyTooltipShow(false)}
+              onMouseEnter={() => setStudyDetailTooltipShow(true)}
+              onMouseLeave={() => setStudyDetailTooltipShow(false)}
             />
           </div>
           <CheckBox
