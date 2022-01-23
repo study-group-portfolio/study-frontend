@@ -69,7 +69,6 @@ const FindMain: React.FunctionComponent = () => {
               <img
                 src={InfoCircle}
                 alt="info-circle"
-                className={cn(styles.infoCircle)}
                 onMouseEnter={() => setStudyTooltipShow(true)}
                 onMouseLeave={() => setStudyTooltipShow(false)}
               />

@@ -14,8 +14,7 @@ export default function FindStudy() {
   const [bookMark5, setBookMark5] = useState(false);
   const [bookMark6, setBookMark6] = useState(false);
   const [seleted, setSelected] = useState(false);
-  const [studyDetailTooltipShow, setStudyDetailTooltipShow] =
-    useState<boolean>(false);
+  const [studyTooltipShow, setStudyTooltipShow] = useState<boolean>(false);
 
   const positionStateList: PositionState[] = [
     { name: "백엔드 개발자", currentNum: 1, totalNum: 1 },
@@ -23,7 +22,7 @@ export default function FindStudy() {
     { name: "UX/UI 디자이너", currentNum: 0, totalNum: 2 },
   ];
   return (
-    <>
+    <div>
       <div className={cn(styles.bannerSection)}>
         <div className={cn(styles.bannerWrapper)}>
           <div className={cn(styles.bannerExp)}>
@@ -46,241 +45,242 @@ export default function FindStudy() {
         </div>
       </div>
       <section className={cn(styles.container)}>
-        <div className={cn(styles.titleSection)}>
-          {!studyDetailTooltipShow ? null : (
-            <StudyToolTipBox text="최근 등록 순으로 노출됩니다." />
-          )}
-          <div className={cn(styles.title)}>
-            <h1 className={cn(styles.titleText)}>스터디 찾기</h1>
-            <img
-              src={InfoCircle}
-              alt="info-circle"
-              className={cn(styles.infoCircle)}
-              onMouseEnter={() => setStudyDetailTooltipShow(true)}
-              onMouseLeave={() => setStudyDetailTooltipShow(false)}
+        <div className={cn(styles.wrapper)}>
+          <div className={cn(styles.titleSection)}>
+            <div className={cn(styles.title)}>
+              {!studyTooltipShow ? null : (
+                <StudyToolTipBox text="최근 등록 순으로 노출됩니다." />
+              )}
+              <h1 className={cn(styles.titleText)}>스터디 찾기</h1>
+              <img
+                src={InfoCircle}
+                alt="info-circle"
+                onMouseEnter={() => setStudyTooltipShow(true)}
+                onMouseLeave={() => setStudyTooltipShow(false)}
+              />
+            </div>
+            <CheckBox
+              content="모집 중인 스터디만"
+              selected={false}
+              onClick={(content: string, selected: boolean) =>
+                setSelected(selected)
+              }
             />
           </div>
-          <CheckBox
-            content="모집 중인 스터디만 보기"
-            selected={false}
-            onClick={(content: string, selected: boolean) =>
-              setSelected(selected)
-            }
-          />
-        </div>
-        <div className={cn(styles.CardGrid)}>
-          <StudyCard
-            studySeq={0}
-            title="포트폴리오용"
-            skillTags="#Spring #React.js #JavaScript #jQuer…"
-            studyCardType={StudyCardType.북마크형}
-            recruitType={RecruitType.모집중}
-            studyType={StudyType.사이드프로젝트}
-            processType={ProcessType.온오프라인}
-            bookMark={bookMark4}
-            onClickBookMark={() => setBookMark4(!bookMark4)}
-            currentNum={5}
-            totalNum={10}
-            positionStateList={positionStateList}
-          />
-          <StudyCard
-            studySeq={0}
-            title="알고리즘 스터디 구합니다."
-            skillTags="#Spring #React.js "
-            studyCardType={StudyCardType.북마크형}
-            recruitType={RecruitType.모집중}
-            studyType={StudyType.지식공유및탐구}
-            processType={ProcessType.온라인}
-            bookMark={bookMark5}
-            onClickBookMark={() => setBookMark5(!bookMark5)}
-            currentNum={2}
-            totalNum={5}
-            positionStateList={positionStateList}
-          />
-          <StudyCard
-            studySeq={0}
-            title="프론트엔드 스터디"
-            skillTags="#Spring #React.js #JavaScript"
-            studyCardType={StudyCardType.북마크형}
-            recruitType={RecruitType.모집완료}
-            studyType={StudyType.지식공유및탐구}
-            processType={ProcessType.오프라인}
-            bookMark={bookMark6}
-            onClickBookMark={() => setBookMark6(!bookMark6)}
-            currentNum={10}
-            totalNum={10}
-            positionStateList={positionStateList}
-          />
-          <StudyCard
-            studySeq={0}
-            title="포트폴리오용"
-            skillTags="#Spring #React.js #JavaScript #jQuer…"
-            studyCardType={StudyCardType.북마크형}
-            recruitType={RecruitType.모집중}
-            studyType={StudyType.사이드프로젝트}
-            processType={ProcessType.온오프라인}
-            bookMark={bookMark4}
-            onClickBookMark={() => setBookMark4(!bookMark4)}
-            currentNum={5}
-            totalNum={10}
-            positionStateList={positionStateList}
-          />
-          <StudyCard
-            studySeq={0}
-            title="알고리즘 스터디 구합니다."
-            skillTags="#Spring #React.js "
-            studyCardType={StudyCardType.북마크형}
-            recruitType={RecruitType.모집중}
-            studyType={StudyType.지식공유및탐구}
-            processType={ProcessType.온라인}
-            bookMark={bookMark5}
-            onClickBookMark={() => setBookMark5(!bookMark5)}
-            currentNum={2}
-            totalNum={5}
-            positionStateList={positionStateList}
-          />
-          <StudyCard
-            studySeq={0}
-            title="프론트엔드 스터디"
-            skillTags="#Spring #React.js #JavaScript"
-            studyCardType={StudyCardType.북마크형}
-            recruitType={RecruitType.모집완료}
-            studyType={StudyType.지식공유및탐구}
-            processType={ProcessType.오프라인}
-            bookMark={bookMark6}
-            onClickBookMark={() => setBookMark6(!bookMark6)}
-            currentNum={10}
-            totalNum={10}
-            positionStateList={positionStateList}
-          />
-          <StudyCard
-            studySeq={0}
-            title="포트폴리오용"
-            skillTags="#Spring #React.js #JavaScript #jQuer…"
-            studyCardType={StudyCardType.북마크형}
-            recruitType={RecruitType.모집중}
-            studyType={StudyType.사이드프로젝트}
-            processType={ProcessType.온오프라인}
-            bookMark={bookMark4}
-            onClickBookMark={() => setBookMark4(!bookMark4)}
-            currentNum={5}
-            totalNum={10}
-            positionStateList={positionStateList}
-          />
-          <StudyCard
-            studySeq={0}
-            title="알고리즘 스터디 구합니다."
-            skillTags="#Spring #React.js "
-            studyCardType={StudyCardType.북마크형}
-            recruitType={RecruitType.모집중}
-            studyType={StudyType.지식공유및탐구}
-            processType={ProcessType.온라인}
-            bookMark={bookMark5}
-            onClickBookMark={() => setBookMark5(!bookMark5)}
-            currentNum={2}
-            totalNum={5}
-            positionStateList={positionStateList}
-          />
-          <StudyCard
-            studySeq={0}
-            title="프론트엔드 스터디"
-            skillTags="#Spring #React.js #JavaScript"
-            studyCardType={StudyCardType.북마크형}
-            recruitType={RecruitType.모집완료}
-            studyType={StudyType.지식공유및탐구}
-            processType={ProcessType.오프라인}
-            bookMark={bookMark6}
-            onClickBookMark={() => setBookMark6(!bookMark6)}
-            currentNum={10}
-            totalNum={10}
-            positionStateList={positionStateList}
-          />
-          <StudyCard
-            studySeq={0}
-            title="포트폴리오용"
-            skillTags="#Spring #React.js #JavaScript #jQuer…"
-            studyCardType={StudyCardType.북마크형}
-            recruitType={RecruitType.모집중}
-            studyType={StudyType.사이드프로젝트}
-            processType={ProcessType.온오프라인}
-            bookMark={bookMark4}
-            onClickBookMark={() => setBookMark4(!bookMark4)}
-            currentNum={5}
-            totalNum={10}
-            positionStateList={positionStateList}
-          />
-          <StudyCard
-            studySeq={0}
-            title="알고리즘 스터디 구합니다."
-            skillTags="#Spring #React.js "
-            studyCardType={StudyCardType.북마크형}
-            recruitType={RecruitType.모집중}
-            studyType={StudyType.지식공유및탐구}
-            processType={ProcessType.온라인}
-            bookMark={bookMark5}
-            onClickBookMark={() => setBookMark5(!bookMark5)}
-            currentNum={2}
-            totalNum={5}
-            positionStateList={positionStateList}
-          />
-          <StudyCard
-            studySeq={0}
-            title="프론트엔드 스터디"
-            skillTags="#Spring #React.js #JavaScript"
-            studyCardType={StudyCardType.북마크형}
-            recruitType={RecruitType.모집완료}
-            studyType={StudyType.지식공유및탐구}
-            processType={ProcessType.오프라인}
-            bookMark={bookMark6}
-            onClickBookMark={() => setBookMark6(!bookMark6)}
-            currentNum={10}
-            totalNum={10}
-            positionStateList={positionStateList}
-          />
-          <StudyCard
-            studySeq={0}
-            title="포트폴리오용"
-            skillTags="#Spring #React.js #JavaScript #jQuer…"
-            studyCardType={StudyCardType.북마크형}
-            recruitType={RecruitType.모집중}
-            studyType={StudyType.사이드프로젝트}
-            processType={ProcessType.온오프라인}
-            bookMark={bookMark4}
-            onClickBookMark={() => setBookMark4(!bookMark4)}
-            currentNum={5}
-            totalNum={10}
-            positionStateList={positionStateList}
-          />
-          <StudyCard
-            studySeq={0}
-            title="알고리즘 스터디 구합니다."
-            skillTags="#Spring #React.js "
-            studyCardType={StudyCardType.북마크형}
-            recruitType={RecruitType.모집중}
-            studyType={StudyType.지식공유및탐구}
-            processType={ProcessType.온라인}
-            bookMark={bookMark5}
-            onClickBookMark={() => setBookMark5(!bookMark5)}
-            currentNum={2}
-            totalNum={5}
-            positionStateList={positionStateList}
-          />
-          <StudyCard
-            studySeq={0}
-            title="프론트엔드 스터디"
-            skillTags="#Spring #React.js #JavaScript"
-            studyCardType={StudyCardType.북마크형}
-            recruitType={RecruitType.모집완료}
-            studyType={StudyType.지식공유및탐구}
-            processType={ProcessType.오프라인}
-            bookMark={bookMark6}
-            onClickBookMark={() => setBookMark6(!bookMark6)}
-            currentNum={10}
-            totalNum={10}
-            positionStateList={positionStateList}
-          />
+          <div className={cn(styles.CardGrid)}>
+            <StudyCard
+              studySeq={0}
+              title="포트폴리오용"
+              skillTags="#Spring #React.js #JavaScript #jQuer…"
+              studyCardType={StudyCardType.북마크형}
+              recruitType={RecruitType.모집중}
+              studyType={StudyType.사이드프로젝트}
+              processType={ProcessType.온오프라인}
+              bookMark={bookMark4}
+              onClickBookMark={() => setBookMark4(!bookMark4)}
+              currentNum={5}
+              totalNum={10}
+              positionStateList={positionStateList}
+            />
+            <StudyCard
+              studySeq={0}
+              title="알고리즘 스터디 구합니다."
+              skillTags="#Spring #React.js "
+              studyCardType={StudyCardType.북마크형}
+              recruitType={RecruitType.모집중}
+              studyType={StudyType.지식공유및탐구}
+              processType={ProcessType.온라인}
+              bookMark={bookMark5}
+              onClickBookMark={() => setBookMark5(!bookMark5)}
+              currentNum={2}
+              totalNum={5}
+              positionStateList={positionStateList}
+            />
+            <StudyCard
+              studySeq={0}
+              title="프론트엔드 스터디"
+              skillTags="#Spring #React.js #JavaScript"
+              studyCardType={StudyCardType.북마크형}
+              recruitType={RecruitType.모집완료}
+              studyType={StudyType.지식공유및탐구}
+              processType={ProcessType.오프라인}
+              bookMark={bookMark6}
+              onClickBookMark={() => setBookMark6(!bookMark6)}
+              currentNum={10}
+              totalNum={10}
+              positionStateList={positionStateList}
+            />
+            <StudyCard
+              studySeq={0}
+              title="포트폴리오용"
+              skillTags="#Spring #React.js #JavaScript #jQuer…"
+              studyCardType={StudyCardType.북마크형}
+              recruitType={RecruitType.모집중}
+              studyType={StudyType.사이드프로젝트}
+              processType={ProcessType.온오프라인}
+              bookMark={bookMark4}
+              onClickBookMark={() => setBookMark4(!bookMark4)}
+              currentNum={5}
+              totalNum={10}
+              positionStateList={positionStateList}
+            />
+            <StudyCard
+              studySeq={0}
+              title="알고리즘 스터디 구합니다."
+              skillTags="#Spring #React.js "
+              studyCardType={StudyCardType.북마크형}
+              recruitType={RecruitType.모집중}
+              studyType={StudyType.지식공유및탐구}
+              processType={ProcessType.온라인}
+              bookMark={bookMark5}
+              onClickBookMark={() => setBookMark5(!bookMark5)}
+              currentNum={2}
+              totalNum={5}
+              positionStateList={positionStateList}
+            />
+            <StudyCard
+              studySeq={0}
+              title="프론트엔드 스터디"
+              skillTags="#Spring #React.js #JavaScript"
+              studyCardType={StudyCardType.북마크형}
+              recruitType={RecruitType.모집완료}
+              studyType={StudyType.지식공유및탐구}
+              processType={ProcessType.오프라인}
+              bookMark={bookMark6}
+              onClickBookMark={() => setBookMark6(!bookMark6)}
+              currentNum={10}
+              totalNum={10}
+              positionStateList={positionStateList}
+            />
+            <StudyCard
+              studySeq={0}
+              title="포트폴리오용"
+              skillTags="#Spring #React.js #JavaScript #jQuer…"
+              studyCardType={StudyCardType.북마크형}
+              recruitType={RecruitType.모집중}
+              studyType={StudyType.사이드프로젝트}
+              processType={ProcessType.온오프라인}
+              bookMark={bookMark4}
+              onClickBookMark={() => setBookMark4(!bookMark4)}
+              currentNum={5}
+              totalNum={10}
+              positionStateList={positionStateList}
+            />
+            <StudyCard
+              studySeq={0}
+              title="알고리즘 스터디 구합니다."
+              skillTags="#Spring #React.js "
+              studyCardType={StudyCardType.북마크형}
+              recruitType={RecruitType.모집중}
+              studyType={StudyType.지식공유및탐구}
+              processType={ProcessType.온라인}
+              bookMark={bookMark5}
+              onClickBookMark={() => setBookMark5(!bookMark5)}
+              currentNum={2}
+              totalNum={5}
+              positionStateList={positionStateList}
+            />
+            <StudyCard
+              studySeq={0}
+              title="프론트엔드 스터디"
+              skillTags="#Spring #React.js #JavaScript"
+              studyCardType={StudyCardType.북마크형}
+              recruitType={RecruitType.모집완료}
+              studyType={StudyType.지식공유및탐구}
+              processType={ProcessType.오프라인}
+              bookMark={bookMark6}
+              onClickBookMark={() => setBookMark6(!bookMark6)}
+              currentNum={10}
+              totalNum={10}
+              positionStateList={positionStateList}
+            />
+            <StudyCard
+              studySeq={0}
+              title="포트폴리오용"
+              skillTags="#Spring #React.js #JavaScript #jQuer…"
+              studyCardType={StudyCardType.북마크형}
+              recruitType={RecruitType.모집중}
+              studyType={StudyType.사이드프로젝트}
+              processType={ProcessType.온오프라인}
+              bookMark={bookMark4}
+              onClickBookMark={() => setBookMark4(!bookMark4)}
+              currentNum={5}
+              totalNum={10}
+              positionStateList={positionStateList}
+            />
+            <StudyCard
+              studySeq={0}
+              title="알고리즘 스터디 구합니다."
+              skillTags="#Spring #React.js "
+              studyCardType={StudyCardType.북마크형}
+              recruitType={RecruitType.모집중}
+              studyType={StudyType.지식공유및탐구}
+              processType={ProcessType.온라인}
+              bookMark={bookMark5}
+              onClickBookMark={() => setBookMark5(!bookMark5)}
+              currentNum={2}
+              totalNum={5}
+              positionStateList={positionStateList}
+            />
+            <StudyCard
+              studySeq={0}
+              title="프론트엔드 스터디"
+              skillTags="#Spring #React.js #JavaScript"
+              studyCardType={StudyCardType.북마크형}
+              recruitType={RecruitType.모집완료}
+              studyType={StudyType.지식공유및탐구}
+              processType={ProcessType.오프라인}
+              bookMark={bookMark6}
+              onClickBookMark={() => setBookMark6(!bookMark6)}
+              currentNum={10}
+              totalNum={10}
+              positionStateList={positionStateList}
+            />
+            <StudyCard
+              studySeq={0}
+              title="포트폴리오용"
+              skillTags="#Spring #React.js #JavaScript #jQuer…"
+              studyCardType={StudyCardType.북마크형}
+              recruitType={RecruitType.모집중}
+              studyType={StudyType.사이드프로젝트}
+              processType={ProcessType.온오프라인}
+              bookMark={bookMark4}
+              onClickBookMark={() => setBookMark4(!bookMark4)}
+              currentNum={5}
+              totalNum={10}
+              positionStateList={positionStateList}
+            />
+            <StudyCard
+              studySeq={0}
+              title="알고리즘 스터디 구합니다."
+              skillTags="#Spring #React.js "
+              studyCardType={StudyCardType.북마크형}
+              recruitType={RecruitType.모집중}
+              studyType={StudyType.지식공유및탐구}
+              processType={ProcessType.온라인}
+              bookMark={bookMark5}
+              onClickBookMark={() => setBookMark5(!bookMark5)}
+              currentNum={2}
+              totalNum={5}
+              positionStateList={positionStateList}
+            />
+            <StudyCard
+              studySeq={0}
+              title="프론트엔드 스터디"
+              skillTags="#Spring #React.js #JavaScript"
+              studyCardType={StudyCardType.북마크형}
+              recruitType={RecruitType.모집완료}
+              studyType={StudyType.지식공유및탐구}
+              processType={ProcessType.오프라인}
+              bookMark={bookMark6}
+              onClickBookMark={() => setBookMark6(!bookMark6)}
+              currentNum={10}
+              totalNum={10}
+              positionStateList={positionStateList}
+            />
+          </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
