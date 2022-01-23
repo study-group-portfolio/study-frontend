@@ -24,7 +24,8 @@ import CheckBoxOptions from 'components/common/CheckBoxOptions';
 import Textarea from 'components/common/Textarea';
 import PositionCard from 'components/common/PositionCard';
 import PositionSelector from 'components/common/PositionSelector';
-import CountButton from 'components/common/CountButton';
+import Calendar from 'components/common/Calendar';
+import CalendarSelect from 'components/common/CalednarSelect';
 import styles from 'css/pages/test/Component.module.scss';
 import cn from 'classnames';
 import ic_search_24dp from 'images/icon/ic_search_24dp.svg';
@@ -33,7 +34,8 @@ import ic_visibility_off_24dp from 'images/icon/ic_visibility_off_24dp.svg';
 import img_testuser_01 from 'images/img/img_testuser_01.svg';
 import img_testuser_02 from 'images/img/img_testuser_02.svg';
 import { useState, useEffect } from 'react';
-import { PositionState, CustomChangeEvent } from 'utils/interface';
+import { PositionState, CustomChangeEvent, Duration } from 'utils/interface';
+import CountButton from 'components/common/CountButton';
 
 export default function Test() {
   const [visible, setVisible] = useState(false);
@@ -51,6 +53,17 @@ export default function Test() {
   const [selectedValue3, setSelectedValue3] = useState(Array<string>());
 
   const [selected, setSelected] = useState(false);
+
+  const [clicked1, setClicked1] = useState(false);
+  const [clicked2, setClicked2] = useState(false);
+  const [clicked3, setClicked3] = useState(false);
+  const [clicked4, setClicked4] = useState(false);
+  const [clicked5, setClicked5] = useState(false);
+  const [clicked6, setClicked6] = useState(false);
+  const [clicked7, setClicked7] = useState(false);
+
+  const [duration1, setDuration1]: [Duration, React.Dispatch<React.SetStateAction<Duration>>] = useState({});
+  const [duration2, setDuration2]: [Duration, React.Dispatch<React.SetStateAction<Duration>>] = useState({});
 
   const positionStateList: PositionState[] = [
     { name: "백엔드 개발자", currentNum: 1, totalNum: 1 },
@@ -508,6 +521,26 @@ export default function Test() {
                 <div className={cn(styles.positionSelectorSection)}>
                     <PositionSelector 
                         onSelect={(position) => console.log(position)}
+                    />
+                </div>
+                <h2>Calendar</h2>
+                <div className={cn(styles.calendarSection)}>
+                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((month, index) => (
+                        <Calendar 
+                            key={index}
+                            year={2022}
+                            month={month}
+                            duration={duration1}
+                            onClickDay={(duration: Duration) => {
+                                setDuration1(duration);
+                            }}
+                        />
+                    ))}
+                </div>
+                <h2>CalendarSelect</h2>
+                <div className={cn(styles.calendarSelectSection)}>
+                    <CalendarSelect
+                        onClick={(duration: Duration) => console.log(duration)}
                     />
                 </div>
             </div>

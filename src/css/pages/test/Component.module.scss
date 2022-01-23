@@ -76,4 +76,24 @@
         /** 요소 크기 설정 **/
         width: 790px;
     }
+
+    .calendarButtonSection {
+        /** 그리드 설정 **/
+        display: grid;
+        grid-template-columns: 48px 48px 48px 48px 48px 48px 48px;
+    }
+
+    .calendarSection {
+        /** 그리드 설정 **/
+        display: grid;
+        grid-template-columns: 336px 336px 336px;
+        grid-gap: 59px;
+        justify-content: flex-start;
+    }
+
+    .calendarSelectSection {
+        /** 그리드 설정 **/
+        display: grid;
+        grid-template-columns: 790px;
+    }
 }
