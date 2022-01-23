@@ -109,3 +109,9 @@ export enum Path {
     맴버_목록 = '/member/findMember',
     맴버_상세 = '/member/detail'
 }
+
+export enum CalendarButtonType {
+    경계값 = "B",
+    사잇값 = "I",
+    미포함 = "-"
+}

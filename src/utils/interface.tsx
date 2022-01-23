@@ -30,3 +30,8 @@ export interface Position {
     skillList: string[];
     recruitmentCount: number;
 }
+
+export interface Duration {
+    startDate?: String | null;
+    endDate?: String | null;
+}
