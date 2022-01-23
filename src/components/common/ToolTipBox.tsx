@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import cn from "classnames";
 import styles from "../../css/components/common/ToolTipBox.module.scss";
 

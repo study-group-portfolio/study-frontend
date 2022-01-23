@@ -36,6 +36,7 @@ $tooltipbox-bgcolor: #475467;
   position: absolute;
   left: 31px;
   top: -45px;
+  z-index: 5;
 
   &::before {
     content: "";
@@ -46,6 +47,7 @@ $tooltipbox-bgcolor: #475467;
     width: 10px;
     height: 10px;
     transform: rotate(45deg);
+    z-index: 4;
   }
 
   p {

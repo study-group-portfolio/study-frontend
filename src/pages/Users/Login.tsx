@@ -14,6 +14,7 @@ import {
 // Components
 import TextInput from "components/common/TextInput";
 import Button from "components/common/Button";
+import { useForm } from "react-hook-form";
 // Icons
 import ic_visibility_on_24dp from "images/icon/ic_visibility_on_24dp.svg";
 import ic_visibility_off_24dp from "images/icon/ic_visibility_off_24dp.svg";
@@ -23,34 +24,14 @@ interface ILoginInputs {
   password: string;
 }
 
-export default function Login() {
+export default function Login({ email, password }: ILoginInputs) {
   const [visible, setVisible] = useState(false);
-  const [validationError, setValidationError] = useState(false);
-  const [loginInput, setLoginInput] = useState({ email: "", password: "" });
-
-  // Validation
-  const validateEmail = (email: string) => {
-    const re =
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
-  };
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { id, value } = event.currentTarget;
-    setLoginInput((prevState) => ({ ...prevState, [id]: value }));
-  };
-
-  const handleSubmitClick = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    if (!validateEmail(loginInput.email)) {
-      setValidationError(true);
-    }
-
-    if (loginInput.email.length === 0 || loginInput.password.length < 8) {
-      setValidationError(true);
-    }
-  };
+  const {
+    register,
+    handleSubmit,
+    setError,
+    formState: { errors },
+  } = useForm();
 
   return (
     <section className={cn(styles.container)}>
@@ -63,20 +44,21 @@ export default function Login() {
             로그인 후 스터딧해보세요!
           </p>
         </div>
-        <form
-          action="POST"
-          className={cn(styles.loginForm)}
-          onSubmit={handleSubmitClick}
-        >
+        <form action="POST" className={cn(styles.loginForm)}>
           <div className={cn(styles.inputWrapper)}>
             <label>이메일</label>
-            {}
             <TextInput
+              {...register("email", {
+                pattern: {
+                  value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+                  message: "올바른 이메일을 입력해주세요.",
+                },
+                required: "올바른 이메일을 입력해주세요.",
+              })}
               placeholder={"example@studyit.com"}
               type={InputType.텍스트형}
               textInputState={TextInputState.기본값}
               textInputType={TextInputType.일반형}
-              onChange={handleChange}
             />
           </div>
           <div className={cn(styles.inputWrapper)}>
