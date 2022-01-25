@@ -1,0 +1,74 @@
+.container {
+    /** 요소 블록 설정 **/
+    display: inline-block;
+
+    /** 요소 위치 설정 **/
+    position: relative;
+
+    /** 요소 크기 설정 **/
+    width: 40px;
+    height: 22px;
+
+    /** 마우스 커서 모양 설정 **/
+    cursor: pointer;
+
+    .switch {
+        /** 요소 위치 설정 **/
+        position: absolute;
+
+        /** 요소 크기 설정 **/
+        width: 22px;
+        height: 22px;
+
+        /** 테두리 설정 **/
+        border-radius: 11px;
+
+        /** 그림자 설정 **/
+        box-shadow: 0px 8px 30px rgba(16, 24, 40, 0.02), 
+        0px 8px 30px rgba(16, 24, 40, 0.02),
+        0px 8px 24px rgba(16, 24, 40, 0.02), 
+        0px 4px 12px rgba(16, 24, 40, 0.02), 
+        0px 2px 6px rgba(16, 24, 40, 0.02);
+
+        /** 요소 높이 설정 **/
+        z-index: 10;
+
+        /** 배경색상 설정 **/
+        background-color: #FFFFFF;
+    }
+
+    .selectedBtn {
+        /** 요소 위치 설정 **/
+        left: 22px;
+    }
+
+    .noSelectedBtn {
+        /** 요소 위치 설정 **/
+        left: 0px;
+    }
+
+    .background {
+        /** 요소 위치 설정 **/
+        position: absolute;
+
+        /** 요소 크기 설정 **/
+        width: 40px;
+        height: 18px;
+
+        /** 외부 여백 설정 **/
+        margin: 2px 0;
+
+        /** 테두리 설정 **/
+        border-radius: 20px;
+    }
+
+    .noSelectedBg {
+        /** 배경색상 설정 **/
+        background-color: #E4E7EC;
+    }
+
+    .selectedBg {
+        /** 배경색상 설정 **/
+        background-color: #175CD3;
+    }
+}

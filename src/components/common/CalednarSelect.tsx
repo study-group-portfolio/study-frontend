@@ -3,9 +3,7 @@ import styles from 'css/components/common/CalendarSelect.module.scss';
 import ic_calendar_24dp from 'images/icon/ic_calendar_24dp.svg';
 import ic_chevron_left_on_24dp from 'images/icon/ic_chevron_left_on_24dp.svg';
 import ic_chevron_right_on_24dp from 'images/icon/ic_chevron_right_on_24dp.svg';
-import Button from 'components/common/Button';
 import Calendar from 'components/common/Calendar';
-import { ButtonType } from 'utils/enum'
 import { Duration } from 'utils/interface';
 import { useState, useEffect, useRef } from 'react';
 import moment from 'moment';
@@ -15,16 +13,18 @@ interface CalendarSelectProps {
 } 
 
 export default function CalendarSelect(props: CalendarSelectProps) {
+    const defaultDuration: Duration = {startDate: moment().format('YYYY-MM-DD'), endDate: moment().add(14, 'day').format('YYYY-MM-DD')}
     const [dates, setDates] = useState([moment(), moment().add(1, 'month')]);
     const [open, setOpen] = useState(false);
-    const [duration, setDuration]: [Duration, React.Dispatch<React.SetStateAction<Duration>>] = useState({})
+    const [duration, setDuration] = useState(defaultDuration)
+    const [text, setText] = useState(`${moment().format('YYYY년 MM월 DD일')} ~ ${moment().add(14, 'day').format('YYYY년 MM월 DD일')}`);
 
     const calendarSelectRef = useRef(Object());
 
     useEffect(() => {
         document.addEventListener('click', (event) => {
             if (calendarSelectRef.current && !calendarSelectRef.current.contains(event.target)) {
-                setOpen(!open);
+                setOpen(false);
             }
         })
     })
@@ -42,6 +42,13 @@ export default function CalendarSelect(props: CalendarSelectProps) {
             props.onClick(duration);
         } 
         setDuration(duration);
+
+        if (duration.startDate && duration.endDate) {
+            const startDate = moment(`${duration.startDate}`).format('YYYY년 MM월 DD일');
+            const endDate = moment(`${duration.endDate}`).format('YYYY년 MM월 DD일');
+
+            setText(`${startDate} ~ ${endDate}`)
+        }
     }
 
     return (
@@ -53,7 +60,7 @@ export default function CalendarSelect(props: CalendarSelectProps) {
                 className={cn(styles.select)}
                 onClick={() => setOpen(!open)}
             >
-                <span className={cn(styles.txt)}>2021년 11월 20일 ~ 2021년 12월 3일</span>
+                <span className={cn(styles.txt)}>{text}</span>
                 <img src={ic_calendar_24dp} />
             </div>
             {open && 

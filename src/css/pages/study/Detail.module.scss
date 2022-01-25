@@ -1,0 +1,262 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
+.container {
+    /** 요소 크기 설정 **/
+    width: 1366px;
+
+    /** 외부 여백 설정 **/
+    margin: 0 auto;
+    margin-top: 130px;
+    margin-bottom: 90px;
+
+    /** 배경색상 설정 **/
+    background-color: #FFFFFF;
+
+    /** 내부 여백 설정 **/
+    padding: 0 103px;
+
+    /** 그리드 설정 **/
+    display: grid;
+    grid-template-columns: 790px auto;
+    column-gap: 30px;
+
+    .content {
+        /** 그리드 설정 **/
+        display: grid;
+        row-gap: 60px;
+
+        .head {
+            /** 그리드 설정 **/
+            display: grid;
+            row-gap: 20px;
+
+            .badges {
+                /** 그리드 설정 **/
+                display: grid;
+                grid-auto-flow: column;
+                column-gap: 12px;
+                justify-content: flex-start;
+            }
+
+            > h3 {
+                /** 텍스트 설정 **/
+                font-style: normal;
+                font-weight: bold;
+                font-size: 32px;
+                line-height: 40px;
+                color: #101828;
+            }
+        }
+
+        .body {
+            /** 그리드 설정 **/
+            display: grid;
+            row-gap: 40px;
+
+            .section {
+                /** 그리드 설정 **/
+                display: grid;
+                row-gap: 20px;
+
+                .h3 {
+                    /** 텍스트 설정 **/
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 18px;
+                    line-height: 23px;
+                    color: #101828;
+                }
+
+                .profileContent {
+                    /** 배경색상 설정 **/
+                    background-color: #FFFFFF;
+
+                    /** 테두리 설정 **/
+                    border-radius: 6px;
+
+                    /** 그림자 설정 **/
+                    box-shadow: 0px 8px 24px rgba(16, 24, 40, 0.02), 
+                    0px 4px 12px rgba(16, 24, 40, 0.02), 
+                    0px 2px 6px rgba(16, 24, 40, 0.02);
+
+                    /** 내부 여백 설정 **/
+                    padding: 20px;
+
+                    /** 그리드 설정 **/
+                    display: grid;
+                    grid-auto-flow: column;
+                    column-gap: 109px;
+                    justify-content: space-between;
+
+                    .profileBody {
+                        /** 그리드 설정 **/
+                        display: grid;
+                        grid-template-columns: 48px auto;
+                        column-gap: 15px;
+                        row-gap: 8px;
+
+                        .profileCircleSection {
+                            grid-row-start: 1;
+                            grid-row-end: 3;
+                        }
+
+                        > p {
+                            /** 텍스트 설정 **/
+                            font-style: normal;
+                            font-weight: normal;
+                            font-size: 16px;
+                            line-height: 26px;
+                            color: #101828;
+
+                            /** 요소 크기 설정 **/
+                            max-width: 530px;
+                            max-height: 78px;
+
+                            /** 텍스트 말줄임표 설정 **/
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                            display: -webkit-box;
+                            -webkit-line-clamp: 3;
+                            -webkit-box-orient: vertical;
+                        }
+
+                        .skillTags {
+                            /** 그리드 설정 **/
+                            display: grid;
+                            grid-auto-flow: column;
+                            column-gap: 12px;
+                            justify-content: flex-start;
+
+                            .txt::before {
+                                content: '#';
+                            }
+
+                            .txt {
+                                /** 텍스트 설정 **/
+                                font-style: normal;
+                                font-weight: normal;
+                                font-size: 16px;
+                                line-height: 20px;
+                                color: #98A2B3;
+                            }
+                        }
+                    }
+
+                    > a {
+                        /** 텍스트 설정 **/
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 16px;
+                        line-height: 20px;
+                        color: #175CD3;
+                    }
+                }
+
+                .subContent {
+                    /** 텍스트 설정 **/
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 26px;
+                    color: #101828;
+                }
+
+                .positionSection {
+                    /** 그리드 설정 **/
+                    display: grid;
+                    row-gap: 15px;
+                }
+
+                .collaborateToolContent {
+                    /** 텍스트 설정 **/
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 26px;
+                    color: #101828;
+
+                    li {
+                        /** 항목 설정 **/
+                        list-style: disc;
+
+                        /** 외부 여백 설정 **/
+                        margin-left: 25px;
+                    }
+                }
+            }
+        }
+    }
+
+    .side {
+        .card {
+            /** 배경색상 설정 **/
+            background: #FFFFFF;
+
+            /** 테두리 설정 **/
+            border-radius: 6px;
+
+            /** 그림자 설정 **/
+            box-shadow: 0px 8px 30px rgba(16, 24, 40, 0.02), 
+            0px 8px 24px rgba(16, 24, 40, 0.02), 
+            0px 4px 12px rgba(16, 24, 40, 0.02), 
+            0px 2px 6px rgba(16, 24, 40, 0.02);
+
+            /** 내부 여백 설정 **/
+            padding: 20px;
+
+            .head {
+                /** 그리드 설정 **/
+                display: grid;
+                grid-template-columns: auto 40px;
+                column-gap: 20px;
+
+                > h3 {
+                    /** 텍스트 설정 **/
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 18px;
+                    line-height: 23px;
+                    color: #101828;
+
+                    /** 외부 여백 설정 **/
+                    margin-top: 8px;
+                }
+            }
+
+            .content {
+                /** 그리드 설정 **/
+                display: grid;
+                row-gap: 30px;
+
+                .body {
+                    /** 그리드 설정 **/
+                    display: grid;
+                    row-gap: 18px;
+
+                    > h3 {
+                        /** 텍스트 설정 **/
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 14px;
+                        line-height: 18px;
+                        color: #101828;
+                    }
+
+                    .profileContent {
+                        /** 그리드 설정 **/
+                        display: grid;
+                        grid-template-columns: 50px 50px 50px 50px 50px;
+                        justify-content: flex-start;
+                        column-gap: 12px;
+                    }
+                }
+
+                .btnContent {
+                    /** 그리드 설정 **/
+                    display: grid;
+                    row-gap: 10px;
+                }
+            }
+        }
+    }
+}

@@ -6,7 +6,7 @@ interface TextareaProps {
     placeholder?: string;
     maxCharNum?: number;
     height?: string;
-    onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => (void);
+    onChange?: (content: string) => (void);
 }
 
 export default function Textarea(props: TextareaProps) {
@@ -27,7 +27,7 @@ export default function Textarea(props: TextareaProps) {
         setCharNum(event.target.value.length);
 
         if (props.onChange) {
-            props.onChange(event);
+            props.onChange(event.target.value);
         }
     }
 
