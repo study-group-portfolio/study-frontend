@@ -26,6 +26,8 @@ import PositionCard from 'components/common/PositionCard';
 import PositionSelector from 'components/common/PositionSelector';
 import Calendar from 'components/common/Calendar';
 import CalendarSelect from 'components/common/CalednarSelect';
+import Switch from 'components/common/Switch';
+import CircleButton from 'components/common/CircleButton';
 import styles from 'css/pages/test/Component.module.scss';
 import cn from 'classnames';
 import ic_search_24dp from 'images/icon/ic_search_24dp.svg';
@@ -486,7 +488,7 @@ export default function Test() {
                 <h2>Textarea</h2>
                 <div>
                     <Textarea 
-                        onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => console.log(event.target.value)}
+                        onChange={(content: string) => console.log(content)}
                     />
                 </div>
                 <h2>PositionCard</h2>
@@ -541,6 +543,23 @@ export default function Test() {
                 <div className={cn(styles.calendarSelectSection)}>
                     <CalendarSelect
                         onClick={(duration: Duration) => console.log(duration)}
+                    />
+                </div>
+                <h2>Switch</h2>
+                <div className={cn(styles.switchSection)}>
+                    <Switch onChange={(selected: boolean) => console.log(selected)}/>
+                </div>
+                <h2>CircleButton</h2>
+                <div>
+                    <CircleButton 
+                        radius={24}
+                        height={18}
+                        name="김은정"
+                    />
+                    <CircleButton  
+                        radius={24}
+                        height={18}
+                        name="김은정"
                     />
                 </div>
             </div>

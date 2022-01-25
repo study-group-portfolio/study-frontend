@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 interface RadioBoxProps {
     radioNames: string[];
-    onClick: Function;
+    onClick?: Function;
 }
 
 export default function RadioButton(props: RadioBoxProps) {
@@ -13,7 +13,9 @@ export default function RadioButton(props: RadioBoxProps) {
 
     const onClick = (radioName: string, index: number) => {
         setRadioButton(index);
-        props.onClick(radioName);
+        if (props.onClick) {
+            props.onClick(radioName);
+        }
     }
 
     return (
