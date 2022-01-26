@@ -100,4 +100,12 @@
     .switchSection {
         
     }
+
+    .circleButtonSection {
+        /** 그리드 설정 **/
+        display: grid;
+        grid-auto-flow: column;
+        column-gap: 12px;
+        justify-content: flex-start;
+    }
 }

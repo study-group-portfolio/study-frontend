@@ -115,3 +115,9 @@ export enum CalendarButtonType {
     사잇값 = "I",
     미포함 = "-"
 }
+
+export enum CircleButtonType {
+    일반형 = "N",
+    이미지형 = "M",
+    아이콘형 = "I"
+}

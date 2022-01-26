@@ -7,7 +7,8 @@ import {
     TextInputType, 
     InputType,
     BadgeType,
-    StudyCardType
+    StudyCardType,
+    CircleButtonType,
 } from 'utils/enum';
 import Button from 'components/common/Button';
 import TextInput from 'components/common/TextInput';
@@ -36,8 +37,13 @@ import ic_visibility_off_24dp from 'images/icon/ic_visibility_off_24dp.svg';
 import img_testuser_01 from 'images/img/img_testuser_01.svg';
 import img_testuser_02 from 'images/img/img_testuser_02.svg';
 import { useState, useEffect } from 'react';
-import { PositionState, CustomChangeEvent, Duration } from 'utils/interface';
+import { 
+    PositionState, 
+    CustomChangeEvent, 
+    Duration 
+} from 'utils/interface';
 import CountButton from 'components/common/CountButton';
+import ic_share_black_20dp from 'images/icon/ic_share_black_20dp.svg';
 
 export default function Test() {
   const [visible, setVisible] = useState(false);
@@ -550,16 +556,22 @@ export default function Test() {
                     <Switch onChange={(selected: boolean) => console.log(selected)}/>
                 </div>
                 <h2>CircleButton</h2>
-                <div>
+                <div className={cn(styles.circleButtonSection)}>
                     <CircleButton 
                         radius={24}
-                        height={18}
-                        name="김은정"
+                        circleButtonType={CircleButtonType.일반형}
+                        name="김"
                     />
-                    <CircleButton  
+                    <CircleButton 
                         radius={24}
-                        height={18}
-                        name="김은정"
+                        lineHeight={20}
+                        circleButtonType={CircleButtonType.아이콘형}
+                        imgUrl={ic_share_black_20dp}
+                    />
+                    <CircleButton 
+                        radius={24}
+                        circleButtonType={CircleButtonType.이미지형}
+                        imgUrl={img_testuser_01}
                     />
                 </div>
             </div>
