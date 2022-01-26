@@ -6,14 +6,28 @@ import CircleButton from 'components/common/CircleButton';
 import PositionCard from 'components/common/PositionCard';
 import Button from 'components/common/Button';
 import { ButtonType } from 'utils/enum';
-import { BadgeType } from 'utils/enum';
+import { BadgeType, CircleButtonType } from 'utils/enum';
 import ic_share_black_20dp from 'images/icon/ic_share_black_20dp.svg';
-import example1 from 'images/example/example1.svg';
-import example2 from 'images/example/example2.svg';
+import img_testuser_01 from 'images/img/img_testuser_01.svg';
+import img_testuser_02 from 'images/img/img_testuser_02.svg';
 import ic_bookmark_off_24dp from 'images/icon/ic_bookmark_off_24dp.svg';
+import ic_bookmark_on_24dp from 'images/icon/ic_bookmark_on_24dp.svg';
+
+interface StudyResponse {
+
+}
+
+interface SaveRequest {
+
+}
+
+interface BookMarkReqeust {
+    bookMark?: boolean;
+}
 
 function StudyDetail() {
-    const [studyResponse, setStudyResponse] = useState({});
+    const [studyResponse, setStudyResponse] = useState(Object())
+    const [bookMarkRequest, setBookMarkRequest] = useState(Object());
 
     return (
         <div className={cn(styles.container)}>
@@ -32,7 +46,11 @@ function StudyDetail() {
                         <div className={cn(styles.profileContent)}>
                             <div className={cn(styles.profileBody)}>
                                 <div className={cn(styles.profileCircleSection)}>
-                                    <CircleButton radius={24} name="김" height={18} />
+                                    <CircleButton 
+                                        radius={24} 
+                                        name="김"
+                                        circleButtonType={CircleButtonType.일반형}
+                                    />
                                 </div>
                                 <p>
                                     안녕하세요. 저는 현재 국내 여행 플랫폼에 재직중인 3년차 백엔드 개발자입니다. 
@@ -163,8 +181,8 @@ function StudyDetail() {
                         <h3>지금까지 999+명이 조회했어요</h3>
                         <CircleButton
                             radius={20}
-                            name=""
-                            height={20}
+                            circleButtonType={CircleButtonType.아이콘형}
+                            lineHeight={20}
                             imgUrl={ic_share_black_20dp}
                         />
                     </div>
@@ -174,48 +192,41 @@ function StudyDetail() {
                             <div className={cn(styles.profileContent)}>
                                 <CircleButton
                                     radius={25}
-                                    name=""
-                                    height={50}
-                                    imgUrl={example1}
-                                    imgStyle={{
-                                        borderRadius: '25px',
-                                        width: '50px',
-                                        height: '50px',
-                                    }}
+                                    circleButtonType={CircleButtonType.이미지형}
+                                    lineHeight={20}
+                                    imgUrl={img_testuser_01}
                                 />
                                 <CircleButton
                                     radius={25}
                                     name="김"
-                                    height={18}
+                                    circleButtonType={CircleButtonType.일반형}
                                 />
                                 <CircleButton
                                     radius={25}
-                                    name=""
-                                    height={50}
-                                    imgUrl={example2}
-                                    imgStyle={{
-                                        borderRadius: '25px',
-                                        width: '50px',
-                                        height: '50px',
-                                    }}
+                                    circleButtonType={CircleButtonType.이미지형}
+                                    lineHeight={20}
+                                    imgUrl={img_testuser_02}
                                 />
                                 <CircleButton
                                     radius={25}
                                     name="이"
-                                    height={18}
+                                    circleButtonType={CircleButtonType.일반형}
                                 />
                                 <CircleButton
                                     radius={25}
                                     name="+99"
-                                    height={20}
+                                    lineHeight={20}
+                                    fontSize={16}
+                                    circleButtonType={CircleButtonType.일반형}
                                 />
                             </div>
                         </div>
                         <div className={cn(styles.btnContent)}>
                             <Button 
-                                img={ic_bookmark_off_24dp}
+                                img={bookMarkRequest.bookMark ? ic_bookmark_on_24dp : ic_bookmark_off_24dp}
                                 buttonName="북마크하기" 
-                                buttonType={ButtonType.서브} 
+                                buttonType={ButtonType.서브}
+                                onClick={() => setBookMarkRequest({...bookMarkRequest, bookMark: !bookMarkRequest.bookMark})}
                             />
                             <Button buttonName="지원하기" buttonType={ButtonType.기본} />
                         </div>

@@ -189,6 +189,9 @@
 
     .side {
         .card {
+            /** 요소 위치 설정 **/
+            position: fixed;
+            
             /** 배경색상 설정 **/
             background: #FFFFFF;
 
