@@ -6,6 +6,7 @@ $border-color: #e4e7ec;
 $placeholder-color: #98a2b3;
 $primary-color: #175cd3;
 $kakao-color: #ffe812;
+$error-color: #f36355;
 
 @mixin button-style {
   width: 400px;
@@ -96,20 +97,17 @@ $kakao-color: #ffe812;
           color: $exp-color;
         }
 
-        // input {
-        //   height: 48px;
-        //   border: 1px solid $border-color;
-        //   border-radius: 6px;
-        //   padding-left: 15px;
-        //   font-size: 16px;
-        //   box-sizing: border-box;
-        // }
-
         .icon {
           width: 22px;
           position: absolute;
           top: 57%;
           right: 5%;
+        }
+
+        p {
+          font-size: 14px;
+          color: $error-color;
+          margin-top: 6px;
         }
       }
     }

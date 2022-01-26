@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import cn from "classnames";
 import { Link } from "react-router-dom";
 // Styles
@@ -24,14 +24,36 @@ interface ILoginInputs {
   password: string;
 }
 
-export default function Login({ email, password }: ILoginInputs) {
+export default function Login(loginInputs: ILoginInputs) {
   const [visible, setVisible] = useState(false);
-  const {
-    register,
-    handleSubmit,
-    setError,
-    formState: { errors },
-  } = useForm();
+
+  // Input Value
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
+  // Validation Check
+  const [isEmail, setIsEmail] = useState<boolean>(false);
+  const [isPassword, setIsPassword] = useState<boolean>(false);
+
+  const onSubmit = (data: any, e: any) => {
+    console.log(data, e);
+  };
+
+  const onChangeEmail = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const emailRegex =
+        /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+      const emailCurrent = e.target.value;
+      setEmail(emailCurrent);
+
+      if (!emailRegex.test(emailCurrent)) {
+        setIsEmail(false);
+      } else {
+        setIsEmail(true);
+      }
+    },
+    []
+  );
 
   return (
     <section className={cn(styles.container)}>
@@ -48,17 +70,11 @@ export default function Login({ email, password }: ILoginInputs) {
           <div className={cn(styles.inputWrapper)}>
             <label>이메일</label>
             <TextInput
-              {...register("email", {
-                pattern: {
-                  value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-                  message: "올바른 이메일을 입력해주세요.",
-                },
-                required: "올바른 이메일을 입력해주세요.",
-              })}
               placeholder={"example@studyit.com"}
               type={InputType.텍스트형}
               textInputState={TextInputState.기본값}
               textInputType={TextInputType.일반형}
+              onChange={onChangeEmail}
             />
           </div>
           <div className={cn(styles.inputWrapper)}>
