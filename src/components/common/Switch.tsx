@@ -3,18 +3,19 @@ import styles from 'css/components/common/Switch.module.scss';
 import { useState } from 'react';
 
 interface SwitchProps {
+    selected?: boolean;
     onChange?: (selected: boolean) => (void);
 }
 
 export default function Switch(props: SwitchProps) {
-    const [selected, setSelected] = useState(false);
+    const { selected } = props;
 
     const onChange = (selected: boolean) => {
         if (props.onChange) {
             props.onChange(selected);
-            setSelected(selected);
         }
     }
+    
     return (
         <div 
             className={cn(styles.container)}

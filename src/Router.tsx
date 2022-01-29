@@ -22,6 +22,7 @@ import Component from "pages/test/Component";
 import Modal from "pages/test/ModalComponent";
 import Functional from "pages/test/Functional";
 import SiteMap from "pages/SiteMap";
+import MyPage from 'pages/mypage/MyPage';
 
 import { Path } from 'utils/enum';
 
@@ -42,33 +43,7 @@ function Router() {
         <Route exact path={Path.이메일_인증} component={EmailAuth}></Route>
         <Route exact path={Path.회원가입} component={SigninReady}></Route>
         <Route exact path={Path.회원가입_이메일_인증} component={EmailSignin}></Route>
-        <Route exact path={Path.비밀번호_찾기} component={FindPassword}></Route>
-        <Route
-          exact
-          path="/mypage/profile/detail"
-          component={ProfileDetail}
-        ></Route>
-        <Route
-          exact
-          path="/mypage/profile/elementRevision"
-          component={ProfileElementRevision}
-        ></Route>
-        <Route
-          exact
-          path="/mypage/profile/passwordResetting"
-          component={ProfilePasswordResetting}
-        ></Route>
-        <Route
-          exact
-          path="/mypage/profile/revision"
-          component={ProfileRevision}
-        ></Route>
-        <Route exact path="/mypage/bookMark" component={BookMark}></Route>
-        <Route
-          exact
-          path="/mypage/studyActivity"
-          component={StudyActivity}
-        ></Route>
+        <Route path="/mypage" component={MyPage}></Route>
         <Route exact path="/test/component" component={Component}></Route>
         <Route exact path="/test/modal" component={Modal}></Route>
         <Route exact path="/test/functional" component={Functional}></Route>

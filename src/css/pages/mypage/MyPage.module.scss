@@ -1,0 +1,126 @@
+.container {
+    /** 요소 크기 설정 **/
+    width: 1366px;
+
+    /** 외부 여백 설정 **/
+    margin: 0 auto;
+    margin-top: 130px;
+    margin-bottom: 90px;
+
+    /** 내부 여백 설정 **/
+    padding: 0 103px;
+
+    /** 그리드 수정 **/
+    display: grid;
+    grid-template-columns: 250px auto;
+    column-gap: 30px;
+    row-gap: 26px;
+
+    .title {
+        /** 그리드 항목 설정 **/
+        grid-column-start: 1;
+        grid-column-end: 3;
+
+        /** 텍스트 설정 **/
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 30px;
+        color: #101828;
+    }
+
+    .side {
+        .card {
+            /** 배경색상 설정 **/
+            background-color: #FFFFFF;
+
+            /** 테두리 설정 **/
+            border: 1px solid #E4E7EC;
+            border-radius: 6px;
+
+            .info {
+                /** 내부 여백 설정 **/
+                padding: 20px;
+
+                /** 그리드 설정 **/
+                display: grid;
+                row-gap: 20px;
+
+                .top {
+                    /** 그리드 설정 **/
+                    display: grid;
+                    grid-template-columns: 80px auto;
+                    justify-content: space-between;
+                }
+
+                .bottom {
+                    /** 그리드 설정 **/
+                    display: grid;
+                    row-gap: 8px;
+
+                    > h3 {
+                        /** 텍스트 설정 **/
+                        font-style: normal;
+                        font-weight: bold;
+                        font-size: 16px;
+                        line-height: 20px;
+                        color: #101828;
+                    }
+
+                    > p {
+                        /** 텍스트 설정 **/
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 14px;
+                        line-height: 18px;
+                        color: #98A2B3;
+                    }
+                }
+            }
+
+            .linkList {
+                /** 그리드 설정 **/
+                display: grid;
+                row-gap: 28px;
+
+                /** 내부 여백 설정 **/
+                padding: 34px 20px;
+
+                /** 테두리 설정 **/
+                border-top: 1px solid #E4E7EC;
+                border-bottom: 1px solid #E4E7EC;
+
+                > a {
+                    /** 텍스트 설정 **/
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 20px;
+                    color: #101828;
+                }
+
+                .selected {
+                    /** 텍스트 설정 **/
+                    font-weight: bold;
+
+                    /** 마우스 커서 설정 **/
+                    cursor: default;
+                }
+            }
+
+            .logout {
+                /** 내부 여백 설정 **/
+                padding: 15px 20px;
+
+                > span {
+                    /** 텍스트 설정 **/
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 14px;
+                    line-height: 18px;
+                    color: #98A2B3;
+                }
+            }
+        }
+    }
+}

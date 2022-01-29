@@ -1,427 +1,58 @@
-@import '../../common/font';
-
 .container {
     /** 요소 크기 설정 **/
-    width: 1366px;
-
-    /** 외부 여백 설정 **/
-    margin: 0 auto;
-
-    /** 내부 여백 설정 **/
-    padding: 130px 103px 90px 103px;
+    width: 880px;
 
     /** 그리드 설정 **/
     display: grid;
-    grid-template-columns: 250px auto;
-    column-gap: 30px;
-    row-gap: 26px;
+    row-gap: 24px;
 
-    .title {
-        /** 그리드 항목 설정 **/
-        grid-column-start: 1;
-        grid-column-end: 3;
-    }
-
-    .sub {
-        /** 배경색 설정 **/
-        background-color: #FFFFFF;
-
-        /** 테두리 설정 **/
-        border: 1px solid #E4E7EC;
-        border-radius: 6px;
-
-        /** 내부 여백 설정 **/
-        // padding: 20px;
-
-        .top {
-            /** 외부 여백 설정 **/
-            padding: 20px;
-
-            /** 테두리 설정 **/
-            border-bottom: 1px solid #E4E7EC;
-
-            .circle {
-                /** 요소 크기 설정 **/
-                width: 80px;
-                height: 80px;
-                box-sizing: border-box;
-
-                /** 배경색 설정 **/
-                background-color: #F2F4F7;
-
-                /** 테두리 설정 **/
-                border: 1px solid #E4E7EC;
-                border-radius: 40px;
-
-                /** 텍스트 중앙 정렬 **/
-                text-align: center;
-                padding: 31px 0;
-            }
-
-            .editImg {
-                /** 요소 시작 위치 설정 **/
-                float: right;
-
-                /** 배경이미지 설정 **/
-                background-image: url(../../../images/edit_black_24dp.svg);
-                background-repeat: no-repeat;
-                background-position: center;
-
-                /** 요소 크기 설정 **/
-                width: 20px;
-                height: 20px;
-            }
-
-            .box {
-                /** 외부 여백 설정 **/
-                margin-top: 20px;
-
-                /** 그리드 설정 **/
-                display: grid;
-                grid-template-rows: auto auto;
-                row-gap: 8px;
-            }
-        }
-
-        .middle {
-            /** 내부 여백 설정 **/
-            padding: 34px 20px;
-
-            /** 테두리 설정 **/
-            border-bottom: 1px solid #E4E7EC;
-
-            /** 그리드 설정 **/
-            display: grid;
-            grid-template-rows: auto auto auto;
-            row-gap: 28px;
-        }
-
-        .bottom {
-            /** 내부 여백 설정 **/
-            padding: 15px 20px;
-        }
-    }
-
-    .content {
+    .tabs {
         /** 그리드 설정 **/
         display: grid;
-        grid-template-rows: 29px auto;
-        row-gap: 30px;
+        grid-template-columns: auto auto;
+        justify-content: flex-start;
+        column-gap: 18px;
 
-        > .tabMenu {
-            /** 그리드 설정 **/
-            display: grid;
-            grid-template-columns: auto auto;
-            column-gap: 20px;
-            justify-content: flex-start;
+        /** 요소 크기 설정 **/
+        height: 27px;
 
-            > span {
-                /** 텍스트 설정 **/
-                font-style: normal;
-                font-size: 18px;
-                line-height: 23px;
+        > span {
+            /** 텍스트 설정 **/
+            font-style: normal;
+            font-size: 18px;
+            line-height: 23px;
 
-                /** 내부 여백 설정 **/
-                padding-bottom: 4px;
-            }
-
-            > .on {
-                /** 텍스트 설정 **/
-                font-weight: bold;
-                color: #175CD3;
-
-                /** 테두리 설정 **/
-                border-bottom: 2px solid #175CD3;
-            }
-
-            > .off {
-                /** 텍스트 설정 **/
-                font-weight: normal;
-                color: #101828;
-
-                /** 마우스 커서 모양 설정 **/
-                cursor: pointer;
-            }
+            /** 내부 여백 설정 **/
+            padding-bottom: 4px;
         }
 
-        > .studyBookMarkList {
-            /** 그리드 설정 **/
-            display: grid;
-            grid-template-columns: 430px 430px;
-            justify-content: flex-start;
-            row-gap: 20px;
-            column-gap: 20px;
+        .selected {
+            /** 텍스트 설정 **/
+            font-weight: bold;
+            color: #175CD3;
 
-            > .card {
-                /** 요소 크기 설정 **/
-                height: 198px;
+            /** 테두리 설정 **/
+            border-bottom: 2px solid #175CD3;
 
-                /** 배경색상 설정 **/
-                background-color: #FFFFFF;
-
-                /** 그림자 설정 **/
-                box-shadow: 0px 8px 30px rgba(16, 24, 40, 0.02), 
-                0px 8px 24px rgba(16, 24, 40, 0.02), 
-                0px 4px 12px rgba(16, 24, 40, 0.02), 
-                0px 2px 6px rgba(16, 24, 40, 0.02);
-
-                /** 테두리 설정 **/
-                border-radius: 6px;
-
-                /** 내부 여백 설정 **/
-                padding: 20px;
-
-                /** 그리드 설정 **/
-                display: grid;
-                row-gap: 14px;
-
-                > .section {
-                    /** 그리드 설정 **/
-                    display: grid;
-                    grid-template-columns: auto 14px;
-                    column-gap: 21px;
-
-                    /** 내부 여백 설정 **/
-                    padding-bottom: 16px;
-
-                    /** 테두리 설정 **/
-                    border-bottom: 1px dashed #E4E7EC;
-
-                    > .subSection {
-                        /** 그리드 설정 **/
-                        display: grid;
-                        row-gap: 30px;
-
-                        > .title {
-                            /** 그리드 설정 **/
-                            display: grid;
-                            row-gap: 6px;
-
-                            > h3 {
-                                /** 텍스트 설정 **/
-                                font-style: normal;
-                                font-weight: bold;
-                                font-size: 16px;
-                                line-height: 28px;
-                                color: #101828;
-                            }
-
-                            .skillTagList {
-                                /** 텍스트 설정 **/
-                                font-style: normal;
-                                font-weight: normal;
-                                font-size: 16px;
-                                line-height: 20px;
-                                color: #98A2B3;
-                            }
-                        }
-
-                        > .infoTagList {
-                            display: grid;
-                            grid-auto-flow: column;
-                            column-gap: 12px;
-
-                            span {
-                                /** 텍스트 설정 **/
-                                font-style: normal;
-                                font-weight: normal;
-                                font-size: 12px;
-                                line-height: 18px;
-
-                                /** 테두리 설정 **/
-                                border-radius: 6px;
-
-                                /** 내부 여백 설정 **/
-                                padding: 4px 8px;
-                            }
-
-                            .recruitingTag {
-                                /** 배경색상 설정 **/
-                                background-color: #E2EEFE;
-
-                                /** 텍스트 색상 설정 **/
-                                color: #4090F7;
-                            }
-
-                            .recruitedTag {
-                                /** 배경색상 설정 **/
-                                background-color: #E9E3EF;
-
-                                /** 텍스트 색상 설정 **/
-                                color: #D84493;
-                            }
-
-                            .infoTag {
-                                /** 배경색상 설정 **/
-                                background-color: #F2F4F7;
-
-                                /** 텍스트 색상 설정 **/
-                                color: #1D2939;
-                            }
-                        }
-                    }
-
-                    > .bookMark {
-                        > button {
-                            /** 요소 크기 설정 **/
-                            width: 14px;
-                            height: 18px;
-                        }
-
-                        > .on {
-                            /** 배경이미지 설정 **/
-                            background-image: url(../../../images/book_mark_turn_in.svg);
-                            background-repeat: no-repeat;
-                            background-position: center;
-                        }
-
-                        > .off {
-                            /** 배경이미지 설정 **/
-                            background-image: url(../../../images/book_mark_turn_in_not.svg);
-                            background-repeat: no-repeat;
-                            background-position: center;
-                        }
-                    }
-                }
-
-                > .bottom {
-                    /** 그리드 설정 **/
-                    display: grid;
-                    grid-template-columns: auto 231px 88px;
-                    column-gap: 8px;
-                    justify-content: flex-start;
-
-                    > span {
-                        /** 텍스트 설정 **/
-                        font-style: normal;
-                        font-weight: normal;
-                        font-size: 14px;
-                        line-height: 18px;
-                        color: #667085;
-                    }
-
-                    > .status {
-                        /** 배경이미지 설정 **/
-                        background-image: url(../../../images/bottom_arrow_btn.svg);
-                        background-repeat: no-repeat;
-                        background-position: 100% 50%;
-                    }
-                }
-            }
+            /** 마우스 커서 모양 설정 **/
+            cursor: default;
         }
 
-        > .memberBookMarkList {
-            /** 그리드 설정 **/
-            display: grid;
-            grid-template-columns: 430px 430px;
-            justify-content: flex-start;
-            row-gap: 20px;
-            column-gap: 20px;
+        .noSelected {
+            /** 텍스트 설정 **/
+            font-weight: normal;
+            color: #101828;
 
-            > .card {
-                /** 요소 크기 설정 **/
-                height: 198px;
-
-                /** 배경색상 설정 **/
-                background-color: #FFFFFF;
-
-                /** 그림자 설정 **/
-                box-shadow: 0px 8px 30px rgba(16, 24, 40, 0.02), 
-                0px 8px 24px rgba(16, 24, 40, 0.02), 
-                0px 4px 12px rgba(16, 24, 40, 0.02), 
-                0px 2px 6px rgba(16, 24, 40, 0.02);
-
-                /** 테두리 설정 **/
-                border-radius: 6px;
-
-                /** 내부 여백 설정 **/
-                padding: 20px;
-
-                /** 그리드 설정 **/
-                display: grid;
-                grid-template-columns: auto 14px;
-                column-gap: 21px;
-
-                > .info {
-                    /** 그리드 설정 **/
-                    display: grid;
-                    row-gap: 19px;
-
-                    > .circle_50 {
-                        @include circle(50px, 25px);
-
-                        /** 텍스트 설정 **/
-                        font-style: normal;
-                        font-weight: normal;
-                        font-size: 16px;
-                        line-height: 20px;
-                        color: #101828;
-
-                        /** 텍스트 중앙 정렬 **/
-                        text-align: center;
-                        padding: 15px;
-                    }
-
-                    > .detail {
-                        display: grid;
-                        row-gap: 14px;
-
-                        > .basic {
-                            display: grid;
-                            row-gap: 4px;
-
-                            .name {
-                                /** 텍스트 설정 **/
-                                font-style: normal;
-                                font-weight: bold;
-                                font-size: 16px;
-                                line-height: 28px;
-                                color: #101828;
-                            }
-
-                            .position {
-                                /** 텍스트 설정 **/
-                                font-style: normal;
-                                font-weight: normal;
-                                font-size: 16px;
-                                line-height: 20px;
-                                color: #101828;
-                            }
-                        }
-
-                        > .skillTagList {
-                            /** 텍스트 설정 **/
-                            font-style: normal;
-                            font-weight: normal;
-                            font-size: 16px;
-                            line-height: 20px;
-                            color: #98A2B3;
-                        }
-                    }
-                }
-
-                > .bookMark {
-                    > button {
-                        /** 요소 크기 설정 **/
-                        width: 14px;
-                        height: 18px;
-                    }
-
-                    > .on {
-                        /** 배경이미지 설정 **/
-                        background-image: url(../../../images/book_mark_turn_in.svg);
-                        background-repeat: no-repeat;
-                        background-position: center;
-                    }
-
-                    > .off {
-                        /** 배경이미지 설정 **/
-                        background-image: url(../../../images/book_mark_turn_in_not.svg);
-                        background-repeat: no-repeat;
-                        background-position: center;
-                    }
-                }
-            }
+            /** 마우스 커서 모양 설정 **/
+            cursor: pointer;
         }
+    }
+
+    .cardList {
+        /** 그리드 설정 **/
+        display: grid;
+        grid-template-columns: 430px 430px;
+        grid-gap: 20px;
+        justify-content: flex-start;
     }
 }
