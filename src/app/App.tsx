@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet";
-import Router from "./Router";
+import Router from "../Router";
 
 function App() {
   return (
