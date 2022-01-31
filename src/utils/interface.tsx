@@ -1,4 +1,4 @@
-import { SelectEventType } from 'utils/enum';
+import { SelectEventType, TabMenuType } from 'utils/enum';
 export interface PositionState {
     name: string; // 역할 이름
     currentNum: number; // 현재 인원
@@ -34,4 +34,9 @@ export interface Position {
 export interface Duration {
     startDate?: String | null;
     endDate?: String | null;
+}
+
+export interface Tab {
+    name: string;
+    value: TabMenuType;
 }

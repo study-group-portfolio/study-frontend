@@ -68,7 +68,7 @@ export default function StudyCard(props: StudyCardProps) {
                         {/* 북마크 버튼 */}
                         {studyCardType === StudyCardType.북마크형 && 
                         <button 
-                            onClick={() => {props.onClickBookMark(); console.log(bookMark)}}
+                            onClick={() => {props.onClickBookMark()}}
                         >
                             {!bookMark && <img src={ic_bookmark_off_24dp} />}
                             {bookMark && <img src={ic_bookmark_on_24dp} />}
