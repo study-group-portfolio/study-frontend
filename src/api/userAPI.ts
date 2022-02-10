@@ -1,7 +1,7 @@
 import axios, { AxiosResponse, AxiosInstance } from "axios";
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-interface IUserLoginAPI {
+export interface IUserLoginAPI {
   email: string;
   password: string;
 }
@@ -23,6 +23,13 @@ const instance: AxiosInstance = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
   timeout: 15000,
 });
+
+// 로그인
+export function postLogin() {
+  return fetch(`${process.env.REACT_APP_BASE_URL}/api/members/signin`).then(
+    (res) => res.json()
+  );
+}
 
 // 닉네임 중복 체크
 export const getCheckNickname = createAsyncThunk(
