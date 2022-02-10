@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from "react";
+import { useQuery } from "react-query";
 import cn from "classnames";
 import { Link } from "react-router-dom";
 // Styles
@@ -14,10 +15,10 @@ import {
 // Components
 import TextInput from "components/common/TextInput";
 import Button from "components/common/Button";
-import { useForm } from "react-hook-form";
 // Icons
 import ic_visibility_on_24dp from "images/icon/ic_visibility_on_24dp.svg";
 import ic_visibility_off_24dp from "images/icon/ic_visibility_off_24dp.svg";
+import { IUserLoginAPI, postLogin } from "api/userAPI";
 
 interface ILoginInputs {
   email: string;
@@ -38,6 +39,8 @@ export default function Login(loginInputs: ILoginInputs) {
   const onSubmit = (data: any, e: any) => {
     console.log(data, e);
   };
+
+  const { data, isLoading } = useQuery<IUserLoginAPI>(["login"], postLogin);
 
   const onChangeEmail = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
