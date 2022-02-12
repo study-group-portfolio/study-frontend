@@ -25,10 +25,11 @@ const instance: AxiosInstance = axios.create({
 });
 
 // 로그인
-export function postLogin() {
-  return fetch(`${process.env.REACT_APP_BASE_URL}/api/members/signin`).then(
-    (res) => res.json()
+export async function postLogin() {
+  const response = await fetch(
+    `${process.env.REACT_APP_BASE_URL}/api/members/signin`
   );
+  console.log(response);
 }
 
 // 닉네임 중복 체크

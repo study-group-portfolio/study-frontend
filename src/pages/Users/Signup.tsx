@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import cn from "classnames";
 import { Helmet } from "react-helmet";
-import { useQuery } from "react-query";
+import { useAppDispatch } from "hooks/userHooks";
+import { useDispatch } from "react-redux";
 // CSS
 import styles from "../../css/pages/users/Users.module.scss";
-// API
 // Utils
 import {
   ButtonType,
@@ -13,6 +13,7 @@ import {
   TextInputState,
   TextInputType,
 } from "utils/enum";
+import { IUser } from "utils/interface";
 // Icons
 import ic_visibility_on_24dp from "images/icon/ic_visibility_on_24dp.svg";
 import ic_visibility_off_24dp from "images/icon/ic_visibility_off_24dp.svg";
@@ -21,9 +22,21 @@ import ReactHelmet from "components/common/Helmet";
 import TextInput from "components/common/TextInput";
 import Button from "../../components/common/Button";
 import BackBtn from "components/common/BackBtn";
+// Hooks
+import { addUserAsync } from "features/user/userSlice";
 
 export default function Signin() {
   const [visible, setVisible] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [nickname, setNickname] = useState("");
+
+  const dispatch = useAppDispatch();
+
+  const handleSubmit = (user: IUser) => {
+    dispatch(addUserAsync(user));
+  };
 
   return (
     <>
@@ -39,7 +52,11 @@ export default function Signin() {
               열정적인 멤버들이 기다리고 있어요!
             </p>
           </div>
-          <form action="POST" className={cn(styles.loginForm)}>
+          <form
+            action="POST"
+            className={cn(styles.loginForm)}
+            onSubmit={(e: any) => handleSubmit(e)}
+          >
             <div className={cn(styles.inputWrapper)}>
               <label>이메일</label>
               <TextInput
