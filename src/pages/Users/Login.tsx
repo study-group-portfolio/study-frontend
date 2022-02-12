@@ -18,7 +18,8 @@ import Button from "components/common/Button";
 // Icons
 import ic_visibility_on_24dp from "images/icon/ic_visibility_on_24dp.svg";
 import ic_visibility_off_24dp from "images/icon/ic_visibility_off_24dp.svg";
-import { IUserLoginAPI, postLogin } from "api/userAPI";
+// Interfaces
+import { IUser } from "../../utils/interface";
 
 interface ILoginInputs {
   email: string;
@@ -28,9 +29,16 @@ interface ILoginInputs {
 export default function Login(loginInputs: ILoginInputs) {
   const [visible, setVisible] = useState(false);
 
-  // Input Value
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  // setState for Login
+  const [loginUser, setLoginUser] = useState<IUser>({
+    email: "",
+    password: "",
+  });
+
+  const handleChangeUser = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setLoginUser({ ...loginUser, [name]: value });
+  };
 
   // Validation Check
   const [isEmail, setIsEmail] = useState<boolean>(false);
@@ -39,24 +47,6 @@ export default function Login(loginInputs: ILoginInputs) {
   const onSubmit = (data: any, e: any) => {
     console.log(data, e);
   };
-
-  const { data, isLoading } = useQuery<IUserLoginAPI>(["login"], postLogin);
-
-  const onChangeEmail = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      const emailRegex =
-        /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-      const emailCurrent = e.target.value;
-      setEmail(emailCurrent);
-
-      if (!emailRegex.test(emailCurrent)) {
-        setIsEmail(false);
-      } else {
-        setIsEmail(true);
-      }
-    },
-    []
-  );
 
   return (
     <section className={cn(styles.container)}>
@@ -77,7 +67,6 @@ export default function Login(loginInputs: ILoginInputs) {
               type={InputType.텍스트형}
               textInputState={TextInputState.기본값}
               textInputType={TextInputType.일반형}
-              onChange={onChangeEmail}
             />
           </div>
           <div className={cn(styles.inputWrapper)}>
