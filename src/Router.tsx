@@ -7,7 +7,7 @@ import Login from "./pages/Users/Login";
 import EmailAuth from "pages/Users/EmailAuth";
 import SigninReady from "./pages/Users/SigninReady";
 import ResetPassword from "pages/Users/ResetPassword";
-import EmailSignin from "./pages/Users/Signup";
+import SignupWithEmail from "./pages/Users/Signup";
 import FindPassword from "./pages/Users/FindPassword";
 import StudyCreation from "./pages/study/Creation";
 import StudyDetail from "pages/study/Detail";
@@ -49,7 +49,7 @@ function Router() {
         <Route
           exact
           path={Path.회원가입_이메일_인증}
-          component={EmailSignin}
+          component={SignupWithEmail}
         ></Route>
         <Route path="/mypage" component={MyPage}></Route>
         <Route exact path="/test/component" component={Component}></Route>

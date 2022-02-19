@@ -46,3 +46,11 @@ export interface IUser {
   email: string;
   password: string;
 }
+
+// 회원가입 전용
+export interface IUserSignup {
+  email: string;
+  password: string;
+  nickname: string;
+  confirmPassword: string;
+}
