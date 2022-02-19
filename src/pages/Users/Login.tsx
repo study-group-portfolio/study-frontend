@@ -1,5 +1,4 @@
-import React, { useState, useCallback } from "react";
-import { useQuery } from "react-query";
+import React, { useState, useEffect } from "react";
 import cn from "classnames";
 import { Link } from "react-router-dom";
 // Styles
@@ -19,7 +18,6 @@ import Button from "components/common/Button";
 import ic_visibility_on_24dp from "images/icon/ic_visibility_on_24dp.svg";
 import ic_visibility_off_24dp from "images/icon/ic_visibility_off_24dp.svg";
 // Interfaces
-import { IUser } from "../../utils/interface";
 
 interface ILoginInputs {
   email: string;
@@ -29,24 +27,9 @@ interface ILoginInputs {
 export default function Login(loginInputs: ILoginInputs) {
   const [visible, setVisible] = useState(false);
 
-  // setState for Login
-  const [loginUser, setLoginUser] = useState<IUser>({
-    email: "",
-    password: "",
-  });
-
-  const handleChangeUser = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setLoginUser({ ...loginUser, [name]: value });
-  };
-
-  // Validation Check
-  const [isEmail, setIsEmail] = useState<boolean>(false);
-  const [isPassword, setIsPassword] = useState<boolean>(false);
-
-  const onSubmit = (data: any, e: any) => {
-    console.log(data, e);
-  };
+  // Initial
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
     <section className={cn(styles.container)}>
