@@ -32,7 +32,6 @@ export default function Login(loginInputs: ILoginInputs) {
   const goMainPage = useGoPage(Path.메인);
 
   const [visible, setVisible] = useState(false);
-
   // Input Value
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -89,7 +88,6 @@ export default function Login(loginInputs: ILoginInputs) {
               type={InputType.텍스트형}
               textInputState={TextInputState.기본값}
               textInputType={TextInputType.일반형}
-              onChange={onChangeEmail}
             />
           </div>
           <div className={cn(styles.inputWrapper)}>
