@@ -1,5 +1,7 @@
 import axios, { AxiosResponse, AxiosInstance } from "axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+//import Login from "pages/Users/Login";
+import HTTP from 'api/http';
 
 export interface IUserLoginAPI {
   email: string;
@@ -25,11 +27,11 @@ const instance: AxiosInstance = axios.create({
 });
 
 // 로그인
-export function postLogin() {
-  return fetch(`${process.env.REACT_APP_BASE_URL}/api/members/signin`).then(
-    (res) => res.json()
-  );
-}
+// export function postLogin() {
+//   return fetch(`${process.env.REACT_APP_BASE_URL}/api/members/signin`).then(
+//     (res) => res.json()
+//   );
+// }
 
 // 닉네임 중복 체크
 export const getCheckNickname = createAsyncThunk(
@@ -38,3 +40,15 @@ export const getCheckNickname = createAsyncThunk(
     return instance(`api/`);
   }
 );
+
+export function postLogin({ email, password }: { email: string, password: string}) {
+  return HTTP.post("/api/member/signin", { email, password }, { withCredentials: false });
+}
+
+export function getReissueAccessToken() {
+  return HTTP.get("/api/auth/refresh-token", { withCredentials: true });
+}
+
+export function test() {
+  return HTTP.get("/api/member", { withCredentials: true });
+}

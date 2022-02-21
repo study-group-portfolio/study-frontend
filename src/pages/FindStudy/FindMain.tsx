@@ -17,6 +17,7 @@ import {
 
 import img_testuser_01 from "images/img/img_testuser_01.svg";
 import img_testuser_02 from "images/img/img_testuser_02.svg";
+import { test } from "api/userAPI";
 
 const FindMain: React.FunctionComponent = () => {
   const [bookMark1, setBookMark1] = useState(false);
@@ -34,6 +35,14 @@ const FindMain: React.FunctionComponent = () => {
     { name: "프론트엔드 개발자", currentNum: 1, totalNum: 1 },
     { name: "UX/UI 디자이너", currentNum: 0, totalNum: 2 },
   ];
+
+  test()
+    .then((res: any) => {
+      console.log(res);
+    })
+    .catch((error: any) => {
+      console.log(error);
+    })
 
   return (
     <div>

@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from "react";
-import { useQuery } from "react-query";
 import cn from "classnames";
 import { Link } from "react-router-dom";
 // Styles
@@ -18,7 +17,11 @@ import Button from "components/common/Button";
 // Icons
 import ic_visibility_on_24dp from "images/icon/ic_visibility_on_24dp.svg";
 import ic_visibility_off_24dp from "images/icon/ic_visibility_off_24dp.svg";
-import { IUserLoginAPI, postLogin } from "api/userAPI";
+import { postLogin} from "api/userAPI";
+// Redux
+import { store } from 'store/store';
+import { editLogin } from 'store/login/state'
+import { useGoPage } from 'utils/custom-hook';
 
 interface ILoginInputs {
   email: string;
@@ -26,6 +29,8 @@ interface ILoginInputs {
 }
 
 export default function Login(loginInputs: ILoginInputs) {
+  const goMainPage = useGoPage(Path.메인);
+
   const [visible, setVisible] = useState(false);
 
   // Input Value
@@ -35,12 +40,6 @@ export default function Login(loginInputs: ILoginInputs) {
   // Validation Check
   const [isEmail, setIsEmail] = useState<boolean>(false);
   const [isPassword, setIsPassword] = useState<boolean>(false);
-
-  const onSubmit = (data: any, e: any) => {
-    console.log(data, e);
-  };
-
-  const { data, isLoading } = useQuery<IUserLoginAPI>(["login"], postLogin);
 
   const onChangeEmail = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -58,6 +57,19 @@ export default function Login(loginInputs: ILoginInputs) {
     []
   );
 
+  async function login(loginInput: ILoginInputs) {
+    try {
+      if (!isEmail || isPassword) {
+        return;
+      }
+      const { data: { data } } = await postLogin(loginInput);
+      store.dispatch(editLogin(data.accesToken, data.refreshToken));
+      goMainPage();
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <section className={cn(styles.container)}>
       <div className={cn(styles.wrapper)}>
@@ -69,7 +81,7 @@ export default function Login(loginInputs: ILoginInputs) {
             로그인 후 스터딧해보세요!
           </p>
         </div>
-        <form action="POST" className={cn(styles.loginForm)}>
+        <div className={cn(styles.loginForm)}>
           <div className={cn(styles.inputWrapper)}>
             <label>이메일</label>
             <TextInput
@@ -87,6 +99,7 @@ export default function Login(loginInputs: ILoginInputs) {
               placeholder="비밀번호를 입력해주세요"
               textInputType={TextInputType.아이콘형}
               onClick={() => setVisible(!visible)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
               buttonImg={
                 visible ? ic_visibility_on_24dp : ic_visibility_off_24dp
               }
@@ -96,6 +109,7 @@ export default function Login(loginInputs: ILoginInputs) {
             <Button
               buttonName={"이메일로 로그인하기"}
               buttonType={ButtonType.기본}
+              onClick={() => login({ email, password })}
             />
             <Button
               buttonName={"카카오로 로그인하기"}
@@ -106,7 +120,7 @@ export default function Login(loginInputs: ILoginInputs) {
               buttonType={ButtonType.구글}
             />
           </div>
-        </form>
+        </div>
         <div className={cn(styles.utilityMenus)}>
           <Link to={Path.회원가입}>아직 회원이 아니신가요?</Link>
           <Link to={Path.비밀번호_찾기}>비밀번호 찾기</Link>
