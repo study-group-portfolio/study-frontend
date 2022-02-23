@@ -23,9 +23,17 @@ import ReactHelmet from "components/common/Helmet";
 import TextInput from "components/common/TextInput";
 import Button from "../../components/common/Button";
 import BackBtn from "components/common/BackBtn";
+import { getCheck } from "../../api/userAPI";
 // API
 dotenv.config();
 const BASE_URL = String(process.env.REACT_APP_BASE_URL);
+
+interface ISignupInputs {
+  nickname: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
 
 export default function Signin() {
   const [visible, setVisible] = useState(false);
@@ -54,6 +62,16 @@ export default function Signin() {
     [email, password, nickname]
   );
 
+  async function signup({
+    nickname,
+    email,
+  }: {
+    nickname: string;
+    email: string;
+  }) {
+    const alreadyExists = getCheck({ nickname, email });
+  }
+
   return (
     <>
       <ReactHelmet description="로그인 화면" title="로그인" />
@@ -68,11 +86,7 @@ export default function Signin() {
               열정적인 멤버들이 기다리고 있어요!
             </p>
           </div>
-          <form
-            method="POST"
-            onSubmit={onSubmit}
-            className={cn(styles.loginForm)}
-          >
+          <div onSubmit={onSubmit} className={cn(styles.loginForm)}>
             <div className={cn(styles.inputWrapper)}>
               <label>이메일</label>
               <TextInput
@@ -117,7 +131,7 @@ export default function Signin() {
                 buttonType={ButtonType.기본}
               />
             </div>
-          </form>
+          </div>
         </div>
       </section>
     </>
