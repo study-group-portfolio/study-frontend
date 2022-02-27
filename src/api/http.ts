@@ -19,19 +19,15 @@ const HTTP: AxiosInstance = axios.create({
     timeout: 10000,
     withCredentials: false,
     headers: {
-        "Access-Control-Allow-Origin": "*",
+        "content-Type": "application/json",
     }
 });
 
 HTTP.interceptors.request.use(
     async function(config: AxiosRequestConfig) {
-        const { withCredentials } = config;
         const { login } = store.getState();
 
-        console.log(1, config, persistStor.getState());
-
-        if (withCredentials && login.isLogin) {
-            console.log("동작");
+        if (login.isLogin) {
             const decodeAccessToken: Token = jwt_decode(login.accessToken);
             const decodeRefreshToken: Token = jwt_decode(login.refreshToken);
 
@@ -54,8 +50,6 @@ HTTP.interceptors.request.use(
                     window.location.href = "/users/login";
                 }
             }
-
-            console.log(config);
         }
 
         return config;

@@ -42,13 +42,13 @@ export const getCheckNickname = createAsyncThunk(
 );
 
 export function postLogin({ email, password }: { email: string, password: string}) {
-  return HTTP.post("/api/member/signin", { email, password }, { withCredentials: false });
+  return HTTP.post("/api/member/signin", { email, password });
 }
 
 export function getReissueAccessToken() {
-  return HTTP.get("/api/auth/refresh-token", { withCredentials: true });
+  return HTTP.get("/api/auth/refresh-token");
 }
 
 export function test() {
-  return HTTP.get("/api/member", { withCredentials: true });
+  return HTTP.get("/api/member/");
 }

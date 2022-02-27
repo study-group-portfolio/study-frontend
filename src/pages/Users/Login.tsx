@@ -58,9 +58,11 @@ export default function Login(loginInputs: ILoginInputs) {
 
   async function login(loginInput: ILoginInputs) {
     try {
-      if (!isEmail || isPassword) {
-        return;
-      }
+      console.log(isEmail);
+      console.log(isPassword);
+      // if (!isEmail || !isPassword) {
+      //   return;
+      // }
       const { data: { data } } = await postLogin(loginInput);
       store.dispatch(editLogin(data.accesToken, data.refreshToken));
       goMainPage();
@@ -88,6 +90,7 @@ export default function Login(loginInputs: ILoginInputs) {
               type={InputType.텍스트형}
               textInputState={TextInputState.기본값}
               textInputType={TextInputType.일반형}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
             />
           </div>
           <div className={cn(styles.inputWrapper)}>
