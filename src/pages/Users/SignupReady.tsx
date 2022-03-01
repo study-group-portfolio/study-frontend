@@ -2,7 +2,7 @@ import cn from "classnames";
 import styles from "../../css/pages/users/Users.module.scss";
 import { ButtonType, Path } from "utils/enum";
 import Button from "../../components/common/Button";
-import BackBtn from "components/common/BackBtn";
+import BackBtn from "components/Auth/BackBtn";
 
 function SigninReady() {
   return (

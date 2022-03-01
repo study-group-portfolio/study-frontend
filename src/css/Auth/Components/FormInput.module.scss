@@ -1,0 +1,43 @@
+.formInputBoxWrapper {
+  margin-top: 20px;
+}
+
+.formInputLabel {
+  display: block;
+  color: #667085;
+  margin-bottom: 8px;
+}
+
+@mixin formInputBoxGenral {
+  width: 400px;
+  height: 48px;
+  border-radius: 6px;
+  padding-left: 14px;
+  font-size: 16px;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    font-size: 16px;
+    color: #98a2b3;
+  }
+}
+
+.formInputBox {
+  @include formInputBoxGenral();
+  border: 1px solid #e4e7ec;
+}
+
+.formInputErrorBox {
+  @include formInputBoxGenral();
+  border: 1px solid #f36355;
+}
+
+.formInputHelpText {
+  display: block;
+  margin-top: 6px;
+  font-size: 14px;
+  color: #667085;
+}

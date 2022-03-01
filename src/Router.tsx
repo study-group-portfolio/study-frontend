@@ -5,7 +5,7 @@ import FindMember from "./pages/FindStudy/FindMember";
 import FindStudy from "./pages/FindStudy/FindStudy";
 import Login from "./pages/Users/Login";
 import EmailAuth from "pages/Users/EmailAuth";
-import SigninReady from "./pages/Users/SigninReady";
+import SigninReady from "./pages/Users/SignupReady";
 import ResetPassword from "pages/Users/ResetPassword";
 import SignupWithEmail from "./pages/Users/Signup";
 import FindPassword from "./pages/Users/FindPassword";

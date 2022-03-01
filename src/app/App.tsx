@@ -1,14 +1,13 @@
-import { Helmet } from "react-helmet";
+import { HelmetProvider } from "react-helmet-async";
 import Router from "../Router";
+import "../css/common/common.scss";
 
 function App() {
   return (
     <>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <meta name="keywords" content="" />
-      </Helmet>
-      <Router />
+      <HelmetProvider>
+        <Router />
+      </HelmetProvider>
     </>
   );
 }

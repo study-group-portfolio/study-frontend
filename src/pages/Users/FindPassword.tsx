@@ -11,7 +11,7 @@ import {
 // Components
 import TextInput from "components/common/TextInput";
 import Button from "../../components/common/Button";
-import BackBtn from "../../components/common/BackBtn";
+import BackBtn from "../../components/Auth/BackBtn";
 
 export default function FindPassword() {
   return (
