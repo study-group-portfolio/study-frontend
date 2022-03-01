@@ -1,4 +1,9 @@
+import React from "react";
 import { SelectEventType, TabMenuType } from "utils/enum";
+
+export interface IAuthLayout {
+  children: React.ReactNode;
+}
 export interface PositionState {
   name: string; // 역할 이름
   currentNum: number; // 현재 인원
