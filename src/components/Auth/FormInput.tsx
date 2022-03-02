@@ -10,10 +10,14 @@ interface IFormInput {
   type?: string;
   helpText?: string;
   hasError?: boolean;
+  name: string;
 }
 
 const FormInput: FC<IFormInput> = forwardRef<HTMLInputElement, IFormInput>(
-  ({ labelText, placeholder, type, helpText, hasError, ...props }, ref) => {
+  (
+    { labelText, placeholder, type, helpText, name, hasError, ...props },
+    ref
+  ) => {
     return (
       <div className={cn(styles.formInputBoxWrapper)}>
         <label className={cn(styles.formInputLabel)}>{labelText}</label>
@@ -23,6 +27,9 @@ const FormInput: FC<IFormInput> = forwardRef<HTMLInputElement, IFormInput>(
           }
           placeholder={placeholder}
           type={type}
+          ref={ref}
+          name={name}
+          {...props}
         />
         {helpText ? (
           <span className={cn(styles.formInputHelpText)}>{helpText}</span>
