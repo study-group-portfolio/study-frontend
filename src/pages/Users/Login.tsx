@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import cn from "classnames";
 import { Link } from "react-router-dom";
 // Styles
@@ -29,6 +29,7 @@ interface ILoginInputs {
 }
 
 export default function Login(loginInputs: ILoginInputs) {
+  // const emailRegex = /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
   const goMainPage = useGoPage(Path.메인);
 
   const [visible, setVisible] = useState(false);
@@ -36,38 +37,32 @@ export default function Login(loginInputs: ILoginInputs) {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  // Validation Check
-  const [isEmail, setIsEmail] = useState<boolean>(false);
-  const [isPassword, setIsPassword] = useState<boolean>(false);
+  const [emailStatus, setEmailStatus] = useState<TextInputState>(TextInputState.기본값);
+  const [passwordStatus, setPasswordStatus] = useState<TextInputState>(TextInputState.기본값);
 
-  const onChangeEmail = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      const emailRegex =
-        /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-      const emailCurrent = e.target.value;
-      setEmail(emailCurrent);
+  const validateLogin = (email: string, password: string): boolean  => {
+    if (!email) {
+      setEmailStatus(TextInputState.오류);
+      return false;
+    }
 
-      if (!emailRegex.test(emailCurrent)) {
-        setIsEmail(false);
-      } else {
-        setIsEmail(true);
-      }
-    },
-    []
-  );
+    if (!password) {
+      setPasswordStatus(TextInputState.오류);
+      return false;
+    }
+
+    return true;
+  }
 
   async function login(loginInput: ILoginInputs) {
-    try {
-      console.log(isEmail);
-      console.log(isPassword);
-      // if (!isEmail || !isPassword) {
-      //   return;
-      // }
-      const { data: { data } } = await postLogin(loginInput);
-      store.dispatch(editLogin(data.accesToken, data.refreshToken));
-      goMainPage();
-    } catch (error) {
-      console.error(error);
+    if (validateLogin(email, password)) {
+      try {
+        const { data: { data } } = await postLogin(loginInput);
+        store.dispatch(editLogin(data.accesToken, data.refreshToken));
+        goMainPage();
+      } catch (error) {
+        console.error(error);
+      }
     }
   }
 
@@ -88,7 +83,8 @@ export default function Login(loginInputs: ILoginInputs) {
             <TextInput
               placeholder={"example@studyit.com"}
               type={InputType.텍스트형}
-              textInputState={TextInputState.기본값}
+              textInputState={emailStatus}
+              errorText={"올바른 이메일을 입력해 주세요."}
               textInputType={TextInputType.일반형}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
             />
@@ -99,6 +95,8 @@ export default function Login(loginInputs: ILoginInputs) {
               type={visible ? InputType.텍스트형 : InputType.패스워드형}
               placeholder="비밀번호를 입력해주세요"
               textInputType={TextInputType.아이콘형}
+              textInputState={passwordStatus}
+              errorText={"올바른 비밀번호를 입력해 주세요."}
               onClick={() => setVisible(!visible)}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
               buttonImg={
