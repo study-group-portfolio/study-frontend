@@ -36,14 +36,6 @@ const FindMain: React.FunctionComponent = () => {
     { name: "UX/UI 디자이너", currentNum: 0, totalNum: 2 },
   ];
 
-  test()
-    .then((res: any) => {
-      console.log(res);
-    })
-    .catch((error: any) => {
-      console.log(error);
-    })
-
   return (
     <div>
       <div className={cn(styles.bannerSection)}>

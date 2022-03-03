@@ -1,5 +1,3 @@
-import axios, { AxiosResponse, AxiosInstance } from "axios";
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 //import Login from "pages/Users/Login";
 import HTTP from "api/http";
 
@@ -19,11 +17,6 @@ declare module "axios" {
   }
 }
 
-const instance: AxiosInstance = axios.create({
-  baseURL: process.env.REACT_APP_BASE_URL,
-  timeout: 15000,
-});
-
 // 닉네임 중복 체크
 export function getCheck({ nickname, email }: IUserSignupCheckAPI) {
   const resNickname = HTTP.get(`/api/member/checkNickname/${nickname}`);
@@ -41,4 +34,8 @@ export function getReissueAccessToken() {
 
 export function test() {
   return HTTP.get("/api/member/");
+}
+
+export function getMyProfile() {
+  return HTTP.get("/api/member/profile/myProfile");
 }

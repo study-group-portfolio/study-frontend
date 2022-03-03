@@ -17,19 +17,23 @@ import Button from "components/common/Button";
 // Icons
 import ic_visibility_on_24dp from "images/icon/ic_visibility_on_24dp.svg";
 import ic_visibility_off_24dp from "images/icon/ic_visibility_off_24dp.svg";
-import { postLogin} from "api/userAPI";
+import { postLogin, getMyProfile } from "api/userAPI";
+import { getAlarmList } from "api/alarmAPI";
 // Redux
-import { store } from 'store/store';
-import { editLogin } from 'store/login/state'
+import { useSelector, useDispatch } from 'react-redux';
+import { login } from 'redux/login/loginSlice';
+import { edit } from 'redux/member/memberSlice';
+import { add } from 'redux/alarm/alarmSlice';
 import { useGoPage } from 'utils/custom-hook';
-
+import store, { RootState, AppDispatch} from "redux/store";
 interface ILoginInputs {
   email: string;
   password: string;
 }
 
 export default function Login(loginInputs: ILoginInputs) {
-  // const emailRegex = /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+  const state = useSelector((state: RootState) => state.loginStore)
+  const dispatch = useDispatch<AppDispatch>();
   const goMainPage = useGoPage(Path.메인);
 
   const [visible, setVisible] = useState(false);
@@ -54,11 +58,17 @@ export default function Login(loginInputs: ILoginInputs) {
     return true;
   }
 
-  async function login(loginInput: ILoginInputs) {
+  async function onClickLogin(loginInput: ILoginInputs) {
     if (validateLogin(email, password)) {
       try {
-        const { data: { data } } = await postLogin(loginInput);
-        store.dispatch(editLogin(data.accesToken, data.refreshToken));
+        const { data: { data: loginInfo } } = await postLogin(loginInput);
+        dispatch(login(loginInfo));
+        const { data: { data: memberInfo}} = await getMyProfile();
+        dispatch(edit(memberInfo));
+        const { data: { data: alarmList }} = await getAlarmList();
+        dispatch(add(alarmList));
+
+        console.log(store.getState());
         goMainPage();
       } catch (error) {
         console.error(error);
@@ -104,21 +114,21 @@ export default function Login(loginInputs: ILoginInputs) {
               }
             />
           </div>
-          <div className={cn(styles.btnList)}>
-            <Button
-              buttonName={"이메일로 로그인하기"}
-              buttonType={ButtonType.기본}
-              onClick={() => login({ email, password })}
-            />
-            <Button
-              buttonName={"카카오로 로그인하기"}
-              buttonType={ButtonType.카카오}
-            />
-            <Button
-              buttonName={"구글로 로그인하기"}
-              buttonType={ButtonType.구글}
-            />
-          </div>
+            <div className={cn(styles.btnList)}>
+              <Button
+                buttonName={"이메일로 로그인하기"}
+                buttonType={ButtonType.기본}
+                onClick={() => onClickLogin({ email, password })}
+              />
+              <Button
+                buttonName={"카카오로 로그인하기"}
+                buttonType={ButtonType.카카오}
+              />
+              <Button
+                buttonName={"구글로 로그인하기"}
+                buttonType={ButtonType.구글}
+              />
+            </div>
         </div>
         <div className={cn(styles.utilityMenus)}>
           <Link to={Path.회원가입}>아직 회원이 아니신가요?</Link>

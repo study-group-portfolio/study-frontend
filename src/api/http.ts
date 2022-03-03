@@ -1,9 +1,9 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
-import { store, persistStor } from 'store/store';
+import store from 'redux/store';
 import jwt_decode from 'jwt-decode';
 import moment from 'moment';
 import { getReissueAccessToken } from './userAPI';
-import { editLogin } from 'store/login/state';
+import { login, logout } from 'redux/login/loginSlice';
 
 export interface Token {
     exp: number;
@@ -25,28 +25,29 @@ const HTTP: AxiosInstance = axios.create({
 
 HTTP.interceptors.request.use(
     async function(config: AxiosRequestConfig) {
-        const { login } = store.getState();
+        const { loginStore } = store.getState();
 
-        if (login.isLogin) {
-            const decodeAccessToken: Token = jwt_decode(login.accessToken);
-            const decodeRefreshToken: Token = jwt_decode(login.refreshToken);
+        if (loginStore.isLogin) {
+            const decodeAccessToken: Token = jwt_decode(loginStore.accesToken);
+            const decodeRefreshToken: Token = jwt_decode(loginStore.refreshToken);
 
             const currentDate = moment();
             const accessTokenExp = new Date(decodeAccessToken.exp * 1000);
             const refreshTokenExp = new Date(decodeRefreshToken.exp * 1000);
 
-            if (config && config.headers && login.accessToken) {
-                config.headers['Authorization'] = `Bearer ${login.accessToken}`;
+            if (config && config.headers && loginStore.accesToken) {
+                config.headers['Authorization'] = `Bearer ${loginStore.accesToken}`;
             }
 
             if (!currentDate.isBefore(accessTokenExp)) {
                 if (currentDate.isBefore(refreshTokenExp)) {
                     const { data: { accessToken } } = await getReissueAccessToken();
-                    store.dispatch(editLogin(accessToken, login.refreshToken));
-                    if (config && config.headers && login.accessToken) {
+                    store.dispatch(login({...loginStore, accesToken: accessToken}));
+                    if (config && config.headers && loginStore.accesToken) {
                         config.headers['Authorization'] = `Bearer ${accessToken}`;
                     }
                 } else {
+                    store.dispatch(logout());
                     window.location.href = "/users/login";
                 }
             }
