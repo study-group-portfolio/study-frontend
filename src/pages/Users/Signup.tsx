@@ -13,8 +13,10 @@ import FormTop from "components/Auth/FromTopExp";
 import ReactHelmet from "components/common/Helmet";
 import FormInput from "components/Auth/FormInput";
 import FormButton from "components/Auth/FormButton";
-import { SubmitHandler } from "react-hook-form";
+import { SubmitHandler, SubmitErrorHandler } from "react-hook-form";
 import { BASE_URL } from "../../app/App";
+import { useGoPage } from "utils/custom-hook";
+import { Path } from "../../utils/enum";
 // API
 
 interface ISignupInputs {
@@ -28,16 +30,43 @@ export default function Signup() {
   const {
     register,
     handleSubmit,
-    formState: { isValid, errors },
+    formState: { errors, isValid },
     getValues,
-  } = useForm<ISignupInputs>();
+    watch,
+  } = useForm<ISignupInputs>({
+    mode: "onChange",
+    defaultValues: {
+      email: "",
+      password: "",
+      confirmPassword: "",
+      nickname: "",
+    },
+  });
 
-  const onFormSubmit: SubmitHandler<ISignupInputs> = (data: any) => {
-    const { email, password, confirmPassword, nickname } = getValues();
-    console.log(email, password, confirmPassword, nickname);
+  const goMainPage = useGoPage(Path.메인);
+
+  const [submitting, setSubmitting] = useState(false);
+
+  const postSignup = async () => {
+    await axios.post(`http://localhost:8080/api/member/signup`);
   };
 
-  useEffect(() => {});
+  const onFormSubmit: SubmitHandler<ISignupInputs> = async () => {
+    const { email, password, confirmPassword, nickname } = getValues();
+    const res = await axios.post(`http://localhost:8080/api/member/signup`, {
+      email,
+      password,
+      confirmPassword,
+      nickname,
+    });
+    const data = await res.json();
+    console.log(data);
+    // goMainPage();
+  };
+
+  const onFormSubmitError: SubmitErrorHandler<ISignupInputs> = (e: any) => {
+    console.log(e);
+  };
 
   return (
     <AuthLayout>
@@ -46,23 +75,21 @@ export default function Signup() {
         formTopTitle="회원가입"
         formTopText="반갑습니다.\n 열정적인 멤버들이 기다리고 있어요!"
       />
-      <form onSubmit={handleSubmit(onFormSubmit)}>
+      <form onSubmit={handleSubmit(onFormSubmit, onFormSubmitError)}>
         <FormInput
           {...register("email", {
             required: "올바른 이메일을 입력해주세요.",
             pattern: {
-              value:
-                /^[0-9A-Z]([-_\.]?[0-9A-Z])*@[0-9A-Z]([-_\.]?[0-9A-Z])*\.[A-Z]{2,6}$/,
+              value: /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
               message: "올바른 이메일 형식이 아닙니다.",
             },
-            validate: {
-              emailAlreadyExists: async (v: string) =>
-                (
+            validate:
+              {
+                emailAlreadyExists: async (v: string) =>
                   await axios.get(
                     `http://localhost:8080/api/member/signup/${v}`
-                  )
-                ).data || "no",
-            },
+                  ),
+              } || "이미 사용 중인 이메일입니다.",
           })}
           labelText="이메일"
           placeholder="example@studyit.com"
@@ -74,19 +101,19 @@ export default function Signup() {
         )}
         <FormInput
           {...register("password", {
-            required: "password required",
+            required: "올바른 비밀번호를 입력해 주세요.",
             minLength: {
               value: 8,
-              message: "min 8",
+              message: "올바른 비밀번호를 입력해 주세요.",
             },
             maxLength: {
               value: 32,
-              message: "max 32",
+              message: "올바른 비밀번호를 입력해 주세요.",
             },
             pattern: {
               value:
                 /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-              message: "invalid pattern",
+              message: "올바른 비밀번호를 입력해 주세요.",
             },
           })}
           labelText="비밀번호"
@@ -104,6 +131,10 @@ export default function Signup() {
         <FormInput
           {...register("confirmPassword", {
             required: "비밀번호가 일치하지 않습니다.",
+            validate: {
+              passwordMatch: (v: string) =>
+                v === watch("password") || "비밀번호가 일치하지 않습니다.",
+            },
           })}
           labelText="비밀번호 확인"
           hasError={Boolean(errors?.confirmPassword)}
@@ -118,16 +149,16 @@ export default function Signup() {
         )}
         <FormInput
           {...register("nickname", {
-            required: "nickname required",
+            required: "올바른 닉네임을 입력해 주세요.",
             maxLength: {
               value: 10,
-              message: "max 10",
+              message: "올바른 닉네임을 입력해 주세요.",
             },
             validate: {
               nicknameAlreadyExists: async (v: string) =>
                 (await axios.get(
                   `http://localhost:8080/api/member/checkNickname/${v}`
-                )) || "already being used",
+                )) || "이미 사용 중인 닉네임입니다.",
             },
           })}
           labelText="닉네임"
@@ -142,7 +173,7 @@ export default function Signup() {
             {errors?.nickname.message}
           </span>
         )}
-        <FormButton text="회원가입하기" />
+        <FormButton text="회원가입하기" disabled={!isValid} />
       </form>
     </AuthLayout>
   );
