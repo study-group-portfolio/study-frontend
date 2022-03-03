@@ -100,6 +100,10 @@ export enum Path {
 
   맴버_목록 = "/member/findMember",
   맴버_상세 = "/member/detail",
+
+  내_프로필 = "/mypage/profile",
+  북마크_목록 = "/mypage/bookMark",
+  스터디_활동 = "/mypage/studyAcitivity",
 }
 
 export enum CalendarButtonType {

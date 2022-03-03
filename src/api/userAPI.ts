@@ -45,3 +45,7 @@ export function getReissueAccessToken() {
 export function test() {
   return HTTP.get("/api/member/");
 }
+
+export function getMyProfile() {
+  return HTTP.get("/api/member/profile/myProfile");
+}
