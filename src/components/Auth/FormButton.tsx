@@ -6,9 +6,13 @@ interface IFormButton {
   disabled?: boolean;
 }
 
-export default function FormButton({ text, disabled }: IFormButton) {
+export default function FormButton({ text, disabled, ...props }: IFormButton) {
   return (
-    <button disabled={disabled} className={cn(styles.formBtn)}>
+    <button
+      disabled={disabled}
+      className={disabled ? cn(styles.formBtnError) : cn(styles.formBtn)}
+      {...props}
+    >
       {text}
     </button>
   );

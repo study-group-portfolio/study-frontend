@@ -1,4 +1,4 @@
-.formBtn {
+@mixin formBtn {
   width: 100%;
   height: 48px;
   margin-top: 40px;
@@ -6,4 +6,15 @@
   color: #fff;
   border: none;
   border-radius: 6px;
+  background-color: #175cd3;
+}
+
+.formBtn {
+  @include formBtn();
+  opacity: 1;
+}
+
+.formBtnError {
+  @include formBtn();
+  opacity: 0.5;
 }
