@@ -1,5 +1,5 @@
-import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { useState } from 'react';
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Main from "./pages/FindStudy/FindMain";
 import FindMember from "./pages/FindStudy/FindMember";
@@ -42,6 +42,7 @@ function Router() {
         <Route exact path="/test/modal" component={Modal}></Route>
         <Route exact path="/test/functional" component={Functional}></Route>
         <Route exact path="/siteMap" component={SiteMap}></Route>
+        <Route render={() => <Redirect to={Path.메인} />}></Route>
       </Switch>
     </BrowserRouter>
   );

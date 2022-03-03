@@ -8,11 +8,5 @@ preview: https://study-group-portfolio.github.io/study-frontend/
 
 ## Built with...
 
-React + TypeScript
-
-<br>
-
-### NPM Packages
-
-- styled-components
-- react-hook-form
+- React (TypeScript)
+- SCSS

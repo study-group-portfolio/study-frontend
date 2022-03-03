@@ -39,7 +39,7 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://study-group-portfolio.github.io/",
+  "homepage": "https://study-group-portfolio.github.io/study-frontend/",
   "devDependencies": {
     "@reduxjs/toolkit": "^1.7.1",
     "@testing-library/jest-dom": "^5.11.4",

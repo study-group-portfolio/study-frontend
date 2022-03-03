@@ -1,4 +1,3 @@
-//import Login from "pages/Users/Login";
 import HTTP from "api/http";
 
 export interface IUserLoginAPI {
@@ -18,13 +17,24 @@ declare module "axios" {
 }
 
 // 닉네임 중복 체크
-export function getCheck({ nickname, email }: IUserSignupCheckAPI) {
-  const resNickname = HTTP.get(`/api/member/checkNickname/${nickname}`);
-  const resEmail = HTTP.get(`/api/member/signup/${email}`);
-  return { resNickname, resEmail };
+export async function fetchNicknameCheck({ nickname }: { nickname: string }) {
+  try {
+    const resNicknameExists = await HTTP.get(`/api/member/checkNickname/`, {
+      params: { nickname },
+    });
+    return resNicknameExists.data;
+  } catch (e: any) {
+    console.log(e);
+  }
 }
 
-export function postLogin({ email, password }: { email: string, password: string}) {
+export function postLogin({
+  email,
+  password,
+}: {
+  email: string;
+  password: string;
+}) {
   return HTTP.post("/api/member/signin", { email, password });
 }
 

@@ -6,21 +6,21 @@ import { getReissueAccessToken } from './userAPI';
 import { login, logout } from 'redux/login/loginSlice';
 
 export interface Token {
-    exp: number;
-    iat: number;
-    id?: number;
-    iss: string;
-    role: string;
-    sub: string;
+  exp: number;
+  iat: number;
+  id?: number;
+  iss: string;
+  role: string;
+  sub: string;
 }
 
 const HTTP: AxiosInstance = axios.create({
-    baseURL: process.env.REACT_APP_BASE_URL,
-    timeout: 10000,
-    withCredentials: false,
-    headers: {
-        "content-Type": "application/json",
-    }
+  baseURL: process.env.REACT_APP_BASE_URL,
+  timeout: 10000,
+  withCredentials: false,
+  headers: {
+    "content-Type": "application/json",
+  },
 });
 
 HTTP.interceptors.request.use(
@@ -53,12 +53,31 @@ HTTP.interceptors.request.use(
             }
         }
 
-        return config;
-    },
-    function(error: any) {
-        console.error(`api interceptor request error: ${error}`);
-        return Promise.reject(error);
+      if (config && config.headers && login.accessToken) {
+        config.headers["Authorization"] = `Bearer ${login.accessToken}`;
+      }
+
+      if (!currentDate.isBefore(accessTokenExp)) {
+        if (currentDate.isBefore(refreshTokenExp)) {
+          const {
+            data: { accessToken },
+          } = await getReissueAccessToken();
+          store.dispatch(editLogin(accessToken, login.refreshToken));
+          if (config && config.headers && login.accessToken) {
+            config.headers["Authorization"] = `Bearer ${accessToken}`;
+          }
+        } else {
+          window.location.href = "/users/login";
+        }
+      }
     }
+
+    return config;
+  },
+  function (error: any) {
+    console.error(`api interceptor request error: ${error}`);
+    return Promise.reject(error);
+  }
 );
 
 export default HTTP;
