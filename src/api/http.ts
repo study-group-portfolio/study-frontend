@@ -53,25 +53,6 @@ HTTP.interceptors.request.use(
             }
         }
 
-      if (config && config.headers && login.accessToken) {
-        config.headers["Authorization"] = `Bearer ${login.accessToken}`;
-      }
-
-      if (!currentDate.isBefore(accessTokenExp)) {
-        if (currentDate.isBefore(refreshTokenExp)) {
-          const {
-            data: { accessToken },
-          } = await getReissueAccessToken();
-          store.dispatch(editLogin(accessToken, login.refreshToken));
-          if (config && config.headers && login.accessToken) {
-            config.headers["Authorization"] = `Bearer ${accessToken}`;
-          }
-        } else {
-          window.location.href = "/users/login";
-        }
-      }
-    }
-
     return config;
   },
   function (error: any) {
