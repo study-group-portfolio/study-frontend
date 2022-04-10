@@ -1,4 +1,7 @@
 .container {
+    /** 요소 위치 설정 **/
+    position: relative;
+
     /** 요소 크기 설정 **/
     width: 1270px;
 
@@ -15,8 +18,7 @@
         align-items: center;
         button {
             /** 내부 여백 설정 **/
-            padding: 8px
-            ;
+            padding: 8px;
 
             /** 테두리 설정 **/
             border: none;
@@ -27,23 +29,27 @@
     }
 
     .content {
+        position: relative;
         /** 요소 크기 설정 **/
         width: 1160px;
 
         /** 요소 내 컨텐츠 초과 설정 **/
+        z-index: 0;
         overflow: hidden;
 
-        ul {
-            /** 요소 크기 설정 **/
-            width: 4640px;
-
-            /** 그리드 설정 **/
-            display: grid;
-            grid-template-columns: calc(1120px / 3) calc(1120px / 3) calc(1120px / 3)
-            calc(1120px / 3) calc(1120px / 3) calc(1120px / 3)
-            calc(1120px / 3) calc(1120px / 3) calc(1120px / 3)
-            calc(1120px / 3) calc(1120px / 3) calc(1120px / 3);
-            column-gap: 20px;
+        .wrap {
+            .list {
+                /** 요소 크기 설정 **/
+                width: 4640px;
+    
+                /** 그리드 설정 **/
+                display: grid;
+                grid-template-columns: calc(1120px / 3) calc(1120px / 3) calc(1120px / 3)
+                calc(1120px / 3) calc(1120px / 3) calc(1120px / 3)
+                calc(1120px / 3) calc(1120px / 3) calc(1120px / 3)
+                calc(1120px / 3) calc(1120px / 3) calc(1120px / 3);
+                column-gap: 20px;
+            }
         }
     }
 

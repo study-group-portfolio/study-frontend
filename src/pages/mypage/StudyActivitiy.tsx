@@ -21,7 +21,6 @@ export default function StudyActivity() {
                     <StudyCard 
                         studySeq={0} 
                         title={'프론트엔드 스터디 함께 하실 분을 모집합니다.'} 
-                        skillTags={'#Spring #React.js #JavaScript'} 
                         studyCardType={StudyCardType.북마크형} 
                         recruitType={RecruitType.모집완료} 
                         studyType={StudyType.지식공유및탐구} 
@@ -34,7 +33,6 @@ export default function StudyActivity() {
                     <StudyCard 
                         studySeq={0} 
                         title={'알고리즘 스터디 구합니다.'} 
-                        skillTags={'#Spring #React.js '} 
                         studyCardType={StudyCardType.북마크형} 
                         recruitType={RecruitType.모집중} 
                         studyType={StudyType.지식공유및탐구} 
@@ -47,7 +45,6 @@ export default function StudyActivity() {
                     <StudyCard 
                         studySeq={0} 
                         title={'프론트엔드 스터디 함께 하실 분을 모집합니다.'} 
-                        skillTags={'#Spring #React.js #JavaScript'} 
                         studyCardType={StudyCardType.북마크형} 
                         recruitType={RecruitType.모집완료} 
                         studyType={StudyType.지식공유및탐구} 
@@ -60,7 +57,6 @@ export default function StudyActivity() {
                     <StudyCard 
                         studySeq={0} 
                         title={'알고리즘 스터디 구합니다.'} 
-                        skillTags={'#Spring #React.js '} 
                         studyCardType={StudyCardType.북마크형} 
                         recruitType={RecruitType.모집중} 
                         studyType={StudyType.지식공유및탐구} 
@@ -76,7 +72,6 @@ export default function StudyActivity() {
                     <StudyCard 
                         studySeq={0} 
                         title={'프론트엔드 스터디 함께 하실 분을 모집합니다.'} 
-                        skillTags={'#Spring #React.js #JavaScript'} 
                         studyCardType={StudyCardType.편집형} 
                         recruitType={RecruitType.모집완료} 
                         studyType={StudyType.지식공유및탐구} 
@@ -89,7 +84,6 @@ export default function StudyActivity() {
                     <StudyCard 
                         studySeq={0} 
                         title={'알고리즘 스터디 구합니다.'} 
-                        skillTags={'#Spring #React.js '} 
                         studyCardType={StudyCardType.편집형} 
                         recruitType={RecruitType.모집중} 
                         studyType={StudyType.지식공유및탐구} 
@@ -102,7 +96,6 @@ export default function StudyActivity() {
                     <StudyCard 
                         studySeq={0} 
                         title={'프론트엔드 스터디 함께 하실 분을 모집합니다.'} 
-                        skillTags={'#Spring #React.js #JavaScript'} 
                         studyCardType={StudyCardType.편집형} 
                         recruitType={RecruitType.모집완료} 
                         studyType={StudyType.지식공유및탐구} 
@@ -115,7 +108,6 @@ export default function StudyActivity() {
                     <StudyCard 
                         studySeq={0} 
                         title={'알고리즘 스터디 구합니다.'} 
-                        skillTags={'#Spring #React.js '} 
                         studyCardType={StudyCardType.편집형} 
                         recruitType={RecruitType.모집중} 
                         studyType={StudyType.지식공유및탐구} 

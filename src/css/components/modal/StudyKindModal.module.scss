@@ -25,6 +25,7 @@
         /** 요소 크기 설정 **/
         width: 520px;
         height: 272px;
+        box-sizing: border-box;
 
         /** 요소 위치 설정 **/
         position: fixed;
@@ -62,6 +63,12 @@
             }
 
             button {
+                /** 배경색상 설정 **/
+                background-color: #FFFFFF;
+
+                /** 테두리 설정 **/
+                border: none;
+
                 /** 요소 크기 설정 **/
                 width: 32px;
                 height: 32px;

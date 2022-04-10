@@ -43,8 +43,8 @@ export default function Select(props: SelectProps) {
                 onClick={() => setOpen(!open)}
             >
                 <span>{getDisplayText(placeholder, value)}</span>
-                {!open && <img src={ic_expand_more_24dp} />}
-                {open && <img src={ic_expand_less_24dp} />}
+                {!open && <img src={ic_expand_more_24dp} alt="축소"/>}
+                {open && <img src={ic_expand_less_24dp} alt="확장"/>}
             </div>
             <div>
                 {open && 

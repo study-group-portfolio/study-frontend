@@ -17,7 +17,7 @@ import Button from "components/common/Button";
 // Icons
 import ic_visibility_on_24dp from "images/icon/ic_visibility_on_24dp.svg";
 import ic_visibility_off_24dp from "images/icon/ic_visibility_off_24dp.svg";
-import { postLogin, getMyProfile } from "api/userAPI";
+import { postLogin, getMyProfile, chekcNickname } from "api/userAPI";
 import { getAlarmList } from "api/alarmAPI";
 // Redux
 import { useSelector, useDispatch } from 'react-redux';
@@ -57,6 +57,14 @@ export default function Login(loginInputs: ILoginInputs) {
 
     return true;
   }
+
+  chekcNickname("test")
+    .then((res: any) => {
+      console.log(res);
+    })
+    .catch((error: any) => {
+      console.error(error);
+    })
 
   async function onClickLogin(loginInput: ILoginInputs) {
     if (validateLogin(email, password)) {

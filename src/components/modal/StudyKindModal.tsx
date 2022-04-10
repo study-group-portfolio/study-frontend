@@ -34,7 +34,7 @@ export default function StudyKindModal(props: StudyKindModalProps) {
                 <div className={styles.titleBar}>
                     <h3>스터디 유형 선택하기</h3>
                     <button onClick={() => props.onClose()}>
-                        <img src={ic_close_24dp} />
+                        <img src={ic_close_24dp} alt="닫기"/>
                     </button>
                 </div>
                 <div className={cn(styles.studyKindSection)}>

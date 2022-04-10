@@ -19,7 +19,7 @@ import { PositionState } from 'utils/interface';
 interface StudyCardProps {
     studySeq: number;
     title: string;
-    skillTags: string;
+    skillTags?: string[];
     studyCardType: StudyCardType;
     recruitType: RecruitType;
     studyType: StudyType;
@@ -50,13 +50,13 @@ export default function StudyCard(props: StudyCardProps) {
     const history = useHistory();
 
     return (
-        <div className={cn(styles.body)}>
-            <div className={cn(styles.container)}>
+        <div className={cn(styles.container)}>
+            <div className={cn(styles.card)}>
                 <div className={cn(styles.content)}>
                     <div className={cn(styles.section)}>
                         <div className={cn(styles.titleSection)}>
                             <Link to={getDetailPath(studySeq, studyType)} className={cn(styles.title)}>{title}</Link>
-                            <div className={cn(styles.skillTagSection)}>{skillTags}</div>
+                            {/* <div className={cn(styles.skillTagSection)}>{skillTags.map((skill: string) => "#" + skill).join(" ")}</div> */}
                         </div>
                         <div className={cn(styles.badgeSection)}>
                             <Badge badgeType={getRecruitBadge(recruitType)} />{/* 모집상태 */}
@@ -70,43 +70,43 @@ export default function StudyCard(props: StudyCardProps) {
                         <button 
                             onClick={() => {props.onClickBookMark()}}
                         >
-                            {!bookMark && <img src={ic_bookmark_off_24dp} />}
-                            {bookMark && <img src={ic_bookmark_on_24dp} />}
+                            {!bookMark && <img src={ic_bookmark_off_24dp} alt="북마크off"/>}
+                            {bookMark && <img src={ic_bookmark_on_24dp} alt="북마크on"/>}
                         </button>}
                         {/* 편집 버튼 */}
                         {studyCardType === StudyCardType.편집형 && 
                         <button 
                             onClick={() => history.push(getRevisionPath(studySeq, studyType))}
                         >
-                            <img src={ic_edit_24dp} />
+                            <img src={ic_edit_24dp} alt="편집"/>
                         </button>}
                     </div>
                 </div>
                 <div className={cn(styles.bottom)}>
-                    <span>모집인원</span>
-                    <span>{currentNum}/{totalNum}</span>
-                    <span 
-                        className={cn(styles.state)}
+                    <div className={cn(styles.left)}>
+                        <span>모집인원</span>
+                        <span>{currentNum}/{totalNum}</span>
+                    </div>
+                    {/* <div 
+                        className={cn(styles.right)}
                         onMouseOver={() => setState(true)}
                         onMouseOut={() => setState(false)}
                     >
                         <span>포지션 현황</span>
-                        {state && <img src={ic_expand_more} />}
-                        {!state && <img src={ic_expand_less} />}
-                    </span>
+                        {state && <img src={ic_expand_more} alt="확장"/>}
+                        {!state && <img src={ic_expand_less} alt="축소"/>}
+                    </div> */}
                 </div>
             </div>
-            {state && 
-            <div className={cn(styles.stateDropdown)}>
-                <ul>
+            {/* {!state && <div className={cn(styles.tooltip)}>
+                <ul className={cn(styles.positionList)}>
                     {positionStateList.map((positionState, index) => (
-                        <li key={index}>
-                            <span>{positionState.name}</span>
-                            <span>{positionState.currentNum}/{positionState.totalNum}</span>
-                        </li>
-                    ))}
+                    <div className={cn(styles.item)}key={index}>
+                        <span>{positionState.name}</span>
+                        <span>{positionState.currentNum}/{positionState.totalNum}</span>
+                    </div>))}
                 </ul>
-            </div>}
+            </div>} */}
         </div>
     )
 }

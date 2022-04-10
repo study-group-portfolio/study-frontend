@@ -58,9 +58,6 @@ export default function Calendar(props: CalendarProps) {
                 </div>
                 <div className={cn(styles.days)}>
                     {DAYS.map((day, index) => (
-                        // <CalendarButton 
-                        //     day={day}
-                        // />
                         <button 
                             key={index}
                             className={

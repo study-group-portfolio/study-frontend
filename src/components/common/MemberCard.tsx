@@ -33,7 +33,7 @@ export default function MemberCard(props: MemberCardProps) {
                     }
                 >
                     {!profileImg && name.charAt(0)}
-                    {profileImg && <img src={profileImg} />}
+                    {profileImg && <img src={profileImg} alt="프로필이미지"/>}
                 </span>
                 <div className={cn(styles.detail)}>
                     <div className={cn(styles.top)}>
@@ -45,18 +45,10 @@ export default function MemberCard(props: MemberCardProps) {
             </div>
             <div className={cn(styles.bookMarkSection)}>
                 <button onClick={() => props.onClickBookMark()}>
-                    {!bookMark && <img src={ic_bookmark_off_24dp} />}
-                    {bookMark && <img src={ic_bookmark_on_24dp} />}
+                    {!bookMark && <img src={ic_bookmark_off_24dp} alt="북마크off"/>}
+                    {bookMark && <img src={ic_bookmark_on_24dp} alt="북마크on"/>}
                 </button>
             </div>
         </div>
     )
-}
-
-function getImgStyle(img: string, position: string) {
-    return {
-        backgroundImage: `url(${img})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: position
-    }
 }

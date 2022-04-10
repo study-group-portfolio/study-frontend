@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import cn from "classnames";
 import styles from "../../css/pages/find/FindMain.module.scss";
 import Slider from "components/common/Slider";
@@ -17,7 +17,26 @@ import {
 
 import img_testuser_01 from "images/img/img_testuser_01.svg";
 import img_testuser_02 from "images/img/img_testuser_02.svg";
-import { test } from "api/userAPI";
+import { getStudyList } from "api/studyAPI";
+interface StduyDetail {
+  bookmarkId: number
+  bookmarkState: string
+  content: string;
+  createDate: string;
+  duration: string;
+  id: number;
+  modifiedDate: string;
+  positions: string[]
+  profileShare: boolean;
+  receptionEnd: string;
+  receptionStart: string;
+  region: string;
+  status: ProcessType;
+  studyDay: string;
+  title: string;
+  tools: string[];
+  type: StudyType;
+}
 
 const FindMain: React.FunctionComponent = () => {
   const [bookMark1, setBookMark1] = useState(false);
@@ -29,12 +48,21 @@ const FindMain: React.FunctionComponent = () => {
   const [studyTooltipShow, setStudyTooltipShow] = useState<boolean>(false);
   const [memberTooltipShow, setMemberTooltipShow] = useState<boolean>(false);
 
+  const [studyList, setStudyList] = useState<StduyDetail[]>([]);
+
   const [bookMark6, setBookMark6] = useState(false);
-  const positionStateList: PositionState[] = [
-    { name: "백엔드 개발자", currentNum: 1, totalNum: 1 },
-    { name: "프론트엔드 개발자", currentNum: 1, totalNum: 1 },
-    { name: "UX/UI 디자이너", currentNum: 0, totalNum: 2 },
-  ];
+
+  useEffect(() => {
+    (async function() {
+      try {
+        const { data: { data: { content }} } = await getStudyList(0, 12);
+        console.log(content);
+        setStudyList(content);
+      } catch (error) {
+        console.error(error);
+      }
+    })();
+  }, [])
 
   return (
     <div>
@@ -77,132 +105,32 @@ const FindMain: React.FunctionComponent = () => {
             <Link to={Path.스터디_목록}>전체보기</Link>
           </div>
           <Slider>
-            <StudyCard
-              studySeq={0}
-              title="포트폴리오용"
-              skillTags="#Spring #React.js #JavaScript #jQuer…"
-              studyCardType={StudyCardType.북마크형}
-              recruitType={RecruitType.모집중}
-              studyType={StudyType.사이드프로젝트}
-              processType={ProcessType.온오프라인}
-              bookMark={bookMark4}
-              onClickBookMark={() => setBookMark4(!bookMark4)}
-              currentNum={5}
-              totalNum={10}
-              positionStateList={positionStateList}
-            />
-            <StudyCard
-              studySeq={0}
-              title="알고리즘 스터디 구합니다."
-              skillTags="#Spring #React.js "
-              studyCardType={StudyCardType.북마크형}
-              recruitType={RecruitType.모집중}
-              studyType={StudyType.지식공유및탐구}
-              processType={ProcessType.온라인}
-              bookMark={bookMark5}
-              onClickBookMark={() => setBookMark5(!bookMark5)}
-              currentNum={2}
-              totalNum={5}
-              positionStateList={positionStateList}
-            />
-            <StudyCard
-              studySeq={0}
-              title="프론트엔드 스터디"
-              skillTags="#Spring #React.js #JavaScript"
-              studyCardType={StudyCardType.북마크형}
-              recruitType={RecruitType.모집완료}
-              studyType={StudyType.지식공유및탐구}
-              processType={ProcessType.오프라인}
-              bookMark={bookMark6}
-              onClickBookMark={() => setBookMark6(!bookMark6)}
-              currentNum={10}
-              totalNum={10}
-              positionStateList={positionStateList}
-            />
-            <StudyCard
-              studySeq={0}
-              title="포트폴리오용"
-              skillTags="#Spring #React.js #JavaScript #jQuer…"
-              studyCardType={StudyCardType.북마크형}
-              recruitType={RecruitType.모집중}
-              studyType={StudyType.사이드프로젝트}
-              processType={ProcessType.온오프라인}
-              bookMark={bookMark4}
-              onClickBookMark={() => setBookMark4(!bookMark4)}
-              currentNum={5}
-              totalNum={10}
-              positionStateList={positionStateList}
-            />
-            <StudyCard
-              studySeq={0}
-              title="알고리즘 스터디 구합니다."
-              skillTags="#Spring #React.js "
-              studyCardType={StudyCardType.북마크형}
-              recruitType={RecruitType.모집중}
-              studyType={StudyType.지식공유및탐구}
-              processType={ProcessType.온라인}
-              bookMark={bookMark5}
-              onClickBookMark={() => setBookMark5(!bookMark5)}
-              currentNum={2}
-              totalNum={5}
-              positionStateList={positionStateList}
-            />
-            <StudyCard
-              studySeq={0}
-              title="프론트엔드 스터디"
-              skillTags="#Spring #React.js #JavaScript"
-              studyCardType={StudyCardType.북마크형}
-              recruitType={RecruitType.모집완료}
-              studyType={StudyType.지식공유및탐구}
-              processType={ProcessType.오프라인}
-              bookMark={bookMark6}
-              onClickBookMark={() => setBookMark6(!bookMark6)}
-              currentNum={10}
-              totalNum={10}
-              positionStateList={positionStateList}
-            />
-            <StudyCard
-              studySeq={0}
-              title="포트폴리오용"
-              skillTags="#Spring #React.js #JavaScript #jQuer…"
-              studyCardType={StudyCardType.북마크형}
-              recruitType={RecruitType.모집중}
-              studyType={StudyType.사이드프로젝트}
-              processType={ProcessType.온오프라인}
-              bookMark={bookMark4}
-              onClickBookMark={() => setBookMark4(!bookMark4)}
-              currentNum={5}
-              totalNum={10}
-              positionStateList={positionStateList}
-            />
-            <StudyCard
-              studySeq={0}
-              title="알고리즘 스터디 구합니다."
-              skillTags="#Spring #React.js "
-              studyCardType={StudyCardType.북마크형}
-              recruitType={RecruitType.모집중}
-              studyType={StudyType.지식공유및탐구}
-              processType={ProcessType.온라인}
-              bookMark={bookMark5}
-              onClickBookMark={() => setBookMark5(!bookMark5)}
-              currentNum={2}
-              totalNum={5}
-              positionStateList={positionStateList}
-            />
-            <StudyCard
-              studySeq={0}
-              title="프론트엔드 스터디"
-              skillTags="#Spring #React.js #JavaScript"
-              studyCardType={StudyCardType.북마크형}
-              recruitType={RecruitType.모집완료}
-              studyType={StudyType.지식공유및탐구}
-              processType={ProcessType.오프라인}
-              bookMark={bookMark6}
-              onClickBookMark={() => setBookMark6(!bookMark6)}
-              currentNum={10}
-              totalNum={10}
-              positionStateList={positionStateList}
-            />
+            {studyList.length > 0 && studyList.map((study: StduyDetail, key: number) => {
+              const currentNum = study.positions.reduce((acc: number, position: any) => acc + Number(position.totalCount || 0), 0);
+              const totalNum = study.positions.reduce((acc: number, position: any) => acc + Number(position.count), 0);
+              const positionStateList: PositionState[] = study.positions.map((position: any) => {
+                return {
+                  name: position.position,
+                  currentNum: position.totalCount || 0,
+                  totalNum: position.count || 0,
+                };
+              })
+              
+              return (<StudyCard
+                key={key}
+                studySeq={study.id}
+                title={study.title}
+                studyCardType={StudyCardType.북마크형}
+                recruitType={RecruitType.모집중}
+                studyType={study.type}
+                processType={study.status}
+                bookMark={Boolean(study.bookmarkState)}
+                onClickBookMark={() => setBookMark4(!bookMark4)}
+                currentNum={currentNum}
+                totalNum={totalNum}
+                positionStateList={positionStateList}
+              />)
+            })}
           </Slider>
         </div>
         <div className={cn(styles.wrapper)}>
