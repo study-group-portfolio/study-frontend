@@ -16,6 +16,9 @@
     grid-auto-flow: column;
     justify-content: center;
     column-gap: 6px;
+
+    /** 마우스 커서 모양 설정 **/
+    cursor: pointer;
 }
 
 .btn:disabled {

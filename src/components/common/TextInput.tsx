@@ -62,9 +62,8 @@ export default function TextInput(props: TextInputProps) {
                     disabled={disabled}
                     onChange={(event) => onChange(event)}
                 />
-                {(!textInputType || textInputType !== TextInputType.일반형) && 
+                {(textInputType && textInputType !== TextInputType.일반형) && 
                 <button 
-                    type='button'
                     className={
                         cn(
                             {
@@ -75,7 +74,7 @@ export default function TextInput(props: TextInputProps) {
                     onClick={(event) => props.onClick ? props.onClick(event) : undefined}
                 >
                     {textInputType === TextInputType.버튼형 && <span>{buttonText}</span>}
-                    {textInputType === TextInputType.아이콘형 && <img src={buttonImg} />}
+                    {textInputType === TextInputType.아이콘형 && <img src={buttonImg} alt="버튼이미지"/>}
                 </button>}
             </div>
             {helpText && <p className={cn(styles.helpText)}>{helpText}</p>}

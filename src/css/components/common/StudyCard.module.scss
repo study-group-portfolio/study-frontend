@@ -1,9 +1,8 @@
-.body {
+.container {
+    /** 요소 위치 설정 **/
     position: relative;
-    > .container {
-        /** 내부 여백 설정 **/
-        padding: 20px;
-
+    
+    .card {
         /** 배경색상 설정 **/
         background-color: #FFFFFF;
 
@@ -14,131 +13,115 @@
         0px 2px 6px rgba(16, 24, 40, 0.02);
 
         /** 테두리 설정 **/
-        border: none;
         border-radius: 6px;
+
+        /** 내부 여백 설정 **/
+        padding: 20px;
 
         /** 그리드 설정 **/
         display: grid;
+        row-gap: 16px;
 
         .content {
-            /** 내부 여백 설정 **/
-            padding-bottom: 16px;
-
-            /** 테두리 설정 **/
-            border-bottom: 1px dashed #E4E7EC;
-
             /** 그리드 설정 **/
             display: grid;
-            grid-template-columns: auto 24px;
+            grid-auto-flow: column;
             column-gap: 16px;
+            justify-content: space-between;
 
             .section {
                 /** 그리드 설정 **/
                 display: grid;
                 row-gap: 30px;
 
-                .titleSection {
-                    /** 그리드 설정 **/
-                    display: grid;
-                    row-gap: 6px;
-
-                    .title {
-                        /** 텍스트 설정 **/
-                        font-style: normal;
-                        font-weight: bold;
-                        font-size: 16px;
-                        line-height: 28px;
-                        color: #101828;
-
-                        /** 말줄임 설정 **/
-                        display: block;
-                        white-space: nowrap;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                    }
-
-                    .skillTagSection {
-                        /** 텍트스 설정 **/
-                        font-style: normal;
-                        font-weight: normal;
-                        font-size: 16px;
-                        line-height: 20px;
-                        color: #98A2B3;
-
-                        /** 말줄임 설정 **/
-                        display: block;
-                        white-space: nowrap;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                    }
+                .title {
+                    /** 링크 설정 **/
+                    text-decoration: none;
+                    
+                    /** 폰트 설정 **/
+                    font-family: 'Spoqa Han Sans Neo';
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 16px;
+                    line-height: 28px;
+                    color: #101828;
                 }
 
                 .badgeSection {
                     /** 그리드 설정 **/
                     display: grid;
                     grid-auto-flow: column;
-                    justify-content: flex-start;
                     column-gap: 12px;
                 }
             }
 
             .buttonSection {
                 button {
-                    /** 요소 크기 설정 **/
-                    width: 24px;
-                    height: 24px;
-
                     /** 내부 여백 설정 **/
-                    padding: 0;
-                }
+                    padding: 3px 5px;
 
-                Link {
-                    /** 요소 크기 설정 **/
-                    width: 24px;
-                    height: 24px;
+                    /** 배경색상 설정 **/
+                    background-color: #FFFFFF;
+
+                    /** 테두리 설정 **/
+                    border: none;
                 }
             }
         }
 
         .bottom {
-            /** 그리드 설정 **/
-            display: grid;
-            grid-template-columns: 55px auto 88px;
-            column-gap: 8px;
+            /** 테두리 설정 **/
+            border-top: 1px dashed #E4E7EC;
 
             /** 내부 여백 설정 **/
-            padding-top: 14px;
+            padding-top: 13px;
+
+            /** 그리드 설정 **/
+            display: grid;
+            grid-auto-flow: column;
+            justify-content: space-between;
 
             span {
-                /** 텍스트 설정 **/
+                /** 폰트 설정 **/
+                font-family: 'Spoqa Han Sans Neo';
                 font-style: normal;
-                font-weight: normal;
+                font-weight: 400;
                 font-size: 14px;
                 line-height: 18px;
                 color: #667085;
             }
 
-            .state {
-                /** 마우스 커서 설정 **/
-                cursor: default;
-
+            .left {
                 /** 그리드 설정 **/
                 display: grid;
-                grid-template-columns: auto auto;
-                column-gap: 8px;
-                justify-content: flex-end;
+                grid-auto-flow: column;
+                column-gap: 6px;
+            }
+
+            .right {
+                /** 그리드 설정 **/
+                display: grid;
+                grid-auto-flow: column;
+                column-gap: 2px;
+
+                /** 마우스 커서 모양 설정 **/
+                cursor: pointer;
 
                 img {
                     /** 외부 여백 설정 **/
-                    margin: 5px 0;
+                    margin: 6px 8px;
                 }
             }
         }
     }
 
-    > .stateDropdown {
-        /** 요소 크기 설정 **/
-        width: 145px;
+    .tooltip {
+        /** 위치 설정 **/
+        position: absolute;
+        top: 100%;
+        left: calc(100% - 145px);
+        float: right;
+        z-index: 100;
 
         /** 배경색상 설정 **/
         background-color: #FFFFFF;
@@ -154,36 +137,38 @@
 
         /** 외부 여백 설정 **/
         margin-top: 8px;
-        margin-left: calc(100% - 145px);
 
         /** 내부 여백 설정 **/
         padding: 10px;
 
-        /** 요소 블록 설정 **/
-        display: inline-block;
+        .positionList {
+            /** 내부 여백 설정 **/
+            padding: 0;
 
-        /** 요소 위치 설정 **/
-        position: absolute;
-
-        z-index: 50;
-        ul {
             /** 그리드 설정 **/
             display: grid;
+            grid-auto-flow: row;
             row-gap: 10px;
 
-            li {
-                /** 텍스트 설정 **/
-                font-style: normal;
-                font-weight: normal;
-                font-size: 12px;
-                line-height: 15px;
-                color: #101828;
+            .item {
+                /** 목록 유형 설정 **/
+                list-style: none;
 
                 /** 그리드 설정 **/
                 display: grid;
-                grid-template-columns: auto 19px;
+                grid-auto-flow: column;
                 column-gap: 14px;
                 justify-content: space-between;
+
+                span {
+                    /** 폰트 설정 **/
+                    font-family: 'Spoqa Han Sans Neo';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 12px;
+                    line-height: 15px;
+                    color: #101828;
+                }
             }
         }
     }

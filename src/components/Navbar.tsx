@@ -1,18 +1,24 @@
 import cn from 'classnames';
 import styles from 'css/components/common/Navbar.module.scss';
 import logo_studyit_logotype from 'images/logo/logo_studyit_logotype.svg';
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import AlarmBadge from "./common/AlarmBadge";
 import { useState, useRef, useEffect } from 'react';
-import { Path } from 'utils/enum';
+import { Path, StudyType } from 'utils/enum';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState, AppDispatch} from "redux/store";
 import { logout } from 'redux/login/loginSlice';
 import { remove as memberRemove } from 'redux/member/memberSlice';
 import { remove as alarmRemove } from 'redux/alarm/alarmSlice';
 import { useGoPage } from 'utils/custom-hook';
+import StudyKindModal from './modal/StudyKindModal';
+import { getUrl } from 'utils/util';
 
 function Navbar() {
+  // Router Dom 관련 History 객체
+  const history = useHistory<any>();
+  // Router Dom 관련 History 객체
+
   // Redux 상태값
   const isLogin = useSelector((state: RootState) => state.loginStore.isLogin);
   const alarmList = useSelector((state: RootState) => state.alarmStore);
@@ -27,7 +33,9 @@ function Navbar() {
 
   const dispatch = useDispatch<AppDispatch>();
   const profileButtonRef = useRef(Object());
+
   const [profileDropdown, setProfileDropdown] = useState(false);
+  const [openStudyKindModal, setOpenStudyKindModal] = useState<boolean>(false);
 
   useEffect(() => {
     function clickHandleOutside(event: MouseEvent) {
@@ -55,14 +63,20 @@ function Navbar() {
     goPage();
   }
 
+  const onClickComplete = (studyType: StudyType) => {
+    const url = getUrl(Path.스터디_생성, { studyType });
+    history.push(url);
+  }
+
   return (
   <div>
+    {openStudyKindModal && <StudyKindModal onClose={() => setOpenStudyKindModal(false)} onClickComplete={(studyType: StudyType) => onClickComplete(studyType)}/>}
     <div className={cn(styles.container)}>
       <NavLink to={Path.메인} className={cn(styles.logoSection)}>
         <img className={cn(styles.logo)} src={logo_studyit_logotype} alt="로고"/>
       </NavLink>
       <div className={cn(styles.linkBox)}>
-        {isLogin && <div><NavLink to={Path.스터디_생성} className={cn(styles.studyCreation)}>스터디 생성하기</NavLink></div>}
+        {isLogin && <div><a href="#!" onClick={() => setOpenStudyKindModal(true)} className={cn(styles.studyCreation)}>스터디 생성하기</a></div>}
         <div><NavLink to={Path.스터디_목록} className={cn(styles.link)}>스터디 찾기</NavLink></div>
         <div><NavLink to={Path.맴버_목록} className={cn(styles.link)}>맴버 찾기</NavLink></div>
         {!isLogin && <div><NavLink to={Path.로그인} className={cn(styles.link)}>로그인</NavLink></div>}

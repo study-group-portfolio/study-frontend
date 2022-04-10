@@ -1,6 +1,6 @@
 import { HelmetProvider } from "react-helmet-async";
 import Router from "../Router";
-import "../css/common/common.scss";
+import "css/common.css";
 
 import dotenv from "dotenv";
 dotenv.config();

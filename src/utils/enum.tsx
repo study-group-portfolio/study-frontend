@@ -37,15 +37,15 @@ export enum RecruitType {
 
 /** 스터디 종류 */
 export enum StudyType {
-  사이드프로젝트 = "SP",
-  지식공유및탐구 = "KS",
+  사이드프로젝트 = "PROJECT",
+  지식공유및탐구 = "SHARE",
 }
 
 /** 스터디 진행 방식 */
 export enum ProcessType {
   오프라인 = "OFF",
   온라인 = "ON",
-  온오프라인 = "ON/OFF",
+  온오프라인 = "ONOFF",
 }
 
 /** 텍스트 입력창 타입 */

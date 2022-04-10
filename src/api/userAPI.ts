@@ -49,3 +49,7 @@ export function test() {
 export function getMyProfile() {
   return HTTP.get("/api/member/profile/myProfile");
 }
+
+export function chekcNickname(nickName: string) {
+  return HTTP.get(`/api/member/checkNickname/${nickName}`);
+}
