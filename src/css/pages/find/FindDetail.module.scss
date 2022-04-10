@@ -16,10 +16,12 @@ $banner-background: #f9fafb;
     width: 1160px;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
 
     .bannerExp {
-      width: fit-content;
+      //width: fit-content;
+      display: grid;
+      row-gap: 40px;
 
       .bannerTitle {
         font-size: 40px;
@@ -38,6 +40,9 @@ $banner-background: #f9fafb;
     .bannerImage {
       width: 250px;
       height: 333px;
+
+      /** 외부 여백 설정 **/
+      margin-right: 127px;
     }
   }
 }

@@ -4,9 +4,10 @@ import StudyCard from "components/common/StudyCard";
 import styles from "../../css/pages/find/FindDetail.module.scss";
 import InfoCircle from "../../images/info_circle.svg";
 import StudySearching from "../../images/img/img_search_study.svg";
-import { StudyCardType, RecruitType} from "utils/enum";
+import { StudyCardType, RecruitType, ButtonType} from "utils/enum";
 import { StudyToolTipBox } from "components/common/ToolTipBox";
 import { getStudyList } from 'api/studyAPI';
+import Button from "components/common/Button";
 
 const SIZE_PER_PAGE: number = 12;
 
@@ -27,23 +28,30 @@ export default function FindStudy() {
       }
 
     })()
-    
+
   }, [])
   return (
     <div>
       <div className={cn(styles.bannerSection)}>
         <div className={cn(styles.bannerWrapper)}>
           <div className={cn(styles.bannerExp)}>
-            <h1 className={cn(styles.bannerTitle)}>
-              이 중에 마음에 들 스터디
-              <br />
-              하나쯤은 있을 거에요.
-            </h1>
-            <p className={cn(styles.bannerParagraph)}>
-              나에게 맞는 스터디를 찾는 데에 지쳤다면
-              <br />
-              스터딧에서 해결할 수 있을 거에요.
-            </p>
+            <div>
+              <h1 className={cn(styles.bannerTitle)}>
+                이 중에 마음에 들 스터디
+                <br />
+                하나쯤은 있을 거에요.
+              </h1>
+              <p className={cn(styles.bannerParagraph)}>
+                나에게 맞는 스터디를 찾는 데에 지쳤다면
+                <br />
+                스터딧에서 해결할 수 있을 거에요.
+              </p>
+            </div>
+            <div>
+              <Button
+                buttonName="탐색 시작하기"
+                buttonType={ButtonType.기본} />
+            </div>
           </div>
           <img
             src={StudySearching}
