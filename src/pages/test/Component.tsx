@@ -338,17 +338,17 @@ export default function Test() {
                 <h2>StudyCard</h2>
                 <div className={cn(styles.studyCardSection)}>
                     <StudyCard 
-                        studySeq={0} 
-                        title='포트폴리오용' 
+                        studySeq={0}
+                        title='포트폴리오용'
                         studyCardType={StudyCardType.북마크형}
-                        recruitType={RecruitType.모집중} 
-                        studyType={StudyType.사이드프로젝트} 
-                        processType={ProcessType.온오프라인} 
-                        bookMark={bookMark4} 
-                        onClickBookMark={() => setBookMark4(!bookMark4)} 
-                        currentNum={5} 
-                        totalNum={10}
-                        positionStateList={positionStateList} />
+                        recruitType={RecruitType.모집중}
+                        studyType={StudyType.사이드프로젝트}
+                        processType={ProcessType.온오프라인}
+                        bookMark={bookMark4}
+                        onClickBookMark={() => setBookMark4(!bookMark4)}
+                        currentNum={5}
+                        totalNum={10} 
+                        skillTags={[]} />
                     <StudyCard 
                         studySeq={0} 
                         title='알고리즘 스터디 구합니다.' 
@@ -360,7 +360,7 @@ export default function Test() {
                         onClickBookMark={() => setBookMark5(!bookMark5)} 
                         currentNum={2} 
                         totalNum={5}
-                        positionStateList={positionStateList} />
+                        skillTags={[]} />
                     <StudyCard 
                         studySeq={0} 
                         title='프론트엔드 스터디' 
@@ -372,7 +372,7 @@ export default function Test() {
                         onClickBookMark={() => setBookMark6(!bookMark6)} 
                         currentNum={10} 
                         totalNum={10}
-                        positionStateList={positionStateList} />
+                        skillTags={[]} />
                     <StudyCard 
                         studySeq={0} 
                         title='포트폴리오용' 
@@ -384,7 +384,7 @@ export default function Test() {
                         onClickBookMark={() => setBookMark4(!bookMark4)} 
                         currentNum={5} 
                         totalNum={10}
-                        positionStateList={positionStateList} />
+                        skillTags={[]} />
                     <StudyCard 
                         studySeq={0} 
                         title='알고리즘 스터디 구합니다.' 
@@ -396,7 +396,7 @@ export default function Test() {
                         onClickBookMark={() => setBookMark5(!bookMark5)} 
                         currentNum={2} 
                         totalNum={5}
-                        positionStateList={positionStateList} />
+                        skillTags={[]} />
                     <StudyCard 
                         studySeq={0} 
                         title='프론트엔드 스터디' 
@@ -408,7 +408,7 @@ export default function Test() {
                         onClickBookMark={() => setBookMark6(!bookMark6)} 
                         currentNum={10} 
                         totalNum={10}
-                        positionStateList={positionStateList} />
+                        skillTags={[]} />
                 </div>
                 <h2>MemberCard</h2>
                 <div className={cn(styles.menberCardSection)}>
@@ -582,7 +582,7 @@ export default function Test() {
                         onClickBookMark={() => setBookMark6(!bookMark6)} 
                         currentNum={10} 
                         totalNum={10}
-                        positionStateList={positionStateList} />
+                        skillTags={[]} />
                     <StudyCard 
                         studySeq={0} 
                         title='프론트엔드 스터디' 
@@ -594,7 +594,7 @@ export default function Test() {
                         onClickBookMark={() => setBookMark6(!bookMark6)} 
                         currentNum={10} 
                         totalNum={10}
-                        positionStateList={positionStateList} />
+                        skillTags={[]} />
                     <StudyCard 
                         studySeq={0} 
                         title='프론트엔드 스터디' 
@@ -606,7 +606,7 @@ export default function Test() {
                         onClickBookMark={() => setBookMark6(!bookMark6)} 
                         currentNum={10} 
                         totalNum={10}
-                        positionStateList={positionStateList} />
+                        skillTags={[]} />
                     <StudyCard 
                         studySeq={0} 
                         title='알고리즘 스터디 구합니다.' 
@@ -618,7 +618,7 @@ export default function Test() {
                         onClickBookMark={() => setBookMark5(!bookMark5)} 
                         currentNum={2} 
                         totalNum={5}
-                        positionStateList={positionStateList} />
+                        skillTags={[]} />
                     <StudyCard 
                         studySeq={0} 
                         title='프론트엔드 스터디' 
@@ -630,7 +630,7 @@ export default function Test() {
                         onClickBookMark={() => setBookMark6(!bookMark6)} 
                         currentNum={10} 
                         totalNum={10}
-                        positionStateList={positionStateList} />
+                        skillTags={[]} />
                     <StudyCard 
                         studySeq={0} 
                         title='알고리즘 스터디 구합니다.' 
@@ -642,7 +642,7 @@ export default function Test() {
                         onClickBookMark={() => setBookMark5(!bookMark5)} 
                         currentNum={2} 
                         totalNum={5}
-                        positionStateList={positionStateList} />
+                        skillTags={[]} />
                     <StudyCard 
                         studySeq={0} 
                         title='프론트엔드 스터디' 
@@ -654,7 +654,7 @@ export default function Test() {
                         onClickBookMark={() => setBookMark6(!bookMark6)} 
                         currentNum={10} 
                         totalNum={10}
-                        positionStateList={positionStateList} />
+                        skillTags={[]} />
                     <StudyCard 
                         studySeq={0} 
                         title='프론트엔드 스터디' 
@@ -666,7 +666,7 @@ export default function Test() {
                         onClickBookMark={() => setBookMark6(!bookMark6)} 
                         currentNum={10} 
                         totalNum={10}
-                        positionStateList={positionStateList} />
+                        skillTags={[]} />
                     <StudyCard 
                         studySeq={0} 
                         title='프론트엔드 스터디' 
@@ -678,7 +678,7 @@ export default function Test() {
                         onClickBookMark={() => setBookMark6(!bookMark6)} 
                         currentNum={10} 
                         totalNum={10}
-                        positionStateList={positionStateList} />
+                        skillTags={[]} />
                     <StudyCard 
                         studySeq={0} 
                         title='알고리즘 스터디 구합니다.' 
@@ -690,7 +690,7 @@ export default function Test() {
                         onClickBookMark={() => setBookMark5(!bookMark5)} 
                         currentNum={2} 
                         totalNum={5}
-                        positionStateList={positionStateList} />
+                        skillTags={[]} />
                     <StudyCard 
                         studySeq={0} 
                         title='프론트엔드 스터디' 
@@ -702,7 +702,7 @@ export default function Test() {
                         onClickBookMark={() => setBookMark6(!bookMark6)} 
                         currentNum={10} 
                         totalNum={10}
-                        positionStateList={positionStateList} />
+                        skillTags={[]} />
                     <StudyCard 
                         studySeq={0} 
                         title='알고리즘 스터디 구합니다.' 
@@ -714,7 +714,7 @@ export default function Test() {
                         onClickBookMark={() => setBookMark5(!bookMark5)} 
                         currentNum={2} 
                         totalNum={5}
-                        positionStateList={positionStateList} />
+                        skillTags={[]} />
                 </Slider>
             </div>
         </div>

@@ -1,26 +1,34 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import cn from "classnames";
 import StudyCard from "components/common/StudyCard";
-import CheckBox from "components/common/CheckBox";
 import styles from "../../css/pages/find/FindDetail.module.scss";
 import InfoCircle from "../../images/info_circle.svg";
 import StudySearching from "../../images/img/img_search_study.svg";
-import { StudyCardType, RecruitType, StudyType, ProcessType } from "utils/enum";
-import { PositionState } from "utils/interface";
+import { StudyCardType, RecruitType} from "utils/enum";
 import { StudyToolTipBox } from "components/common/ToolTipBox";
+import { getStudyList } from 'api/studyAPI';
+
+const SIZE_PER_PAGE: number = 12;
 
 export default function FindStudy() {
   const [bookMark4, setBookMark4] = useState(false);
-  const [bookMark5, setBookMark5] = useState(false);
-  const [bookMark6, setBookMark6] = useState(false);
-  const [seleted, setSelected] = useState(false);
   const [studyTooltipShow, setStudyTooltipShow] = useState<boolean>(false);
+  const [studyList, setStudyList] = useState([]);
+  const [isLastPage, setIsLastPage] = useState<boolean>(false)
 
-  const positionStateList: PositionState[] = [
-    { name: "백엔드 개발자", currentNum: 1, totalNum: 1 },
-    { name: "프론트엔드 개발자", currentNum: 1, totalNum: 1 },
-    { name: "UX/UI 디자이너", currentNum: 0, totalNum: 2 },
-  ];
+  useEffect(() => {
+    (async function() {
+      try {
+        const { data: { data: { content: studyListContent, last }}}= await getStudyList(0, SIZE_PER_PAGE);
+        setStudyList(studyListContent);
+        setIsLastPage(last);
+      } catch (error) {
+        console.error(error);
+      }
+
+    })()
+    
+  }, [])
   return (
     <div>
       <div className={cn(styles.bannerSection)}>
@@ -59,210 +67,42 @@ export default function FindStudy() {
                 onMouseLeave={() => setStudyTooltipShow(false)}
               />
             </div>
-            <CheckBox
+            {/* <CheckBox
               content="모집 중인 스터디만"
               selected={false}
               onClick={(content: string, selected: boolean) =>
                 setSelected(selected)
               }
-            />
+            /> */}
           </div>
           <div className={cn(styles.CardGrid)}>
-            <StudyCard
-              studySeq={0}
-              title="포트폴리오용"
-              studyCardType={StudyCardType.북마크형}
-              recruitType={RecruitType.모집중}
-              studyType={StudyType.사이드프로젝트}
-              processType={ProcessType.온오프라인}
-              bookMark={bookMark4}
-              onClickBookMark={() => setBookMark4(!bookMark4)}
-              currentNum={5}
-              totalNum={10}
-              positionStateList={positionStateList}
-            />
-            <StudyCard
-              studySeq={0}
-              title="알고리즘 스터디 구합니다."
-              studyCardType={StudyCardType.북마크형}
-              recruitType={RecruitType.모집중}
-              studyType={StudyType.지식공유및탐구}
-              processType={ProcessType.온라인}
-              bookMark={bookMark5}
-              onClickBookMark={() => setBookMark5(!bookMark5)}
-              currentNum={2}
-              totalNum={5}
-              positionStateList={positionStateList}
-            />
-            <StudyCard
-              studySeq={0}
-              title="프론트엔드 스터디"
-              studyCardType={StudyCardType.북마크형}
-              recruitType={RecruitType.모집완료}
-              studyType={StudyType.지식공유및탐구}
-              processType={ProcessType.오프라인}
-              bookMark={bookMark6}
-              onClickBookMark={() => setBookMark6(!bookMark6)}
-              currentNum={10}
-              totalNum={10}
-              positionStateList={positionStateList}
-            />
-            <StudyCard
-              studySeq={0}
-              title="포트폴리오용"
-              studyCardType={StudyCardType.북마크형}
-              recruitType={RecruitType.모집중}
-              studyType={StudyType.사이드프로젝트}
-              processType={ProcessType.온오프라인}
-              bookMark={bookMark4}
-              onClickBookMark={() => setBookMark4(!bookMark4)}
-              currentNum={5}
-              totalNum={10}
-              positionStateList={positionStateList}
-            />
-            <StudyCard
-              studySeq={0}
-              title="알고리즘 스터디 구합니다."
-              studyCardType={StudyCardType.북마크형}
-              recruitType={RecruitType.모집중}
-              studyType={StudyType.지식공유및탐구}
-              processType={ProcessType.온라인}
-              bookMark={bookMark5}
-              onClickBookMark={() => setBookMark5(!bookMark5)}
-              currentNum={2}
-              totalNum={5}
-              positionStateList={positionStateList}
-            />
-            <StudyCard
-              studySeq={0}
-              title="프론트엔드 스터디"
-              studyCardType={StudyCardType.북마크형}
-              recruitType={RecruitType.모집완료}
-              studyType={StudyType.지식공유및탐구}
-              processType={ProcessType.오프라인}
-              bookMark={bookMark6}
-              onClickBookMark={() => setBookMark6(!bookMark6)}
-              currentNum={10}
-              totalNum={10}
-              positionStateList={positionStateList}
-            />
-            <StudyCard
-              studySeq={0}
-              title="포트폴리오용"
-              studyCardType={StudyCardType.북마크형}
-              recruitType={RecruitType.모집중}
-              studyType={StudyType.사이드프로젝트}
-              processType={ProcessType.온오프라인}
-              bookMark={bookMark4}
-              onClickBookMark={() => setBookMark4(!bookMark4)}
-              currentNum={5}
-              totalNum={10}
-              positionStateList={positionStateList}
-            />
-            <StudyCard
-              studySeq={0}
-              title="알고리즘 스터디 구합니다."
-              studyCardType={StudyCardType.북마크형}
-              recruitType={RecruitType.모집중}
-              studyType={StudyType.지식공유및탐구}
-              processType={ProcessType.온라인}
-              bookMark={bookMark5}
-              onClickBookMark={() => setBookMark5(!bookMark5)}
-              currentNum={2}
-              totalNum={5}
-              positionStateList={positionStateList}
-            />
-            <StudyCard
-              studySeq={0}
-              title="프론트엔드 스터디"
-              studyCardType={StudyCardType.북마크형}
-              recruitType={RecruitType.모집완료}
-              studyType={StudyType.지식공유및탐구}
-              processType={ProcessType.오프라인}
-              bookMark={bookMark6}
-              onClickBookMark={() => setBookMark6(!bookMark6)}
-              currentNum={10}
-              totalNum={10}
-              positionStateList={positionStateList}
-            />
-            <StudyCard
-              studySeq={0}
-              title="포트폴리오용"
-              studyCardType={StudyCardType.북마크형}
-              recruitType={RecruitType.모집중}
-              studyType={StudyType.사이드프로젝트}
-              processType={ProcessType.온오프라인}
-              bookMark={bookMark4}
-              onClickBookMark={() => setBookMark4(!bookMark4)}
-              currentNum={5}
-              totalNum={10}
-              positionStateList={positionStateList}
-            />
-            <StudyCard
-              studySeq={0}
-              title="알고리즘 스터디 구합니다."
-              studyCardType={StudyCardType.북마크형}
-              recruitType={RecruitType.모집중}
-              studyType={StudyType.지식공유및탐구}
-              processType={ProcessType.온라인}
-              bookMark={bookMark5}
-              onClickBookMark={() => setBookMark5(!bookMark5)}
-              currentNum={2}
-              totalNum={5}
-              positionStateList={positionStateList}
-            />
-            <StudyCard
-              studySeq={0}
-              title="프론트엔드 스터디"
-              studyCardType={StudyCardType.북마크형}
-              recruitType={RecruitType.모집완료}
-              studyType={StudyType.지식공유및탐구}
-              processType={ProcessType.오프라인}
-              bookMark={bookMark6}
-              onClickBookMark={() => setBookMark6(!bookMark6)}
-              currentNum={10}
-              totalNum={10}
-              positionStateList={positionStateList}
-            />
-            <StudyCard
-              studySeq={0}
-              title="포트폴리오용"
-              studyCardType={StudyCardType.북마크형}
-              recruitType={RecruitType.모집중}
-              studyType={StudyType.사이드프로젝트}
-              processType={ProcessType.온오프라인}
-              bookMark={bookMark4}
-              onClickBookMark={() => setBookMark4(!bookMark4)}
-              currentNum={5}
-              totalNum={10}
-              positionStateList={positionStateList}
-            />
-            <StudyCard
-              studySeq={0}
-              title="알고리즘 스터디 구합니다."
-              studyCardType={StudyCardType.북마크형}
-              recruitType={RecruitType.모집중}
-              studyType={StudyType.지식공유및탐구}
-              processType={ProcessType.온라인}
-              bookMark={bookMark5}
-              onClickBookMark={() => setBookMark5(!bookMark5)}
-              currentNum={2}
-              totalNum={5}
-              positionStateList={positionStateList}
-            />
-            <StudyCard
-              studySeq={0}
-              title="프론트엔드 스터디"
-              studyCardType={StudyCardType.북마크형}
-              recruitType={RecruitType.모집완료}
-              studyType={StudyType.지식공유및탐구}
-              processType={ProcessType.오프라인}
-              bookMark={bookMark6}
-              onClickBookMark={() => setBookMark6(!bookMark6)}
-              currentNum={10}
-              totalNum={10}
-              positionStateList={positionStateList}
-            />
+            {studyList.length > 0 && studyList.map((study: any, index: number) => {
+              const [currentNum, totalNum, skillTags]: [number, number, Set<string>] = study.positions.reduce((positionAcc: [number, number, Set<string>], position: any) => {
+                positionAcc[0] += position.totalCount | 0;
+                positionAcc[1] += position.count | 0;
+                
+                for (const skill of position.skills) {
+                  positionAcc[2].add(skill);
+                }
+
+                return positionAcc;
+              }, [0, 0, new Set()])
+
+              return (<StudyCard
+                key={index}
+                studySeq={study.id}
+                title={study.title}
+                skillTags={Array.from(skillTags)}
+                studyCardType={StudyCardType.북마크형}
+                recruitType={RecruitType.모집중}
+                studyType={study.type}
+                processType={study.status}
+                bookMark={bookMark4}
+                onClickBookMark={() => setBookMark4(!bookMark4)}
+                currentNum={currentNum}
+                totalNum={totalNum}
+              />);
+            })}
           </div>
         </div>
       </section>

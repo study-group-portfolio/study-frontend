@@ -9,17 +9,14 @@ import {
 } from 'utils/enum';
 import Badge from './Badge';
 import { Link, useHistory } from 'react-router-dom';
-import ic_expand_more from 'images/icon/ic_expand_more.svg';
-import ic_expand_less from 'images/icon/ic_expand_less.svg';
 import ic_bookmark_off_24dp from 'images/icon/ic_bookmark_off_24dp.svg';
 import ic_bookmark_on_24dp from 'images/icon/ic_bookmark_on_24dp.svg';
 import ic_edit_24dp from 'images/icon/ic_edit_24dp.svg';
-import { useState } from 'react';
 import { PositionState } from 'utils/interface';
 interface StudyCardProps {
     studySeq: number;
     title: string;
-    skillTags?: string[];
+    skillTags: string[];
     studyCardType: StudyCardType;
     recruitType: RecruitType;
     studyType: StudyType;
@@ -28,7 +25,6 @@ interface StudyCardProps {
     onClickBookMark: Function;
     currentNum: number; // 현재 모집인원
     totalNum: number; // 총 모집인원
-    positionStateList: PositionState[];
 }
 
 export default function StudyCard(props: StudyCardProps) {
@@ -43,10 +39,7 @@ export default function StudyCard(props: StudyCardProps) {
         bookMark,
         currentNum, 
         totalNum,
-        positionStateList
     } = props;
-    const [state, setState] = useState(false);
-
     const history = useHistory();
 
     return (
@@ -56,7 +49,7 @@ export default function StudyCard(props: StudyCardProps) {
                     <div className={cn(styles.section)}>
                         <div className={cn(styles.titleSection)}>
                             <Link to={getDetailPath(studySeq, studyType)} className={cn(styles.title)}>{title}</Link>
-                            {/* <div className={cn(styles.skillTagSection)}>{skillTags.map((skill: string) => "#" + skill).join(" ")}</div> */}
+                            <div className={cn(styles.skillTagSection)}>{skillTags.map((skill: string) => "#" + skill).join(" ")}</div>
                         </div>
                         <div className={cn(styles.badgeSection)}>
                             <Badge badgeType={getRecruitBadge(recruitType)} />{/* 모집상태 */}
