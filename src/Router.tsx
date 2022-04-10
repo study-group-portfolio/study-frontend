@@ -25,7 +25,7 @@ function Router() {
     <BrowserRouter>
       <Navbar/>
       <Switch>
-        <Route exact path={Path.메인} component={Main}></Route>
+        <Route exact path={Path.메인} component={FindStudy}></Route>
         <Route exact path={Path.스터디_목록} component={FindStudy}></Route>
         <Route exact path={Path.스터디_생성} component={StudyCreation}></Route>
         <Route exact path={Path.스터디_수정} component={StudyCreation}></Route>
