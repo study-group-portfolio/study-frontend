@@ -19,53 +19,53 @@ export default function StudyActivity() {
                 {tabMenu === TabMenuType.참여한_스터디 && 
                 <div className={cn(styles.cardList)}>
                     <StudyCard 
-                        studySeq={0} 
-                        title={'프론트엔드 스터디 함께 하실 분을 모집합니다.'} 
-                        studyCardType={StudyCardType.북마크형} 
-                        recruitType={RecruitType.모집완료} 
-                        studyType={StudyType.지식공유및탐구} 
-                        processType={ProcessType.오프라인} 
-                        bookMark={false} 
-                        onClickBookMark={() => {}} 
-                        currentNum={0} 
+                        studySeq={0}
+                        title={'프론트엔드 스터디 함께 하실 분을 모집합니다.'}
+                        studyCardType={StudyCardType.북마크형}
+                        recruitType={RecruitType.모집완료}
+                        studyType={StudyType.지식공유및탐구}
+                        processType={ProcessType.오프라인}
+                        bookMark={false}
+                        onClickBookMark={() => { } }
+                        currentNum={0}
                         totalNum={10} 
-                        positionStateList={[]} />
+                        skillTags={[]}  />
                     <StudyCard 
-                        studySeq={0} 
-                        title={'알고리즘 스터디 구합니다.'} 
-                        studyCardType={StudyCardType.북마크형} 
-                        recruitType={RecruitType.모집중} 
-                        studyType={StudyType.지식공유및탐구} 
-                        processType={ProcessType.오프라인} 
-                        bookMark={false} 
-                        onClickBookMark={() => {}} 
-                        currentNum={0} 
-                        totalNum={5} 
-                        positionStateList={[]} />
-                    <StudyCard 
-                        studySeq={0} 
-                        title={'프론트엔드 스터디 함께 하실 분을 모집합니다.'} 
-                        studyCardType={StudyCardType.북마크형} 
-                        recruitType={RecruitType.모집완료} 
-                        studyType={StudyType.지식공유및탐구} 
-                        processType={ProcessType.오프라인} 
-                        bookMark={false} 
-                        onClickBookMark={() => {}} 
-                        currentNum={0} 
+                        studySeq={0}
+                        title={'프론트엔드 스터디 함께 하실 분을 모집합니다.'}
+                        studyCardType={StudyCardType.북마크형}
+                        recruitType={RecruitType.모집완료}
+                        studyType={StudyType.지식공유및탐구}
+                        processType={ProcessType.오프라인}
+                        bookMark={false}
+                        onClickBookMark={() => { } }
+                        currentNum={0}
                         totalNum={10} 
-                        positionStateList={[]} />
+                        skillTags={[]}  />
                     <StudyCard 
-                        studySeq={0} 
-                        title={'알고리즘 스터디 구합니다.'} 
-                        studyCardType={StudyCardType.북마크형} 
-                        recruitType={RecruitType.모집중} 
-                        studyType={StudyType.지식공유및탐구} 
-                        processType={ProcessType.오프라인} 
-                        bookMark={false} 
-                        onClickBookMark={() => {}} 
-                        currentNum={0} 
-                        totalNum={5} 
-                        positionStateList={[]} />
+                        studySeq={0}
+                        title={'프론트엔드 스터디 함께 하실 분을 모집합니다.'}
+                        studyCardType={StudyCardType.북마크형}
+                        recruitType={RecruitType.모집완료}
+                        studyType={StudyType.지식공유및탐구}
+                        processType={ProcessType.오프라인}
+                        bookMark={false}
+                        onClickBookMark={() => { } }
+                        currentNum={0}
+                        totalNum={10} 
+                        skillTags={[]}  />
+                    <StudyCard 
+                        studySeq={0}
+                        title={'프론트엔드 스터디 함께 하실 분을 모집합니다.'}
+                        studyCardType={StudyCardType.북마크형}
+                        recruitType={RecruitType.모집완료}
+                        studyType={StudyType.지식공유및탐구}
+                        processType={ProcessType.오프라인}
+                        bookMark={false}
+                        onClickBookMark={() => { } }
+                        currentNum={0}
+                        totalNum={10} 
+                        skillTags={[]}  />
                 </div>}
                 {tabMenu === TabMenuType.생성한_스터디 && 
                 <div className={cn(styles.cardList)}>
@@ -80,19 +80,7 @@ export default function StudyActivity() {
                         onClickBookMark={() => {}} 
                         currentNum={0} 
                         totalNum={10} 
-                        positionStateList={[]} />
-                    <StudyCard 
-                        studySeq={0} 
-                        title={'알고리즘 스터디 구합니다.'} 
-                        studyCardType={StudyCardType.편집형} 
-                        recruitType={RecruitType.모집중} 
-                        studyType={StudyType.지식공유및탐구} 
-                        processType={ProcessType.오프라인} 
-                        bookMark={false} 
-                        onClickBookMark={() => {}} 
-                        currentNum={0} 
-                        totalNum={5} 
-                        positionStateList={[]} />
+                        skillTags={[]} />
                     <StudyCard 
                         studySeq={0} 
                         title={'프론트엔드 스터디 함께 하실 분을 모집합니다.'} 
@@ -104,19 +92,31 @@ export default function StudyActivity() {
                         onClickBookMark={() => {}} 
                         currentNum={0} 
                         totalNum={10} 
-                        positionStateList={[]} />
+                        skillTags={[]} />
                     <StudyCard 
                         studySeq={0} 
-                        title={'알고리즘 스터디 구합니다.'} 
+                        title={'프론트엔드 스터디 함께 하실 분을 모집합니다.'} 
                         studyCardType={StudyCardType.편집형} 
-                        recruitType={RecruitType.모집중} 
+                        recruitType={RecruitType.모집완료} 
                         studyType={StudyType.지식공유및탐구} 
                         processType={ProcessType.오프라인} 
                         bookMark={false} 
                         onClickBookMark={() => {}} 
                         currentNum={0} 
-                        totalNum={5} 
-                        positionStateList={[]} />
+                        totalNum={10} 
+                        skillTags={[]} />
+                    <StudyCard 
+                        studySeq={0} 
+                        title={'프론트엔드 스터디 함께 하실 분을 모집합니다.'} 
+                        studyCardType={StudyCardType.편집형} 
+                        recruitType={RecruitType.모집완료} 
+                        studyType={StudyType.지식공유및탐구} 
+                        processType={ProcessType.오프라인} 
+                        bookMark={false} 
+                        onClickBookMark={() => {}} 
+                        currentNum={0} 
+                        totalNum={10} 
+                        skillTags={[]} />
                 </div>}
             </div>
         </div>

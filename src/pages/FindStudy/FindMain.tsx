@@ -105,7 +105,7 @@ const FindMain: React.FunctionComponent = () => {
             <Link to={Path.스터디_목록}>전체보기</Link>
           </div>
           <Slider>
-            {studyList.length > 0 && studyList.map((study: StduyDetail, key: number) => {
+            {/* {studyList.length > 0 && studyList.map((study: StduyDetail, key: number) => {
               const currentNum = study.positions.reduce((acc: number, position: any) => acc + Number(position.totalCount || 0), 0);
               const totalNum = study.positions.reduce((acc: number, position: any) => acc + Number(position.count), 0);
               const positionStateList: PositionState[] = study.positions.map((position: any) => {
@@ -130,7 +130,7 @@ const FindMain: React.FunctionComponent = () => {
                 totalNum={totalNum}
                 positionStateList={positionStateList}
               />)
-            })}
+            })} */}
           </Slider>
         </div>
         <div className={cn(styles.wrapper)}>
