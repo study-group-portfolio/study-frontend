@@ -87,7 +87,7 @@ export enum Path {
   메인 = "/",
 
   로그인 = "/users/login",
-  비밀번호_재설정 = "/users/resetPassword",
+  비밀번호_재설정 = "/users/resetPassword/:resetToken/:email",
   이메일_인증 = "/users/emailAuth",
   회원가입 = "/users/signup",
   회원가입_이메일_인증 = "/users/signupEmail",

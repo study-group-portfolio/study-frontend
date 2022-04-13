@@ -12,8 +12,34 @@ import {
 import TextInput from "components/common/TextInput";
 import Button from "../../components/common/Button";
 import BackBtn from "../../components/Auth/BackBtn";
+import React, { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import axios from "axios";
 
 export default function FindPassword() {
+  const {register, handleSubmit, watch, formState:{errors, isValid} } = useForm();
+  const [email, setEmail] = useState<String>('');
+  const [emailStatus, setEmailStatus] = useState<TextInputState>(TextInputState.기본값);
+  
+  useEffect(()=>{
+    
+
+  },[email])
+
+  async function onClickEventHandler(){
+    console.log(email)
+    await axios.post(`${process.env.REACT_APP_BASE_URL}/api/member/password/send-mail`,{
+      email
+    }).then((response)=>{
+      console.log(response.data)
+    }).catch((e) =>{
+      alert("존재하지 않는 이메일 입니다.");
+    }
+    )
+  }
+
+  
+
   return (
     <section className={cn(styles.container)}>
       <div className={cn(styles.wrapper)}>
@@ -26,23 +52,30 @@ export default function FindPassword() {
             가입 시 사용한 이메일 주소를 정확히 입력해주세요.
           </p>
         </div>
-        <form action="POST" className={cn(styles.loginForm)}>
+        <div className={cn(styles.loginForm)}>
           <div className={cn(styles.inputWrapper)}>
             <label>이메일</label>
             <TextInput
-              placeholder={"example@studyit.com"}
+              placeholder={"example@studyit.co.kr"}
               type={InputType.텍스트형}
-              textInputState={TextInputState.기본값}
+              textInputState={emailStatus}
               textInputType={TextInputType.일반형}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>)=>{ 
+                setEmail(e.target.value)
+                
+              } }
+              errorText={"올바른 이메일을 입력해 주세요."}
             />
           </div>
           <div className={cn(styles.btnList)}>
             <Button
               buttonName={"이메일로 링크 받기"}
               buttonType={ButtonType.기본}
+              onClick={()=>onClickEventHandler()}
+              
             />
           </div>
-        </form>
+        </div>
       </div>
     </section>
   );
