@@ -19,6 +19,7 @@ import SiteMap from "pages/SiteMap";
 import MyPage from "pages/mypage/MyPage";
 
 import { Path } from "utils/enum";
+import FindPassword from 'pages/Users/FindPassword';
 
 function Router() {
   return (
@@ -37,6 +38,7 @@ function Router() {
         <Route exact path={Path.이메일_인증} component={EmailAuth}></Route>
         <Route exact path={Path.회원가입} component={SigninReady}></Route>
         <Route exact path={Path.회원가입_이메일_인증} component={SignupWithEmail}></Route>
+        <Route exact path={Path.비밀번호_찾기} component={FindPassword}></Route>
         <Route path="/mypage" component={MyPage}></Route>
         <Route exact path="/test/component" component={Component}></Route>
         <Route exact path="/test/modal" component={Modal}></Route>
