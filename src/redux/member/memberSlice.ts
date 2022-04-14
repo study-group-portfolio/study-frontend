@@ -2,9 +2,9 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface MemberState {
     bio?: string;
-    email: string;
+    email?: string;
     img?: string;
-    nickname: string;
+    nickname?: string;
     onOffStatus?: string;
     portpolios?: string[];
     positions?: string[];
