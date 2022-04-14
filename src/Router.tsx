@@ -17,9 +17,13 @@ import Modal from "pages/test/ModalComponent";
 import Functional from "pages/test/Functional";
 import SiteMap from "pages/SiteMap";
 import MyPage from "pages/mypage/MyPage";
+import FindPassword from 'pages/Users/FindPassword';
+import ProfileElementRevision from 'pages/mypage/profile/ElementRevision';
+import ProfilePasswordResetting from 'pages/mypage/profile/PasswordResetting';
 
 import { Path } from "utils/enum";
-import FindPassword from 'pages/Users/FindPassword';
+
+
 
 function Router() {
   return (
@@ -35,6 +39,7 @@ function Router() {
         <Route exact path={Path.맴버_상세} component={MemberDetail}></Route>
         <Route exact path={Path.로그인} component={Login}></Route>
         <Route exact path={Path.비밀번호_재설정} component={ResetPassword}></Route>
+        <Route exact path={Path.비밀번호_변경} component={ProfilePasswordResetting}></Route>
         <Route exact path={Path.이메일_인증} component={EmailAuth}></Route>
         <Route exact path={Path.회원가입} component={SigninReady}></Route>
         <Route exact path={Path.회원가입_이메일_인증} component={SignupWithEmail}></Route>
@@ -44,6 +49,7 @@ function Router() {
         <Route exact path="/test/modal" component={Modal}></Route>
         <Route exact path="/test/functional" component={Functional}></Route>
         <Route exact path="/siteMap" component={SiteMap}></Route>
+        <Route exact path="/pages/mypage/profile/ElementRevision" component={ProfileElementRevision}></Route>
         <Route render={() => <Redirect to={Path.메인} />}></Route>
       </Switch>
     </BrowserRouter>

@@ -1,16 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface MemberState {
-    bio: string;
+    bio?: string;
     email: string;
-    img: string;
+    img?: string;
     nickname: string;
-    onOffStatus: string;
-    portpolios: string[];
-    positions: string[];
-    regions: string[];
-    skills: string[];
-    studyType: string;
+    onOffStatus?: string;
+    portpolios?: string[];
+    positions?: string[];
+    regions?: string[];
+    skills?: string[];
+    studyType?: string;
 }
 
 export const memberSlice = createSlice({
@@ -51,10 +51,15 @@ export const memberSlice = createSlice({
             state.regions = [];
             state.skills = [];
             state.studyType = "";
+        },
+        defaultEdit: (state : MemberState, action: PayloadAction<MemberState>) =>{
+            state.nickname = action.payload.nickname;
+            state.email = action.payload.email;
+            state.img = action.payload.img;
         }
     }
 });
 
-export const { edit, remove } = memberSlice.actions;
+export const { edit, remove, defaultEdit } = memberSlice.actions;
 
 export default memberSlice.reducer;

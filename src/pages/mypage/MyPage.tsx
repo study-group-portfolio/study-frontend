@@ -7,9 +7,15 @@ import { Link, Route, Switch, useRouteMatch } from 'react-router-dom';
 import Profile from 'pages/mypage/profile/Profile';
 import BookMark from 'pages/mypage/BookMark';
 import StudyActivity from 'pages/mypage/StudyActivitiy';
+import { useSelector } from 'react-redux';
+import { RootState } from 'redux/store';
+import ProfileElementRevision from 'pages/mypage/profile/ElementRevision';
+import ProfilePasswordResetting from './profile/PasswordResetting';
 
 export default function MyPage() {
     const { path, url } = useRouteMatch();
+    const member = useSelector((state: RootState) => state.memberStore)
+
     return (
         <div className={cn(styles.container)}>
             <h3 className={cn(styles.title)}>MyPage</h3>
@@ -20,18 +26,21 @@ export default function MyPage() {
                             <CircleButton
                                 radius={40}
                                 circleButtonType={CircleButtonType.일반형}
-                                name="김"
+                                name={member.nickname && member.nickname.charAt(0)}
                                 fontSize={13}
                             />
                             <div>
-                                <button>
+                            <Link to={`${path}/elementRevision`}>
+                            <img src={ic_edit_20dp} />
+                            </Link>
+                                {/* <button>
                                     <img src={ic_edit_20dp} />
-                                </button>
+                                </button> */}
                             </div>
                         </div>
                         <div className={cn(styles.bottom)}>
-                            <h3>김은성</h3>
-                            <p>example@studyit.com</p>
+                            <h3>{member.nickname}</h3>
+                            <p>{member.email}</p>
                         </div>
                     </div>
                     <div className={cn(styles.linkList)}>
@@ -48,6 +57,8 @@ export default function MyPage() {
                 <Route path={`${path}/profile`} component={Profile} />
                 <Route path={`${path}/bookMark`} component={BookMark} />
                 <Route path={`${path}/studyAcitivity`} component={StudyActivity} />
+                <Route path={`${path}/elementRevision`} component={ProfileElementRevision} />
+                <Route path={`${path}/ProfilePasswordResetting`} component={ProfilePasswordResetting} />
             </Switch>
         </div>
     )

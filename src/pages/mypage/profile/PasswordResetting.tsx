@@ -4,8 +4,8 @@ import styles from 'css/pages/mypage/profile/ElementRevision.module.scss';
 export default function ProfilePasswordResetting() {
     return (
         <div className={cn(styles.container)}>
-            <h3 className={cn(styles.heading1, styles.title)}>기본 정보 수정</h3>
-            <div>
+            <h3 className={cn(styles.heading1, styles.title)}>비밀번호 변경</h3>
+            {/* <div>
                 <div className={cn(styles.sub)}>
                     <div className={cn(styles.top)}>
                         <span className={cn(styles.circle, styles.body1)}>김</span>
@@ -24,7 +24,7 @@ export default function ProfilePasswordResetting() {
                         <a href="#!" className={cn(styles.body2)}>로그아웃</a>
                     </div>
                 </div>
-            </div>
+            </div> */}
             <div className={cn(styles.content)}>
                 <div className={cn(styles.section)}>
                     <div className={cn(styles.subSection)}>
