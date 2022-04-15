@@ -13,7 +13,7 @@ import CalendarSelect from 'components/common/CalednarSelect';
 import CheckBoxOptions from 'components/common/CheckBoxOptions';
 import Button from 'components/common/Button';
 import Switch from 'components/common/Switch';
-import { ButtonType } from 'utils/enum';
+import { ButtonType, StudyType } from 'utils/enum';
 import { CustomChangeEvent, Duration, Position } from 'utils/interface'
 import { STUDY_EDIT_CONSTANT } from 'utils/constant';
 
@@ -107,12 +107,12 @@ function StudyCreation() {
                             </div>
                         </div>
                     </div>
-                    <div className={cn(styles.section)}>
+                    {query['studyType'] === StudyType.사이드프로젝트 && <div className={cn(styles.section)}>
                         <h3>모집 포지션</h3>
                         <PositionSelector 
                             onSelect={(positionList: Position[]) => setStudyRequest({...studyRequest, positionList})}
                         />
-                    </div>
+                    </div>}
                     <div className={cn(styles.section)}>
                         <h3>팀원 모집기간</h3>
                         <CalendarSelect 
