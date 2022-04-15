@@ -32,6 +32,7 @@ export default function RadioButton(props: RadioBoxProps) {
                         )
                     }
                     onClick={() => onClick(radioName, index)}
+                    key={index}
                 >
                     {radioName}
                 </button>)
@@ -43,13 +44,13 @@ export default function RadioButton(props: RadioBoxProps) {
 const getGridStyle = function(length: number) {
     const gridStyle = {
         display: 'grid',
-        'grid-template-columns': '',
+        gridTemplateColumns: '',
     }
     const buttonWidth = `${(100 / length)}%`;
 
     for (let i = 0; i < length; i++) {
-        gridStyle['grid-template-columns'] += buttonWidth;
-        if (i !== length - 1) gridStyle['grid-template-columns'] += ' ';
+        gridStyle['gridTemplateColumns'] += buttonWidth;
+        if (i !== length - 1) gridStyle['gridTemplateColumns'] += ' ';
     }
 
     return gridStyle;
