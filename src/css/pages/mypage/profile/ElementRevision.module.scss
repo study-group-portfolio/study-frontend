@@ -2,10 +2,10 @@
 
 .container {
     /** 요소 크기 설정 **/
-    width: 1366px;
+    width: 880px;
 
     /** 외부 여백 설정 **/
-    margin: 0 auto;
+    margin: 30 auto;
 
     /** 내부 여백 설정 **/
     // padding: 130px 103px 90px 103px;
@@ -172,6 +172,7 @@
                 }
 
                 .nickName {
+
                     /** 테두리 설정 **/
                     border: 1px solid #E4E7EC;
                     border-radius: 6px;
@@ -190,3 +191,39 @@
         }
     }
 }
+.passwordErrorText{
+    display: block;
+    // margin-top: -;
+    color: #f36355;
+    font-size: 14px;
+}
+
+.confirmPasswordErrorText {
+    display: block;
+    margin-top: -30px;
+    color: #f36355;
+    font-size: 14px;
+  }
+
+
+  @mixin formBtn {
+    width: 99px;
+    height: 48px;
+    // margin-top: 40px;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    background-color: #175cd3;
+  }
+  
+  .formBtn {
+    @include formBtn();
+    opacity: 1;
+  }
+  
+  .formBtnError {
+    @include formBtn();
+    opacity: 0.5;
+  }
+  

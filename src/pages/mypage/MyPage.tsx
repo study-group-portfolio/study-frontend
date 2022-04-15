@@ -7,14 +7,27 @@ import { Link, Route, Switch, useRouteMatch } from 'react-router-dom';
 import Profile from 'pages/mypage/profile/Profile';
 import BookMark from 'pages/mypage/BookMark';
 import StudyActivity from 'pages/mypage/StudyActivitiy';
-import { useSelector } from 'react-redux';
-import { RootState } from 'redux/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from 'redux/store';
 import ProfileElementRevision from 'pages/mypage/profile/ElementRevision';
 import ProfilePasswordResetting from './profile/PasswordResetting';
+import { logout } from 'redux/login/loginSlice';
+import { remove as memberRemove } from 'redux/member/memberSlice';
+import { remove as alarmRemove } from 'redux/alarm/alarmSlice';
+
 
 export default function MyPage() {
     const { path, url } = useRouteMatch();
     const member = useSelector((state: RootState) => state.memberStore)
+    const dispatch = useDispatch<AppDispatch>();
+
+
+    const onClickLogout = function() {
+        dispatch(logout());
+        dispatch(memberRemove())
+        dispatch(alarmRemove());
+        window.location.href = "/";
+      }
 
     return (
         <div className={cn(styles.container)}>
@@ -49,7 +62,7 @@ export default function MyPage() {
                         <Link to="/mypage/studyAcitivity">스터디 활동</Link>
                     </div>
                     <div className={cn(styles.logout)}>
-                        <span>로그아웃</span>
+                        <span onClick={()=> onClickLogout()}>로그아웃</span>
                     </div>
                 </div>
             </div>
