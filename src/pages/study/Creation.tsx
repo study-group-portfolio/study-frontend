@@ -29,6 +29,7 @@ interface StudyRequest {
 
 function StudyCreation() {
     const query = useQuery();
+    console.log(query);
     const defaultTeamDuration: Duration = {
         startDate: moment().format('YYYY-MM-DD'),
         endDate: moment().add(14, 'day').format('YYYY-MM-DD')
@@ -43,13 +44,13 @@ function StudyCreation() {
                     <input type="text" placeholder="제목을 입력하세요" />
                 </div>
                 <div className={cn(styles.body)}>
-                    <div className={cn(styles.section)}>
+                    {/* <div className={cn(styles.section)}>
                         <h3>내 프로필 공개</h3>
                         <div className={cn(styles.profileContent)}>
                             <Switch onChange={(profileOn: boolean) => setStudyRequest({...studyRequest, profileOn})} />
                             <span className={cn(styles.txt)}>내 프로필을 공개하면 지원율이 높아져요!</span>
                         </div>
-                    </div>
+                    </div> */}
                     <div className={cn(styles.section)}>
                         <h3>스터디 소개</h3>
                         <Textarea 
