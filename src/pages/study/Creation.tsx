@@ -119,7 +119,7 @@ function StudyCreation() {
                             onClick={(teamDuration: Duration) => setStudyRequest({...studyRequest, teamDuration})}
                         />
                     </div>
-                    <div className={cn(styles.section)}>
+                    {/* <div className={cn(styles.section)}>
                         <h3>협업 툴</h3>
                         <Select
                             placeholder="선호하는 협업 툴을 선택해 주세요"
@@ -128,7 +128,7 @@ function StudyCreation() {
                                 options={STUDY_EDIT_CONSTANT.협업_툴_목록}
                             />
                         </Select>
-                    </div>
+                    </div> */}
                 </div>
             </div>
             <div className={cn(styles.side)}>
