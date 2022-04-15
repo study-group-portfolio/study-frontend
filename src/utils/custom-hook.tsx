@@ -4,8 +4,17 @@ import { Path } from "utils/enum";
 import { getUrl } from "./util";
 
 export function useQuery() {
-    const { search } = useLocation();    
-    return useMemo(() => new URLSearchParams(search), [search]);
+    const { search } = useLocation();
+    const query = {};
+
+    for (const [key, value] of new URLSearchParams(search)) {
+        Object.defineProperty(query, key, {
+            value,
+            writable: false,
+        });
+    }
+
+    return query
 }
 
 export function useGoPage(path: Path, query?: any) {
