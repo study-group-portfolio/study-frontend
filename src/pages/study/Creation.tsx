@@ -29,7 +29,6 @@ interface StudyRequest {
 
 function StudyCreation() {
     const query = useQuery();
-    console.log(query);
     const defaultTeamDuration: Duration = {
         startDate: moment().format('YYYY-MM-DD'),
         endDate: moment().add(14, 'day').format('YYYY-MM-DD')
