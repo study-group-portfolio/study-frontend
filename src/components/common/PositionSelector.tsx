@@ -113,7 +113,7 @@ export default function PositionSelector(props: PositionSelectorProps) {
                             className={cn(styles.closeBtn)}
                             onClick={() => onClickRemove(index, positionList)}
                         >
-                            <img src={ic_close_24dp} />
+                            <img src={ic_close_24dp} alt="닫기"/>
                         </button>
                     </div>
                 ))}
