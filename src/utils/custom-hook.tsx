@@ -5,7 +5,7 @@ import { getUrl } from "./util";
 
 export function useQuery() {
     const { search } = useLocation();
-    const query = {};
+    const query = Object();
 
     for (const [key, value] of new URLSearchParams(search)) {
         Object.defineProperty(query, key, {
