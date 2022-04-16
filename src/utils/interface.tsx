@@ -11,7 +11,7 @@ export interface PositionState {
 }
 
 export interface CustomChangeEvent {
-  value?: string | string[];
+  value?: any | any[];
   selectEventType: SelectEventType;
 }
 
@@ -31,9 +31,11 @@ export interface ProfileInfo {
 }
 
 export interface Position {
-  name: string;
-  skillList: string[];
-  recruitmentCount: number;
+  positionName: string;
+  count: number;
+  totalCount: number;
+  skills: string[];
+  recruited: boolean
 }
 
 export interface Duration {
@@ -58,4 +60,9 @@ export interface IUserSignup {
   password: string;
   nickname: string;
   confirmPassword: string;
+}
+
+export interface GroupOption<T> {
+  title?: string;
+  items?: T[];
 }
