@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import moment from 'moment';
-import { useQuery } from 'utils/custom-hook';
+import { useGoPage, useQuery } from 'utils/custom-hook';
 
 import styles from 'css/pages/study/Creation.module.scss';
 import cn from 'classnames';
@@ -8,39 +8,53 @@ import Textarea from 'components/common/Textarea';
 import RadioButton from 'components/common/RadioBox';
 import Select from 'components/common/Select';
 import Options from 'components/common/Options';
-import PositionSelector from 'components/common/PositionSelector';
+import PositionSelector from 'components/common/Selector';
 import CalendarSelect from 'components/common/CalednarSelect';
 import CheckBoxOptions from 'components/common/CheckBoxOptions';
 import Button from 'components/common/Button';
 import Switch from 'components/common/Switch';
-import { ButtonType, StudyType } from 'utils/enum';
-import { CustomChangeEvent, Duration, Position } from 'utils/interface'
+import { ButtonType, Path, ProcessType, StudyType } from 'utils/enum';
+import { CustomChangeEvent, Duration, GroupOption, Position, StudyRequest } from 'utils/interface'
 import { STUDY_EDIT_CONSTANT } from 'utils/constant';
-
-interface StudyRequest {
-    profileOn?: boolean;
-    introduction?: string;
-    process?: string;
-    location?: string;
-    positionList?: Position[],
-    teamDuration?: Duration;
-    collaborateToolList: string[]
-}
+import { postStudy } from 'api/studyAPI';
 
 function StudyCreation() {
     const query = useQuery();
-    const defaultTeamDuration: Duration = {
-        startDate: moment().format('YYYY-MM-DD'),
-        endDate: moment().add(14, 'day').format('YYYY-MM-DD')
-    }
+    const goMain = useGoPage(Path.메인);
 
-    const [studyRequest, setStudyRequest]: [StudyRequest, React.Dispatch<React.SetStateAction<StudyRequest>>] = useState({...Object(), teamDuration: defaultTeamDuration});
+    const [studyRequest, setStudyRequest] = useState<StudyRequest>({
+        type: query['studyType'], 
+        title: '', 
+        profileShare: false,
+        content: '',
+        status: ProcessType.온라인,
+        region: '',
+        duration: '',
+        studyDay: '',
+        positions: [],
+        receptionStart: moment().format('YYYY-MM-DD'),
+        receptionEnd: moment().add(14, 'day').format('YYYY-MM-DD'),
+    });
+
+    async function registerStudy(studyRequest: StudyRequest) {
+        try {
+            await postStudy(studyRequest);
+            goMain();
+        } catch(error) {
+            console.error(error);
+        }
+    }
 
     return (
         <div className={cn(styles.container)}>
             <div className={cn(styles.content)}>
                 <div className={cn(styles.title)}>
-                    <input type="text" placeholder="제목을 입력하세요" />
+                    <input 
+                        type="text" 
+                        placeholder="제목을 입력하세요" 
+                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                            setStudyRequest({...studyRequest, title: event.target.value});
+                        }} />
                 </div>
                 <div className={cn(styles.body)}>
                     {/* <div className={cn(styles.section)}>
@@ -55,25 +69,25 @@ function StudyCreation() {
                         <Textarea 
                             placeholder={STUDY_EDIT_CONSTANT.소개글_PLACEHOLDER}
                             maxCharNum={STUDY_EDIT_CONSTANT.소개글_최대_글자수}
-                            onChange={(introduction: string) => setStudyRequest({...studyRequest, introduction})}
+                            onChange={(content: string) => setStudyRequest({...studyRequest, content})}
                         />
                     </div>
                     <div className={cn(styles.section)}>
                         <h3>진행방식</h3>
-                        <RadioButton 
-                            radioNames={STUDY_EDIT_CONSTANT.진행방식_목록}
-                            onClick={(process: string) => setStudyRequest({...studyRequest, process})}
+                        <RadioButton<ProcessType>
+                            radios={STUDY_EDIT_CONSTANT.진행방식_목록}
+                            onClick={(status: ProcessType) => setStudyRequest({...studyRequest, status})}
                         />
                     </div>
                     <div className={cn(styles.section)}>
                         <h3>활동지역</h3>
                         <Select
                             placeholder='지역을 선택해 주세요'
-                            value={studyRequest.location}
+                            value={studyRequest.region}
                             onChange={(customChangeEvent: CustomChangeEvent) => {
-                                const location = customChangeEvent.value;
-                                if (typeof location === 'string') {
-                                    setStudyRequest({...studyRequest, location})
+                                const region = customChangeEvent.value;
+                                if (typeof region === 'string') {
+                                    setStudyRequest({...studyRequest, region})
                                 }
                             }}
                         >
@@ -87,8 +101,13 @@ function StudyCreation() {
                         <div className={cn(styles.durationContent)}>
                             <Select
                                 placeholder="기간"
+                                value={studyRequest.duration}
+                                onChange={(event: CustomChangeEvent) => {
+                                    const duration = event.value;
+                                    setStudyRequest({...studyRequest, duration});
+                                }}
                             >
-                                <Options 
+                                <Options<string>
                                     options={STUDY_EDIT_CONSTANT.기간_목록}
                                 />
                             </Select>
@@ -97,8 +116,13 @@ function StudyCreation() {
                             </div>
                             <Select
                                 placeholder="주중/주말"
+                                value={studyRequest.studyDay}
+                                onChange={(event: CustomChangeEvent) => {
+                                    const studyDay = event.value;
+                                    setStudyRequest({...studyRequest, studyDay});
+                                }}
                             >
-                                <Options 
+                                <Options<string>
                                     options={STUDY_EDIT_CONSTANT.주중_주말_목록}
                                 />
                             </Select>
@@ -107,16 +131,24 @@ function StudyCreation() {
                             </div>
                         </div>
                     </div>
-                    {query['studyType'] === StudyType.사이드프로젝트 && <div className={cn(styles.section)}>
-                        <h3>모집 포지션</h3>
-                        <PositionSelector 
-                            onSelect={(positionList: Position[]) => setStudyRequest({...studyRequest, positionList})}
+                    {query['studyType']  && <div className={cn(styles.section)}>
+                        {query['studyType'] === StudyType.사이드프로젝트 &&<h3>모집 포지션</h3>}
+                        {query['studyType'] === StudyType.지식공유및탐구 &&<h3>관심 스킬</h3>}
+                        <PositionSelector
+                            studyType={query['studyType']}
+                            onSelect={(positions: Position[]) => setStudyRequest({...studyRequest, positions})}
                         />
                     </div>}
                     <div className={cn(styles.section)}>
                         <h3>팀원 모집기간</h3>
                         <CalendarSelect 
-                            onClick={(teamDuration: Duration) => setStudyRequest({...studyRequest, teamDuration})}
+                            onClick={({startDate, endDate}: Duration) => setStudyRequest(
+                                {
+                                    ...studyRequest, 
+                                    receptionStart: startDate || '', 
+                                    receptionEnd: endDate || ''
+                                }
+                            )}
                         />
                     </div>
                     {/* <div className={cn(styles.section)}>
@@ -133,15 +165,15 @@ function StudyCreation() {
             </div>
             <div className={cn(styles.side)}>
                 <div className={cn(styles.card)}>
-                    <Button
+                    {/* <Button
                         buttonName='임시 저장하기'
                         buttonType={ButtonType.서브}
                         onClick={() => console.log(studyRequest)}
-                    />
+                    /> */}
                     <Button
                         buttonName='저장하기'
                         buttonType={ButtonType.기본}
-                        onClick={() => console.log(studyRequest)}
+                        onClick={() => registerStudy(studyRequest)}
                     />
                 </div>
             </div>
