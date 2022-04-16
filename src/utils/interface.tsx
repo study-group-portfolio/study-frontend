@@ -1,5 +1,5 @@
 import React from "react";
-import { SelectEventType, TabMenuType } from "utils/enum";
+import { ProcessType, SelectEventType, StudyType, TabMenuType } from "utils/enum";
 
 export interface IAuthLayout {
   children: React.ReactNode;
@@ -39,8 +39,8 @@ export interface Position {
 }
 
 export interface Duration {
-  startDate?: String | null;
-  endDate?: String | null;
+  startDate?: string | null;
+  endDate?: string | null;
 }
 
 export interface Tab {
@@ -65,4 +65,23 @@ export interface IUserSignup {
 export interface GroupOption<T> {
   title?: string;
   items?: T[];
+}
+
+export interface Entry<T> {
+  name: string;
+  value: T;
+}
+
+export interface StudyRequest {
+  type: StudyType;
+  title: string;
+  profileShare: boolean;
+  content: string;
+  status: ProcessType;
+  region: string;
+  duration: string;
+  studyDay: string;
+  positions: Position[];
+  receptionStart: string;
+  receptionEnd: string;
 }
