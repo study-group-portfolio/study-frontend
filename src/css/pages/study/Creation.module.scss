@@ -2,18 +2,15 @@
 
 .container {
     /** 요소 크기 설정 **/
-    width: 1366px;
+    width: 1160px;
 
     /** 외부 여백 설정 **/
     margin: 0 auto;
     margin-top: 130px;
     margin-bottom: 90px;
 
-    /** 배경색상 설정 **/
-    background-color: #FFFFFF;
-
     /** 내부 여백 설정 **/
-    padding: 0 103px;
+    //padding: 0 103px;
 
     /** 그리드 설정 **/
     display: grid;
@@ -122,14 +119,11 @@
 
     .side {
         /** 요소 위치 설정 **/
-        position: relative;
+        //position: relative;
 
         .card {
             /** 요소 크기 설정 **/
             width: 340px;
-
-            /** 배경색상 설정 **/
-            background-color: #FFFFFF;
 
             /** 그림자 설정 **/
             box-shadow: 0px 8px 30px rgba(16, 24, 40, 0.02), 
@@ -144,7 +138,7 @@
             padding: 20px;
 
             /** 요소 위치 설정 **/
-            position: fixed;
+            //position: fixed;
 
             /** 그리드 설정 **/
             display: grid;

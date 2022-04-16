@@ -76,7 +76,7 @@ function Navbar() {
         <img className={cn(styles.logo)} src={logo_studyit_logotype} alt="로고"/>
       </NavLink>
       <div className={cn(styles.linkBox)}>
-        {isLogin && <div><a href="#!" onClick={() => setOpenStudyKindModal(true)} className={cn(styles.studyCreation)}>스터디 생성하기</a></div>}
+        {isLogin && <div><a href="#!" onClick={() => onClickComplete(StudyType.사이드프로젝트)} className={cn(styles.studyCreation)}>스터디 생성하기</a></div>}
         <div><NavLink to={Path.스터디_목록} className={cn(styles.link)}>스터디 찾기</NavLink></div>
         <div><NavLink to={Path.맴버_목록} className={cn(styles.link)}>맴버 찾기</NavLink></div>
         {!isLogin && <div><NavLink to={Path.로그인} className={cn(styles.link)}>로그인</NavLink></div>}

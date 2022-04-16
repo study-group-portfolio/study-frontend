@@ -1,4 +1,3 @@
-import { useHistory } from 'react-router-dom';
 import { Path } from 'utils/enum';
 
 export function getImgStyle(img: string) {
@@ -20,5 +19,5 @@ export function getUrl(path: Path, query?: any): string {
 
     const url = `${path}?${queryString}`;
 
-    return url;
+    return url.substring(0, url.length - 1);
 }

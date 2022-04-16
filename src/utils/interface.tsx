@@ -1,5 +1,5 @@
 import React from "react";
-import { SelectEventType, TabMenuType } from "utils/enum";
+import { ProcessType, SelectEventType, StudyType, TabMenuType } from "utils/enum";
 
 export interface IAuthLayout {
   children: React.ReactNode;
@@ -11,7 +11,7 @@ export interface PositionState {
 }
 
 export interface CustomChangeEvent {
-  value?: string | string[];
+  value?: any | any[];
   selectEventType: SelectEventType;
 }
 
@@ -31,14 +31,16 @@ export interface ProfileInfo {
 }
 
 export interface Position {
-  name: string;
-  skillList: string[];
-  recruitmentCount: number;
+  positionName: string;
+  count: number;
+  totalCount: number;
+  skills: string[];
+  recruited: boolean
 }
 
 export interface Duration {
-  startDate?: String | null;
-  endDate?: String | null;
+  startDate?: string | null;
+  endDate?: string | null;
 }
 
 export interface Tab {
@@ -58,4 +60,28 @@ export interface IUserSignup {
   password: string;
   nickname: string;
   confirmPassword: string;
+}
+
+export interface GroupOption<T> {
+  title?: string;
+  items?: T[];
+}
+
+export interface Entry<T> {
+  name: string;
+  value: T;
+}
+
+export interface StudyRequest {
+  type: StudyType;
+  title: string;
+  profileShare: boolean;
+  content: string;
+  status: ProcessType;
+  region: string;
+  duration: string;
+  studyDay: string;
+  positions: Position[];
+  receptionStart: string;
+  receptionEnd: string;
 }
