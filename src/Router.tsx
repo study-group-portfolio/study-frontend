@@ -1,7 +1,6 @@
-import { useState } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Main from "./pages/FindStudy/FindMain";
+//import Main from "./pages/FindStudy/FindMain";
 import FindMember from "./pages/FindStudy/FindMember";
 import FindStudy from "./pages/FindStudy/FindStudy";
 import Login from "./pages/Users/Login";
@@ -12,7 +11,6 @@ import SignupWithEmail from "./pages/Users/Signup";
 import StudyCreation from "./pages/study/Creation";
 import StudyDetail from "pages/study/Detail";
 import MemberDetail from "pages/member/Detail";
-import Component from "pages/test/Component";
 import Modal from "pages/test/ModalComponent";
 import Functional from "pages/test/Functional";
 import SiteMap from "pages/SiteMap";
@@ -40,7 +38,6 @@ function Router() {
         <Route exact path={Path.회원가입_이메일_인증} component={SignupWithEmail}></Route>
         <Route exact path={Path.비밀번호_찾기} component={FindPassword}></Route>
         <Route path="/mypage" component={MyPage}></Route>
-        <Route exact path="/test/component" component={Component}></Route>
         <Route exact path="/test/modal" component={Modal}></Route>
         <Route exact path="/test/functional" component={Functional}></Route>
         <Route exact path="/siteMap" component={SiteMap}></Route>
