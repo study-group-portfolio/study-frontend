@@ -61,7 +61,7 @@ export default function CalendarSelect(props: CalendarSelectProps) {
                 onClick={() => setOpen(!open)}
             >
                 <span className={cn(styles.txt)}>{text}</span>
-                <img src={ic_calendar_24dp} />
+                <img src={ic_calendar_24dp} alt="calendar"/>
             </div>
             {open && 
             <div className={cn(styles.options)}>
@@ -72,7 +72,7 @@ export default function CalendarSelect(props: CalendarSelectProps) {
                         <button
                             onClick={() => onClickPrevBtn(dates)}
                         >
-                            <img src={ic_chevron_left_on_24dp} />
+                            <img src={ic_chevron_left_on_24dp} alt="chevron_left"/>
                         </button>
                     </div>
                     <div className={cn(styles.calendarSection)}>
@@ -92,7 +92,7 @@ export default function CalendarSelect(props: CalendarSelectProps) {
                         <button
                             onClick={() => onClickNextBtn(dates)}
                         >
-                            <img src={ic_chevron_right_on_24dp} />
+                            <img src={ic_chevron_right_on_24dp} alt="chevron_right"/>
                         </button>
                     </div>
                 </div>
