@@ -58,14 +58,6 @@ export default function Login(loginInputs: ILoginInputs) {
     return true;
   }
 
-  chekcNickname("test")
-    .then((res: any) => {
-      console.log(res);
-    })
-    .catch((error: any) => {
-      console.error(error);
-    })
-
   async function onClickLogin(loginInput: ILoginInputs) {
     if (validateLogin(email, password)) {
       try {
