@@ -1,26 +1,27 @@
 import cn from 'classnames';
 import styles from 'css/components/common/RadioBox.module.scss';
 import { useState } from 'react';
+import { Entry } from 'utils/interface';
 
-interface RadioBoxProps {
-    radioNames: string[];
-    onClick?: Function;
+interface RadioBoxProps<T> {
+    radios: Entry<T>[];
+    onClick?: (value: T) => (void);
 }
 
-export default function RadioButton(props: RadioBoxProps) {
-    const { radioNames } = props;
+export default function RadioButton<T>(props: RadioBoxProps<T>) {
+    const { radios } = props;
     const [radioButton, setRadioButton] = useState(0)
 
-    const onClick = (radioName: string, index: number) => {
+    const onClick = (value: T, index: number) => {
         setRadioButton(index);
         if (props.onClick) {
-            props.onClick(radioName);
+            props.onClick(value);
         }
     }
 
     return (
-        <div style={getGridStyle(radioNames.length)}>
-            {radioNames.map((radioName: string, index: number) => (
+        <div style={getGridStyle(radios.length)}>
+            {radios.map((radio: Entry<T>, index: number) => (
                 <button 
                     className={
                         cn(
@@ -31,10 +32,10 @@ export default function RadioButton(props: RadioBoxProps) {
                             }
                         )
                     }
-                    onClick={() => onClick(radioName, index)}
+                    onClick={() => onClick(radio.value, index)}
                     key={index}
                 >
-                    {radioName}
+                    {radio.name}
                 </button>)
             )}
         </div>
